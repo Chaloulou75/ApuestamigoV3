@@ -8,8 +8,6 @@
   
 	<div class="container text-orange-700">
 
-		<h1 class="text-xl text-center italic">Classement</h1>
-
 		<div class="px-3 py-4 flex justify-center">
 			<table class="table-auto w-full text-md bg-teal-300 shadow-md border border-solid border-teal-700 rounded mb-4">
 			  <thead>

@@ -29,6 +29,7 @@
         "flickity": "^2.2.1",
         "flickity-fade": "^1.0.0",
         "tailwindcss": "^1.1.2",
+        "vue-clipboard2": "^0.3.1",
         "vue-flickity": "^1.2.1"
     }
 }

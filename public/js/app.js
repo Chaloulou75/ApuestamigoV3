@@ -54186,6 +54186,20 @@ document.getElementById('logout-toggle').onclick = function () {
   document.getElementById("logout-content").classList.toggle("hidden");
 };
 
+document.getElementById('copyToken').onclick = function copyTok() {
+  var copyText = document.getElementById("copyToken");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copié: " + copyText.value;
+};
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copié le token";
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
