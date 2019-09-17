@@ -5,10 +5,10 @@
         <i class="fas fa-award pr-1"></i> Classement
     </a>
     <a href="{{ route('ligueApuestas', $ligue) }}" class="flex-grow block mt-1 inline-block text-orange-600 hover:text-orange-800 mr-4 font-bolt">
-      <i class='far fa-hand-point-right pr-1'></i>Apuestas
+      <i class='far fa-hand-point-right pr-1'></i>Pronostics
     </a>
     <a href="{{ route('ligueSettings', $ligue) }}" class="flex-grow block mt-1 inline-block text-orange-600 hover:text-orange-800 mr-4 font-bolt">
-      <i class='fas fa-cog pr-1'></i>Settings
+      <i class='fas fa-cog pr-1'></i>Paramètres
     </a>
   </div>
 </div>

@@ -22,17 +22,30 @@ class ApuestasController extends Controller
         // le user
         $user = Auth::user();
 
-        //la ligue du user en cours
-        $ligue = Ligue::findOrFail($ligue->id);
-
-        // en fonction des dates/ heures afficher journee 1/2/3...
-
         if (Auth::user()) 
         {
-            $wherePossible = ['ligue_id' => $ligue->id, 'user_id' => $user->id, 'journee'=> '1'];
-            $matchs = Match::where($wherePossible)->get();
+            //la ligue du user en cours
+            $ligue = Ligue::findOrFail($ligue->id);
+
+            // en fonction des dates/ heures afficher journee 1/2/3...           
+
+            $apuestas = Match::where(['ligue_id' => $ligue->id, 'user_id' => $user->id, 'journee'=> '1'])->get();
+            
+
+            if (isset($apuestas)) 
+            {
+                $matchs = $apuestas;
+                dump($matchs);
+
+                return view('/ligues/apuestas', $ligue, compact('ligue', 'user', 'matchs'));
+            } 
+
+            $collection = Match::all();
+            $matchs = $collection->take(16);
 
             return view('/ligues/apuestas', $ligue, compact('ligue', 'user', 'matchs'));
+
+            
         }
         return redirect()->guest('login');
 
@@ -40,7 +53,8 @@ class ApuestasController extends Controller
         // foreach($matchs as $match){
         //     $home = $match->homeTeam; 
         //     $away = $match->awayTeam->logo;    
-        // }    
+        // } 
+           
     }
 
     /**
@@ -65,39 +79,45 @@ class ApuestasController extends Controller
 
         $ligue = Ligue::findOrFail($ligue->id);
 
-        $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> '1'];
+        $now = Carbon::now();
+        $DateJournee1 = Carbon::create(2019, 9, 17, 18, 55, 00, 'Europe/Paris');
 
-        $matchs = Match::all();
-        $tot= count($request->resultatEq1);
+        if( $now->lessThanOrEqualTo($DateJournee1))
+        {
 
-        
-    	for ($i=0; $i < $tot; $i++) { 
+            $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> '1'];
+            $matchs = Match::where($wherePossible)->get();
+
+            $tot= count($request->resultatEq1);
+            
+        	for ($i=0; $i < $tot; $i++) { 
+        	
+    	    	if (isset($request->resultatEq1[$i])){
+
+    	    		foreach ($matchs as $i => $match) {
     	
-	    	if (isset($request->resultatEq1[$i])){
-
-	    		foreach ($matchs as $i => $match) {
-	
-	        		$result1 = $request->resultatEq1[$i];
-	        		$result2 = $request->resultatEq2[$i];
-
-		        	$journee = $match->journee;
-		            $home = $match->homeTeam->id;
-		            $away = $match->awayTeam->id;
-	        		
-	        		DB::table('matches')->updateOrInsert(
-	                ['journee' => $journee,
-	                 'equipe1_id' => $home, 
-	                 'equipe2_id' => $away,
-	                 'user_id' => $user->id, 
-	                 'ligue_id' => $ligue->id],                     
-	                 ['resultatEq1' => $result1, 
-	                 'resultatEq2' => $result2]
-	        		);
-        		}
+    	        		$result1 = $request->resultatEq1[$i];
+    	        		$result2 = $request->resultatEq2[$i];
+    		        	$journee = $match->journee;
+    		            $home = $match->homeTeam->id;
+    		            $away = $match->awayTeam->id;
+    	        		
+    	        		DB::table('matches')->updateOrInsert(
+    	                ['journee' => $journee,
+    	                 'equipe1_id' => $home, 
+    	                 'equipe2_id' => $away,
+    	                 'user_id' => $user->id, 
+    	                 'ligue_id' => $ligue->id],                     
+    	                 ['resultatEq1' => $result1, 
+    	                 'resultatEq2' => $result2]
+    	        		);
+            		}
+            	}
         	}
-    	}
-
-        return redirect()->back()->withInput()->with('message.level', 'success')->with('message.content', 'Go Go Go! ');
+            $request->input();
+            return redirect()->back()->withInput()->with('message.level', 'success')->with('message.content', 'Tes pronos sont enregistrés! ');
+        }
+        return redirect()->back()->with('message.level', 'success')->with('message.content', 'Trop tard pour cette jounée! ');
     }
 
     /**
