@@ -12,7 +12,7 @@ class Match extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'ligue_id', 'journee', 'equipe1_id', 'equipe2_id', 'resultatEq1', 'resultatEq2', 'point_match',
+        'user_id', 'ligue_id', 'journee', 'game_id', 'resultatEq1', 'resultatEq2', 'point_match',
     ];
 
     public function users()
@@ -25,13 +25,12 @@ class Match extends Model
         return $this->belongsTo(Ligue::class);        
     }
 
-    public function homeTeam()
+    public function games()
     {
-        return $this->belongsTo(Equipe::class, 'equipe1_id');        
+        return $this->belongsTo(Game::class);        
     }
 
-    public function awayTeam()
-    {
-        return $this->belongsTo(Equipe::class, 'equipe2_id');        
-    }
+    
+
+
 }

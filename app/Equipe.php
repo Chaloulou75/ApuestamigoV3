@@ -10,8 +10,8 @@ class Equipe extends Model
         'name', 'logo', 'groupe', 
     ];
 
-    public function matchs()
+    public function games()
     {
-        return $this->hasMany(Match::class);        
+        return $this->hasMany(Game::class);        
     }
 }

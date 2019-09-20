@@ -178,7 +178,11 @@ class LigueController extends Controller
 
     public function joinLiguesIndex()
     {
-        return view('/ligues/joinLigues');
+        if (Auth::user())
+        {
+        	return view('/ligues/joinLigues');
+        }
+        return redirect('login');
     }
 
     public function joinLigues(Request $request, Ligue $ligue)
@@ -189,11 +193,11 @@ class LigueController extends Controller
             $token = $request->input('token');
             $ligue = ligue::where('token', '=',  $token)->firstOrFail();            
 
-            if (!$token === $ligue) {
+            // if (!$token === $ligue) {
 
-               return redirect()->back()->with('message.content', 'il y a une erreur dans le token inséré')->withInput();
+            //    return redirect()->back()->with('message.content', 'il y a une erreur dans le token inséré')->withInput();
 
-            }
+            // }
             
             //lié le user avec la ligue créé
             $user = Auth::user();

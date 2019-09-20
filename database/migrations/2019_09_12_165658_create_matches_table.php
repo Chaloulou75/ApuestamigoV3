@@ -18,11 +18,8 @@ class CreateMatchesTable extends Migration
             $table->integer('journee');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('ligue_id');
-
-            $table->unsignedBigInteger('equipe1_id');
-            $table->unsignedBigInteger('equipe2_id');
-            $table->foreign('equipe1_id')->references('id')->on('equipes')->onDelete('cascade');
-            $table->foreign('equipe2_id')->references('id')->on('equipes')->onDelete('cascade');
+            $table->unsignedBigInteger('game_id');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ligue_id')->references('id')->on('ligues')->onDelete('cascade');
 
