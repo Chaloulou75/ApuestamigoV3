@@ -18,7 +18,7 @@
 			    </p>
 			
 		    	<div class="text-center mx-auto px-auto mb-4 pb-4">
-			      	<a href="{{ route('ligues.create') }}" class="bg-teal-400 hover:bg-teal-500 text-orange-600 text-base text-center uppercase py-2 px-4 border-b-2 border-teal-700 hover:border-teal-400 rounded">
+			      	<a href="{{ route('ligues.create') }}" class="bg-teal-400 hover:bg-white text-orange-600 text-base text-center uppercase py-2 px-4 border-b-2 border-teal-700 hover:border-teal-400 rounded">
 						creer ta ligue!
 					</a>
 				</div>	      				      		
@@ -32,7 +32,7 @@
 			    </p>
 			
 		    	<div class="text-center mx-auto px-auto mb-4 pb-4">
-			      	<a href="{{ route('joinLiguesIndex') }}" class="bg-teal-400 hover:bg-teal-500 text-orange-600 text-base text-center uppercase py-2 px-4 border-b-2 border-teal-700 hover:border-teal-400 rounded">
+			      	<a href="{{ route('joinLiguesIndex') }}" class="bg-teal-400 hover:bg-white text-orange-600 text-base text-center uppercase py-2 px-4 border-b-2 border-teal-700 hover:border-teal-400 rounded">
 						rejoins une ligue!
 					</a>
 				</div>	      				      		

@@ -26,19 +26,18 @@ class ApuestasController extends Controller
 
         if (Auth::user()) 
         {
-            //la ligue du user en cours
-            $ligue = Ligue::findOrFail($ligue->id); 
+            //$wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> '3'];
 
-            $games = Game::all(); // les matchs
+            $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($user, $ligue) {
+                            $query->where('journee', 'like', '%3%')
+                                  ->where('user_id', 'like', '%'. $user->id .'%')
+                                  ->where('ligue_id', 'like', '%'. $ligue->id .'%');
+                        }])
+                        ->where('id', '>=', 17)
+                        ->take(16)
+                        ->get(); // les matchs  
 
-            $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> '2'];
-            $matchs = Match::where($wherePossible)->get();  
-
-            // foreach ($matchs as $key => $match) {
-            //    return $match->resultatEq1;
-            // }
-
-            return view('/ligues/apuestas', $ligue, compact('ligue', 'user', 'games', 'matchs'));
+            return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games'));
             
         }
         return redirect()->guest('login');
@@ -61,29 +60,55 @@ class ApuestasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,  Ligue $ligue)
+    public function store(Request $request, Ligue $ligue)
     {
-        $user = Auth::user();
-
-        $ligue = Ligue::findOrFail($ligue->id);
-
-        $games = Game::take(16)->get();
+        $user = Auth::user();      
         
         $now = Carbon::now();
         $DateJournee2 = Carbon::create(2019, 10, 1, 18, 55, 00, 'Europe/Paris');
+        $DateJournee3 = Carbon::create(2019, 10, 21, 18, 55, 00, 'Europe/Paris');
 
         $request->flash();
 
-        if( $now->lessThanOrEqualTo($DateJournee2))
+        if( $now->lessThanOrEqualTo($DateJournee3))
         {
+            $games = Game::where('id', '>=', 17)->take(16)->get();
+
             $tot= count($request->resultatEq1); 
 
-            $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> '2'];
+            $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> '3'];
             $matchs = Match::where($wherePossible)->get();
 
             if( $matchs->count() === 0)
             {
                 for ($i=0; $i < $tot; $i++) { 
+            
+                    if (isset($request->resultatEq1[$i])){
+
+                        foreach ($games as $i => $game) {
+            
+                            $result1 = $request->resultatEq1[$i];
+                            $result2 = $request->resultatEq2[$i];
+                            $game = $game->id;                                              
+
+                            Match::create(
+                            ['journee' => '3',
+                             'game_id' => $game,                         
+                             'user_id' => $user->id, 
+                             'ligue_id' => $ligue->id,                     
+                             'resultatEq1' => $result1, 
+                             'resultatEq2' => $result2]
+                            );
+                        } 
+
+                    }
+                   
+                }
+                return back()->withInput()->with('message.level', 'success')->with('message.content', 'Yeah! Tes pronos sont enregistrés! ');
+
+            }
+
+            for ($i=0; $i < $tot; $i++) { 
             
                 if (isset($request->resultatEq1[$i])){
 
@@ -93,45 +118,18 @@ class ApuestasController extends Controller
                         $result2 = $request->resultatEq2[$i];
                         $game = $game->id;                                              
 
-                        Match::create(
-                        ['journee' => '2',
+                        Match::updateOrCreate(
+                        ['journee' => '3',
                          'game_id' => $game,                         
                          'user_id' => $user->id, 
-                         'ligue_id' => $ligue->id,                     
-                         'resultatEq1' => $result1, 
+                         'ligue_id' => $ligue->id],                     
+                         ['resultatEq1' => $result1, 
                          'resultatEq2' => $result2]
                         );
-                    }
+                    }    
                 }
-
-                return back()->withInput()->with('message.level', 'success')->with('message.content', 'Yeah! Tes pronos sont enregistrés! ');    
-                }
-
-            }                       
-                                  
-        	for ($i=0; $i < $tot; $i++) { 
-        	
-    	    	if (isset($request->resultatEq1[$i])){
-
-    	    		foreach ($games as $i => $game) {
-    	
-    	        		$result1 = $request->resultatEq1[$i];
-    	        		$result2 = $request->resultatEq2[$i];
-    		            $game = $game->id;    		                	        		
-
-    	        		Match::updateOrCreate(
-    	                ['journee' => '2',
-    	                 'game_id' => $game,     	                 
-    	                 'user_id' => $user->id, 
-    	                 'ligue_id' => $ligue->id],                     
-    	                 ['resultatEq1' => $result1, 
-    	                 'resultatEq2' => $result2]
-    	        		);
-            		}
-            	}
-
-            return back()->withInput()->with('message.level', 'success')->with('message.content', 'Tes pronos sont enregistrés! ');    
-        	}
+            }
+            return back()->withInput()->with('message.level', 'success')->with('message.content', 'Tes pronos sont enregistrés! ');                      
                         
         }
         return redirect()->back()->with('message.level', 'success')->with('message.content', 'Trop tard pour cette jounée! ');
@@ -145,7 +143,7 @@ class ApuestasController extends Controller
      */
     public function show(Apuestas $apuestas)
     {
-        //
+
     }
 
     /**
@@ -168,7 +166,8 @@ class ApuestasController extends Controller
      */
     public function update(Request $request, Apuestas $apuestas)
     {
-        //
+
+        
     }
 
     /**

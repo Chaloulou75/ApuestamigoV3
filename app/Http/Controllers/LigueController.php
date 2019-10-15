@@ -154,11 +154,13 @@ class LigueController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
+        
         $name = $request->input('name');
 
         $ligue->update([
             'name' => $name,           
             ]);
+
         return redirect('/ligues')->with('message.level', 'success')->with('message.content', 'ta ligue est bien modifiée!');
     }
 
@@ -173,6 +175,7 @@ class LigueController extends Controller
         //delete une ligue
         $ligue = ligue::findOrFail($ligue->id);
         $ligue->delete();
+        
         return redirect('/ligues')->with('message.level', 'success')->with('message.content', 'Votre ligue est bien supprimée!');       
     }
 

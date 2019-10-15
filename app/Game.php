@@ -20,4 +20,5 @@ class Game extends Model
     {
         return $this->hasMany(Match::class);        
     }
+
 }

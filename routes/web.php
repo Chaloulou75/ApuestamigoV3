@@ -25,8 +25,11 @@ Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigue
 
 Route::resource('ligues', 'LigueController');
 
-Route::get('/ligues/{ligue}/apuestas', 'ApuestasController@index')->name('ligueApuestas');
-Route::post('/ligues/{ligue}/apuestas', 'ApuestasController@store')->name('ligueApuestas');
+Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController');
+
+// Route::get('/ligues/{ligue}/apuestas', 'ApuestasController@index')->name('ligueApuestas');
+// Route::post('/ligues/{ligue}/apuestas', 'ApuestasController@store')->name('ligueApuestas');
+
 
 Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
 
