@@ -12,7 +12,7 @@
 		@foreach ($ligues as $ligue)			
 
 		<div class="flex-grow lg:w-1/3 justify-around m-4 shadow-lg focus:shadow-outline">
-		  <div class="border border-teal-400 rounded bg-teal-300 p-4 flex flex-col justify-between">
+		  <div class="border border-teal-600 rounded bg-teal-300 p-4 flex flex-col justify-between">
 		    <div class="mb-8">
 			    <p class="text-sm text-teal-500 flex items-center pb-4">
 			        <svg class="fill-current text-teal-700 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -39,7 +39,7 @@
 		</div>
 	   @endforeach
 
-		<div class="flex-grow lg:w-1/3 justify-around m-4 border border-teal-400 rounded bg-teal-300 p-4 shadow-xl focus:shadow-outline">	    
+		<div class="flex-grow lg:w-1/3 justify-around m-4 border border-teal-600 rounded bg-teal-300 p-4 shadow-xl focus:shadow-outline">	    
 		    <p class="flex text-sm text-teal-500 items-center m-3 pb-4">
 		        <svg class="fill-current text-teal-700 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 		          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
@@ -53,7 +53,7 @@
 				</a>
 			</div>	      				      		
 	    </div>
-	    <div class="flex-grow lg:w-1/3 justify-around m-4 border border-teal-400 rounded bg-teal-300 p-4 shadow-xl focus:shadow-outline">	    
+	    <div class="flex-grow lg:w-1/3 justify-around m-4 border border-teal-600 rounded bg-teal-300 p-4 shadow-xl focus:shadow-outline">	    
 		    <p class="flex text-sm text-teal-500 items-center m-3 pb-4">
 		        <svg class="fill-current text-teal-700 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 		          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />

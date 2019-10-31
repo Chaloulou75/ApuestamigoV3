@@ -66,7 +66,8 @@ class ApuestasController extends Controller
         
         $now = Carbon::now();
         $DateJournee2 = Carbon::create(2019, 10, 1, 18, 55, 00, 'Europe/Paris');
-        $DateJournee3 = Carbon::create(2019, 10, 21, 18, 55, 00, 'Europe/Paris');
+        $DateJournee3 = Carbon::create(2019, 10, 22, 18, 55, 00, 'Europe/Paris');
+        $DateJournee4 = Carbon::create(2019, 11, 5, 18, 55, 00, 'Europe/Paris');
 
         $request->flash();
 

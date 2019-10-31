@@ -27,10 +27,6 @@ Route::resource('ligues', 'LigueController');
 
 Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController');
 
-// Route::get('/ligues/{ligue}/apuestas', 'ApuestasController@index')->name('ligueApuestas');
-// Route::post('/ligues/{ligue}/apuestas', 'ApuestasController@store')->name('ligueApuestas');
-
-
 Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
 
 Route::get('/ligues/{ligue}/settings', 'LigueController@settings')->name('ligueSettings');

@@ -114,8 +114,6 @@ class LigueController extends Controller
     public function show(Ligue $ligue)
     {
         // qd on va ds une ligue dejà créer, submenu avec classement / apuestas
-        $ligue = ligue::findOrFail($ligue->id); 
-        // $users = $ligue->users()->get();
         $users = User::with('ligues')->get();
 
         // $users = User::orderBy('name', 'desc')->get();
@@ -215,18 +213,12 @@ class LigueController extends Controller
 
     public function classement(Ligue $ligue)
     {
-        $ligue = ligue::findOrFail($ligue->id); 
-        $users = User::with('ligues')->get();
-        //$ligue->users()->get();
-
-        // $users = User::orderBy('name', 'desc')->get();
-        return view('/ligues/classement', $ligue, compact('ligue', 'users'));
-        
+        return view('/ligues/classement', $ligue, compact('ligue'));        
     }
 
     public function settings(Ligue $ligue)
     {
-        $ligue = ligue::findOrFail($ligue->id); 
+        //$ligue = ligue::findOrFail($ligue->id); 
         return view('/layouts/partials/settings', $ligue, compact('ligue'));
     }
 }
