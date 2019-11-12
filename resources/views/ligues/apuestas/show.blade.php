@@ -8,13 +8,17 @@
   
 	<div class="container text-orange-800">
 
-		@if (Auth::check())		
-			<h3 class="text-md text-left py-2">Hey <strong>{{$user->name}}</strong>, let's play!</h3>
-		@else	
-			<h3 class="text-md text-left py-2">Hey, you have to login or register to play.</h3>
+		@if ( Auth::user()->admin == 1) 
+			<h3 class="text-md text-left py-2">Hey <strong>{{$user->name}}</strong>, set all scores!</h3>
+			<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 
+				@csrf
+		
+		@elseif( Auth::check())
+			<h3 class="text-md text-left py-2">Hey <strong>{{$user->name}}</strong>, tes paris:</h3>
+		@else
+			<h3 class="text-md text-left py-2"></h3>
 		@endif
-		<form method="POST" action="{{ action('ApuestasController@store', $ligue) }}"> 
-			@csrf
+
 		<div class="table w-full md:w-4/5 mx-auto text-sm bg-teal-300 shadow-md border border-solid border-teal-700 rounded">
 
 		    <div class="table-row w-full mx-auto border border-solid border-teal-700">
@@ -73,12 +77,17 @@
 
 		   @endforeach 
 		</div>
-		
+
+		@if ( Auth::user()->admin == 1) 
+
 		<div class="flex justify-center m-2 pt-2">
 			<button type="submit" class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
 		  		Enregistrer
 			</button>
 		</div>
+
+		@endif
+
 		</form>
 	</div>
 </div>

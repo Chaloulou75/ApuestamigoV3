@@ -22,38 +22,42 @@
         </a>
       </div>
 
-      <div>
-          @if (Route::has('login'))              
-              @auth
+      <div >
+        @if (Route::has('login'))             
+            @auth  
+            <div class="flex justify-between">       
+              @if ( Auth::user()->admin == 1)  
+                <button class="inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0 lg:mr-4 lg:mb-2">
+                  <a href="{{ route('adminIndex') }}"><i class='fas fa-graduation-cap'></i> Admin</a>
+                </button>
+              @endif
               <label for="logout-toggle" class="block">
                 <button id="logout-toggle" class="inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0 lg:mb-2" >
                   <i class="fas fa-user-circle pr-1"></i>{{ Auth::user()->name }}
                 </button>
               </label>  
-                <div class="hidden" id="logout-content">
-                    <a href="{{ route('logout') }} " class="inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        <i class="fas fa-user-alt-slash pr-1"></i>{{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-              @else
-              <div class="flex items-center justify-between ">
+            </div>   
+            <div class="hidden" id="logout-content">
+                <a href="{{ route('logout') }}" class="float-right inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    <i class="fas fa-user-alt-slash pr-1"></i>{{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+            @else
+              <div class="flex items-center justify-between">
                 <a href="{{ route('login') }}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0 lg:mr-2">
                   <i class='fas fa-user pr-1'></i>Login
                 </a>
                 <a href="{{ route('register') }}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0">
                   <i class="fas fa-user-circle pr-1"></i>Register
                 </a>
-              </div>
-              @endauth
-               
-          @endif
-          </a>
+              </div>             
+            @endauth             
+        @endif          
       </div>
     </div> 
 </header>

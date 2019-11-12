@@ -25,8 +25,20 @@ Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigue
 
 Route::resource('ligues', 'LigueController');
 
-Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController');
+Route::get('/ligues/{ligue}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
+
+Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
+    'index', 'store'
+]);;
 
 Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
 
 Route::get('/ligues/{ligue}/settings', 'LigueController@settings')->name('ligueSettings');
+
+Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
+
+    Route::get('/', 'AdminController@index')->name('adminIndex');
+    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('adminStore');
+    Route::get('/compare', 'AdminController@compare')->name('adminCompare');
+
+});

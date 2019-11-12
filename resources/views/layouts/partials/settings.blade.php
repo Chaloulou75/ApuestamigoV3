@@ -18,7 +18,7 @@
 
 <div class="flex flex-wrap items-stretch content-start justify-around my-4">
   <div class="flex-grow max-w-xs lg:w-1/3 m-auto p-auto pt-8">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ action('LigueController@update', $ligue) }}">
+    <form class="bg-white shadow-md border-t-4 border-teal-500 rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ action('LigueController@update', $ligue) }}">
       @csrf
       @method('PUT')
       <div class="mb-4">
@@ -38,7 +38,7 @@
     </form>
   </div>
   <div class="flex-grow max-w-xs lg:w-1/3 m-auto p-auto pt-8">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ action('LigueController@destroy', $ligue) }}">
+    <form class="bg-white shadow-md rounded border-t-4 border-teal-500 px-8 pt-6 pb-8 mb-4" method="POST" action="{{ action('LigueController@destroy', $ligue) }}">
       @csrf
       @method('DELETE')
       <div class="mb-4">

@@ -22,7 +22,6 @@ class LigueController extends Controller
         //montrer la page avec toutes les ligues de l'user
         // + bouton pour creer une nouvelle ligue
         // + bouton rejoindre une ligue
-
         if (Auth::user())
         {
             //user connecté
@@ -35,7 +34,6 @@ class LigueController extends Controller
         }
 
         return view('/index');
-
         
     }
 
@@ -116,7 +114,6 @@ class LigueController extends Controller
         // qd on va ds une ligue dejà créer, submenu avec classement / apuestas
         $users = User::with('ligues')->get();
 
-        // $users = User::orderBy('name', 'desc')->get();
         return view('/ligues/show', $ligue, compact('ligue','users'));
         
     }
@@ -193,12 +190,6 @@ class LigueController extends Controller
 
             $token = $request->input('token');
             $ligue = ligue::where('token', '=',  $token)->firstOrFail();            
-
-            // if (!$token === $ligue) {
-
-            //    return redirect()->back()->with('message.content', 'il y a une erreur dans le token inséré')->withInput();
-
-            // }
             
             //lié le user avec la ligue créé
             $user = Auth::user();
@@ -218,7 +209,6 @@ class LigueController extends Controller
 
     public function settings(Ligue $ligue)
     {
-        //$ligue = ligue::findOrFail($ligue->id); 
         return view('/layouts/partials/settings', $ligue, compact('ligue'));
     }
 }
