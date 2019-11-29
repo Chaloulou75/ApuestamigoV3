@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
+
 Route::get('/ligues/joinLigues', 'LigueController@joinLiguesIndex')->name('joinLiguesIndex');
 
 Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigues');
@@ -37,8 +40,8 @@ Route::get('/ligues/{ligue}/settings', 'LigueController@settings')->name('ligueS
 
 Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
 
-    Route::get('/', 'AdminController@index')->name('adminIndex');
-    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('adminStore');
-    Route::get('/compare', 'AdminController@compare')->name('adminCompare');
-
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
+    Route::get('/compare', 'AdminController@compare')->name('apuestas.compare');
+    Route::get('/count-points', 'AdminController@countpoints')->name('apuestas.points');
 });

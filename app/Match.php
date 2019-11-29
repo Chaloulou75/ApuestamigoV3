@@ -12,7 +12,7 @@ class Match extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'ligue_id', 'journee', 'game_id', 'resultatEq1', 'resultatEq2', 'point_match',
+        'user_id', 'ligue_id', 'journee', 'game_id', 'resultatEq1', 'resultatEq2', 'pointMatch',
     ];
 
     public function users()

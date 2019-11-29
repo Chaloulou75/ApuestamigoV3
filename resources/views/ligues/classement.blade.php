@@ -24,7 +24,7 @@
 			      <th scope="row" class="p-3 px-5"> {{ $loop->iteration }} </th>
 				  <td class="p-3 px-5"> {{ $user->name }} </td>
 				  <td class="p-3 px-5"> {{ $user->club }} </td>
-				  <td class="text-center p-3 px-5"> 0 </td>
+				  <td class="text-center p-3 px-5">  </td>
 			    </tr>
 			    @endforeach
 			  </tbody>

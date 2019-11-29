@@ -1,4 +1,4 @@
-<header class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+<header class="flex items-center justify-between flex-wrap bg-teal-300 border-solid border-b-2 border-gray-600 p-5">
     <div class="flex items-center flex-shrink-0 text-orange-600 hover:text-white mr-6 font-bolt text-2xl">
        <a href="{{ url('/') }}">
               {{ config('app.name', 'Apuestamigo') }}
@@ -20,6 +20,9 @@
         <a href="{{ route('ligues.create') }}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-600 hover:text-white mr-4 font-bolt">
           <i class='far fa-hand-point-right pr-1'></i>Creer une ligue
         </a>
+        <a href="{{ route('contact.create') }}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-600 hover:text-white mr-4 font-bolt">
+          <i class='far fa-envelope pr-1'></i>Contact
+        </a>
       </div>
 
       <div >
@@ -28,7 +31,7 @@
             <div class="flex justify-between">       
               @if ( Auth::user()->admin == 1)  
                 <button class="inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0 lg:mr-4 lg:mb-2">
-                  <a href="{{ route('adminIndex') }}"><i class='fas fa-graduation-cap'></i> Admin</a>
+                  <a href="{{ route('admin.index') }}"><i class='fas fa-graduation-cap'></i> Admin</a>
                 </button>
               @endif
               <label for="logout-toggle" class="block">
@@ -38,7 +41,7 @@
               </label>  
             </div>   
             <div class="hidden" id="logout-content">
-                <a href="{{ route('logout') }}" class="float-right inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0"
+                <a href="{{ route('logout') }}" class="lg:float-right inline-block text-sm px-4 py-2 leading-none border rounded text-orange-600 border-orange-600 hover:border-transparent hover:text-orange-700 hover:bg-white mt-4 lg:mt-0"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                     <i class="fas fa-user-alt-slash pr-1"></i>{{ __('Logout') }}

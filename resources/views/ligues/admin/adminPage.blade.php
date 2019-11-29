@@ -9,9 +9,10 @@
 		<ul>
 
 			<li><a href="{{ route('ligues.index') }}"> Show Matchs and Set Scores. </a></li>
-			<li><a href="{{ route('adminCompare') }}"> Comparer les scores. </li>
-
+			<li><a href="{{ route('apuestas.compare') }}"> Comparer les Scores et mise à jour des points des joueurs par match. </li>	
+			<li><a href="{{ route('apuestas.points') }}"> Mise à jour des points totaux des joueurs. </li>		
 		</ul>
+		
 	</div>
 </div>
 
