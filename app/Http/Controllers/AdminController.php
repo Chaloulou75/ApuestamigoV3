@@ -101,51 +101,23 @@ class AdminController extends Controller
 
     }
 
-    public function compare()
+    public function compare($journee)
     {
-        //for J3:
-        // $this->getUsersApuestasJ3();
-        // $this->getUsersApuestasJ4();
-        $this->getUsersApuestasJ5();
-        // $this->getUsersApuestasJ6();
-
-        //return redirect()->back()->with('message.level', 'success')->with('message.content', 'Les points sont mis à jours pour la journée 3');          
-     }
-
-    public function getUsersApuestasJ3()
-    {    
-        $journee = 3;
-        $resultsUser = $this->compareApuestas($journee);
+        $this->getUsersApuestas($journee);
         
-        return $resultsUser;
-            
+        return redirect()->back()->with('message.level', 'success')->with('message.content', "Les points sont mis à jours pour la journée ".$journee ." ");          
+    }
+    public function countPoints($journee)
+    {
+        $this->countPointsByDay($journee);
+
+        return redirect()->back()->with('message.level', 'success')->with('message.content', "Les points TOTAUX sont calculés pour la journée ".$journee ." ");          
     }
 
-    public function getUsersApuestasJ4()
+    public function getUsersApuestas($journee)
     {    
-        $journee = 4;
-        $resultsUser = $this->compareApuestas($journee);
-        
+        $resultsUser = $this->compareApuestas($journee);        
         return $resultsUser;
-            
-    }
-
-    public function getUsersApuestasJ5()
-    {    
-        $journee = 5;
-        $resultsUser = $this->compareApuestas($journee);
-        
-        return $resultsUser;
-            
-    }
-
-    public function getUsersApuestasJ6()
-    {    
-        $journee = 6;
-        $resultsUser = $this->compareApuestas($journee);
-        
-        return $resultsUser;
-            
     }
 
     public function compareApuestas($journee)
@@ -235,10 +207,8 @@ class AdminController extends Controller
         }        
     }
 
-    public function countPoints()
+    public function countPointsByDay($journee)
     {
-        $journee = 5;
-
         $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
                      $query->where('journee', 'like', '%'. $journee .'%');
              }])->where('admin', '=', 0)->get(); //
@@ -253,7 +223,7 @@ class AdminController extends Controller
 
                 $tot = $pointJournee->sum('pointMatch');
 
-                echo "Pour la journée: ". $journee .', '. $user->name .' a eu '. $tot .' points dan la ligue '. $ligue->name . "<br>";
+                echo "Pour la journée n° ". $journee .', '. $user->name .' a eu '. $tot .' points dans la ligue '. $ligue->name . "<br>";
             }
         }
     }
