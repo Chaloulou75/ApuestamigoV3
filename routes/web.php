@@ -42,8 +42,6 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
 
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
-
     Route::get('/compare/{journee}', 'AdminController@compare')->name('apuestas.compare');
-
     Route::get('/count-points/{journee}', 'AdminController@countPoints')->name('apuestas.points');
 });

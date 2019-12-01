@@ -44,8 +44,7 @@ class LigueController extends Controller
      */
     public function create()
     {
-        // formulaire de creation d'une ligue, doit générer un token aléatoire
-        // pour inviter ses potes
+        // formulaire de creation d'une ligue, doit générer un token aléatoire pour inviter ses potes
         if (Auth::user())
         {
 
@@ -204,6 +203,10 @@ class LigueController extends Controller
 
     public function classement(Ligue $ligue)
     {
+        // $top = Ligue::with(['users' => function ($q) {
+        //             $q->orderBy('pivot_totalPoints', 'Desc');
+        //         }])->get();
+        
         return view('/ligues/classement', $ligue, compact('ligue'));        
     }
 
