@@ -32,7 +32,9 @@ Route::get('/ligues/{ligue}/apuestas/{fecha}', 'ApuestasController@show')->name(
 
 Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
     'index', 'store'
-]);;
+]);
+
+Route::resource('games', 'GameController')->middleware('admin');
 
 Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
 

@@ -202,11 +202,7 @@ class LigueController extends Controller
     }
 
     public function classement(Ligue $ligue)
-    {
-        // $top = Ligue::with(['users' => function ($q) {
-        //             $q->orderBy('pivot_totalPoints', 'Desc');
-        //         }])->get();
-        
+    {        
         return view('/ligues/classement', $ligue, compact('ligue'));        
     }
 

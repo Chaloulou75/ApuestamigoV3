@@ -18,7 +18,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin'); // if user is admin
 
     }
 
@@ -37,7 +37,7 @@ class AdminController extends Controller
     {
         if(Auth::user()->admin == 1)
         {    
-            $user = Auth::user();  
+            $user = Auth::user(); 
 
             $games = Game::where('journee', '=', $journee)->get('id');
             
@@ -109,7 +109,9 @@ class AdminController extends Controller
     }
     public function countPoints($journee)
     {
+        // comptage des points.
         $countPoints = $this->countPointsByDay($journee);
+
         return $countPoints;
         //return redirect()->back()->with('message.level', 'success')->with('message.content', "Les points totaux sont calculés pour la journée ".$journee ." ");          
     }
@@ -122,8 +124,10 @@ class AdminController extends Controller
 
     public function compareApuestas($journee)
     {
+        // les resultats de l'admin qui est l'user en cours
         $resultsAdmin = Auth::user()->matchs()->where('journee', $journee)->get(); 
 
+        //tous les utilisateurs
         $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
                      $query->where('journee', 'like', '%'. $journee .'%');
              }])->get(); //->where('admin', '=', 0)
@@ -133,7 +137,7 @@ class AdminController extends Controller
 
             foreach ($user->ligues as $key => $ligue) 
             {
-
+            // on récupere les matchs ds cqe ligue/journee pour chaque user
             $apuestas = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->get();
 
                 for($i = 0; $i < count($resultsAdmin); $i++)
@@ -211,26 +215,24 @@ class AdminController extends Controller
     {
         $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
                      $query->where('journee', 'like', '%'. $journee .'%');
-             }])->get(); //
+             }])->get(); // on récupère tous les joueurs
 
         foreach ($users as $user) 
         {
 
             foreach ($user->ligues as $key => $ligue) 
             {
-
+                // points par journee
                 $pointMatch = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->get();
-
                 $totJournee = $pointMatch->sum('pointMatch');
 
+                echo "Pour la journée n° ". $journee .', '. $user->name .' a eu '. $totJournee .' points dans la ligue '. $ligue->name . "<br>";
+                // points totaux du joueur
                 $pointTot = $user->matchs()->where('ligue_id', $ligue->id)->get();
-
                 $totalPoints = $pointTot->sum('pointMatch');
 
-                echo "Pour la journée n° ". $journee .', '. $user->name .' a eu '. $totJournee .' points dans la ligue '. $ligue->name . "<br>";
-
                 echo $user->name .' a au total '. $totalPoints .' points dans la ligue '. $ligue->name . "<br>";
-
+                // update pivot table.
                 DB::table('ligue_user')->where('user_id', $user->id)
                                         ->where('ligue_id', $ligue->id)
                                         ->update(['totalPoints' => $totalPoints]);
