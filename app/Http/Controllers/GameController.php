@@ -54,9 +54,17 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'journee' => 'required|min:1|max:2',
+            'equipe1_id' => 'required',
+            'equipe2_id' => 'required',
+        ]);
+
         $journee = $request->input('journee');
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
+
+         
 
 
         $game = Game::updateOrCreate(

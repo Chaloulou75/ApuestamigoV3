@@ -14,12 +14,16 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
     </head>
-    <body class="body bg-orange-200">
+    <body class="body bg-gray-800">
         <div id="app">
 
             @include('layouts/nav')
+            {{-- @include('layouts/partials/nav2') --}}
+
+            <nav-component></nav-component>
 
             @include('layouts/partials/carousel')
+
 
             @include('layouts/partials/message')
 
@@ -43,6 +47,11 @@
             <main class="py-4">
                 @yield('content')
             </main>
+
+            <cookie-banner-component></cookie-banner-component>
+
+            
+
         </div>
 
         <script src="/js/app.js"></script>

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Charm|ZCOOL+XiaoWei);@charset "UTF-8";
 
 /*!
- * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -891,6 +891,10 @@ readers do not read off random characters that represent icons */
 
 .fa-business-time:before {
   content: "\F64A";
+}
+
+.fa-buy-n-large:before {
+  content: "\F8A6";
 }
 
 .fa-buysellads:before {
@@ -2705,6 +2709,14 @@ readers do not read off random characters that represent icons */
   content: "\F292";
 }
 
+.fa-hat-cowboy:before {
+  content: "\F8C0";
+}
+
+.fa-hat-cowboy-side:before {
+  content: "\F8C1";
+}
+
 .fa-hat-wizard:before {
   content: "\F6E8";
 }
@@ -3345,6 +3357,10 @@ readers do not read off random characters that represent icons */
   content: "\F136";
 }
 
+.fa-mdb:before {
+  content: "\F8CA";
+}
+
 .fa-medal:before {
   content: "\F5A2";
 }
@@ -3529,6 +3545,10 @@ readers do not read off random characters that represent icons */
   content: "\F6FC";
 }
 
+.fa-mouse:before {
+  content: "\F8CC";
+}
+
 .fa-mouse-pointer:before {
   content: "\F245";
 }
@@ -3635,6 +3655,10 @@ readers do not read off random characters that represent icons */
 
 .fa-optin-monster:before {
   content: "\F23C";
+}
+
+.fa-orcid:before {
+  content: "\F8D2";
 }
 
 .fa-osi:before {
@@ -4091,6 +4115,10 @@ readers do not read off random characters that represent icons */
 
 .fa-receipt:before {
   content: "\F543";
+}
+
+.fa-record-vinyl:before {
+  content: "\F8D9";
 }
 
 .fa-recycle:before {
@@ -4877,6 +4905,10 @@ readers do not read off random characters that represent icons */
   content: "\F5C3";
 }
 
+.fa-swift:before {
+  content: "\F8E1";
+}
+
 .fa-swimmer:before {
   content: "\F5C4";
 }
@@ -5255,6 +5287,10 @@ readers do not read off random characters that represent icons */
 
 .fa-uikit:before {
   content: "\F403";
+}
+
+.fa-umbraco:before {
+  content: "\F8E8";
 }
 
 .fa-umbrella:before {
@@ -5790,7 +5826,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -5813,7 +5849,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -5838,7 +5874,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 

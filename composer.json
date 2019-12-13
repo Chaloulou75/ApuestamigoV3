@@ -9,10 +9,12 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "caouecs/laravel-lang": "~4.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.4",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "mcamara/laravel-localization": "^1.4",
         "stripe/stripe-php": "^7.12"
     },
     "require-dev": {

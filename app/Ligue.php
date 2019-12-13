@@ -19,6 +19,7 @@ class Ligue extends Model
     public function users()
     {
         return $this->belongsToMany(User::class)->withPivot('totalPoints')->orderBy('ligue_user.totalPoints', 'Desc')->withTimestamps();
+        //
         
     }
 

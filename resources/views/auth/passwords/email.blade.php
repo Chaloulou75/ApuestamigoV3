@@ -5,7 +5,7 @@
 
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     
-        <div class="block text-gray-700 text-base font-bold mb-2">{{ __('Reset Password') }}</div>
+        <div class="block text-gray-700 text-base font-bold mb-2">{{ __('all.Reset Password') }}</div>
 
     
         @if (session('status'))
@@ -19,7 +19,7 @@
 
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-base font-bold mb-2">
-                    {{ __('E-Mail Address') }}
+                    {{ __('all.E-Mail Address') }}
                 </label>                
                 <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -33,7 +33,7 @@
             <div class="mb-4">
                 <div class="flex items-center justify-between">
                     <button type="submit" class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        {{ __('Send Password Reset Link') }}
+                        {{ __('all.Send Password Reset Link') }}
                     </button>
                 </div>
             </div>

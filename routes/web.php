@@ -11,39 +11,48 @@
 |
 */
 
-Route::get('/', function() {
-    return view('index');
-});
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function(){
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/', function() {
+	    return view('index');
+	});
 
-Route::get('/contact', 'ContactController@create')->name('contact.create');
-Route::post('/contact', 'ContactController@store')->name('contact.store');
+	Auth::routes();
 
-Route::get('/ligues/joinLigues', 'LigueController@joinLiguesIndex')->name('joinLiguesIndex');
+	Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigues');
+	Route::get('/contact', 'ContactController@create')->name('contact.create');
+	Route::post('/contact', 'ContactController@store')->name('contact.store');
 
-Route::resource('ligues', 'LigueController');
+	Route::get('/ligues/joinLigues', 'LigueController@joinLiguesIndex')->name('joinLiguesIndex');
 
-Route::get('/ligues/{ligue}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
+	Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigues');
 
-Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
-    'index', 'store'
-]);
+	Route::resource('ligues', 'LigueController');
 
-Route::resource('games', 'GameController')->middleware('admin');
+	Route::get('/ligues/{ligue}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
 
-Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
+	Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
+	    'index', 'store'
+	]);
 
-Route::get('/ligues/{ligue}/settings', 'LigueController@settings')->name('ligueSettings');
+	Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
 
-Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
+	Route::get('/ligues/{ligue}/settings', 'LigueController@settings')->name('ligueSettings');
 
-    Route::get('/', 'AdminController@index')->name('admin.index');
-    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
-    Route::get('/compare/{journee}', 'AdminController@compare')->name('apuestas.compare');
-    Route::get('/count-points/{journee}', 'AdminController@countPoints')->name('apuestas.points');
+	Route::resource('games', 'GameController')->middleware('admin');
+
+	Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
+
+	    Route::get('/', 'AdminController@index')->name('admin.index');
+	    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
+	    Route::get('/compare/{journee}', 'AdminController@compare')->name('apuestas.compare');
+	    Route::get('/count-points/{journee}', 'AdminController@countPoints')->name('apuestas.points');
+	});
+
 });

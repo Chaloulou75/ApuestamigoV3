@@ -71,7 +71,7 @@ class AdminController extends Controller
                     }
                    
                 }
-                return back()->withInput()->with('message.level', 'success')->with('message.content', 'Good! Les scores sont à jour.');
+                return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.scores updated'));
             }
 
             for ($i=0; $i < $tot; $i++) { 
@@ -95,7 +95,7 @@ class AdminController extends Controller
                     }    
                 }
             }
-            return back()->withInput()->with('message.level', 'success')->with('message.content', 'Good! Les scores sont de nouveaux à jour.');                      
+            return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.scores updated'));                      
         }
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'Désolé mais tu n\'es pas un admin ou tu n\'es pas connecté...');
 

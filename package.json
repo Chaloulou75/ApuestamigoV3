@@ -12,7 +12,7 @@
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
         "axios": "^0.19",
-        "bootstrap": "^4.0.0",
+        "bootstrap": "^4.4.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
@@ -20,16 +20,19 @@
         "lodash": "^4.17.13",
         "popper.js": "^1.16.0",
         "resolve-url-loader": "2.3.1",
-        "sass": "^1.23.3",
+        "sass": "^1.23.7",
         "sass-loader": "7.*",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "date-fns": "^2.8.1",
         "flickity": "^2.2.1",
         "flickity-fade": "^1.0.0",
-        "tailwindcss": "^1.1.3",
+        "js-cookie": "^2.2.1",
+        "tailwindcss": "^1.1.4",
         "vue-clipboard2": "^0.3.1",
-        "vue-flickity": "^1.2.1"
+        "vue-flickity": "^1.2.1",
+        "vue-router": "^3.1.3"
     }
 }
