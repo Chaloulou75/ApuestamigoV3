@@ -26,10 +26,11 @@
         </a>
         <ul>
           @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-              <li>
-                  <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
-                      {{ $properties['native'] }}
-                  </a>
+              <li class="inline-block px-2 py-1 sm:mt-0 sm:ml-2">
+                  <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class=" overflow-hidden border-2 border-gray-600 rounded-full flex items-center justify-center focus:outline-none focus:border-white">
+                      {{-- {{ $properties['native'] }} --}}
+                    <img class="h-8 w-8 object-cover"  alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
+                 </a>   
               </li>
           @endforeach
       </ul>

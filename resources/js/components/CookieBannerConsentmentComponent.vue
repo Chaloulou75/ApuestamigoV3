@@ -1,6 +1,6 @@
 <template>
   <div v-bind:class="shouldBeDisplayed ? 'block' : 'hidden'">
-    <div class="container text-gray-400 text-center">
+    <div class="container text-gray-500 text-center">
         <p>By continuing to browse this site, you consent to our use of cookies to immprove you online experience</p>
         <a href="#">Learn More</a>
         <button type="button" @click="handleCookieStorageApproval" class="bg-gray-900 border border-solid rounded-full py-2 px-2">OK</button>

@@ -23,7 +23,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
 Vue.component('date-component', require('./components/DateComponent.vue').default);
 
-Vue.component('nav-component', require('./components/NavComponent.vue').default);
 Vue.component('cookie-banner-component', require('./components/CookieBannerConsentmentComponent.vue').default);
 
 

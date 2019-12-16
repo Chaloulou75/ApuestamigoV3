@@ -21,28 +21,28 @@
 			<h3 class="text-base text-left py-2"></h3>
 		@endif
 
-		<div class="table w-full md:w-4/5 mx-auto text-sm text-white bg-gray-600 shadow-md border-2 border-solid border-white rounded">
+		<div class="table w-full md:w-4/5 mx-auto text-sm text-gray-900 bg-gray-400 shadow-md border-2 border-solid border-white rounded">
 
 		    <div class="table-row w-full mx-auto border border-solid border-white">
 		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell"></div>
 		      <div class="table-cell px-4 py-4 text-right hidden md:table-cell"></div>
-		      <div class="table-cell px-4 py-4 text-center">Home</div>
+		      <div class="table-cell px-4 py-4 text-center font-bold">Home</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"> {{ $journee }}</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
-		      <div class="table-cell px-4 py-4 text-center">Away</div>
+		      <div class="table-cell px-4 py-4 text-center font-bold">Away</div>
 		      <div class="table-cell px-4 py-4 text-left hidden md:table-cell "></div>
 		    </div>		    			  
 
 			@foreach ($games as $game)	
 
-		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-700">
+		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-600 hover:text-white hover:font-bold">
 		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
 			  <div class="table-cell px-4 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq1"></label>
-				<select id="resultatEq1" class="border-2 border-solid border-gray-100 text-gray-900 font-bold rounded {{ $errors->has('resultatEq1') ? ' bg-red-dark' : '' }}" name="resultatEq1[]" value="">
+				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded {{ $errors->has('resultatEq1') ? ' bg-red-dark' : '' }}" name="resultatEq1[]" value="">
 					<option>{{ $game->matchs->first()['resultatEq1'] }}</option>
 					<option value="0">0</option>
 	                <option value="1">1</option>
@@ -59,7 +59,7 @@
 			  <div class="table-cell px-4 py-4 text-center"> - </div>
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq2"></label>
-				<select id="resultatEq2" class="border-2 border-solid border-gray-100 text-gray-900 font-bold rounded {{ $errors->has('resultatEq2') ? ' bg-red-dark' : '' }}" name="resultatEq2[]" value="">
+				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded {{ $errors->has('resultatEq2') ? ' bg-red-dark' : '' }}" name="resultatEq2[]" value="">
 					<option>{{ $game->matchs->first()['resultatEq2'] }}</option>
 					<option value="0" >0</option>	      
 	                <option value="1" >1</option>
