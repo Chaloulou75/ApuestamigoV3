@@ -11,12 +11,12 @@
 	<div class="container text-white">
 
 		@if ( Auth::user()->admin == 1) 
-			<h3 class="text-base text-left py-2">Hey <strong>{{$user->name}}</strong>, set all scores!</h3>
+			<h3 class="text-base text-left py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, set all scores!</h3>
 			<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 
 				@csrf
 		
 		@elseif( Auth::check())
-			<h3 class="text-base text-left py-2">Hey <strong>{{$user->name}}</strong>, tes paris:</h3>
+			<h3 class="text-base text-left py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.your bets')}} :</h3>
 		@else
 			<h3 class="text-base text-left py-2"></h3>
 		@endif
@@ -84,7 +84,7 @@
 
 		<div class="flex justify-center">
 			<button type="submit" class="bg-gray-900 hover:bg-white text-white hover:text-gray-900 font-semibold text-center border-2 rounded-full hover:border-gray-900 border-gray-500 flex-auto py-2 px-4 m-2">
-		  		Enregistrer
+		  		{{__('all.Registrar')}}
 			</button>
 		</div>
 

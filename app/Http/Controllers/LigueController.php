@@ -93,7 +93,7 @@ class LigueController extends Controller
             $user->ligues()->attach($ligue);
 
             //redirection avec message
-            return redirect('/ligues')->with('message.level', 'success')->with('message.content', 'La ligue " ' . $name . ' " est maintenant créée, partage la avec ce token: ' . $token . ' ');
+            return redirect('/ligues')->with('message.level', 'success')->with('message.content',  __('all.the league')  . $name .   __('all.is now created, share it with this token') .' : ' . $token . ' ');
         }
 
         return redirect('login');
@@ -155,7 +155,7 @@ class LigueController extends Controller
             'name' => $name,           
             ]);
 
-        return redirect('/ligues')->with('message.level', 'success')->with('message.content', 'ta ligue est bien modifiée!');
+        return redirect('/ligues')->with('message.level', 'success')->with('message.content', __('all.your league has been modified'));
     }
 
     /**
@@ -170,7 +170,7 @@ class LigueController extends Controller
         $ligue = ligue::findOrFail($ligue->id);
         $ligue->delete();
         
-        return redirect('/ligues')->with('message.level', 'success')->with('message.content', 'Votre ligue est bien supprimée!');       
+        return redirect('/ligues')->with('message.level', 'success')->with('message.content', __('all.your league has been deleted'));       
     }
 
     public function joinLiguesIndex()
@@ -194,7 +194,7 @@ class LigueController extends Controller
             $user = Auth::user();
             $user->ligues()->attach($ligue);
           
-            return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', 'Vous avez rejoints cette ligue!');
+            return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', __('all.You have joined this league!'));
         }
 
         return redirect('login');

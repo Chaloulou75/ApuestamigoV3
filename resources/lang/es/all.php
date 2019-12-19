@@ -69,6 +69,14 @@ return [
   'Points' => 'Puntos',
   'What\'s the name of your league?'=> 'Que es el nombre de tu liga?',
   'Insert the token of the league' => 'Insertar el token de la liga',
+  'Hey' => 'Hola',
+  'your bets' =>'tus apuestas',
+  'Start of the next round' => 'Comienzo de la siguiente ronda',
+  'you have to login or register to play.' => 'tienes que iniciar sesión o registrarte para juegar.',
+  'let\'s play' => 'es tu turno',
+  'Registrar' => 'Registrar',
+  'Send' => 'Enviar mensaje',
+  'Message' => 'Mensaje',
 
 
   //messages
@@ -76,5 +84,14 @@ return [
   'Yeah! your bets are registered and updated! Good luck!' => 'Tus apuestas estan registradas y actualizadas, suerte!',
   'Too late for this date!' => 'Demasiado tarde para esta fecha',
   'scores updated' => 'los resultados estan actualizados',
+  'the league' => 'la liga ',
+  'is now created, share it with this token' => ' esta creada, compartela con este token',
+  'your league has been modified' => 'la liga esta modificada',
+  'your league has been deleted' => 'tu liga esta borrada',
+  'You have joined this league!'  =>'¡Te has unido a esta liga!',
+
+  //cookie
+  'Learn_More' =>'Leer mas',
+  'cookie_consentment' => 'Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en línea.',
 
   ];

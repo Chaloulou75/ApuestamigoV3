@@ -1829,6 +1829,53 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AccountDropdown.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AccountDropdown.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isOpen: false
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var handleEscape = function handleEscape(e) {
+      if (e.key === 'Esc' || e.key === 'Escape') {
+        _this.isOpen = false;
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    this.$once('hook:beforeDestroy', function () {
+      document.removeEventListener('keydown', handleEscape);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CarouselComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CarouselComponent.vue?vue&type=script&lang=js& ***!
@@ -1913,7 +1960,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     handleCookieStorageApproval: function handleCookieStorageApproval() {
       js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.set('user_has_agree_to_cookie_storage', 'true', {
-        expires: 30
+        expires: 0.5
       });
       this.shouldBeDisplayed = false;
     }
@@ -1956,9 +2003,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getFormat: function getFormat() {
-      return this.formatDistanceToNow(new Date(2020, 2, 18, 21, 0, 0), {
+      return this.formatDistanceToNow(new Date(2020, 1, 18, 21, 0, 0), {
         includeSeconds: true,
-        locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_1__["fr"],
+        locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_1__["enGB"],
         addSuffix: true
       });
     }
@@ -1995,6 +2042,111 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AccountDropdown__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AccountDropdown */ "./resources/js/components/AccountDropdown.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    AccountDropdown: _AccountDropdown__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      isOpen: false
+    };
   }
 });
 
@@ -67788,6 +67940,705 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/lang.js/src/lang.js":
+/*!******************************************!*\
+  !*** ./node_modules/lang.js/src/lang.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ *  Lang.js for Laravel localization in JavaScript.
+ *
+ *  @version 1.1.12
+ *  @license MIT https://github.com/rmariuzzo/Lang.js/blob/master/LICENSE
+ *  @site    https://github.com/rmariuzzo/Lang.js
+ *  @author  Rubens Mariuzzo <rubens@mariuzzo.com>
+ */
+
+(function(root, factory) {
+    'use strict';
+
+    if (true) {
+        // AMD support.
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else {}
+
+}(this, function() {
+    'use strict';
+
+    function inferLocale() {
+        if (typeof document !== 'undefined' && document.documentElement) {
+            return document.documentElement.lang;
+        }
+    };
+
+    function convertNumber(str) {
+        if (str === '-Inf') {
+            return -Infinity;
+        } else if (str === '+Inf' || str === 'Inf' || str === '*') {
+            return Infinity;
+        }
+        return parseInt(str, 10);
+    }
+
+    // Derived from: https://github.com/symfony/translation/blob/460390765eb7bb9338a4a323b8a4e815a47541ba/Interval.php
+    var intervalRegexp = /^({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])$/;
+    var anyIntervalRegexp = /({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])/;
+
+    // Default options //
+
+    var defaults = {
+        locale: 'en'/** The default locale if not set. */
+    };
+
+    // Constructor //
+
+    var Lang = function(options) {
+        options = options || {};
+        this.locale = options.locale || inferLocale() || defaults.locale;
+        this.fallback = options.fallback;
+        this.messages = options.messages;
+    };
+
+    // Methods //
+
+    /**
+     * Set messages source.
+     *
+     * @param messages {object} The messages source.
+     *
+     * @return void
+     */
+    Lang.prototype.setMessages = function(messages) {
+        this.messages = messages;
+    };
+
+    /**
+     * Get the current locale.
+     *
+     * @return {string} The current locale.
+     */
+    Lang.prototype.getLocale = function() {
+        return this.locale || this.fallback;
+    };
+
+    /**
+     * Set the current locale.
+     *
+     * @param locale {string} The locale to set.
+     *
+     * @return void
+     */
+    Lang.prototype.setLocale = function(locale) {
+        this.locale = locale;
+    };
+
+    /**
+     * Get the fallback locale being used.
+     *
+     * @return void
+     */
+    Lang.prototype.getFallback = function() {
+        return this.fallback;
+    };
+
+    /**
+     * Set the fallback locale being used.
+     *
+     * @param fallback {string} The fallback locale.
+     *
+     * @return void
+     */
+    Lang.prototype.setFallback = function(fallback) {
+        this.fallback = fallback;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {boolean} true if the given key is defined on the messages source, otherwise false.
+     */
+    Lang.prototype.has = function(key, locale) {
+        if (typeof key !== 'string' || !this.messages) {
+            return false;
+        }
+
+        return this._getMessage(key, locale) !== null;
+    };
+
+    /**
+     * Get a translation message.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.get = function(key, replacements, locale) {
+        if (!this.has(key, locale)) {
+            return key;
+        }
+
+        var message = this._getMessage(key, locale);
+        if (message === null) {
+            return key;
+        }
+
+        if (replacements) {
+            message = this._applyReplacements(message, replacements);
+        }
+
+        return message;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.trans = function(key, replacements) {
+        return this.get(key, replacements);
+    };
+
+    /**
+     * Gets the plural or singular form of the message specified based on an integer value.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.choice = function(key, number, replacements, locale) {
+        // Set default values for parameters replace and locale
+        replacements = typeof replacements !== 'undefined'
+            ? replacements
+            : {};
+
+        // The count must be replaced if found in the message
+        replacements.count = number;
+
+        // Message to get the plural or singular
+        var message = this.get(key, replacements, locale);
+
+        // Check if message is not null or undefined
+        if (message === null || message === undefined) {
+            return message;
+        }
+
+        // Separate the plural from the singular, if any
+        var messageParts = message.split('|');
+
+        // Get the explicit rules, If any
+        var explicitRules = [];
+
+        for (var i = 0; i < messageParts.length; i++) {
+            messageParts[i] = messageParts[i].trim();
+
+            if (anyIntervalRegexp.test(messageParts[i])) {
+                var messageSpaceSplit = messageParts[i].split(/\s/);
+                explicitRules.push(messageSpaceSplit.shift());
+                messageParts[i] = messageSpaceSplit.join(' ');
+            }
+        }
+
+        // Check if there's only one message
+        if (messageParts.length === 1) {
+            // Nothing to do here
+            return message;
+        }
+
+        // Check the explicit rules
+        for (var j = 0; j < explicitRules.length; j++) {
+            if (this._testInterval(number, explicitRules[j])) {
+                return messageParts[j];
+            }
+        }
+
+        locale = locale || this._getLocale(key);
+        var pluralForm = this._getPluralForm(number, locale);
+
+        return messageParts[pluralForm];
+    };
+
+    /**
+     * This method act as an alias to choice() method.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.transChoice = function(key, count, replacements) {
+        return this.choice(key, count, replacements);
+    };
+
+    /**
+     * Parse a message key into components.
+     *
+     * @param key {string} The message key to parse.
+     * @param key {string} The message locale to parse
+     * @return {object} A key object with source and entries properties.
+     */
+    Lang.prototype._parseKey = function(key, locale) {
+        if (typeof key !== 'string' || typeof locale !== 'string') {
+            return null;
+        }
+
+        var segments = key.split('.');
+        var source = segments[0].replace(/\//g, '.');
+
+        return {
+            source: locale + '.' + source,
+            sourceFallback: this.getFallback() + '.' + source,
+            entries: segments.slice(1)
+        };
+    };
+
+    /**
+     * Returns a translation message. Use `Lang.get()` method instead, this methods assumes the key exists.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {string} The translation message for the given key.
+     */
+    Lang.prototype._getMessage = function(key, locale) {
+        locale = locale || this.getLocale();
+        
+        key = this._parseKey(key, locale);
+
+        // Ensure message source exists.
+        if (this.messages[key.source] === undefined && this.messages[key.sourceFallback] === undefined) {
+            return null;
+        }
+
+        // Get message from default locale.
+        var message = this.messages[key.source];
+        var entries = key.entries.slice();
+        var subKey = entries.join('.');
+        message = message !== undefined ? this._getValueInKey(message, subKey) : undefined;
+
+
+        // Get message from fallback locale.
+        if (typeof message !== 'string' && this.messages[key.sourceFallback]) {
+            message = this.messages[key.sourceFallback];
+            entries = key.entries.slice();
+            subKey = '';
+            while (entries.length && message !== undefined) {
+                var subKey = !subKey ? entries.shift() : subKey.concat('.', entries.shift());
+                if (message[subKey]) {
+                    message = message[subKey]
+                    subKey = '';
+                }
+            }
+        }
+
+        if (typeof message !== 'string') {
+            return null;
+        }
+
+        return message;
+    };
+
+    Lang.prototype._getValueInKey = function(obj, str) {
+        // If the full key exists just return the value
+        if (typeof obj[str] === 'string') {
+            return obj[str]
+        }
+
+        str = str.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        str = str.replace(/^\./, '');           // strip a leading dot
+
+        var parts = str.split('.');
+
+        for (var i = 0, n = parts.length; i < n; ++i) {
+            var currentKey = parts.slice(0, i + 1).join('.');
+            var restOfTheKey = parts.slice(i + 1, parts.length).join('.')
+            
+            if (obj[currentKey]) {
+                return this._getValueInKey(obj[currentKey], restOfTheKey)
+            }
+        }
+
+        return obj;
+    };
+
+    /**
+     * Return the locale to be used between default and fallback.
+     * @param {String} key
+     * @return {String}
+     */
+    Lang.prototype._getLocale = function(key) {
+        key = this._parseKey(key, this.locale)
+        if (this.messages[key.source]) {
+            return this.locale;
+        }
+        if (this.messages[key.sourceFallback]) {
+            return this.fallback;
+        }
+        return null;
+    };
+
+    /**
+     * Find a message in a translation tree using both dotted keys and regular ones
+     *
+     * @param pathSegments {array} An array of path segments such as ['family', 'father']
+     * @param tree {object} The translation tree
+     */
+    Lang.prototype._findMessageInTree = function(pathSegments, tree) {
+        while (pathSegments.length && tree !== undefined) {
+            var dottedKey = pathSegments.join('.');
+            if (tree[dottedKey]) {
+                tree = tree[dottedKey];
+                break;
+            }
+
+            tree = tree[pathSegments.shift()]
+        }
+
+        return tree;
+    };
+
+    /**
+     * Sort replacement keys by length in descending order.
+     *
+     * @param a {string} Replacement key
+     * @param b {string} Sibling replacement key
+     * @return {number}
+     * @private
+     */
+    Lang.prototype._sortReplacementKeys = function(a, b) {
+        return b.length - a.length;
+    };
+
+    /**
+     * Apply replacements to a string message containing placeholders.
+     *
+     * @param message {string} The text message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The string message with replacements applied.
+     */
+    Lang.prototype._applyReplacements = function(message, replacements) {
+        var keys = Object.keys(replacements).sort(this._sortReplacementKeys);
+
+        keys.forEach(function(replace) {
+            message = message.replace(new RegExp(':' + replace, 'gi'), function (match) {
+                var value = replacements[replace];
+
+                // Capitalize all characters.
+                var allCaps = match === match.toUpperCase();
+                if (allCaps) {
+                    return value.toUpperCase();
+                }
+
+                // Capitalize first letter.
+                var firstCap = match === match.replace(/\w/i, function(letter) {
+                    return letter.toUpperCase();
+                });
+                if (firstCap) {
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                }
+
+                return value;
+            })
+        });
+        return message;
+    };
+
+    /**
+     * Checks if the given `count` is within the interval defined by the {string} `interval`
+     *
+     * @param  count     {int}    The amount of items.
+     * @param  interval  {string} The interval to be compared with the count.
+     * @return {boolean}          Returns true if count is within interval; false otherwise.
+     */
+    Lang.prototype._testInterval = function(count, interval) {
+        /**
+         * From the Symfony\Component\Translation\Interval Docs
+         *
+         * Tests if a given number belongs to a given math interval.
+         *
+         * An interval can represent a finite set of numbers:
+         *
+         *  {1,2,3,4}
+         *
+         * An interval can represent numbers between two numbers:
+         *
+         *  [1, +Inf]
+         *  ]-1,2[
+         *
+         * The left delimiter can be [ (inclusive) or ] (exclusive).
+         * The right delimiter can be [ (exclusive) or ] (inclusive).
+         * Beside numbers, you can use -Inf and +Inf for the infinite.
+         */
+
+        if (typeof interval !== 'string') {
+            throw 'Invalid interval: should be a string.';
+        }
+
+        interval = interval.trim();
+
+        var matches = interval.match(intervalRegexp);
+        if (!matches) {
+            throw 'Invalid interval: ' + interval;
+        }
+
+        if (matches[2]) {
+            var items = matches[2].split(',');
+            for (var i = 0; i < items.length; i++) {
+                if (parseInt(items[i], 10) === count) {
+                    return true;
+                }
+            }
+        } else {
+            // Remove falsy values.
+            matches = matches.filter(function(match) {
+                return !!match;
+            });
+
+            var leftDelimiter = matches[1];
+            var leftNumber = convertNumber(matches[2]);
+            if (leftNumber === Infinity) {
+                leftNumber = -Infinity;
+            }
+            var rightNumber = convertNumber(matches[3]);
+            var rightDelimiter = matches[4];
+
+            return (leftDelimiter === '[' ? count >= leftNumber : count > leftNumber)
+                && (rightDelimiter === ']' ? count <= rightNumber : count < rightNumber);
+        }
+
+        return false;
+    };
+
+    /**
+     * Returns the plural position to use for the given locale and number.
+     *
+     * The plural rules are derived from code of the Zend Framework (2010-09-25),
+     * which is subject to the new BSD license (http://framework.zend.com/license/new-bsd).
+     * Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+     *
+     * @param {Number} count
+     * @param {String} locale
+     * @return {Number}
+     */
+    Lang.prototype._getPluralForm = function(count, locale) {
+        switch (locale) {
+            case 'az':
+            case 'bo':
+            case 'dz':
+            case 'id':
+            case 'ja':
+            case 'jv':
+            case 'ka':
+            case 'km':
+            case 'kn':
+            case 'ko':
+            case 'ms':
+            case 'th':
+            case 'tr':
+            case 'vi':
+            case 'zh':
+                return 0;
+
+            case 'af':
+            case 'bn':
+            case 'bg':
+            case 'ca':
+            case 'da':
+            case 'de':
+            case 'el':
+            case 'en':
+            case 'eo':
+            case 'es':
+            case 'et':
+            case 'eu':
+            case 'fa':
+            case 'fi':
+            case 'fo':
+            case 'fur':
+            case 'fy':
+            case 'gl':
+            case 'gu':
+            case 'ha':
+            case 'he':
+            case 'hu':
+            case 'is':
+            case 'it':
+            case 'ku':
+            case 'lb':
+            case 'ml':
+            case 'mn':
+            case 'mr':
+            case 'nah':
+            case 'nb':
+            case 'ne':
+            case 'nl':
+            case 'nn':
+            case 'no':
+            case 'om':
+            case 'or':
+            case 'pa':
+            case 'pap':
+            case 'ps':
+            case 'pt':
+            case 'so':
+            case 'sq':
+            case 'sv':
+            case 'sw':
+            case 'ta':
+            case 'te':
+            case 'tk':
+            case 'ur':
+            case 'zu':
+                return (count == 1)
+                    ? 0
+                    : 1;
+
+            case 'am':
+            case 'bh':
+            case 'fil':
+            case 'fr':
+            case 'gun':
+            case 'hi':
+            case 'hy':
+            case 'ln':
+            case 'mg':
+            case 'nso':
+            case 'xbr':
+            case 'ti':
+            case 'wa':
+                return ((count === 0) || (count === 1))
+                    ? 0
+                    : 1;
+
+            case 'be':
+            case 'bs':
+            case 'hr':
+            case 'ru':
+            case 'sr':
+            case 'uk':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'cs':
+            case 'sk':
+                return (count == 1)
+                    ? 0
+                    : (((count >= 2) && (count <= 4))
+                        ? 1
+                        : 2);
+
+            case 'ga':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : 2);
+
+            case 'lt':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'sl':
+                return (count % 100 == 1)
+                    ? 0
+                    : ((count % 100 == 2)
+                        ? 1
+                        : (((count % 100 == 3) || (count % 100 == 4))
+                            ? 2
+                            : 3));
+
+            case 'mk':
+                return (count % 10 == 1)
+                    ? 0
+                    : 1;
+
+            case 'mt':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 1) && (count % 100 < 11)))
+                        ? 1
+                        : (((count % 100 > 10) && (count % 100 < 20))
+                            ? 2
+                            : 3));
+
+            case 'lv':
+                return (count === 0)
+                    ? 0
+                    : (((count % 10 == 1) && (count % 100 != 11))
+                        ? 1
+                        : 2);
+
+            case 'pl':
+                return (count == 1)
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 12) || (count % 100 > 14)))
+                        ? 1
+                        : 2);
+
+            case 'cy':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : (((count == 8) || (count == 11))
+                            ? 2
+                            : 3));
+
+            case 'ro':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 0) && (count % 100 < 20)))
+                        ? 1
+                        : 2);
+
+            case 'ar':
+                return (count === 0)
+                    ? 0
+                    : ((count == 1)
+                        ? 1
+                        : ((count == 2)
+                            ? 2
+                            : (((count % 100 >= 3) && (count % 100 <= 10))
+                                ? 3
+                                : (((count % 100 >= 11) && (count % 100 <= 99))
+                                    ? 4
+                                    : 5))));
+
+            default:
+                return 0;
+        }
+    };
+
+    return Lang;
+
+}));
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -89091,6 +89942,107 @@ return Unipointer;
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AccountDropdown.vue?vue&type=template&id=4b30e2c3&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AccountDropdown.vue?vue&type=template&id=4b30e2c3& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "relative" }, [
+    _c(
+      "button",
+      {
+        staticClass:
+          "relative z-10 block h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white",
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
+          }
+        }
+      },
+      [
+        _c("img", {
+          staticClass: "h-full w-full object-cover",
+          attrs: {
+            src:
+              "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+            alt: "Your avatar"
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _vm.isOpen
+      ? _c("button", {
+          staticClass:
+            "fixed inset-0 h-full w-full bg-black opacity-50 cursor-default",
+          attrs: { tabindex: "-1" },
+          on: {
+            click: function($event) {
+              _vm.isOpen = false
+            }
+          }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isOpen
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl"
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
+                attrs: { href: _vm.route("admin.index") }
+              },
+              [_vm._v("Admin")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Support")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Sign out")]
+            )
+          ]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CarouselComponent.vue?vue&type=template&id=4681a3bc&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CarouselComponent.vue?vue&type=template&id=4681a3bc& ***!
@@ -89131,14 +90083,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { class: _vm.shouldBeDisplayed ? "block" : "hidden" }, [
-    _c("div", { staticClass: "container text-gray-500 text-center" }, [
-      _c("p", [
-        _vm._v(
-          "By continuing to browse this site, you consent to our use of cookies to immprove you online experience"
-        )
-      ]),
+    _c("div", { staticClass: "container text-gray-500 text-center test-sm" }, [
+      _c("p", [_vm._v(_vm._s(_vm.__("all.cookie_consentment")))]),
       _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Learn More")]),
+      _c("a", { attrs: { href: "#" } }, [
+        _vm._v(" " + _vm._s(_vm.__("all.Learn_More")))
+      ]),
       _vm._v(" "),
       _c(
         "button",
@@ -89183,7 +90133,7 @@ var render = function() {
       },
       [
         _c("p", [
-          _vm._v(" Début de la prochaine journée "),
+          _vm._v(" " + _vm._s(_vm.__("all.Start of the next round")) + " "),
           _c("span", { staticClass: "font-bold" }, [
             _vm._v(_vm._s(_vm.getFormat()) + " ")
           ])
@@ -89237,6 +90187,250 @@ var staticRenderFns = [
           ])
         ])
       ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "header",
+    {
+      staticClass:
+        "bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "flex items-center justify-between px-4 py-3 sm:p-0" },
+        [
+          _c("div", [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block px-2 py-1 text-white text-2xl rounded hover:bg-gray-200 hover:text-gray-900",
+                attrs: { href: "/" }
+              },
+              [_vm._v("\n            Apuestamigo\n     ")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "sm:hidden" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "block text-gray-500 hover:text-white focus:text-white focus:outline-none",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.isOpen = !_vm.isOpen
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-6 w-6 fill-current",
+                    attrs: { viewBox: "0 0 24 24" }
+                  },
+                  [
+                    _vm.isOpen
+                      ? _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            d:
+                              "M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.isOpen
+                      ? _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            d:
+                              "M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                          }
+                        })
+                      : _vm._e()
+                  ]
+                )
+              ]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "nav",
+        { staticClass: "sm:block", class: _vm.isOpen ? "block" : "hidden" },
+        [
+          _c(
+            "div",
+            { staticClass: "px-2 pt-2 pb-4 sm:flex sm:p-0" },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 ",
+                  attrs: { href: _vm.route("ligues.index") }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-award pr-1" }),
+                  _vm._v(" " + _vm._s(_vm.__("nav.ligues")) + "\n      ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2",
+                  attrs: { href: _vm.route("ligues.create") }
+                },
+                [
+                  _c("i", { staticClass: "far fa-hand-point-right pr-1" }),
+                  _vm._v(" " + _vm._s(_vm.__("nav.creer")) + "\n      ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2 ",
+                  attrs: { href: _vm.route("contact.create") }
+                },
+                [
+                  _c("i", { staticClass: "far fa-envelope pr-1" }),
+                  _vm._v(" " + _vm._s(_vm.__("nav.contact")) + "\n      ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2 ",
+                  attrs: { href: _vm.route("login") }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-user pr-1" }),
+                  _vm._v(_vm._s(_vm.__("all.Login")) + "\n      ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2",
+                  attrs: { href: _vm.route("register") }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-user-circle pr-1" }),
+                  _vm._v(_vm._s(_vm.__("all.Register")) + "\n      ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2",
+                  attrs: { href: _vm.route("admin.index") }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-graduation-cap" }),
+                  _vm._v(" Admin2\n      ")
+                ]
+              ),
+              _vm._v(" "),
+              _c("AccountDropdown", { staticClass: "hidden sm:block sm:ml-6" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "px-4 py-5 border-t border-gray-800 sm:hidden" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-4" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "block text-gray-400 hover:text-white",
+                    attrs: { href: _vm.route("admin.index") }
+                  },
+                  [_vm._v("Admin")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "mt-2 block text-gray-400 hover:text-white",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("Support")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "mt-2 block text-gray-400 hover:text-white",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("\n          Sign out\n        ")]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex items-center" }, [
+      _c("img", {
+        staticClass:
+          "h-8 w-8 border-2 border-gray-600 rounded-full object-cover",
+        attrs: {
+          src:
+            "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+          alt: "Your avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "ml-3 text-white" }, [_vm._v("John ")])
     ])
   }
 ]
@@ -101386,9 +102580,18 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _messages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./messages */ "./resources/js/messages.js");
+/* harmony import */ var _messages__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_messages__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lang.js */ "./node_modules/lang.js/src/lang.js");
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lang_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ziggy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ziggy */ "./vendor/tightenco/ziggy/dist/js/route.js");
+/* harmony import */ var ziggy__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ziggy__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ziggy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ziggy */ "./resources/js/ziggy.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -101396,7 +102599,26 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+
+
+
+
+var lang = new lang_js__WEBPACK_IMPORTED_MODULE_1___default.a({
+  messages: _messages__WEBPACK_IMPORTED_MODULE_0___default.a
+});
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+Vue.mixin({
+  methods: {
+    //methode traduction
+    __: function __() {
+      return lang.get.apply(lang, arguments);
+    },
+    //methode de route (ziggy)
+    route: function route(name, params, absolute) {
+      return ziggy__WEBPACK_IMPORTED_MODULE_2___default()(name, params, absolute, _ziggy__WEBPACK_IMPORTED_MODULE_3__["Ziggy"]);
+    }
+  }
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -101411,6 +102633,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('carousel-component', __webpack_require__(/*! ./components/CarouselComponent.vue */ "./resources/js/components/CarouselComponent.vue")["default"]);
 Vue.component('date-component', __webpack_require__(/*! ./components/DateComponent.vue */ "./resources/js/components/DateComponent.vue")["default"]);
 Vue.component('cookie-banner-component', __webpack_require__(/*! ./components/CookieBannerConsentmentComponent.vue */ "./resources/js/components/CookieBannerConsentmentComponent.vue")["default"]);
+Vue.component('navbar-component', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
+Vue.component('account-dropdown', __webpack_require__(/*! ./components/AccountDropdown.vue */ "./resources/js/components/AccountDropdown.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -101428,7 +102652,8 @@ document.getElementById('nav-toggle').onclick = function () {
 
 document.getElementById('logout-toggle').onclick = function () {
   document.getElementById("logout-content").classList.toggle("hidden");
-};
+}; //copie du token
+
 
 document.getElementById('copyToken').onclick = function copyTok() {
   var copyText = document.getElementById("copyToken");
@@ -101501,6 +102726,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AccountDropdown.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/AccountDropdown.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AccountDropdown_vue_vue_type_template_id_4b30e2c3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AccountDropdown.vue?vue&type=template&id=4b30e2c3& */ "./resources/js/components/AccountDropdown.vue?vue&type=template&id=4b30e2c3&");
+/* harmony import */ var _AccountDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AccountDropdown.vue?vue&type=script&lang=js& */ "./resources/js/components/AccountDropdown.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AccountDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AccountDropdown_vue_vue_type_template_id_4b30e2c3___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AccountDropdown_vue_vue_type_template_id_4b30e2c3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AccountDropdown.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AccountDropdown.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/AccountDropdown.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AccountDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AccountDropdown.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AccountDropdown.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AccountDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AccountDropdown.vue?vue&type=template&id=4b30e2c3&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/AccountDropdown.vue?vue&type=template&id=4b30e2c3& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AccountDropdown_vue_vue_type_template_id_4b30e2c3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AccountDropdown.vue?vue&type=template&id=4b30e2c3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AccountDropdown.vue?vue&type=template&id=4b30e2c3&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AccountDropdown_vue_vue_type_template_id_4b30e2c3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AccountDropdown_vue_vue_type_template_id_4b30e2c3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -101780,6 +103074,1035 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Navbar.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Navbar.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navbar.vue?vue&type=template&id=6dde423b& */ "./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&");
+/* harmony import */ var _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar.vue?vue&type=script&lang=js& */ "./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Navbar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=template&id=6dde423b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/messages.js":
+/*!**********************************!*\
+  !*** ./resources/js/messages.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "en.all": {
+    "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
+    "All rights reserved.": "All rights reserved.",
+    "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
+    "Bets": "Bets",
+    "Change": "Change",
+    "Change the name of the league?": "Change the name of the league?",
+    "Club": "Club",
+    "Confirm Password": "Confirm Password",
+    "Copy to clipboard": "Copy to clipboard",
+    "Dashboard": "Dashboard",
+    "Delete": "Delete",
+    "Delete this league?": "Delete this league?",
+    "E-Mail Address": "E-Mail Address",
+    "Favorite Club": "Favorite Club",
+    "Forbidden": "Forbidden",
+    "Forgot Your Password?": "Forgot Your Password?",
+    "Go Home": "Go Home",
+    "Hello!": "Hello!",
+    "Hey": "Hey",
+    "If you did not create an account, no further action is required.": "If you did not create an account, no further action is required.",
+    "If you did not receive the email": "If you did not receive the email",
+    "If you did not request a password reset, no further action is required.": "If you did not request a password reset, no further action is required.",
+    "If you\u2019re having trouble clicking the ':actionText' button, copy and paste the URL below\\ninto your web browser=> [:actionURL](:actionURL)": "If you\u2019re having trouble clicking the ':actionText' button, copy and paste the URL below\\ninto your web browser=> [:actionURL](:actionURL)",
+    "Insert the token of the league": "Insert the token of the league",
+    "Invalid signature.": "Invalid signature.",
+    "Join a league": "Join a league",
+    "Learn_More": "Learn More",
+    "Login": "Login",
+    "Logout": "Logout",
+    "Members only": "Members only",
+    "Message": "Message",
+    "Name": "Name",
+    "Not Found": "Not Found",
+    "Oh no": "Oh no",
+    "Page Expired": "Page Expired",
+    "Parameters": "Parameters",
+    "Password": "Password",
+    "Please click the button below to verify your email address.": "Please click the button below to verify your email address.",
+    "Please confirm your password before continuing.": "Please confirm your password before continuing.",
+    "Please note, this action is irreversible.": "Please note, this action is irreversible.",
+    "Points": "Points",
+    "Ranking": "Ranking",
+    "Regards": "Regards",
+    "Register": "Register",
+    "Registrar": "Register",
+    "Remember Me": "Remember Me",
+    "Reset Password": "Reset Password",
+    "Reset Password Notification": "Reset Password Notification",
+    "Send": "Send your message",
+    "Send Password Reset Link": "Send Password Reset Link",
+    "Server Error": "Server Error",
+    "Service Unavailable": "Service Unavailable",
+    "Share this league:": "Share this league:",
+    "Start of the next round": "Start of the next round",
+    "This action is unauthorized.": "This action is unauthorized.",
+    "This password reset link will expire in =>count minutes.": "This password reset link will expire in =>count minutes.",
+    "Toggle navigation": "Toggle navigation",
+    "Too Many Attempts.": "Too Many Attempts.",
+    "Too Many Requests": "Too Many Requests",
+    "Too late for this date!": "Too late for this date",
+    "Unauthorized": "Unauthorized",
+    "Verify Email Address": "Verify Email Address",
+    "Verify Your Email Address": "Verify Your Email Address",
+    "We won't ask for your password again for a few hours.": "We won't ask for your password again for a few hours.",
+    "What's the name of your league?": "What's the name of your league?",
+    "Whoops!": "Whoops!",
+    "Yeah! your bets are registered and updated! Good luck!": "Yeah! your bets are registered and updated! Good luck!",
+    "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
+    "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
+    "Your email address is not verified.": "Your email address is not verified.",
+    "click here to request another": "click here to request another",
+    "cookie_consentment": "By continuing to browse this site, you consent to our use of cookies to improve your online experience.",
+    "created by:": "created by:",
+    "let's play": "let's play",
+    "scores updated": "the scores are updated",
+    "supporter": "supporter of:",
+    "you have to login or register to play.": "you have to login or register to play.",
+    "your bets": "your bets"
+  },
+  "en.auth": {
+    "failed": "These credentials do not match our records.",
+    "throttle": "Too many login attempts. Please try again in :seconds seconds."
+  },
+  "en.nav": {
+    "contact": "Contact",
+    "creer": "Create a league",
+    "ligues": "My Leagues"
+  },
+  "en.pagination": {
+    "next": "Next &raquo;",
+    "previous": "&laquo; Previous"
+  },
+  "en.passwords": {
+    "reset": "Your password has been reset!",
+    "sent": "We have e-mailed your password reset link!",
+    "token": "This password reset token is invalid.",
+    "user": "We can't find a user with that e-mail address."
+  },
+  "en.validation": {
+    "accepted": "The :attribute must be accepted.",
+    "active_url": "The :attribute is not a valid URL.",
+    "after": "The :attribute must be a date after :date.",
+    "after_or_equal": "The :attribute must be a date after or equal to :date.",
+    "alpha": "The :attribute may only contain letters.",
+    "alpha_dash": "The :attribute may only contain letters, numbers, dashes and underscores.",
+    "alpha_num": "The :attribute may only contain letters and numbers.",
+    "array": "The :attribute must be an array.",
+    "attributes": [],
+    "before": "The :attribute must be a date before :date.",
+    "before_or_equal": "The :attribute must be a date before or equal to :date.",
+    "between": {
+      "array": "The :attribute must have between :min and :max items.",
+      "file": "The :attribute must be between :min and :max kilobytes.",
+      "numeric": "The :attribute must be between :min and :max.",
+      "string": "The :attribute must be between :min and :max characters."
+    },
+    "boolean": "The :attribute field must be true or false.",
+    "confirmed": "The :attribute confirmation does not match.",
+    "custom": {
+      "attribute-name": {
+        "rule-name": "custom-message"
+      }
+    },
+    "date": "The :attribute is not a valid date.",
+    "date_equals": "The :attribute must be a date equal to :date.",
+    "date_format": "The :attribute does not match the format :format.",
+    "different": "The :attribute and :other must be different.",
+    "digits": "The :attribute must be :digits digits.",
+    "digits_between": "The :attribute must be between :min and :max digits.",
+    "dimensions": "The :attribute has invalid image dimensions.",
+    "distinct": "The :attribute field has a duplicate value.",
+    "email": "The :attribute must be a valid email address.",
+    "ends_with": "The :attribute must end with one of the following: :values",
+    "exists": "The selected :attribute is invalid.",
+    "file": "The :attribute must be a file.",
+    "filled": "The :attribute field must have a value.",
+    "gt": {
+      "array": "The :attribute must have more than :value items.",
+      "file": "The :attribute must be greater than :value kilobytes.",
+      "numeric": "The :attribute must be greater than :value.",
+      "string": "The :attribute must be greater than :value characters."
+    },
+    "gte": {
+      "array": "The :attribute must have :value items or more.",
+      "file": "The :attribute must be greater than or equal :value kilobytes.",
+      "numeric": "The :attribute must be greater than or equal :value.",
+      "string": "The :attribute must be greater than or equal :value characters."
+    },
+    "image": "The :attribute must be an image.",
+    "in": "The selected :attribute is invalid.",
+    "in_array": "The :attribute field does not exist in :other.",
+    "integer": "The :attribute must be an integer.",
+    "ip": "The :attribute must be a valid IP address.",
+    "ipv4": "The :attribute must be a valid IPv4 address.",
+    "ipv6": "The :attribute must be a valid IPv6 address.",
+    "json": "The :attribute must be a valid JSON string.",
+    "lt": {
+      "array": "The :attribute must have less than :value items.",
+      "file": "The :attribute must be less than :value kilobytes.",
+      "numeric": "The :attribute must be less than :value.",
+      "string": "The :attribute must be less than :value characters."
+    },
+    "lte": {
+      "array": "The :attribute must not have more than :value items.",
+      "file": "The :attribute must be less than or equal :value kilobytes.",
+      "numeric": "The :attribute must be less than or equal :value.",
+      "string": "The :attribute must be less than or equal :value characters."
+    },
+    "max": {
+      "array": "The :attribute may not have more than :max items.",
+      "file": "The :attribute may not be greater than :max kilobytes.",
+      "numeric": "The :attribute may not be greater than :max.",
+      "string": "The :attribute may not be greater than :max characters."
+    },
+    "mimes": "The :attribute must be a file of type: :values.",
+    "mimetypes": "The :attribute must be a file of type: :values.",
+    "min": {
+      "array": "The :attribute must have at least :min items.",
+      "file": "The :attribute must be at least :min kilobytes.",
+      "numeric": "The :attribute must be at least :min.",
+      "string": "The :attribute must be at least :min characters."
+    },
+    "not_in": "The selected :attribute is invalid.",
+    "not_regex": "The :attribute format is invalid.",
+    "numeric": "The :attribute must be a number.",
+    "present": "The :attribute field must be present.",
+    "regex": "The :attribute format is invalid.",
+    "required": "The :attribute field is required.",
+    "required_if": "The :attribute field is required when :other is :value.",
+    "required_unless": "The :attribute field is required unless :other is in :values.",
+    "required_with": "The :attribute field is required when :values is present.",
+    "required_with_all": "The :attribute field is required when :values are present.",
+    "required_without": "The :attribute field is required when :values is not present.",
+    "required_without_all": "The :attribute field is required when none of :values are present.",
+    "same": "The :attribute and :other must match.",
+    "size": {
+      "array": "The :attribute must contain :size items.",
+      "file": "The :attribute must be :size kilobytes.",
+      "numeric": "The :attribute must be :size.",
+      "string": "The :attribute must be :size characters."
+    },
+    "starts_with": "The :attribute must start with one of the following: :values",
+    "string": "The :attribute must be a string.",
+    "timezone": "The :attribute must be a valid zone.",
+    "unique": "The :attribute has already been taken.",
+    "uploaded": "The :attribute failed to upload.",
+    "url": "The :attribute format is invalid.",
+    "uuid": "The :attribute must be a valid UUID."
+  },
+  "es.all": {
+    "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificaci\xF3n a su correo electr\xF3nico.",
+    "All rights reserved.": "Todos los derechos reservados.",
+    "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electr\xF3nico con el enlace de verificaci\xF3n que le fue enviado.",
+    "Bets": "Apuestas",
+    "Change": "Cambiar",
+    "Change the name of the league?": "Cambiar el nombre de la liga?",
+    "Club": "Club",
+    "Confirm Password": "Confirmar contrase\xF1a",
+    "Copy to clipboard": "Copiar al portapapeles",
+    "Dashboard": "Tablero",
+    "Delete": "Suprimir",
+    "Delete this league?": "Suprimir esta liga?",
+    "E-Mail Address": "Correo electr\xF3nico",
+    "Favorite Club": "Club Favorito",
+    "Forbidden": "Prohibido",
+    "Forgot Your Password?": "\xBFOlvid\xF3 su contrase\xF1a?",
+    "Go Home": "Ir a inicio",
+    "Hello!": "\xA1Hola!",
+    "Hey": "Hola",
+    "If you did not create an account, no further action is required.": "Si no ha creado una cuenta, no se requiere ninguna acci\xF3n adicional.",
+    "If you did not receive the email": "Si no ha recibido el correo electr\xF3nico",
+    "If you did not request a password reset, no further action is required.": "Si no ha solicitado el restablecimiento de contrase\xF1a, omita este correo electr\xF3nico.",
+    "If you\u2019re having trouble clicking the ':actionText' button, copy and paste the URL below\\ninto your web browser: [:actionURL](:actionURL)": "Si tiene problemas para hacer clic en el bot\xF3n ':actionText', copie y pegue la siguiente URL \\nen su navegador web: [:actionURL](:actionURL)",
+    "Insert the token of the league": "Insertar el token de la liga",
+    "Invalid signature.": "Firma no v\xE1lida.",
+    "Join a league": "\xDAnete a una liga",
+    "Learn_More": "Leer mas",
+    "Login": "Entrar",
+    "Logout": "Salir",
+    "Members only": "Solo miembros",
+    "Message": "Mensaje",
+    "Name": "Nombre",
+    "Not Found": "No encontrado",
+    "Oh no": "Oh no ",
+    "Page Expired": "P\xE1gina Expirada",
+    "Page Not Found": "P\xE1gina no encontrada",
+    "Parameters": "Parametros",
+    "Password": "Contrase\xF1a",
+    "Please click the button below to verify your email address.": "Por favor, haga clic en el bot\xF3n de abajo para verificar su direcci\xF3n de correo electr\xF3nico.",
+    "Please confirm your password before continuing.": "Por favor, confirma tu contrase\xF1a antes de continuar.",
+    "Please note, this action is irreversible.": "Tenga en cuenta que esta acci\xF3n es irreversible.",
+    "Points": "Puntos",
+    "Ranking": "Posiciones",
+    "Regards": "Saludos",
+    "Register": "Registrar",
+    "Registrar": "Registrar",
+    "Remember Me": "Recu\xE9rdame",
+    "Reset Password": "Restablecer contrase\xF1a",
+    "Reset Password Notification": "Notificaci\xF3n de restablecimiento de contrase\xF1a",
+    "Send": "Enviar mensaje",
+    "Send Password Reset Link": "Enviar enlace para restablecer la contrase\xF1a",
+    "Server Error": "Error del servidor",
+    "Service Unavailable": "Servicio no disponible",
+    "Share this league:": "Comparte esta liga:",
+    "Start of the next round": "Comienzo de la siguiente ronda",
+    "This action is unauthorized.": "Esta acci\xF3n no est\xE1 autorizada.",
+    "This password reset link will expire in :count minutes.": "Este enlace de restablecimiento de contrase\xF1a caducar\xE1 en :count minutos.",
+    "Toggle navigation": "Activar navegaci\xF3n",
+    "Too Many Attempts.": "Demasiadas intentos",
+    "Too Many Requests": "Demasiadas peticiones",
+    "Too late for this date!": "Demasiado tarde para esta fecha",
+    "Unauthorized": "No autorizado",
+    "Verify Email Address": "Confirma tu correo electr\xF3nico",
+    "Verify Your Email Address": "Verifica tu correo electr\xF3nico",
+    "We won't ask for your password again for a few hours.": "No pediremos tu contrase\xF1a de nuevo por unas horas.",
+    "What's the name of your league?": "Que es el nombre de tu liga?",
+    "Whoops!": "\xA1Vaya!",
+    "Yeah! your bets are registered and updated! Good luck!": "Tus apuestas estan registradas y actualizadas, suerte!",
+    "Yeah! your bets are registered! Good luck!": "Tus apuestas estan registradas, suerte!",
+    "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicit\xF3 un restablecimiento de contrase\xF1a para su cuenta.",
+    "Your email address is not verified.": "Tu direcci\xF3n de correo electr\xF3nico no est\xE1 verificada.",
+    "click here to request another": "haga clic aqu\xED para solicitar otro",
+    "cookie_consentment": "Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en l\xEDnea.",
+    "created by:": "creado por:",
+    "let's play": "es tu turno",
+    "scores updated": "los resultados estan actualizados",
+    "supporter": "oficionado de:",
+    "you have to login or register to play.": "tienes que iniciar sesi\xF3n o registrarte para juegar.",
+    "your bets": "tus apuestas"
+  },
+  "es.auth": {
+    "failed": "Estas credenciales no coinciden con nuestros registros.",
+    "throttle": "Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos."
+  },
+  "es.nav": {
+    "contact": "Contacto",
+    "creer": "Crear una liga",
+    "ligues": "Mis Ligas"
+  },
+  "es.pagination": {
+    "next": "Siguiente &raquo;",
+    "previous": "&laquo; Anterior"
+  },
+  "es.passwords": {
+    "password": "Las contrase\xF1as deben coincidir y contener al menos 8 caracteres",
+    "reset": "\xA1Tu contrase\xF1a ha sido restablecida!",
+    "sent": "\xA1Te hemos enviado por correo el enlace para restablecer tu contrase\xF1a!",
+    "throttled": "Por favor espera antes de intentar de nuevo.",
+    "token": "El token de recuperaci\xF3n de contrase\xF1a es inv\xE1lido.",
+    "user": "No podemos encontrar ning\xFAn usuario con ese correo electr\xF3nico."
+  },
+  "es.validation": {
+    "accepted": ":attribute debe ser aceptado.",
+    "active_url": ":attribute no es una URL v\xE1lida.",
+    "after": ":attribute debe ser una fecha posterior a :date.",
+    "after_or_equal": ":attribute debe ser una fecha posterior o igual a :date.",
+    "alpha": ":attribute s\xF3lo debe contener letras.",
+    "alpha_dash": ":attribute s\xF3lo debe contener letras, n\xFAmeros y guiones.",
+    "alpha_num": ":attribute s\xF3lo debe contener letras y n\xFAmeros.",
+    "array": ":attribute debe ser un conjunto.",
+    "attributes": {
+      "address": "direcci\xF3n",
+      "age": "edad",
+      "body": "contenido",
+      "city": "ciudad",
+      "content": "contenido",
+      "country": "pa\xEDs",
+      "date": "fecha",
+      "day": "d\xEDa",
+      "description": "descripci\xF3n",
+      "email": "correo electr\xF3nico",
+      "excerpt": "extracto",
+      "first_name": "nombre",
+      "gender": "g\xE9nero",
+      "hour": "hora",
+      "last_name": "apellido",
+      "message": "mensaje",
+      "minute": "minuto",
+      "mobile": "m\xF3vil",
+      "month": "mes",
+      "name": "nombre",
+      "password": "contrase\xF1a",
+      "password_confirmation": "confirmaci\xF3n de la contrase\xF1a",
+      "phone": "tel\xE9fono",
+      "price": "precio",
+      "second": "segundo",
+      "sex": "sexo",
+      "subject": "asunto",
+      "terms": "t\xE9rminos",
+      "time": "hora",
+      "title": "t\xEDtulo",
+      "username": "usuario",
+      "year": "a\xF1o"
+    },
+    "before": ":attribute debe ser una fecha anterior a :date.",
+    "before_or_equal": ":attribute debe ser una fecha anterior o igual a :date.",
+    "between": {
+      "array": ":attribute tiene que tener entre :min - :max \xEDtems.",
+      "file": ":attribute debe pesar entre :min - :max kilobytes.",
+      "numeric": ":attribute tiene que estar entre :min - :max.",
+      "string": ":attribute tiene que tener entre :min - :max caracteres."
+    },
+    "boolean": "El campo :attribute debe tener un valor verdadero o falso.",
+    "confirmed": "La confirmaci\xF3n de :attribute no coincide.",
+    "custom": {
+      "email": {
+        "unique": "El :attribute ya ha sido registrado."
+      },
+      "password": {
+        "min": "La :attribute debe contener m\xE1s de :min caracteres"
+      }
+    },
+    "date": ":attribute no es una fecha v\xE1lida.",
+    "date_equals": ":attribute debe ser una fecha igual a :date.",
+    "date_format": ":attribute no corresponde al formato :format.",
+    "different": ":attribute y :other deben ser diferentes.",
+    "digits": ":attribute debe tener :digits d\xEDgitos.",
+    "digits_between": ":attribute debe tener entre :min y :max d\xEDgitos.",
+    "dimensions": "Las dimensiones de la imagen :attribute no son v\xE1lidas.",
+    "distinct": "El campo :attribute contiene un valor duplicado.",
+    "email": ":attribute no es un correo v\xE1lido",
+    "ends_with": "El campo :attribute debe finalizar con uno de los siguientes valores: :values",
+    "exists": ":attribute es inv\xE1lido.",
+    "file": "El campo :attribute debe ser un archivo.",
+    "filled": "El campo :attribute es obligatorio.",
+    "gt": {
+      "array": "El campo :attribute debe tener m\xE1s de :value elementos.",
+      "file": "El campo :attribute debe tener m\xE1s de :value kilobytes.",
+      "numeric": "El campo :attribute debe ser mayor que :value.",
+      "string": "El campo :attribute debe tener m\xE1s de :value caracteres."
+    },
+    "gte": {
+      "array": "El campo :attribute debe tener como m\xEDnimo :value elementos.",
+      "file": "El campo :attribute debe tener como m\xEDnimo :value kilobytes.",
+      "numeric": "El campo :attribute debe ser como m\xEDnimo :value.",
+      "string": "El campo :attribute debe tener como m\xEDnimo :value caracteres."
+    },
+    "image": ":attribute debe ser una imagen.",
+    "in": ":attribute es inv\xE1lido.",
+    "in_array": "El campo :attribute no existe en :other.",
+    "integer": ":attribute debe ser un n\xFAmero entero.",
+    "ip": ":attribute debe ser una direcci\xF3n IP v\xE1lida.",
+    "ipv4": ":attribute debe ser un direcci\xF3n IPv4 v\xE1lida",
+    "ipv6": ":attribute debe ser un direcci\xF3n IPv6 v\xE1lida.",
+    "json": "El campo :attribute debe tener una cadena JSON v\xE1lida.",
+    "lt": {
+      "array": "El campo :attribute debe tener menos de :value elementos.",
+      "file": "El campo :attribute debe tener menos de :value kilobytes.",
+      "numeric": "El campo :attribute debe ser menor que :value.",
+      "string": "El campo :attribute debe tener menos de :value caracteres."
+    },
+    "lte": {
+      "array": "El campo :attribute debe tener como m\xE1ximo :value elementos.",
+      "file": "El campo :attribute debe tener como m\xE1ximo :value kilobytes.",
+      "numeric": "El campo :attribute debe ser como m\xE1ximo :value.",
+      "string": "El campo :attribute debe tener como m\xE1ximo :value caracteres."
+    },
+    "max": {
+      "array": ":attribute no debe tener m\xE1s de :max elementos.",
+      "file": ":attribute no debe ser mayor que :max kilobytes.",
+      "numeric": ":attribute no debe ser mayor a :max.",
+      "string": ":attribute no debe ser mayor que :max caracteres."
+    },
+    "mimes": ":attribute debe ser un archivo con formato: :values.",
+    "mimetypes": ":attribute debe ser un archivo con formato: :values.",
+    "min": {
+      "array": ":attribute debe tener al menos :min elementos.",
+      "file": "El tama\xF1o de :attribute debe ser de al menos :min kilobytes.",
+      "numeric": "El tama\xF1o de :attribute debe ser de al menos :min.",
+      "string": ":attribute debe contener al menos :min caracteres."
+    },
+    "not_in": ":attribute es inv\xE1lido.",
+    "not_regex": "El formato del campo :attribute no es v\xE1lido.",
+    "numeric": ":attribute debe ser num\xE9rico.",
+    "password": "La contrase\xF1a es incorrecta.",
+    "present": "El campo :attribute debe estar presente.",
+    "regex": "El formato de :attribute es inv\xE1lido.",
+    "required": "El campo :attribute es obligatorio.",
+    "required_if": "El campo :attribute es obligatorio cuando :other es :value.",
+    "required_unless": "El campo :attribute es obligatorio a menos que :other est\xE9 en :values.",
+    "required_with": "El campo :attribute es obligatorio cuando :values est\xE1 presente.",
+    "required_with_all": "El campo :attribute es obligatorio cuando :values est\xE1 presente.",
+    "required_without": "El campo :attribute es obligatorio cuando :values no est\xE1 presente.",
+    "required_without_all": "El campo :attribute es obligatorio cuando ninguno de :values est\xE9n presentes.",
+    "same": ":attribute y :other deben coincidir.",
+    "size": {
+      "array": ":attribute debe contener :size elementos.",
+      "file": "El tama\xF1o de :attribute debe ser :size kilobytes.",
+      "numeric": "El tama\xF1o de :attribute debe ser :size.",
+      "string": ":attribute debe contener :size caracteres."
+    },
+    "starts_with": "El campo :attribute debe comenzar con uno de los siguientes valores: :values",
+    "string": "El campo :attribute debe ser una cadena de caracteres.",
+    "timezone": "El :attribute debe ser una zona v\xE1lida.",
+    "unique": "El campo :attribute ya ha sido registrado.",
+    "uploaded": "Subir :attribute ha fallado.",
+    "url": "El formato :attribute es inv\xE1lido.",
+    "uuid": "El campo :attribute debe ser un UUID v\xE1lido."
+  },
+  "fr.all": {
+    "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\xE9rification a \xE9t\xE9 envoy\xE9 \xE0 votre adresse email.",
+    "All rights reserved.": "Tous droits r\xE9serv\xE9s.",
+    "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez v\xE9rifier votre courrier \xE9lectronique pour un lien de v\xE9rification.",
+    "Bets": "Pronostics",
+    "Change": "Changer",
+    "Change the name of the league?": "Changer le nom de cette ligue?",
+    "Club": "Club",
+    "Confirm Password": "Confirmez le mot de passe",
+    "Copy to clipboard": "Copier dans le presse-papier",
+    "Dashboard": "Tableau de bord",
+    "Delete": "Supprimer",
+    "Delete this league?": "Supprimer cette ligue?",
+    "E-Mail Address": "Adresse email",
+    "Error": "Erreur",
+    "Favorite Club": "Club Favoris",
+    "Forbidden": "Interdit",
+    "Forgot Your Password?": "Vous avez oubli\xE9 votre mot de passe ?",
+    "Go Home": "Aller \xE0 l'accueil",
+    "Hello!": "Bonjour !",
+    "Hey": "Salut",
+    "If you did not create an account, no further action is required.": "Si vous n'avez pas cr\xE9\xE9 de compte, aucune action suppl\xE9mentaire n'est requise.",
+    "If you did not receive the email": "Si vous n'avez pas re\xE7u l'email",
+    "If you did not request a password reset, no further action is required.": "Si vous n'avez pas demand\xE9 de r\xE9initialisation de mot de passe, aucune autre action n'est requise.",
+    "If you\u2019re having trouble clicking the ':actionText' button, copy and paste the URL below\\ninto your web browser=> [:actionURL](:actionURL)": "Si vous avez des probl\xE8mes en cliquant sur le bouton ':actionText', faites un copi\xE9/coll\xE9 de l'url ci-dessous dans votre navigateur :\\n [:actionURL](:actionURL)",
+    "Insert the token of the league": "Ins\xE9rer le token de la ligue",
+    "Invalid signature.": "Signature invalide",
+    "Join a league": "Rejoindre une ligue",
+    "Learn_More": "Lire plus",
+    "Login": "Connexion",
+    "Logout": "D\xE9connexion",
+    "Members only": "Membres seulement",
+    "Message": "Message",
+    "Name": "Nom",
+    "Not Found": "Non trouv\xE9",
+    "Oh no": "Oh non",
+    "Page Expired": "Page expir\xE9e",
+    "Page Not Found": "Page non trouv\xE9e",
+    "Parameters": "Parametres",
+    "Password": "Mot de passe",
+    "Please click the button below to verify your email address.": "Veuillez cliquer sur le bouton ci-dessous pour v\xE9rifier votre adresse email.",
+    "Please confirm your password before continuing.": "Veuillez confirmer votre mot de passe avant de continuer",
+    "Please note, this action is irreversible.": "Attention, cette action est irr\xE9versible.",
+    "Points": "Points",
+    "Ranking": "Classement",
+    "Regards": "Cordialement",
+    "Register": "S'inscrire",
+    "Registrar": "Enregistrer",
+    "Remember Me": "Se souvenir de moi",
+    "Reset Password": "R\xE9initialisation du mot de passe",
+    "Reset Password Notification": "Notification de r\xE9initialisation du mot de passe",
+    "Send": "Envoyer un message",
+    "Send Password Reset Link": "Envoyer le lien de r\xE9initialisation du mot de passe",
+    "Server Error": "Erreur serveur",
+    "Service Unavailable": "Service indisponible",
+    "Share this league:": "Partage cette ligue:",
+    "Sorry, the page you are looking for could not be found.": "D\xE9sol\xE9, la page que vous recherchez est introuvable.",
+    "Sorry, we are doing some maintenance. Please check back soon.": "D\xE9sol\xE9, nous sommes en maintenance. Veuillez revenir plus tard.",
+    "Sorry, you are forbidden from accessing this page.": "D\xE9sol\xE9, vous ne pouvez acc\xE9der \xE0 cette page.",
+    "Sorry, you are making too many requests to our servers.": "D\xE9sol\xE9, vous faites trop de requ\xEAtes vers nos serveurs.",
+    "Sorry, you are not authorized to access this page.": "D\xE9sol\xE9, vous n'\xEAtes pas autoris\xE9 \xE0 acc\xE9der \xE0 cette page.",
+    "Sorry, your session has expired. Please refresh and try again.": "D\xE9sol\xE9, votre session a expir\xE9. Veuillez actualiser la page et r\xE9essayer.",
+    "Start of the next round": "D\xE9but du prochain tour",
+    "This action is unauthorized.": "Cette action n'est pas autoris\xE9e.",
+    "This password reset link will expire in =>count minutes.": "Ce lien de r\xE9initialisation du mot de passe expirera dans =>count minutes.",
+    "Toggle navigation": "Basculer la navigation",
+    "Too Many Attempts.": "Trop de tentatives.",
+    "Too Many Requests": "Trop de requ\xEAtes",
+    "Too late for this date!": "Trop tard pour cette joun\xE9e!",
+    "Unauthorized": "Non autoris\xE9",
+    "Verify Email Address": "V\xE9rification de l'adresse email",
+    "Verify Your Email Address": "V\xE9rifiez votre adresse email",
+    "We won't ask for your password again for a few hours.": "Nous ne vous demanderons plus votre mot de passe pour quelques heures",
+    "What's the name of your league?": "Comment s'appelle votre ligue?",
+    "Whoops!": "Oups !",
+    "Whoops, something went wrong on our servers.": "Oups, quelque chose s'est mal pass\xE9 sur nos serveurs.",
+    "Yeah! your bets are registered and updated! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s et mis \xE0 jour! Bonne chance!",
+    "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
+    "You are receiving this email because we received a password reset request for your account.": "Vous recevez cet email car nous avons re\xE7u une demande de r\xE9initialisation de mot de passe pour votre compte.",
+    "Your email address is not verified.": "Votre adresse email n'a pas \xE9t\xE9 v\xE9rifi\xE9e.",
+    "click here to request another": "cliquer ici pour faire une autre demande",
+    "cookie_consentment": "En poursuivant votre navigation sur ce site, vous consentez \xE0 notre utilisation des cookies pour am\xE9liorer votre exp\xE9rience en ligne.",
+    "created by:": "cree par:",
+    "hi": "salut",
+    "let's play": "\xE0 toi de jouer",
+    "scores updated": "les scores ont \xE9t\xE9 mis \xE0 jour",
+    "supporter": "supporter de:",
+    "you have to login or register to play.": "vous devez vous identifier ou vous enregistrer pour jouer.",
+    "your bets": "tes paris"
+  },
+  "fr.auth": {
+    "failed": "Ces identifiants ne correspondent pas \xE0 nos enregistrements",
+    "throttle": "Tentatives de connexion trop nombreuses. Veuillez essayer de nouveau dans :seconds secondes."
+  },
+  "fr.nav": {
+    "contact": "Contact",
+    "creer": "Creer une ligue",
+    "ligues": "Mes ligues"
+  },
+  "fr.pagination": {
+    "next": "Suivant &raquo;",
+    "previous": "&laquo; Pr\xE9c\xE9dent"
+  },
+  "fr.passwords": {
+    "password": "Les mots de passe doivent contenir au moins huit caract\xE8res et \xEAtre identiques.",
+    "reset": "Votre mot de passe a \xE9t\xE9 r\xE9initialis\xE9 !",
+    "sent": "Nous vous avons envoy\xE9 par email le lien de r\xE9initialisation du mot de passe !",
+    "throttled": "Veuillez attendre afin de r\xE9-essayer.",
+    "token": "Ce jeton de r\xE9initialisation du mot de passe n'est pas valide.",
+    "user": "Aucun utilisateur n'a \xE9t\xE9 trouv\xE9 avec cette adresse email."
+  },
+  "fr.validation": {
+    "accepted": "Le champ :attribute doit \xEAtre accept\xE9.",
+    "active_url": "Le champ :attribute n'est pas une URL valide.",
+    "after": "Le champ :attribute doit \xEAtre une date post\xE9rieure au :date.",
+    "after_or_equal": "Le champ :attribute doit \xEAtre une date post\xE9rieure ou \xE9gale au :date.",
+    "alpha": "Le champ :attribute doit contenir uniquement des lettres.",
+    "alpha_dash": "Le champ :attribute doit contenir uniquement des lettres, des chiffres et des tirets.",
+    "alpha_num": "Le champ :attribute doit contenir uniquement des chiffres et des lettres.",
+    "array": "Le champ :attribute doit \xEAtre un tableau.",
+    "attributes": {
+      "address": "adresse",
+      "age": "\xE2ge",
+      "available": "disponible",
+      "city": "ville",
+      "content": "contenu",
+      "country": "pays",
+      "date": "date",
+      "day": "jour",
+      "description": "description",
+      "email": "adresse email",
+      "excerpt": "extrait",
+      "first_name": "pr\xE9nom",
+      "gender": "genre",
+      "hour": "heure",
+      "last_name": "nom",
+      "minute": "minute",
+      "mobile": "portable",
+      "month": "mois",
+      "name": "nom",
+      "password": "mot de passe",
+      "password_confirmation": "confirmation du mot de passe",
+      "phone": "t\xE9l\xE9phone",
+      "second": "seconde",
+      "sex": "sexe",
+      "size": "taille",
+      "time": "heure",
+      "title": "titre",
+      "username": "nom d'utilisateur",
+      "year": "ann\xE9e"
+    },
+    "before": "Le champ :attribute doit \xEAtre une date ant\xE9rieure au :date.",
+    "before_or_equal": "Le champ :attribute doit \xEAtre une date ant\xE9rieure ou \xE9gale au :date.",
+    "between": {
+      "array": "Le tableau :attribute doit contenir entre :min et :max \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre comprise entre :min et :max kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre comprise entre :min et :max.",
+      "string": "Le texte :attribute doit contenir entre :min et :max caract\xE8res."
+    },
+    "boolean": "Le champ :attribute doit \xEAtre vrai ou faux.",
+    "confirmed": "Le champ de confirmation :attribute ne correspond pas.",
+    "custom": {
+      "attribute-name": {
+        "rule-name": "custom-message"
+      }
+    },
+    "date": "Le champ :attribute n'est pas une date valide.",
+    "date_equals": "Le champ :attribute doit \xEAtre une date \xE9gale \xE0 :date.",
+    "date_format": "Le champ :attribute ne correspond pas au format :format.",
+    "different": "Les champs :attribute et :other doivent \xEAtre diff\xE9rents.",
+    "digits": "Le champ :attribute doit contenir :digits chiffres.",
+    "digits_between": "Le champ :attribute doit contenir entre :min et :max chiffres.",
+    "dimensions": "La taille de l'image :attribute n'est pas conforme.",
+    "distinct": "Le champ :attribute a une valeur en double.",
+    "email": "Le champ :attribute doit \xEAtre une adresse email valide.",
+    "ends_with": "Le champ :attribute doit se terminer par une des valeurs suivantes : :values",
+    "exists": "Le champ :attribute s\xE9lectionn\xE9 est invalide.",
+    "file": "Le champ :attribute doit \xEAtre un fichier.",
+    "filled": "Le champ :attribute doit avoir une valeur.",
+    "gt": {
+      "array": "Le tableau :attribute doit contenir plus de :value \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre sup\xE9rieure \xE0 :value kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre sup\xE9rieure \xE0 :value.",
+      "string": "Le texte :attribute doit contenir plus de :value caract\xE8res."
+    },
+    "gte": {
+      "array": "Le tableau :attribute doit contenir au moins :value \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre sup\xE9rieure ou \xE9gale \xE0 :value kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre sup\xE9rieure ou \xE9gale \xE0 :value.",
+      "string": "Le texte :attribute doit contenir au moins :value caract\xE8res."
+    },
+    "image": "Le champ :attribute doit \xEAtre une image.",
+    "in": "Le champ :attribute est invalide.",
+    "in_array": "Le champ :attribute n'existe pas dans :other.",
+    "integer": "Le champ :attribute doit \xEAtre un entier.",
+    "ip": "Le champ :attribute doit \xEAtre une adresse IP valide.",
+    "ipv4": "Le champ :attribute doit \xEAtre une adresse IPv4 valide.",
+    "ipv6": "Le champ :attribute doit \xEAtre une adresse IPv6 valide.",
+    "json": "Le champ :attribute doit \xEAtre un document JSON valide.",
+    "lt": {
+      "array": "Le tableau :attribute doit contenir moins de :value \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre inf\xE9rieure \xE0 :value kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre inf\xE9rieure \xE0 :value.",
+      "string": "Le texte :attribute doit contenir moins de :value caract\xE8res."
+    },
+    "lte": {
+      "array": "Le tableau :attribute doit contenir au plus :value \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre inf\xE9rieure ou \xE9gale \xE0 :value kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre inf\xE9rieure ou \xE9gale \xE0 :value.",
+      "string": "Le texte :attribute doit contenir au plus :value caract\xE8res."
+    },
+    "max": {
+      "array": "Le tableau :attribute ne peut contenir plus de :max \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute ne peut pas d\xE9passer :max kilo-octets.",
+      "numeric": "La valeur de :attribute ne peut \xEAtre sup\xE9rieure \xE0 :max.",
+      "string": "Le texte de :attribute ne peut contenir plus de :max caract\xE8res."
+    },
+    "mimes": "Le champ :attribute doit \xEAtre un fichier de type : :values.",
+    "mimetypes": "Le champ :attribute doit \xEAtre un fichier de type : :values.",
+    "min": {
+      "array": "Le tableau :attribute doit contenir au moins :min \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre sup\xE9rieure \xE0 :min kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre sup\xE9rieure ou \xE9gale \xE0 :min.",
+      "string": "Le texte :attribute doit contenir au moins :min caract\xE8res."
+    },
+    "not_in": "Le champ :attribute s\xE9lectionn\xE9 n'est pas valide.",
+    "not_regex": "Le format du champ :attribute n'est pas valide.",
+    "numeric": "Le champ :attribute doit contenir un nombre.",
+    "password": "Le mot de passe est incorrect",
+    "present": "Le champ :attribute doit \xEAtre pr\xE9sent.",
+    "regex": "Le format du champ :attribute est invalide.",
+    "required": "Le champ :attribute est obligatoire.",
+    "required_if": "Le champ :attribute est obligatoire quand la valeur de :other est :value.",
+    "required_unless": "Le champ :attribute est obligatoire sauf si :other est :values.",
+    "required_with": "Le champ :attribute est obligatoire quand :values est pr\xE9sent.",
+    "required_with_all": "Le champ :attribute est obligatoire quand :values sont pr\xE9sents.",
+    "required_without": "Le champ :attribute est obligatoire quand :values n'est pas pr\xE9sent.",
+    "required_without_all": "Le champ :attribute est requis quand aucun de :values n'est pr\xE9sent.",
+    "same": "Les champs :attribute et :other doivent \xEAtre identiques.",
+    "size": {
+      "array": "Le tableau :attribute doit contenir :size \xE9l\xE9ments.",
+      "file": "La taille du fichier de :attribute doit \xEAtre de :size kilo-octets.",
+      "numeric": "La valeur de :attribute doit \xEAtre :size.",
+      "string": "Le texte de :attribute doit contenir :size caract\xE8res."
+    },
+    "starts_with": "Le champ :attribute doit commencer avec une des valeurs suivantes : :values",
+    "string": "Le champ :attribute doit \xEAtre une cha\xEEne de caract\xE8res.",
+    "timezone": "Le champ :attribute doit \xEAtre un fuseau horaire valide.",
+    "unique": "La valeur du champ :attribute est d\xE9j\xE0 utilis\xE9e.",
+    "uploaded": "Le fichier du champ :attribute n'a pu \xEAtre t\xE9l\xE9vers\xE9.",
+    "url": "Le format de l'URL de :attribute n'est pas valide.",
+    "uuid": "Le champ :attribute doit \xEAtre un UUID valide"
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/ziggy.js":
+/*!*******************************!*\
+  !*** ./resources/js/ziggy.js ***!
+  \*******************************/
+/*! exports provided: Ziggy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
+var Ziggy = {
+  namedRoutes: {
+    "debugbar.openhandler": {
+      "uri": "_debugbar\/open",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "debugbar.clockwork": {
+      "uri": "_debugbar\/clockwork\/{id}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "debugbar.telescope": {
+      "uri": "_debugbar\/telescope\/{id}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "debugbar.assets.css": {
+      "uri": "_debugbar\/assets\/stylesheets",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "debugbar.assets.js": {
+      "uri": "_debugbar\/assets\/javascript",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "debugbar.cache.delete": {
+      "uri": "_debugbar\/cache\/{key}\/{tags?}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "login": {
+      "uri": "login",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "logout": {
+      "uri": "logout",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "register": {
+      "uri": "register",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "password.request": {
+      "uri": "password\/reset",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "password.email": {
+      "uri": "password\/email",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "password.reset": {
+      "uri": "password\/reset\/{token}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "password.update": {
+      "uri": "password\/reset",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "home": {
+      "uri": "home",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "contact.create": {
+      "uri": "contact",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "contact.store": {
+      "uri": "contact",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "joinLiguesIndex": {
+      "uri": "ligues\/joinLigues",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "joinLigues": {
+      "uri": "ligues\/joinLigues",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "ligues.index": {
+      "uri": "ligues",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ligues.create": {
+      "uri": "ligues\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ligues.store": {
+      "uri": "ligues",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "ligues.show": {
+      "uri": "ligues\/{ligue}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ligues.edit": {
+      "uri": "ligues\/{ligue}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ligues.update": {
+      "uri": "ligues\/{ligue}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "ligues.destroy": {
+      "uri": "ligues\/{ligue}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "apuestas.show": {
+      "uri": "ligues\/{ligue}\/apuestas\/{fecha}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "apuestas.index": {
+      "uri": "ligues\/{ligue}\/apuestas",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "apuestas.store": {
+      "uri": "ligues\/{ligue}\/apuestas",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "ligueClassement": {
+      "uri": "ligues\/{ligue}\/classement",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ligueSettings": {
+      "uri": "ligues\/{ligue}\/settings",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "games.index": {
+      "uri": "games",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "games.create": {
+      "uri": "games\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "games.store": {
+      "uri": "games",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "games.show": {
+      "uri": "games\/{game}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "games.edit": {
+      "uri": "games\/{game}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "games.update": {
+      "uri": "games\/{game}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "games.destroy": {
+      "uri": "games\/{game}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "admin.index": {
+      "uri": "admin",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "admin.store": {
+      "uri": "admin\/ligues\/{ligue}\/apuestas\/{fecha}",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "apuestas.compare": {
+      "uri": "admin\/compare\/{journee}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "apuestas.points": {
+      "uri": "admin\/count-points\/{journee}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    }
+  },
+  baseUrl: 'http://apuestamigov3.test/',
+  baseProtocol: 'http',
+  baseDomain: 'apuestamigov3.test',
+  basePort: false,
+  defaultParameters: []
+};
+
+if (typeof window.Ziggy !== 'undefined') {
+  for (var name in window.Ziggy.namedRoutes) {
+    Ziggy.namedRoutes[name] = window.Ziggy.namedRoutes[name];
+  }
+}
+
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -101788,6 +104111,1554 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./vendor/tightenco/ziggy/dist/js/route.js":
+/*!*************************************************!*\
+  !*** ./vendor/tightenco/ziggy/dist/js/route.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+(function webpackUniversalModuleDefinition(root, factory) {
+  if (( false ? undefined : _typeof2(exports)) === 'object' && ( false ? undefined : _typeof2(module)) === 'object') module.exports = factory();else if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else {}
+})(this, function () {
+  return (
+    /******/
+    function (modules) {
+      // webpackBootstrap
+
+      /******/
+      // The module cache
+
+      /******/
+      var installedModules = {};
+      /******/
+
+      /******/
+      // The require function
+
+      /******/
+
+      function __webpack_require__(moduleId) {
+        /******/
+
+        /******/
+        // Check if module is in cache
+
+        /******/
+        if (installedModules[moduleId]) {
+          /******/
+          return installedModules[moduleId].exports;
+          /******/
+        }
+        /******/
+        // Create a new module (and put it into the cache)
+
+        /******/
+
+
+        var module = installedModules[moduleId] = {
+          /******/
+          i: moduleId,
+
+          /******/
+          l: false,
+
+          /******/
+          exports: {}
+          /******/
+
+        };
+        /******/
+
+        /******/
+        // Execute the module function
+
+        /******/
+
+        modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+        /******/
+
+        /******/
+        // Flag the module as loaded
+
+        /******/
+
+        module.l = true;
+        /******/
+
+        /******/
+        // Return the exports of the module
+
+        /******/
+
+        return module.exports;
+        /******/
+      }
+      /******/
+
+      /******/
+
+      /******/
+      // expose the modules object (__webpack_modules__)
+
+      /******/
+
+
+      __webpack_require__.m = modules;
+      /******/
+
+      /******/
+      // expose the module cache
+
+      /******/
+
+      __webpack_require__.c = installedModules;
+      /******/
+
+      /******/
+      // define getter function for harmony exports
+
+      /******/
+
+      __webpack_require__.d = function (exports, name, getter) {
+        /******/
+        if (!__webpack_require__.o(exports, name)) {
+          /******/
+          Object.defineProperty(exports, name, {
+            enumerable: true,
+            get: getter
+          });
+          /******/
+        }
+        /******/
+
+      };
+      /******/
+
+      /******/
+      // define __esModule on exports
+
+      /******/
+
+
+      __webpack_require__.r = function (exports) {
+        /******/
+        if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+          /******/
+          Object.defineProperty(exports, Symbol.toStringTag, {
+            value: 'Module'
+          });
+          /******/
+        }
+        /******/
+
+
+        Object.defineProperty(exports, '__esModule', {
+          value: true
+        });
+        /******/
+      };
+      /******/
+
+      /******/
+      // create a fake namespace object
+
+      /******/
+      // mode & 1: value is a module id, require it
+
+      /******/
+      // mode & 2: merge all properties of value into the ns
+
+      /******/
+      // mode & 4: return value when already ns object
+
+      /******/
+      // mode & 8|1: behave like require
+
+      /******/
+
+
+      __webpack_require__.t = function (value, mode) {
+        /******/
+        if (mode & 1) value = __webpack_require__(value);
+        /******/
+
+        if (mode & 8) return value;
+        /******/
+
+        if (mode & 4 && _typeof2(value) === 'object' && value && value.__esModule) return value;
+        /******/
+
+        var ns = Object.create(null);
+        /******/
+
+        __webpack_require__.r(ns);
+        /******/
+
+
+        Object.defineProperty(ns, 'default', {
+          enumerable: true,
+          value: value
+        });
+        /******/
+
+        if (mode & 2 && typeof value != 'string') for (var key in value) {
+          __webpack_require__.d(ns, key, function (key) {
+            return value[key];
+          }.bind(null, key));
+        }
+        /******/
+
+        return ns;
+        /******/
+      };
+      /******/
+
+      /******/
+      // getDefaultExport function for compatibility with non-harmony modules
+
+      /******/
+
+
+      __webpack_require__.n = function (module) {
+        /******/
+        var getter = module && module.__esModule ?
+        /******/
+        function getDefault() {
+          return module['default'];
+        } :
+        /******/
+        function getModuleExports() {
+          return module;
+        };
+        /******/
+
+        __webpack_require__.d(getter, 'a', getter);
+        /******/
+
+
+        return getter;
+        /******/
+      };
+      /******/
+
+      /******/
+      // Object.prototype.hasOwnProperty.call
+
+      /******/
+
+
+      __webpack_require__.o = function (object, property) {
+        return Object.prototype.hasOwnProperty.call(object, property);
+      };
+      /******/
+
+      /******/
+      // __webpack_public_path__
+
+      /******/
+
+
+      __webpack_require__.p = "";
+      /******/
+
+      /******/
+
+      /******/
+      // Load entry module and return exports
+
+      /******/
+
+      return __webpack_require__(__webpack_require__.s = 5);
+      /******/
+    }(
+    /************************************************************************/
+
+    /******/
+    [
+    /* 0 */
+
+    /***/
+    function (module, exports, __webpack_require__) {
+      "use strict";
+
+      var has = Object.prototype.hasOwnProperty;
+      var isArray = Array.isArray;
+
+      var hexTable = function () {
+        var array = [];
+
+        for (var i = 0; i < 256; ++i) {
+          array.push('%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase());
+        }
+
+        return array;
+      }();
+
+      var compactQueue = function compactQueue(queue) {
+        while (queue.length > 1) {
+          var item = queue.pop();
+          var obj = item.obj[item.prop];
+
+          if (isArray(obj)) {
+            var compacted = [];
+
+            for (var j = 0; j < obj.length; ++j) {
+              if (typeof obj[j] !== 'undefined') {
+                compacted.push(obj[j]);
+              }
+            }
+
+            item.obj[item.prop] = compacted;
+          }
+        }
+      };
+
+      var arrayToObject = function arrayToObject(source, options) {
+        var obj = options && options.plainObjects ? Object.create(null) : {};
+
+        for (var i = 0; i < source.length; ++i) {
+          if (typeof source[i] !== 'undefined') {
+            obj[i] = source[i];
+          }
+        }
+
+        return obj;
+      };
+
+      var merge = function merge(target, source, options) {
+        if (!source) {
+          return target;
+        }
+
+        if (_typeof2(source) !== 'object') {
+          if (isArray(target)) {
+            target.push(source);
+          } else if (target && _typeof2(target) === 'object') {
+            if (options && (options.plainObjects || options.allowPrototypes) || !has.call(Object.prototype, source)) {
+              target[source] = true;
+            }
+          } else {
+            return [target, source];
+          }
+
+          return target;
+        }
+
+        if (!target || _typeof2(target) !== 'object') {
+          return [target].concat(source);
+        }
+
+        var mergeTarget = target;
+
+        if (isArray(target) && !isArray(source)) {
+          mergeTarget = arrayToObject(target, options);
+        }
+
+        if (isArray(target) && isArray(source)) {
+          source.forEach(function (item, i) {
+            if (has.call(target, i)) {
+              var targetItem = target[i];
+
+              if (targetItem && _typeof2(targetItem) === 'object' && item && _typeof2(item) === 'object') {
+                target[i] = merge(targetItem, item, options);
+              } else {
+                target.push(item);
+              }
+            } else {
+              target[i] = item;
+            }
+          });
+          return target;
+        }
+
+        return Object.keys(source).reduce(function (acc, key) {
+          var value = source[key];
+
+          if (has.call(acc, key)) {
+            acc[key] = merge(acc[key], value, options);
+          } else {
+            acc[key] = value;
+          }
+
+          return acc;
+        }, mergeTarget);
+      };
+
+      var assign = function assignSingleSource(target, source) {
+        return Object.keys(source).reduce(function (acc, key) {
+          acc[key] = source[key];
+          return acc;
+        }, target);
+      };
+
+      var decode = function decode(str, decoder, charset) {
+        var strWithoutPlus = str.replace(/\+/g, ' ');
+
+        if (charset === 'iso-8859-1') {
+          // unescape never throws, no try...catch needed:
+          return strWithoutPlus.replace(/%[0-9a-f]{2}/gi, unescape);
+        } // utf-8
+
+
+        try {
+          return decodeURIComponent(strWithoutPlus);
+        } catch (e) {
+          return strWithoutPlus;
+        }
+      };
+
+      var encode = function encode(str, defaultEncoder, charset) {
+        // This code was originally written by Brian White (mscdex) for the io.js core querystring library.
+        // It has been adapted here for stricter adherence to RFC 3986
+        if (str.length === 0) {
+          return str;
+        }
+
+        var string = str;
+
+        if (_typeof2(str) === 'symbol') {
+          string = Symbol.prototype.toString.call(str);
+        } else if (typeof str !== 'string') {
+          string = String(str);
+        }
+
+        if (charset === 'iso-8859-1') {
+          return escape(string).replace(/%u[0-9a-f]{4}/gi, function ($0) {
+            return '%26%23' + parseInt($0.slice(2), 16) + '%3B';
+          });
+        }
+
+        var out = '';
+
+        for (var i = 0; i < string.length; ++i) {
+          var c = string.charCodeAt(i);
+
+          if (c === 0x2D // -
+          || c === 0x2E // .
+          || c === 0x5F // _
+          || c === 0x7E // ~
+          || c >= 0x30 && c <= 0x39 // 0-9
+          || c >= 0x41 && c <= 0x5A // a-z
+          || c >= 0x61 && c <= 0x7A // A-Z
+          ) {
+              out += string.charAt(i);
+              continue;
+            }
+
+          if (c < 0x80) {
+            out = out + hexTable[c];
+            continue;
+          }
+
+          if (c < 0x800) {
+            out = out + (hexTable[0xC0 | c >> 6] + hexTable[0x80 | c & 0x3F]);
+            continue;
+          }
+
+          if (c < 0xD800 || c >= 0xE000) {
+            out = out + (hexTable[0xE0 | c >> 12] + hexTable[0x80 | c >> 6 & 0x3F] + hexTable[0x80 | c & 0x3F]);
+            continue;
+          }
+
+          i += 1;
+          c = 0x10000 + ((c & 0x3FF) << 10 | string.charCodeAt(i) & 0x3FF);
+          out += hexTable[0xF0 | c >> 18] + hexTable[0x80 | c >> 12 & 0x3F] + hexTable[0x80 | c >> 6 & 0x3F] + hexTable[0x80 | c & 0x3F];
+        }
+
+        return out;
+      };
+
+      var compact = function compact(value) {
+        var queue = [{
+          obj: {
+            o: value
+          },
+          prop: 'o'
+        }];
+        var refs = [];
+
+        for (var i = 0; i < queue.length; ++i) {
+          var item = queue[i];
+          var obj = item.obj[item.prop];
+          var keys = Object.keys(obj);
+
+          for (var j = 0; j < keys.length; ++j) {
+            var key = keys[j];
+            var val = obj[key];
+
+            if (_typeof2(val) === 'object' && val !== null && refs.indexOf(val) === -1) {
+              queue.push({
+                obj: obj,
+                prop: key
+              });
+              refs.push(val);
+            }
+          }
+        }
+
+        compactQueue(queue);
+        return value;
+      };
+
+      var isRegExp = function isRegExp(obj) {
+        return Object.prototype.toString.call(obj) === '[object RegExp]';
+      };
+
+      var isBuffer = function isBuffer(obj) {
+        if (!obj || _typeof2(obj) !== 'object') {
+          return false;
+        }
+
+        return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
+      };
+
+      var combine = function combine(a, b) {
+        return [].concat(a, b);
+      };
+
+      module.exports = {
+        arrayToObject: arrayToObject,
+        assign: assign,
+        combine: combine,
+        compact: compact,
+        decode: decode,
+        encode: encode,
+        isBuffer: isBuffer,
+        isRegExp: isRegExp,
+        merge: merge
+      };
+      /***/
+    },
+    /* 1 */
+
+    /***/
+    function (module, exports, __webpack_require__) {
+      "use strict";
+
+      var replace = String.prototype.replace;
+      var percentTwenties = /%20/g;
+
+      var util = __webpack_require__(0);
+
+      var Format = {
+        RFC1738: 'RFC1738',
+        RFC3986: 'RFC3986'
+      };
+      module.exports = util.assign({
+        'default': Format.RFC3986,
+        formatters: {
+          RFC1738: function RFC1738(value) {
+            return replace.call(value, percentTwenties, '+');
+          },
+          RFC3986: function RFC3986(value) {
+            return String(value);
+          }
+        }
+      }, Format);
+      /***/
+    },
+    /* 2 */
+
+    /***/
+    function (module, exports, __webpack_require__) {
+      "use strict";
+
+      var stringify = __webpack_require__(3);
+
+      var parse = __webpack_require__(4);
+
+      var formats = __webpack_require__(1);
+
+      module.exports = {
+        formats: formats,
+        parse: parse,
+        stringify: stringify
+      };
+      /***/
+    },
+    /* 3 */
+
+    /***/
+    function (module, exports, __webpack_require__) {
+      "use strict";
+
+      var utils = __webpack_require__(0);
+
+      var formats = __webpack_require__(1);
+
+      var has = Object.prototype.hasOwnProperty;
+      var arrayPrefixGenerators = {
+        brackets: function brackets(prefix) {
+          // eslint-disable-line func-name-matching
+          return prefix + '[]';
+        },
+        comma: 'comma',
+        indices: function indices(prefix, key) {
+          // eslint-disable-line func-name-matching
+          return prefix + '[' + key + ']';
+        },
+        repeat: function repeat(prefix) {
+          // eslint-disable-line func-name-matching
+          return prefix;
+        }
+      };
+      var isArray = Array.isArray;
+      var push = Array.prototype.push;
+
+      var pushToArray = function pushToArray(arr, valueOrArray) {
+        push.apply(arr, isArray(valueOrArray) ? valueOrArray : [valueOrArray]);
+      };
+
+      var toISO = Date.prototype.toISOString;
+      var defaultFormat = formats['default'];
+      var defaults = {
+        addQueryPrefix: false,
+        allowDots: false,
+        charset: 'utf-8',
+        charsetSentinel: false,
+        delimiter: '&',
+        encode: true,
+        encoder: utils.encode,
+        encodeValuesOnly: false,
+        format: defaultFormat,
+        formatter: formats.formatters[defaultFormat],
+        // deprecated
+        indices: false,
+        serializeDate: function serializeDate(date) {
+          // eslint-disable-line func-name-matching
+          return toISO.call(date);
+        },
+        skipNulls: false,
+        strictNullHandling: false
+      };
+
+      var isNonNullishPrimitive = function isNonNullishPrimitive(v) {
+        // eslint-disable-line func-name-matching
+        return typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean' || _typeof2(v) === 'symbol' || typeof v === 'bigint'; // eslint-disable-line valid-typeof
+      };
+
+      var stringify = function stringify( // eslint-disable-line func-name-matching
+      object, prefix, generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots, serializeDate, formatter, encodeValuesOnly, charset) {
+        var obj = object;
+
+        if (typeof filter === 'function') {
+          obj = filter(prefix, obj);
+        } else if (obj instanceof Date) {
+          obj = serializeDate(obj);
+        } else if (generateArrayPrefix === 'comma' && isArray(obj)) {
+          obj = obj.join(',');
+        }
+
+        if (obj === null) {
+          if (strictNullHandling) {
+            return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder, charset) : prefix;
+          }
+
+          obj = '';
+        }
+
+        if (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) {
+          if (encoder) {
+            var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder, charset);
+            return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder, charset))];
+          }
+
+          return [formatter(prefix) + '=' + formatter(String(obj))];
+        }
+
+        var values = [];
+
+        if (typeof obj === 'undefined') {
+          return values;
+        }
+
+        var objKeys;
+
+        if (isArray(filter)) {
+          objKeys = filter;
+        } else {
+          var keys = Object.keys(obj);
+          objKeys = sort ? keys.sort(sort) : keys;
+        }
+
+        for (var i = 0; i < objKeys.length; ++i) {
+          var key = objKeys[i];
+
+          if (skipNulls && obj[key] === null) {
+            continue;
+          }
+
+          if (isArray(obj)) {
+            pushToArray(values, stringify(obj[key], typeof generateArrayPrefix === 'function' ? generateArrayPrefix(prefix, key) : prefix, generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots, serializeDate, formatter, encodeValuesOnly, charset));
+          } else {
+            pushToArray(values, stringify(obj[key], prefix + (allowDots ? '.' + key : '[' + key + ']'), generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots, serializeDate, formatter, encodeValuesOnly, charset));
+          }
+        }
+
+        return values;
+      };
+
+      var normalizeStringifyOptions = function normalizeStringifyOptions(opts) {
+        if (!opts) {
+          return defaults;
+        }
+
+        if (opts.encoder !== null && opts.encoder !== undefined && typeof opts.encoder !== 'function') {
+          throw new TypeError('Encoder has to be a function.');
+        }
+
+        var charset = opts.charset || defaults.charset;
+
+        if (typeof opts.charset !== 'undefined' && opts.charset !== 'utf-8' && opts.charset !== 'iso-8859-1') {
+          throw new TypeError('The charset option must be either utf-8, iso-8859-1, or undefined');
+        }
+
+        var format = formats['default'];
+
+        if (typeof opts.format !== 'undefined') {
+          if (!has.call(formats.formatters, opts.format)) {
+            throw new TypeError('Unknown format option provided.');
+          }
+
+          format = opts.format;
+        }
+
+        var formatter = formats.formatters[format];
+        var filter = defaults.filter;
+
+        if (typeof opts.filter === 'function' || isArray(opts.filter)) {
+          filter = opts.filter;
+        }
+
+        return {
+          addQueryPrefix: typeof opts.addQueryPrefix === 'boolean' ? opts.addQueryPrefix : defaults.addQueryPrefix,
+          allowDots: typeof opts.allowDots === 'undefined' ? defaults.allowDots : !!opts.allowDots,
+          charset: charset,
+          charsetSentinel: typeof opts.charsetSentinel === 'boolean' ? opts.charsetSentinel : defaults.charsetSentinel,
+          delimiter: typeof opts.delimiter === 'undefined' ? defaults.delimiter : opts.delimiter,
+          encode: typeof opts.encode === 'boolean' ? opts.encode : defaults.encode,
+          encoder: typeof opts.encoder === 'function' ? opts.encoder : defaults.encoder,
+          encodeValuesOnly: typeof opts.encodeValuesOnly === 'boolean' ? opts.encodeValuesOnly : defaults.encodeValuesOnly,
+          filter: filter,
+          formatter: formatter,
+          serializeDate: typeof opts.serializeDate === 'function' ? opts.serializeDate : defaults.serializeDate,
+          skipNulls: typeof opts.skipNulls === 'boolean' ? opts.skipNulls : defaults.skipNulls,
+          sort: typeof opts.sort === 'function' ? opts.sort : null,
+          strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling
+        };
+      };
+
+      module.exports = function (object, opts) {
+        var obj = object;
+        var options = normalizeStringifyOptions(opts);
+        var objKeys;
+        var filter;
+
+        if (typeof options.filter === 'function') {
+          filter = options.filter;
+          obj = filter('', obj);
+        } else if (isArray(options.filter)) {
+          filter = options.filter;
+          objKeys = filter;
+        }
+
+        var keys = [];
+
+        if (_typeof2(obj) !== 'object' || obj === null) {
+          return '';
+        }
+
+        var arrayFormat;
+
+        if (opts && opts.arrayFormat in arrayPrefixGenerators) {
+          arrayFormat = opts.arrayFormat;
+        } else if (opts && 'indices' in opts) {
+          arrayFormat = opts.indices ? 'indices' : 'repeat';
+        } else {
+          arrayFormat = 'indices';
+        }
+
+        var generateArrayPrefix = arrayPrefixGenerators[arrayFormat];
+
+        if (!objKeys) {
+          objKeys = Object.keys(obj);
+        }
+
+        if (options.sort) {
+          objKeys.sort(options.sort);
+        }
+
+        for (var i = 0; i < objKeys.length; ++i) {
+          var key = objKeys[i];
+
+          if (options.skipNulls && obj[key] === null) {
+            continue;
+          }
+
+          pushToArray(keys, stringify(obj[key], key, generateArrayPrefix, options.strictNullHandling, options.skipNulls, options.encode ? options.encoder : null, options.filter, options.sort, options.allowDots, options.serializeDate, options.formatter, options.encodeValuesOnly, options.charset));
+        }
+
+        var joined = keys.join(options.delimiter);
+        var prefix = options.addQueryPrefix === true ? '?' : '';
+
+        if (options.charsetSentinel) {
+          if (options.charset === 'iso-8859-1') {
+            // encodeURIComponent('&#10003;'), the "numeric entity" representation of a checkmark
+            prefix += 'utf8=%26%2310003%3B&';
+          } else {
+            // encodeURIComponent('✓')
+            prefix += 'utf8=%E2%9C%93&';
+          }
+        }
+
+        return joined.length > 0 ? prefix + joined : '';
+      };
+      /***/
+
+    },
+    /* 4 */
+
+    /***/
+    function (module, exports, __webpack_require__) {
+      "use strict";
+
+      var utils = __webpack_require__(0);
+
+      var has = Object.prototype.hasOwnProperty;
+      var defaults = {
+        allowDots: false,
+        allowPrototypes: false,
+        arrayLimit: 20,
+        charset: 'utf-8',
+        charsetSentinel: false,
+        comma: false,
+        decoder: utils.decode,
+        delimiter: '&',
+        depth: 5,
+        ignoreQueryPrefix: false,
+        interpretNumericEntities: false,
+        parameterLimit: 1000,
+        parseArrays: true,
+        plainObjects: false,
+        strictNullHandling: false
+      };
+
+      var interpretNumericEntities = function interpretNumericEntities(str) {
+        return str.replace(/&#(\d+);/g, function ($0, numberStr) {
+          return String.fromCharCode(parseInt(numberStr, 10));
+        });
+      }; // This is what browsers will submit when the ✓ character occurs in an
+      // application/x-www-form-urlencoded body and the encoding of the page containing
+      // the form is iso-8859-1, or when the submitted form has an accept-charset
+      // attribute of iso-8859-1. Presumably also with other charsets that do not contain
+      // the ✓ character, such as us-ascii.
+
+
+      var isoSentinel = 'utf8=%26%2310003%3B'; // encodeURIComponent('&#10003;')
+      // These are the percent-encoded utf-8 octets representing a checkmark, indicating that the request actually is utf-8 encoded.
+
+      var charsetSentinel = 'utf8=%E2%9C%93'; // encodeURIComponent('✓')
+
+      var parseValues = function parseQueryStringValues(str, options) {
+        var obj = {};
+        var cleanStr = options.ignoreQueryPrefix ? str.replace(/^\?/, '') : str;
+        var limit = options.parameterLimit === Infinity ? undefined : options.parameterLimit;
+        var parts = cleanStr.split(options.delimiter, limit);
+        var skipIndex = -1; // Keep track of where the utf8 sentinel was found
+
+        var i;
+        var charset = options.charset;
+
+        if (options.charsetSentinel) {
+          for (i = 0; i < parts.length; ++i) {
+            if (parts[i].indexOf('utf8=') === 0) {
+              if (parts[i] === charsetSentinel) {
+                charset = 'utf-8';
+              } else if (parts[i] === isoSentinel) {
+                charset = 'iso-8859-1';
+              }
+
+              skipIndex = i;
+              i = parts.length; // The eslint settings do not allow break;
+            }
+          }
+        }
+
+        for (i = 0; i < parts.length; ++i) {
+          if (i === skipIndex) {
+            continue;
+          }
+
+          var part = parts[i];
+          var bracketEqualsPos = part.indexOf(']=');
+          var pos = bracketEqualsPos === -1 ? part.indexOf('=') : bracketEqualsPos + 1;
+          var key, val;
+
+          if (pos === -1) {
+            key = options.decoder(part, defaults.decoder, charset);
+            val = options.strictNullHandling ? null : '';
+          } else {
+            key = options.decoder(part.slice(0, pos), defaults.decoder, charset);
+            val = options.decoder(part.slice(pos + 1), defaults.decoder, charset);
+          }
+
+          if (val && options.interpretNumericEntities && charset === 'iso-8859-1') {
+            val = interpretNumericEntities(val);
+          }
+
+          if (val && options.comma && val.indexOf(',') > -1) {
+            val = val.split(',');
+          }
+
+          if (has.call(obj, key)) {
+            obj[key] = utils.combine(obj[key], val);
+          } else {
+            obj[key] = val;
+          }
+        }
+
+        return obj;
+      };
+
+      var parseObject = function parseObject(chain, val, options) {
+        var leaf = val;
+
+        for (var i = chain.length - 1; i >= 0; --i) {
+          var obj;
+          var root = chain[i];
+
+          if (root === '[]' && options.parseArrays) {
+            obj = [].concat(leaf);
+          } else {
+            obj = options.plainObjects ? Object.create(null) : {};
+            var cleanRoot = root.charAt(0) === '[' && root.charAt(root.length - 1) === ']' ? root.slice(1, -1) : root;
+            var index = parseInt(cleanRoot, 10);
+
+            if (!options.parseArrays && cleanRoot === '') {
+              obj = {
+                0: leaf
+              };
+            } else if (!isNaN(index) && root !== cleanRoot && String(index) === cleanRoot && index >= 0 && options.parseArrays && index <= options.arrayLimit) {
+              obj = [];
+              obj[index] = leaf;
+            } else {
+              obj[cleanRoot] = leaf;
+            }
+          }
+
+          leaf = obj;
+        }
+
+        return leaf;
+      };
+
+      var parseKeys = function parseQueryStringKeys(givenKey, val, options) {
+        if (!givenKey) {
+          return;
+        } // Transform dot notation to bracket notation
+
+
+        var key = options.allowDots ? givenKey.replace(/\.([^.[]+)/g, '[$1]') : givenKey; // The regex chunks
+
+        var brackets = /(\[[^[\]]*])/;
+        var child = /(\[[^[\]]*])/g; // Get the parent
+
+        var segment = options.depth > 0 && brackets.exec(key);
+        var parent = segment ? key.slice(0, segment.index) : key; // Stash the parent if it exists
+
+        var keys = [];
+
+        if (parent) {
+          // If we aren't using plain objects, optionally prefix keys that would overwrite object prototype properties
+          if (!options.plainObjects && has.call(Object.prototype, parent)) {
+            if (!options.allowPrototypes) {
+              return;
+            }
+          }
+
+          keys.push(parent);
+        } // Loop through children appending to the array until we hit depth
+
+
+        var i = 0;
+
+        while (options.depth > 0 && (segment = child.exec(key)) !== null && i < options.depth) {
+          i += 1;
+
+          if (!options.plainObjects && has.call(Object.prototype, segment[1].slice(1, -1))) {
+            if (!options.allowPrototypes) {
+              return;
+            }
+          }
+
+          keys.push(segment[1]);
+        } // If there's a remainder, just add whatever is left
+
+
+        if (segment) {
+          keys.push('[' + key.slice(segment.index) + ']');
+        }
+
+        return parseObject(keys, val, options);
+      };
+
+      var normalizeParseOptions = function normalizeParseOptions(opts) {
+        if (!opts) {
+          return defaults;
+        }
+
+        if (opts.decoder !== null && opts.decoder !== undefined && typeof opts.decoder !== 'function') {
+          throw new TypeError('Decoder has to be a function.');
+        }
+
+        if (typeof opts.charset !== 'undefined' && opts.charset !== 'utf-8' && opts.charset !== 'iso-8859-1') {
+          throw new Error('The charset option must be either utf-8, iso-8859-1, or undefined');
+        }
+
+        var charset = typeof opts.charset === 'undefined' ? defaults.charset : opts.charset;
+        return {
+          allowDots: typeof opts.allowDots === 'undefined' ? defaults.allowDots : !!opts.allowDots,
+          allowPrototypes: typeof opts.allowPrototypes === 'boolean' ? opts.allowPrototypes : defaults.allowPrototypes,
+          arrayLimit: typeof opts.arrayLimit === 'number' ? opts.arrayLimit : defaults.arrayLimit,
+          charset: charset,
+          charsetSentinel: typeof opts.charsetSentinel === 'boolean' ? opts.charsetSentinel : defaults.charsetSentinel,
+          comma: typeof opts.comma === 'boolean' ? opts.comma : defaults.comma,
+          decoder: typeof opts.decoder === 'function' ? opts.decoder : defaults.decoder,
+          delimiter: typeof opts.delimiter === 'string' || utils.isRegExp(opts.delimiter) ? opts.delimiter : defaults.delimiter,
+          // eslint-disable-next-line no-implicit-coercion, no-extra-parens
+          depth: typeof opts.depth === 'number' || opts.depth === false ? +opts.depth : defaults.depth,
+          ignoreQueryPrefix: opts.ignoreQueryPrefix === true,
+          interpretNumericEntities: typeof opts.interpretNumericEntities === 'boolean' ? opts.interpretNumericEntities : defaults.interpretNumericEntities,
+          parameterLimit: typeof opts.parameterLimit === 'number' ? opts.parameterLimit : defaults.parameterLimit,
+          parseArrays: opts.parseArrays !== false,
+          plainObjects: typeof opts.plainObjects === 'boolean' ? opts.plainObjects : defaults.plainObjects,
+          strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling
+        };
+      };
+
+      module.exports = function (str, opts) {
+        var options = normalizeParseOptions(opts);
+
+        if (str === '' || str === null || typeof str === 'undefined') {
+          return options.plainObjects ? Object.create(null) : {};
+        }
+
+        var tempObj = typeof str === 'string' ? parseValues(str, options) : str;
+        var obj = options.plainObjects ? Object.create(null) : {}; // Iterate over the keys and setup the new object
+
+        var keys = Object.keys(tempObj);
+
+        for (var i = 0; i < keys.length; ++i) {
+          var key = keys[i];
+          var newObj = parseKeys(key, tempObj[key], options);
+          obj = utils.merge(obj, newObj, options);
+        }
+
+        return utils.compact(obj);
+      };
+      /***/
+
+    },
+    /* 5 */
+
+    /***/
+    function (module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__); // CONCATENATED MODULE: ./src/js/UrlBuilder.js
+
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      function _defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+          var descriptor = props[i];
+          descriptor.enumerable = descriptor.enumerable || false;
+          descriptor.configurable = true;
+          if ("value" in descriptor) descriptor.writable = true;
+          Object.defineProperty(target, descriptor.key, descriptor);
+        }
+      }
+
+      function _createClass(Constructor, protoProps, staticProps) {
+        if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+        if (staticProps) _defineProperties(Constructor, staticProps);
+        return Constructor;
+      }
+
+      var UrlBuilder =
+      /*#__PURE__*/
+      function () {
+        function UrlBuilder(name, absolute, ziggyObject) {
+          _classCallCheck(this, UrlBuilder);
+
+          this.name = name;
+          this.ziggy = ziggyObject;
+          this.route = this.ziggy.namedRoutes[this.name];
+
+          if (typeof this.name === 'undefined') {
+            throw new Error('Ziggy Error: You must provide a route name');
+          } else if (typeof this.route === 'undefined') {
+            throw new Error("Ziggy Error: route '".concat(this.name, "' is not found in the route list"));
+          }
+
+          this.absolute = typeof absolute === 'undefined' ? true : absolute;
+          this.domain = this.setDomain();
+          this.path = this.route.uri.replace(/^\//, '');
+        }
+
+        _createClass(UrlBuilder, [{
+          key: "setDomain",
+          value: function setDomain() {
+            if (!this.absolute) return '/';
+            if (!this.route.domain) return this.ziggy.baseUrl.replace(/\/?$/, '/');
+            var host = (this.route.domain || this.ziggy.baseDomain).replace(/\/+$/, '');
+            if (this.ziggy.basePort && host.replace(/\/+$/, '') === this.ziggy.baseDomain.replace(/\/+$/, '')) host = this.ziggy.baseDomain + ':' + this.ziggy.basePort;
+            return this.ziggy.baseProtocol + '://' + host + '/';
+          }
+        }, {
+          key: "construct",
+          value: function construct() {
+            return this.domain + this.path;
+          }
+        }]);
+
+        return UrlBuilder;
+      }();
+      /* harmony default export */
+
+
+      var js_UrlBuilder = UrlBuilder; // EXTERNAL MODULE: ./node_modules/qs/lib/index.js
+
+      var lib = __webpack_require__(2); // CONCATENATED MODULE: ./src/js/route.js
+
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "default", function () {
+        return route;
+      });
+
+      function _defineProperty(obj, key, value) {
+        if (key in obj) {
+          Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+          });
+        } else {
+          obj[key] = value;
+        }
+
+        return obj;
+      }
+
+      function _extends() {
+        _extends = Object.assign || function (target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+
+          return target;
+        };
+
+        return _extends.apply(this, arguments);
+      }
+
+      function _typeof(obj) {
+        if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+          _typeof = function _typeof(obj) {
+            return _typeof2(obj);
+          };
+        } else {
+          _typeof = function _typeof(obj) {
+            return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+          };
+        }
+
+        return _typeof(obj);
+      }
+
+      function route_classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      function route_defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+          var descriptor = props[i];
+          descriptor.enumerable = descriptor.enumerable || false;
+          descriptor.configurable = true;
+          if ("value" in descriptor) descriptor.writable = true;
+          Object.defineProperty(target, descriptor.key, descriptor);
+        }
+      }
+
+      function route_createClass(Constructor, protoProps, staticProps) {
+        if (protoProps) route_defineProperties(Constructor.prototype, protoProps);
+        if (staticProps) route_defineProperties(Constructor, staticProps);
+        return Constructor;
+      }
+
+      function _possibleConstructorReturn(self, call) {
+        if (call && (_typeof(call) === "object" || typeof call === "function")) {
+          return call;
+        }
+
+        return _assertThisInitialized(self);
+      }
+
+      function _assertThisInitialized(self) {
+        if (self === void 0) {
+          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        }
+
+        return self;
+      }
+
+      function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+          throw new TypeError("Super expression must either be null or a function");
+        }
+
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+          constructor: {
+            value: subClass,
+            writable: true,
+            configurable: true
+          }
+        });
+        if (superClass) _setPrototypeOf(subClass, superClass);
+      }
+
+      function _wrapNativeSuper(Class) {
+        var _cache = typeof Map === "function" ? new Map() : undefined;
+
+        _wrapNativeSuper = function _wrapNativeSuper(Class) {
+          if (Class === null || !_isNativeFunction(Class)) return Class;
+
+          if (typeof Class !== "function") {
+            throw new TypeError("Super expression must either be null or a function");
+          }
+
+          if (typeof _cache !== "undefined") {
+            if (_cache.has(Class)) return _cache.get(Class);
+
+            _cache.set(Class, Wrapper);
+          }
+
+          function Wrapper() {
+            return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+          }
+
+          Wrapper.prototype = Object.create(Class.prototype, {
+            constructor: {
+              value: Wrapper,
+              enumerable: false,
+              writable: true,
+              configurable: true
+            }
+          });
+          return _setPrototypeOf(Wrapper, Class);
+        };
+
+        return _wrapNativeSuper(Class);
+      }
+
+      function isNativeReflectConstruct() {
+        if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+        if (Reflect.construct.sham) return false;
+        if (typeof Proxy === "function") return true;
+
+        try {
+          Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+          return true;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function _construct(Parent, args, Class) {
+        if (isNativeReflectConstruct()) {
+          _construct = Reflect.construct;
+        } else {
+          _construct = function _construct(Parent, args, Class) {
+            var a = [null];
+            a.push.apply(a, args);
+            var Constructor = Function.bind.apply(Parent, a);
+            var instance = new Constructor();
+            if (Class) _setPrototypeOf(instance, Class.prototype);
+            return instance;
+          };
+        }
+
+        return _construct.apply(null, arguments);
+      }
+
+      function _isNativeFunction(fn) {
+        return Function.toString.call(fn).indexOf("[native code]") !== -1;
+      }
+
+      function _setPrototypeOf(o, p) {
+        _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+          o.__proto__ = p;
+          return o;
+        };
+
+        return _setPrototypeOf(o, p);
+      }
+
+      function _getPrototypeOf(o) {
+        _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+          return o.__proto__ || Object.getPrototypeOf(o);
+        };
+        return _getPrototypeOf(o);
+      }
+
+      var route_Router =
+      /*#__PURE__*/
+      function (_String) {
+        _inherits(Router, _String);
+
+        function Router(name, params, absolute) {
+          var _this;
+
+          var customZiggy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+          route_classCallCheck(this, Router);
+          _this = _possibleConstructorReturn(this, _getPrototypeOf(Router).call(this));
+          _this.name = name;
+          _this.absolute = absolute;
+          _this.ziggy = customZiggy ? customZiggy : Ziggy;
+          _this.urlBuilder = _this.name ? new js_UrlBuilder(name, absolute, _this.ziggy) : null;
+          _this.template = _this.urlBuilder ? _this.urlBuilder.construct() : '';
+          _this.urlParams = _this.normalizeParams(params);
+          _this.queryParams = {};
+          _this.hydrated = '';
+          return _this;
+        }
+
+        route_createClass(Router, [{
+          key: "normalizeParams",
+          value: function normalizeParams(params) {
+            if (typeof params === 'undefined') return {}; // If you passed in a string or integer, wrap it in an array
+
+            params = _typeof(params) !== 'object' ? [params] : params; // If the tags object contains an ID and there isn't an ID param in the
+            // url template, they probably passed in a single model object and we should
+            // wrap this in an array. This could be slightly dangerous and I want to find
+            // a better solution for this rare case.
+
+            if (params.hasOwnProperty('id') && this.template.indexOf('{id}') == -1) {
+              params = [params.id];
+            }
+
+            this.numericParamIndices = Array.isArray(params);
+            return _extends({}, params);
+          }
+        }, {
+          key: "with",
+          value: function _with(params) {
+            this.urlParams = this.normalizeParams(params);
+            return this;
+          }
+        }, {
+          key: "withQuery",
+          value: function withQuery(params) {
+            _extends(this.queryParams, params);
+
+            return this;
+          }
+        }, {
+          key: "hydrateUrl",
+          value: function hydrateUrl() {
+            var _this2 = this;
+
+            if (this.hydrated) return this.hydrated;
+            var hydrated = this.template.replace(/{([^}]+)}/gi, function (tag, i) {
+              var keyName = _this2.trimParam(tag),
+                  defaultParameter,
+                  tagValue;
+
+              if (_this2.ziggy.defaultParameters.hasOwnProperty(keyName)) {
+                defaultParameter = _this2.ziggy.defaultParameters[keyName];
+              } // If a default parameter exists, and a value wasn't
+              // provided for it manually, use the default value
+
+
+              if (defaultParameter && !_this2.urlParams[keyName]) {
+                delete _this2.urlParams[keyName];
+                return defaultParameter;
+              } // We were passed an array, shift the value off the
+              // object and return that value to the route
+
+
+              if (_this2.numericParamIndices) {
+                _this2.urlParams = Object.values(_this2.urlParams);
+                tagValue = _this2.urlParams.shift();
+              } else {
+                tagValue = _this2.urlParams[keyName];
+                delete _this2.urlParams[keyName];
+              } // The type of the value is undefined; is this param
+              // optional or not
+
+
+              if (typeof tagValue === 'undefined') {
+                if (tag.indexOf('?') === -1) {
+                  throw new Error("Ziggy Error: '" + keyName + "' key is required for route '" + _this2.name + "'");
+                } else {
+                  return '';
+                }
+              } // If an object was passed and has an id, return it
+
+
+              if (tagValue.id) {
+                return encodeURIComponent(tagValue.id);
+              }
+
+              return encodeURIComponent(tagValue);
+            });
+
+            if (this.urlBuilder != null && this.urlBuilder.path !== '') {
+              hydrated = hydrated.replace(/\/+$/, '');
+            }
+
+            this.hydrated = hydrated;
+            return this.hydrated;
+          }
+        }, {
+          key: "matchUrl",
+          value: function matchUrl() {
+            var windowUrl = window.location.hostname + (window.location.port ? ':' + window.location.port : '') + window.location.pathname; // Strip out optional parameters
+
+            var optionalTemplate = this.template.replace(/(\/\{[^\}]*\?\})/g, '/').replace(/(\{[^\}]*\})/gi, '[^/?]+').replace(/\/?$/, '').split('://')[1];
+            var searchTemplate = this.template.replace(/(\{[^\}]*\})/gi, '[^/?]+').split('://')[1];
+            var urlWithTrailingSlash = windowUrl.replace(/\/?$/, '/');
+            var regularSearch = new RegExp('^' + searchTemplate + '/$').test(urlWithTrailingSlash);
+            var optionalSearch = new RegExp('^' + optionalTemplate + '/$').test(urlWithTrailingSlash);
+            return regularSearch || optionalSearch;
+          }
+        }, {
+          key: "constructQuery",
+          value: function constructQuery() {
+            if (Object.keys(this.queryParams).length === 0 && Object.keys(this.urlParams).length === 0) {
+              return '';
+            }
+
+            var remainingParams = _extends(this.urlParams, this.queryParams);
+
+            return Object(lib["stringify"])(remainingParams, {
+              encodeValuesOnly: true,
+              skipNulls: true,
+              addQueryPrefix: true,
+              arrayFormat: 'indices'
+            });
+          }
+        }, {
+          key: "current",
+          value: function current() {
+            var _this3 = this;
+
+            var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            var routeNames = Object.keys(this.ziggy.namedRoutes);
+            var currentRoute = routeNames.filter(function (name) {
+              if (_this3.ziggy.namedRoutes[name].methods.indexOf('GET') === -1) {
+                return false;
+              }
+
+              return new Router(name, undefined, undefined, _this3.ziggy).matchUrl();
+            })[0];
+
+            if (name) {
+              var pattern = new RegExp('^' + name.replace('*', '.*').replace('.', '.') + '$', 'i');
+              return pattern.test(currentRoute);
+            }
+
+            return currentRoute;
+          }
+        }, {
+          key: "check",
+          value: function check(name) {
+            var routeNames = Object.keys(this.ziggy.namedRoutes);
+            return routeNames.includes(name);
+          }
+        }, {
+          key: "extractParams",
+          value: function extractParams(uri, template, delimiter) {
+            var _this4 = this;
+
+            var uriParts = uri.split(delimiter);
+            var templateParts = template.split(delimiter);
+            return templateParts.reduce(function (params, param, i) {
+              return param.indexOf('{') === 0 && param.indexOf('}') !== -1 && uriParts[i] ? _extends(params, _defineProperty({}, _this4.trimParam(param), uriParts[i])) : params;
+            }, {});
+          }
+        }, {
+          key: "parse",
+          value: function parse() {
+            this["return"] = this.hydrateUrl() + this.constructQuery();
+          }
+        }, {
+          key: "url",
+          value: function url() {
+            this.parse();
+            return this["return"];
+          }
+        }, {
+          key: "toString",
+          value: function toString() {
+            return this.url();
+          }
+        }, {
+          key: "trimParam",
+          value: function trimParam(param) {
+            return param.replace(/{|}|\?/g, '');
+          }
+        }, {
+          key: "valueOf",
+          value: function valueOf() {
+            return this.url();
+          }
+        }, {
+          key: "params",
+          get: function get() {
+            var namedRoute = this.ziggy.namedRoutes[this.current()];
+            return _extends(this.extractParams(window.location.hostname, namedRoute.domain || '', '.'), this.extractParams(window.location.pathname.slice(1), namedRoute.uri, '/'));
+          }
+        }]);
+        return Router;
+      }(_wrapNativeSuper(String));
+
+      function route(name, params, absolute, customZiggy) {
+        return new route_Router(name, params, absolute, customZiggy);
+      }
+      /***/
+
+    }
+    /******/
+    ])["default"]
+  );
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 

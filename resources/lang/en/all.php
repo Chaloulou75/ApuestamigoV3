@@ -68,12 +68,30 @@ return [
   'Points' => 'Points',
   'What\'s the name of your league?'=> 'What\'s the name of your league?',
   'Insert the token of the league' => 'Insert the token of the league',
+  'Hey' => 'Hey',
+  'your bets' =>'your bets',
+  'Start of the next round' => 'Start of the next round',
+  'you have to login or register to play.' => 'you have to login or register to play.',
+  'let\'s play' => 'let\'s play',
+  'Registrar' =>'Register',
+  'Send' => 'Send your message',
+  'Message' => 'Message',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',
   'Yeah! your bets are registered and updated! Good luck!' => 'Yeah! your bets are registered and updated! Good luck!',
   'Too late for this date!' => 'Too late for this date',
   'scores updated' => 'the scores are updated',
+  'the league' => 'the league ',
+  'is now created, share it with this token' => ' is now created, share it with this token',
+  'your league has been modified' => 'your league has been modified',
+  'your league has been deleted' => 'your league has been deleted',
+  'You have joined this league!' => 'You have joined this league!',
+  
+
+  //cookie
+  'Learn_More'=>'Learn More',
+  'cookie_consentment' => 'By continuing to browse this site, you consent to our use of cookies to improve your online experience.',
 
 
   ];

@@ -9,7 +9,7 @@
         @csrf
 
         <div class="mb-4">
-            <label for="name" class="block text-white text-base font-bold mb-2">{{ __('Nom') }}</label>
+            <label for="name" class="block text-white text-base font-bold mb-2">{{ __('all.Name') }}</label>
 
             <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
              @error('name') bg-red-dark @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="email" class="block text-white text-base font-bold mb-2">{{ __('E-Mail Address') }}</label>
+            <label for="email" class="block text-white text-base font-bold mb-2">{{ __('all.E-Mail Address') }}</label>
            
                 <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email" autofocus>
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="msg" class="block text-white text-base font-bold mb-2">{{ __('Message') }}</label>
+            <label for="msg" class="block text-white text-base font-bold mb-2">{{ __('all.Message') }}</label>
            
                 <textarea id="msg" type="msg" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-24 lg:h-40 resize leading-tight focus:outline-none focus:shadow-outline @error('msg') bg-red-dark @enderror" name="msg" value="{{ old('msg') }}" required autocomplete="msg" placeholder="message" autofocus></textarea>
 
@@ -49,7 +49,7 @@
         <div class="mb-4">
             <div class="flex items-center justify-between">
                 <button class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
-                    {{ __('Envoyer votre message') }}
+                    {{ __('all.Send') }}
                 </button>
             </div>
         </div>

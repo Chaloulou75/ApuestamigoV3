@@ -11,9 +11,9 @@
 	<div class="text-white">
 
 		@if (Auth::check())		
-			<h3 class="text-base text-left py-2">Hey <strong>{{$user->name}}</strong>, let's play!</h3>
+			<h3 class="text-base text-left py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.let\'s play')}}.</h3>
 		@else	
-			<h3 class="text-base text-left py-2">Hey, you have to login or register to play.</h3>
+			<h3 class="text-base text-left py-2">{{__('all.Hey')}}, {{__('all.you have to login or register to play.')}}</h3>
 		@endif
 		<form method="POST" action="{{ action('ApuestasController@store', $ligue) }}"> 
 			@csrf
@@ -34,7 +34,7 @@
 
 		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-600 hover:text-white hover:font-bold"> 
 		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
-			  <div class="table-cell px-4 py-4 text-right hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
+			  <div class="table-cell px-4 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq1"></label>
@@ -70,7 +70,7 @@
 	            </select>
 			  </div>
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
-			  <div class="table-cell px-4 py-4 hidden md:table-cell text-left">{{ $game->awayTeam->name}}</div>
+			  <div class="table-cell px-4 py-4 hidden font-bold md:table-cell text-left">{{ $game->awayTeam->name}}</div>
 		    </div>
 
 		   @endforeach 
@@ -78,7 +78,7 @@
 		
 		<div class="flex justify-center">
 			<button type="submit" class="bg-gray-900 hover:bg-white text-white hover:text-gray-900 font-semibold text-center border-2 rounded-full hover:border-gray-900 border-gray-500 flex-auto py-2 px-4 m-2">
-		  		Enregistrer
+		  		{{__('all.Registrar')}}
 			</button>
 		</div>
 		</form>

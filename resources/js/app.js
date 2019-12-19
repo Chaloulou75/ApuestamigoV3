@@ -6,7 +6,34 @@
 
 require('./bootstrap');
 
+import messages from './messages';
+import Lang from 'lang.js';
+import route from 'ziggy';
+import { Ziggy } from './ziggy';
+
+const lang = new Lang({
+
+  messages: messages
+
+});
+
 window.Vue = require('vue');
+
+Vue.mixin({
+
+	methods: { 
+      //methode traduction
+		  __(...args){
+
+        	return lang.get(...args);
+
+      	},
+      //methode de route (ziggy)
+      route: (name, params, absolute) => route(name, params, absolute, Ziggy),
+        
+    }
+})
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,9 +49,9 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
 Vue.component('date-component', require('./components/DateComponent.vue').default);
-
 Vue.component('cookie-banner-component', require('./components/CookieBannerConsentmentComponent.vue').default);
-
+Vue.component('navbar-component', require('./components/Navbar.vue').default);
+Vue.component('account-dropdown', require('./components/AccountDropdown.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -45,6 +72,8 @@ document.getElementById('logout-toggle').onclick = function(){
 document.getElementById("logout-content").classList.toggle("hidden");
 }
 
+
+//copie du token
 document.getElementById('copyToken').onclick = function copyTok() {
   var copyText = document.getElementById("copyToken");
   copyText.select();
