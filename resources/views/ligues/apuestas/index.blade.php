@@ -18,7 +18,7 @@
 		<form method="POST" action="{{ action('ApuestasController@store', $ligue) }}"> 
 			@csrf
 
-		<div class="table w-full md:w-4/5 mx-auto text-sm text-gray-900 bg-gray-400 shadow-md border-2 border-solid border-white rounded"> 
+		<div class="table w-full md:w-11/12 mx-auto text-sm text-gray-900 bg-gray-400 shadow-md border-2 border-solid border-white rounded"> 
 		    <div class="table-row w-full mx-auto border border-solid border-white">
 		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell"></div>
 		      <div class="table-cell px-4 py-4 text-right hidden md:table-cell"></div>

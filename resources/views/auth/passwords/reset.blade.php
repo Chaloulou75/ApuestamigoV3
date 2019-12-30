@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">{{ __('Reset Password') }}
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">{{ __('all.Reset Password') }}
 
         <div class="flex-auto p-6">
             <form  method="POST" action="{{ route('password.update') }}">

@@ -17,9 +17,10 @@
     <body class="body bg-gray-700">
         <div id="app">
 
-            @include('layouts/nav')
+            {{-- @include('layouts/nav') --}}
+            {{-- @include('layouts/nav2') --}}
 
-            <navbar-component></navbar-component>
+            <navbar-component :user='@json(Auth::user())'></navbar-component>
 
             @include('layouts/partials/carousel')
 
@@ -47,7 +48,7 @@
                 @yield('content')
             </main>
 
-            <cookie-banner-component></cookie-banner-component>            
+            {{-- <cookie-banner-component></cookie-banner-component>  --}}
 
         </div>
 

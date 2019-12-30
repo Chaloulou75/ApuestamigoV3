@@ -1,7 +1,7 @@
 <header class="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
 
     <div class="flex items-center justify-between px-4 py-3 sm:p-0">
-       <a href="{{ url('/') }}" class="block px-2 py-1 text-white text-2xl rounded hover:bg-gray-800">
+       <a href="{{ url('/') }}" class="block px-2 py-1 text-white text-2xl font-medium hover:font-bold rounded hover:bg-gray-800">
               {{ config('app.name', 'Apuestamigo') }}
        </a>
     </div>
@@ -18,27 +18,33 @@
     <nav class="hidden w-full flex-grow lg:flex lg:items-center lg:w-auto" id="nav-content">
 
       <div class="px-2 pt-2 pb-4 sm:flex sm:p-0">
-        <a href="{{ route('ligues.index') }}" class="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+        <a href="{{ route('ligues.index') }}" class="block px-2 py-1 text-white font-semibold hover:font-bold rounded hover:bg-gray-800">
             <i class="fas fa-award pr-1"></i> {{ __('nav.ligues') }}
         </a>
-        <a href="{{ route('ligues.create') }}" class="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+        <a href="{{ route('ligues.create') }}" class="block px-2 py-1 text-white font-semibold hover:font-bold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
           <i class='far fa-hand-point-right pr-1'></i> {{ __('nav.creer') }}
         </a>
-        <a href="{{ route('contact.create') }}" class="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+        <a href="{{ route('contact.create') }}" class="block px-2 py-1 text-white font-semibold hover:font-bold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
           <i class='far fa-envelope pr-1'></i> {{ __('nav.contact') }}
         </a>
             
 
-
           @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <div class="flex items-center pr-2">    
+                  <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="overflow-hidden border-2 border-gray-600 rounded-full flex items-center justify-center focus:outline-none focus:border-white">
+                     <!-- {{ $properties['native'] }}  -->
+                    <img class="h-8 w-8 border-2 border-gray-600 rounded-full object-cover"  alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
+                 </a>   
+          </div>    
+          @endforeach
+          {{-- @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
               <div class="px-2 py-1 sm:mt-0 sm:ml-2">
                   <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="overflow-hidden border-2 border-gray-600 rounded-full flex items-center justify-center focus:outline-none focus:border-white">
-                      {{-- {{ $properties['native'] }} --}}
+                       {{ $properties['native'] }} 
                     <img class="h-8 w-8 object-cover"  alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
                  </a>   
               </div>
-          @endforeach
-        
+          @endforeach --}}
         
         </div>
 

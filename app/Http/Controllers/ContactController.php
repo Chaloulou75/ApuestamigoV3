@@ -19,6 +19,6 @@ class ContactController extends Controller
     	$mailable = new ContactMessagesCreated($request->name, $request->email, $request->msg);
     	Mail::to('admin@apuestamigo.com')->send($mailable);
 
-    	return redirect('home')->with('message.level', 'success')->with('message.content', 'Votre message a bien été envoyé à l\'admin');;
+    	return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
     }
 }

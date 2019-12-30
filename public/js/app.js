@@ -1852,11 +1852,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       isOpen: false
     };
+  },
+  methods: {
+    logout: function logout() {
+      axios.post('/logout')["catch"](function (error) {
+        window.location.href = '/';
+      });
+    }
   },
   created: function created() {
     var _this = this;
@@ -2138,8 +2152,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
   components: {
     AccountDropdown: _AccountDropdown__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2147,6 +2182,18 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isOpen: false
     };
+  },
+  methods: {
+    logout: function logout() {
+      axios.post('/logout')["catch"](function (error) {
+        window.location.href = '/';
+      });
+    }
+  },
+  computed: {
+    isAuthenticated: function isAuthenticated() {
+      return this.user != null;
+    }
   }
 });
 
@@ -90017,9 +90064,9 @@ var render = function() {
               {
                 staticClass:
                   "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
-                attrs: { href: "#" }
+                attrs: { href: _vm.route("contact.create") }
               },
-              [_vm._v("Support")]
+              [_vm._v(_vm._s(_vm.__("nav.contact")))]
             ),
             _vm._v(" "),
             _c(
@@ -90027,7 +90074,13 @@ var render = function() {
               {
                 staticClass:
                   "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
-                attrs: { href: "#" }
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.logout($event)
+                  }
+                }
               },
               [_vm._v("Sign out")]
             )
@@ -90227,7 +90280,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-2 py-1 text-white text-2xl rounded hover:bg-gray-200 hover:text-gray-900",
+                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:font-bold hover:bg-gray-800",
                 attrs: { href: "/" }
               },
               [_vm._v("\n            Apuestamigo\n     ")]
@@ -90294,12 +90347,14 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 ",
+                    "block px-2 py-1 text-white font-medium hover:font-bold rounded hover:bg-gray-800 ",
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
                   _c("i", { staticClass: "fas fa-award pr-1" }),
-                  _vm._v(" " + _vm._s(_vm.__("nav.ligues")) + "\n      ")
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.__("nav.ligues")) + "\n      "
+                  )
                 ]
               ),
               _vm._v(" "),
@@ -90307,133 +90362,138 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white font-medium hover:font-bold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
                   _c("i", { staticClass: "far fa-hand-point-right pr-1" }),
-                  _vm._v(" " + _vm._s(_vm.__("nav.creer")) + "\n      ")
+                  _vm._v(
+                    "\n         " + _vm._s(_vm.__("nav.creer")) + "\n      "
+                  )
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2 ",
-                  attrs: { href: _vm.route("contact.create") }
-                },
-                [
-                  _c("i", { staticClass: "far fa-envelope pr-1" }),
-                  _vm._v(" " + _vm._s(_vm.__("nav.contact")) + "\n      ")
-                ]
-              ),
+              !_vm.isAuthenticated
+                ? _c(
+                    "a",
+                    {
+                      staticClass:
+                        "mt-1 block px-4 py-2 text-sm leading-none border  rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2 ",
+                      attrs: { href: _vm.route("login") }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-user pr-1" }),
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.__("all.Login")) +
+                          "\n      "
+                      )
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2 ",
-                  attrs: { href: _vm.route("login") }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-user pr-1" }),
-                  _vm._v(_vm._s(_vm.__("all.Login")) + "\n      ")
-                ]
-              ),
+              !_vm.isAuthenticated
+                ? _c(
+                    "a",
+                    {
+                      staticClass:
+                        "mt-1 block px-4 py-2 text-sm leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2",
+                      attrs: { href: _vm.route("register") }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-user-circle pr-1" }),
+                      _vm._v(
+                        "\n        " +
+                          _vm._s(_vm.__("all.Register")) +
+                          "\n      "
+                      )
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2",
-                  attrs: { href: _vm.route("register") }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-user-circle pr-1" }),
-                  _vm._v(_vm._s(_vm.__("all.Register")) + "\n      ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "mt-1 block px-2 py-1 text-white rounded hover:bg-gray-200 hover:text-gray-900 sm:mt-0 sm:ml-2",
-                  attrs: { href: _vm.route("admin.index") }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-graduation-cap" }),
-                  _vm._v(" Admin2\n      ")
-                ]
-              ),
-              _vm._v(" "),
-              _c("AccountDropdown", { staticClass: "hidden sm:block sm:ml-6" })
+              _vm.isAuthenticated
+                ? _c("AccountDropdown", {
+                    staticClass: "hidden sm:block sm:ml-6",
+                    attrs: { user: _vm.user },
+                    on: { logout: _vm.logout }
+                  })
+                : _vm._e()
             ],
             1
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "px-4 py-5 border-t border-gray-800 sm:hidden" },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "mt-4" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "block text-gray-400 hover:text-white",
-                    attrs: { href: _vm.route("admin.index") }
-                  },
-                  [_vm._v("Admin")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "mt-2 block text-gray-400 hover:text-white",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Support")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "mt-2 block text-gray-400 hover:text-white",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("\n          Sign out\n        ")]
-                )
-              ])
-            ]
-          )
+          _vm.isAuthenticated
+            ? _c(
+                "div",
+                { staticClass: "px-4 py-5 border-t border-gray-800 sm:hidden" },
+                [
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("img", {
+                      staticClass:
+                        "h-8 w-8 border-2 border-gray-600 rounded-full object-cover",
+                      attrs: {
+                        src:
+                          "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+                        alt: "Your avatar"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-3 text-white" }, [
+                      _vm._v(_vm._s(_vm.user.name) + " ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-4" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "block text-gray-400 hover:text-white",
+                        attrs: { href: _vm.route("admin.index") }
+                      },
+                      [_vm._v("\n          Admin\n        ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "mt-2 block text-gray-400 hover:text-white",
+                        attrs: { href: _vm.route("contact.create") }
+                      },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(_vm.__("nav.contact")) +
+                            "\n        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "mt-2 block text-gray-400 hover:text-white",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.logout($event)
+                          }
+                        }
+                      },
+                      [_vm._v("\n          Sign out\n        ")]
+                    )
+                  ])
+                ]
+              )
+            : _vm._e()
         ]
       )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex items-center" }, [
-      _c("img", {
-        staticClass:
-          "h-8 w-8 border-2 border-gray-600 rounded-full object-cover",
-        attrs: {
-          src:
-            "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-          alt: "Your avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("span", { staticClass: "ml-3 text-white" }, [_vm._v("John ")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -102644,16 +102704,14 @@ Vue.component('account-dropdown', __webpack_require__(/*! ./components/AccountDr
 var app = new Vue({
   el: '#app'
 }); //Javascript to toggle the menu
-
-document.getElementById('nav-toggle').onclick = function () {
-  document.getElementById("nav-content").classList.toggle("hidden");
-}; //Javascript to toggle the logout button
-
-
-document.getElementById('logout-toggle').onclick = function () {
-  document.getElementById("logout-content").classList.toggle("hidden");
-}; //copie du token
-
+// document.getElementById('nav-toggle').onclick = function(){
+// document.getElementById("nav-content").classList.toggle("hidden");
+// }
+// //Javascript to toggle the logout button
+// document.getElementById('logout-toggle').onclick = function(){
+// document.getElementById("logout-content").classList.toggle("hidden");
+// }
+//copie du token
 
 document.getElementById('copyToken').onclick = function copyTok() {
   var copyText = document.getElementById("copyToken");
@@ -103221,15 +103279,21 @@ module.exports = {
     "Yeah! your bets are registered and updated! Good luck!": "Yeah! your bets are registered and updated! Good luck!",
     "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
     "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
+    "You have joined this league!": "You have joined this league!",
     "Your email address is not verified.": "Your email address is not verified.",
+    "Your message has been sent.": "Your message has been sent",
     "click here to request another": "click here to request another",
     "cookie_consentment": "By continuing to browse this site, you consent to our use of cookies to improve your online experience.",
     "created by:": "created by:",
+    "is now created, share it with this token": " is now created, share it with this token",
     "let's play": "let's play",
     "scores updated": "the scores are updated",
     "supporter": "supporter of:",
+    "the league": "the league ",
     "you have to login or register to play.": "you have to login or register to play.",
-    "your bets": "your bets"
+    "your bets": "your bets",
+    "your league has been deleted": "your league has been deleted",
+    "your league has been modified": "your league has been modified"
   },
   "en.auth": {
     "failed": "These credentials do not match our records.",
@@ -103432,15 +103496,21 @@ module.exports = {
     "Yeah! your bets are registered and updated! Good luck!": "Tus apuestas estan registradas y actualizadas, suerte!",
     "Yeah! your bets are registered! Good luck!": "Tus apuestas estan registradas, suerte!",
     "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicit\xF3 un restablecimiento de contrase\xF1a para su cuenta.",
+    "You have joined this league!": "\xA1Te has unido a esta liga!",
     "Your email address is not verified.": "Tu direcci\xF3n de correo electr\xF3nico no est\xE1 verificada.",
+    "Your message has been sent.": "Su mensaje ha sido enviado correctamente",
     "click here to request another": "haga clic aqu\xED para solicitar otro",
     "cookie_consentment": "Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en l\xEDnea.",
     "created by:": "creado por:",
+    "is now created, share it with this token": " esta creada, compartela con este token",
     "let's play": "es tu turno",
     "scores updated": "los resultados estan actualizados",
     "supporter": "oficionado de:",
+    "the league": "la liga ",
     "you have to login or register to play.": "tienes que iniciar sesi\xF3n o registrarte para juegar.",
-    "your bets": "tus apuestas"
+    "your bets": "tus apuestas",
+    "your league has been deleted": "tu liga esta borrada",
+    "your league has been modified": "la liga esta modificada"
   },
   "es.auth": {
     "failed": "Estas credenciales no coinciden con nuestros registros.",
@@ -103690,16 +103760,22 @@ module.exports = {
     "Yeah! your bets are registered and updated! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s et mis \xE0 jour! Bonne chance!",
     "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
     "You are receiving this email because we received a password reset request for your account.": "Vous recevez cet email car nous avons re\xE7u une demande de r\xE9initialisation de mot de passe pour votre compte.",
+    "You have joined this league!": "Vous avez rejoints cette ligue!",
     "Your email address is not verified.": "Votre adresse email n'a pas \xE9t\xE9 v\xE9rifi\xE9e.",
+    "Your message has been sent.": "Votre message a \xE9t\xE9 envoy\xE9",
     "click here to request another": "cliquer ici pour faire une autre demande",
     "cookie_consentment": "En poursuivant votre navigation sur ce site, vous consentez \xE0 notre utilisation des cookies pour am\xE9liorer votre exp\xE9rience en ligne.",
     "created by:": "cree par:",
     "hi": "salut",
+    "is now created, share it with this token": " est maintenant cr\xE9\xE9e, partage la avec ce token",
     "let's play": "\xE0 toi de jouer",
     "scores updated": "les scores ont \xE9t\xE9 mis \xE0 jour",
     "supporter": "supporter de:",
+    "the league": "la ligue ",
     "you have to login or register to play.": "vous devez vous identifier ou vous enregistrer pour jouer.",
-    "your bets": "tes paris"
+    "your bets": "tes paris",
+    "your league has been deleted": "ta ligue est bien supprim\xE9e!",
+    "your league has been modified": "ta ligue est bien modifi\xE9e!"
   },
   "fr.auth": {
     "failed": "Ces identifiants ne correspondent pas \xE0 nos enregistrements",
