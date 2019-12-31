@@ -86,6 +86,7 @@ return [
     'Registrar' => 'Enregistrer',
     'Send' => 'Envoyer un message',
     'Message' => 'Message',
+    'Translations'=> 'Langues',
 
     //messages
     'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',

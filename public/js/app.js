@@ -1859,7 +1859,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
   data: function data() {
     return {
       isOpen: false
@@ -1885,6 +1895,11 @@ __webpack_require__.r(__webpack_exports__);
     this.$once('hook:beforeDestroy', function () {
       document.removeEventListener('keydown', handleEscape);
     });
+  },
+  computed: {
+    isAdmin: function isAdmin() {
+      return this.user.admin === 1;
+    }
   }
 });
 
@@ -2165,6 +2180,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2193,6 +2215,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     isAuthenticated: function isAuthenticated() {
       return this.user != null;
+    },
+    isAdmin: function isAdmin() {
+      return this.user.admin === 1;
     }
   }
 });
@@ -90049,15 +90074,17 @@ var render = function() {
               "absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl"
           },
           [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
-                attrs: { href: _vm.route("admin.index") }
-              },
-              [_vm._v("Admin")]
-            ),
+            _vm.isAdmin
+              ? _c(
+                  "a",
+                  {
+                    staticClass:
+                      "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
+                    attrs: { href: _vm.route("admin.index") }
+                  },
+                  [_vm._v("Admin")]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "a",
@@ -90074,6 +90101,16 @@ var render = function() {
               {
                 staticClass:
                   "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
+                attrs: { href: _vm.route("langues") }
+              },
+              [_vm._v(_vm._s(_vm.__("all.Translations")))]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
@@ -90082,7 +90119,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Sign out")]
+              [_vm._v(_vm._s(_vm.__("all.Logout")))]
             )
           ]
         )
@@ -90280,7 +90317,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:font-bold hover:bg-gray-800",
+                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-gray-800",
                 attrs: { href: "/" }
               },
               [_vm._v("\n            Apuestamigo\n     ")]
@@ -90347,7 +90384,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "block px-2 py-1 text-white font-medium hover:font-bold rounded hover:bg-gray-800 ",
+                    "block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 ",
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
@@ -90362,7 +90399,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white font-medium hover:font-bold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
@@ -90378,7 +90415,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "mt-1 block px-4 py-2 text-sm leading-none border  rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2 ",
+                        "mt-1 block px-4 py-2 text-sm leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2 ",
                       attrs: { href: _vm.route("login") }
                     },
                     [
@@ -90444,14 +90481,16 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "mt-4" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "block text-gray-400 hover:text-white",
-                        attrs: { href: _vm.route("admin.index") }
-                      },
-                      [_vm._v("\n          Admin\n        ")]
-                    ),
+                    _vm.isAdmin
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "block text-gray-400 hover:text-white",
+                            attrs: { href: _vm.route("admin.index") }
+                          },
+                          [_vm._v("\n            Admin\n        ")]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "a",
@@ -90462,8 +90501,24 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n          " +
+                          "\n            " +
                             _vm._s(_vm.__("nav.contact")) +
+                            "\n        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "mt-2 block text-gray-400 hover:text-white",
+                        attrs: { href: _vm.route("langues") }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.__("all.Translations")) +
                             "\n        "
                         )
                       ]
@@ -90482,7 +90537,13 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("\n          Sign out\n        ")]
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(_vm.__("all.Logout")) +
+                            "\n        "
+                        )
+                      ]
                     )
                   ])
                 ]
@@ -103238,7 +103299,7 @@ module.exports = {
     "Join a league": "Join a league",
     "Learn_More": "Learn More",
     "Login": "Login",
-    "Logout": "Logout",
+    "Logout": "Sign Out",
     "Members only": "Members only",
     "Message": "Message",
     "Name": "Name",
@@ -103270,6 +103331,7 @@ module.exports = {
     "Too Many Attempts.": "Too Many Attempts.",
     "Too Many Requests": "Too Many Requests",
     "Too late for this date!": "Too late for this date",
+    "Translations": "Translations",
     "Unauthorized": "Unauthorized",
     "Verify Email Address": "Verify Email Address",
     "Verify Your Email Address": "Verify Your Email Address",
@@ -103487,6 +103549,7 @@ module.exports = {
     "Too Many Attempts.": "Demasiadas intentos",
     "Too Many Requests": "Demasiadas peticiones",
     "Too late for this date!": "Demasiado tarde para esta fecha",
+    "Translations": "Idioma",
     "Unauthorized": "No autorizado",
     "Verify Email Address": "Confirma tu correo electr\xF3nico",
     "Verify Your Email Address": "Verifica tu correo electr\xF3nico",
@@ -103750,6 +103813,7 @@ module.exports = {
     "Too Many Attempts.": "Trop de tentatives.",
     "Too Many Requests": "Trop de requ\xEAtes",
     "Too late for this date!": "Trop tard pour cette joun\xE9e!",
+    "Translations": "Langues",
     "Unauthorized": "Non autoris\xE9",
     "Verify Email Address": "V\xE9rification de l'adresse email",
     "Verify Your Email Address": "V\xE9rifiez votre adresse email",
@@ -104023,6 +104087,11 @@ var Ziggy = {
     },
     "home": {
       "uri": "home",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "langues": {
+      "uri": "langues",
       "methods": ["GET", "HEAD"],
       "domain": null
     },

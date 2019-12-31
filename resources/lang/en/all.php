@@ -18,7 +18,7 @@ return [
   'If you’re having trouble clicking the \':actionText\' button, copy and paste the URL below\ninto your web browser=> [:actionURL](:actionURL)'=> 'If you’re having trouble clicking the \':actionText\' button, copy and paste the URL below\ninto your web browser=> [:actionURL](:actionURL)',
   'Invalid signature.'=> 'Invalid signature.',
   'Login'=> 'Login',
-  'Logout'=> 'Logout',
+  'Logout'=> 'Sign Out',
   'Name'=> 'Name',
   'Not Found'=> 'Not Found',
   'Oh no'=> 'Oh no',
@@ -76,6 +76,7 @@ return [
   'Registrar' =>'Register',
   'Send' => 'Send your message',
   'Message' => 'Message',
+  'Translations' => 'Translations',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',

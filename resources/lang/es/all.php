@@ -77,6 +77,7 @@ return [
   'Registrar' => 'Registrar',
   'Send' => 'Enviar mensaje',
   'Message' => 'Mensaje',
+  'Translations' => 'Idioma',
 
 
   //messages

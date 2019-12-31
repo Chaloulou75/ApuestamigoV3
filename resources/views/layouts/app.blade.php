@@ -18,7 +18,6 @@
         <div id="app">
 
             {{-- @include('layouts/nav') --}}
-            {{-- @include('layouts/nav2') --}}
 
             <navbar-component :user='@json(Auth::user())'></navbar-component>
 
