@@ -1,9 +1,11 @@
 @component('mail::message')
 
-<ul>
-	<li>{{$name}}</li>
-	<li>{{$email}}</li>
-</ul>
+# Hey admin
+
+-{{$name}}
+
+-{{$email}}
+
 
 
 

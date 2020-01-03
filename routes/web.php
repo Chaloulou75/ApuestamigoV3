@@ -14,9 +14,8 @@
 Route::group(
 [
 	'prefix' => LaravelLocalization::setLocale(),
-	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'no-cache']
-], function(){
-
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 
+					'no-cache']], function(){
 
 	Route::get('/', function() {
 	    return view('index');

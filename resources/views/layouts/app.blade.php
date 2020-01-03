@@ -17,8 +17,6 @@
     <body class="body bg-gray-700">
         <div id="app">
 
-            {{-- @include('layouts/nav') --}}
-
             <navbar-component :user='@json(Auth::user())'></navbar-component>
 
             @include('layouts/partials/carousel')

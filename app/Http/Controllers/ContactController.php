@@ -16,8 +16,14 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=> 'required|min:3',
+            'email' =>'required|email',
+            'msg'=>'required|min:10',
+        ]);
+
     	$mailable = new ContactMessagesCreated($request->name, $request->email, $request->msg);
-    	Mail::to('admin@apuestamigo.com')->send($mailable);
+    	Mail::to('c.jeandey@gmail.com')->send($mailable);
 
     	return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
     }
