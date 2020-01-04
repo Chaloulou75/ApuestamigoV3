@@ -35,9 +35,7 @@
         @endif
       </div>
     </form>
-    <p class="text-center text-gray-400 text-xs">
-      &copy;2019 Charles Jeandey. {{__('all.All rights reserved.')}}.
-    </p>
+    
   </div>
 
 @endsection

@@ -13,8 +13,6 @@
 
       <a :href="route('contact.create')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ __('nav.contact') }}</a>
 
-      <a :href="route('langues')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ __('all.Translations') }}</a>
-
       <a href="#" @click.prevent="logout" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ __('all.Logout') }}</a>
       
     </div>

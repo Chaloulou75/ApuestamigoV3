@@ -1859,8 +1859,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -90095,16 +90093,6 @@ var render = function() {
                 attrs: { href: _vm.route("contact.create") }
               },
               [_vm._v(_vm._s(_vm.__("nav.contact")))]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
-                attrs: { href: _vm.route("langues") }
-              },
-              [_vm._v(_vm._s(_vm.__("all.Translations")))]
             ),
             _vm._v(" "),
             _c(
