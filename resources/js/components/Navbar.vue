@@ -35,10 +35,16 @@
         </a>
 
         <a :href="route('ligues.create')" 
-
             class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"> 
           <i class='far fa-hand-point-right pr-1'></i>
            {{ __('nav.creer') }}
+        </a>
+
+        <a :href="route('langues')" 
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+            <!-- <i class="fas fa-globe "></i> -->
+            <i class="fas fa-globe-americas pr-1"></i>
+              {{ __('all.Translations') }}
         </a>
         
         <a :href="route('login')" 
@@ -78,11 +84,6 @@
           <a :href="route('contact.create')" 
               class="mt-2 block text-gray-400 hover:text-white">
               {{ __('nav.contact') }}
-          </a>
-
-          <a :href="route('langues')" 
-              class="mt-2 block text-gray-400 hover:text-white">
-              {{ __('all.Translations') }}
           </a>
 
           <a href="#" 

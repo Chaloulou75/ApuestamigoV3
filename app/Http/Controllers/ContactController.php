@@ -27,4 +27,11 @@ class ContactController extends Controller
 
     	return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
     }
+
+    public function langues()
+
+    {
+
+        return view('layouts/partials/langues');
+    }
 }

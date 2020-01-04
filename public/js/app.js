@@ -2187,6 +2187,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -90410,6 +90411,23 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
+                  attrs: { href: _vm.route("langues") }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-globe-americas pr-1" }),
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.__("all.Translations")) +
+                      "\n      "
+                  )
+                ]
+              ),
+              _vm._v(" "),
               !_vm.isAuthenticated
                 ? _c(
                     "a",
@@ -90503,22 +90521,6 @@ var render = function() {
                         _vm._v(
                           "\n            " +
                             _vm._s(_vm.__("nav.contact")) +
-                            "\n        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "mt-2 block text-gray-400 hover:text-white",
-                        attrs: { href: _vm.route("langues") }
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.__("all.Translations")) +
                             "\n        "
                         )
                       ]

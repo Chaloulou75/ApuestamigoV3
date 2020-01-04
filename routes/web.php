@@ -25,7 +25,7 @@ Route::group(
 
 	Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::get('/langues', 'HomeController@langues')->name('langues');
+	Route::get('/langues', 'ContactController@langues')->name('langues');
 
 	Route::get('/contact', 'ContactController@create')->name('contact.create');
 	Route::post('/contact', 'ContactController@store')->name('contact.store');
