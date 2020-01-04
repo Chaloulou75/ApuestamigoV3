@@ -31,12 +31,5 @@ class HomeController extends Controller
 
         return view('index');
     }
-
-    public function langues()
-
-    {
-
-        return view('layouts/partials/langues');
-    }
     
 }
