@@ -40,6 +40,12 @@
            {{ __('nav.creer') }}
         </a>
 
+        <a :href="route('about')" 
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"> 
+          <i class="fas fa-info-circle pr-1"></i> 
+           {{ __('nav.about') }}
+        </a>
+
         <a :href="route('langues')" 
             class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
             <!-- <i class="fas fa-globe "></i> -->
@@ -69,7 +75,7 @@
       <div class="px-4 py-5 border-t border-gray-800 sm:hidden" v-if="isAuthenticated">
 
         <div class="flex items-center">
-          <img class="h-8 w-8 border-2 border-gray-600 rounded-full object-cover" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80" alt="Your avatar">
+          <img class="h-8 w-8 border border-gray-900 rounded-full object-cover bg-white" src="/img/cup.png" alt="cup">
           <span class="ml-3 text-white">{{user.name}} </span>
         </div>
 

@@ -2186,6 +2186,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -90033,7 +90039,7 @@ var render = function() {
       "button",
       {
         staticClass:
-          "relative z-10 block h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white",
+          "relative z-10 block h-8 w-8 rounded-full overflow-hidden border border-gray-900 focus:outline-none focus:border-white",
         on: {
           click: function($event) {
             _vm.isOpen = !_vm.isOpen
@@ -90042,12 +90048,8 @@ var render = function() {
       },
       [
         _c("img", {
-          staticClass: "h-full w-full object-cover",
-          attrs: {
-            src:
-              "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-            alt: "Your avatar"
-          }
+          staticClass: "h-full w-full object-cover bg-white",
+          attrs: { src: "/img/cup.png", alt: "cup" }
         })
       ]
     ),
@@ -90404,6 +90406,21 @@ var render = function() {
                 {
                   staticClass:
                     "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
+                  attrs: { href: _vm.route("about") }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-info-circle pr-1" }),
+                  _vm._v(
+                    " \n         " + _vm._s(_vm.__("nav.about")) + "\n      "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("langues") }
                 },
                 [
@@ -90473,12 +90490,8 @@ var render = function() {
                   _c("div", { staticClass: "flex items-center" }, [
                     _c("img", {
                       staticClass:
-                        "h-8 w-8 border-2 border-gray-600 rounded-full object-cover",
-                      attrs: {
-                        src:
-                          "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-                        alt: "Your avatar"
-                      }
+                        "h-8 w-8 border border-gray-900 rounded-full object-cover bg-white",
+                      attrs: { src: "/img/cup.png", alt: "cup" }
                     }),
                     _vm._v(" "),
                     _c("span", { staticClass: "ml-3 text-white" }, [
@@ -103283,6 +103296,7 @@ __webpack_require__.r(__webpack_exports__);
 module.exports = {
   "en.all": {
     "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
+    "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.",
     "All rights reserved.": "All rights reserved.",
     "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
     "Bets": "Bets",
@@ -103299,6 +103313,7 @@ module.exports = {
     "Forbidden": "Forbidden",
     "Forgot Your Password?": "Forgot Your Password?",
     "Go Home": "Go Home",
+    "Go! It's your turn!": "Go! It's your turn!",
     "Hello!": "Hello!",
     "Hey": "Hey",
     "If you did not create an account, no further action is required.": "If you did not create an account, no further action is required.",
@@ -103314,8 +103329,11 @@ module.exports = {
     "Members only": "Members only",
     "Message": "Message",
     "Name": "Name",
+    "No, Apuestamigo is not yet another online betting site ...": "No, Apuestamigo is not yet another online betting site ...",
     "Not Found": "Not Found",
     "Oh no": "Oh no",
+    "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.": "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.",
+    "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.": "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.",
     "Page Expired": "Page Expired",
     "Parameters": "Parameters",
     "Password": "Password",
@@ -103335,6 +103353,7 @@ module.exports = {
     "Server Error": "Server Error",
     "Service Unavailable": "Service Unavailable",
     "Share this league:": "Share this league:",
+    "So how does Apuestamigo work?": "So how does Apuestamigo work?",
     "Start of the next round": "Start of the next round",
     "This action is unauthorized.": "This action is unauthorized.",
     "This password reset link will expire in =>count minutes.": "This password reset link will expire in =>count minutes.",
@@ -103347,13 +103366,16 @@ module.exports = {
     "Verify Email Address": "Verify Email Address",
     "Verify Your Email Address": "Verify Your Email Address",
     "We won't ask for your password again for a few hours.": "We won't ask for your password again for a few hours.",
+    "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.",
     "What's the name of your league?": "What's the name of your league?",
     "Whoops!": "Whoops!",
     "Yeah! your bets are registered and updated! Good luck!": "Yeah! your bets are registered and updated! Good luck!",
     "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
+    "You already have joined this league!": "You already have joined this league!",
     "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
     "You have joined this league!": "You have joined this league!",
     "Your email address is not verified.": "Your email address is not verified.",
+    "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)",
     "Your message has been sent.": "Your message has been sent",
     "click here to request another": "click here to request another",
     "cookie_consentment": "By continuing to browse this site, you consent to our use of cookies to improve your online experience.",
@@ -103373,6 +103395,7 @@ module.exports = {
     "throttle": "Too many login attempts. Please try again in :seconds seconds."
   },
   "en.nav": {
+    "about": "How it works",
     "contact": "Contact",
     "creer": "Create a league",
     "ligues": "My Leagues"
@@ -103500,6 +103523,7 @@ module.exports = {
   },
   "es.all": {
     "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificaci\xF3n a su correo electr\xF3nico.",
+    "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Despu\xE9s de que te hayas registrado y / o identificado, crea una liga con tus amigos o colegas (o m\xE1s, no hay l\xEDmite de jugadores por liga, pero a\xFAn es mucho m\xE1s divertido con tus amigos y conocidos). Te desafiar\xE1s a tus amigos durante una temporada de la Champions Liga hasta la noche de la final para descubrir qui\xE9n es el mejor pronosticador de la banda.",
     "All rights reserved.": "Todos los derechos reservados.",
     "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electr\xF3nico con el enlace de verificaci\xF3n que le fue enviado.",
     "Bets": "Apuestas",
@@ -103516,6 +103540,7 @@ module.exports = {
     "Forbidden": "Prohibido",
     "Forgot Your Password?": "\xBFOlvid\xF3 su contrase\xF1a?",
     "Go Home": "Ir a inicio",
+    "Go! It's your turn!": "\xA1Vamos! \xA1Es tu turno!",
     "Hello!": "\xA1Hola!",
     "Hey": "Hola",
     "If you did not create an account, no further action is required.": "Si no ha creado una cuenta, no se requiere ninguna acci\xF3n adicional.",
@@ -103531,8 +103556,11 @@ module.exports = {
     "Members only": "Solo miembros",
     "Message": "Mensaje",
     "Name": "Nombre",
+    "No, Apuestamigo is not yet another online betting site ...": "No, Apuestamigo no es otro sitio de apuestas en l\xEDnea ...",
     "Not Found": "No encontrado",
     "Oh no": "Oh no ",
+    "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.": "Una vez que se ha creado su liga, la comparte con sus amigos envi\xE1ndoles el token que se encuentra en la configuraci\xF3n de la liga. Pueden unirse a usted en una liga una vez registrado insertando el token. Nada muy complicado.",
+    "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.": "En el transcurso de los partidos, su clasificaci\xF3n evoluciona frente a sus amigos (un puntaje exacto encontrado da 3 puntos / buen resultado pero no 1 punto exacto / el resto 0). El campe\xF3n es, por supuesto, el que tiene m\xE1s puntos al final de la temporada.",
     "Page Expired": "P\xE1gina Expirada",
     "Page Not Found": "P\xE1gina no encontrada",
     "Parameters": "Parametros",
@@ -103553,6 +103581,7 @@ module.exports = {
     "Server Error": "Error del servidor",
     "Service Unavailable": "Servicio no disponible",
     "Share this league:": "Comparte esta liga:",
+    "So how does Apuestamigo work?": "Entonces, \xBFc\xF3mo funciona Apuestamigo?",
     "Start of the next round": "Comienzo de la siguiente ronda",
     "This action is unauthorized.": "Esta acci\xF3n no est\xE1 autorizada.",
     "This password reset link will expire in :count minutes.": "Este enlace de restablecimiento de contrase\xF1a caducar\xE1 en :count minutos.",
@@ -103565,13 +103594,16 @@ module.exports = {
     "Verify Email Address": "Confirma tu correo electr\xF3nico",
     "Verify Your Email Address": "Verifica tu correo electr\xF3nico",
     "We won't ask for your password again for a few hours.": "No pediremos tu contrase\xF1a de nuevo por unas horas.",
+    "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "Bueno, s\xED, necesariamente un poco, pero de manera diferente. Esto es solo para guiarte los primeros d\xEDas, el resto vendr\xE1 solo.",
     "What's the name of your league?": "Que es el nombre de tu liga?",
     "Whoops!": "\xA1Vaya!",
     "Yeah! your bets are registered and updated! Good luck!": "Tus apuestas estan registradas y actualizadas, suerte!",
     "Yeah! your bets are registered! Good luck!": "Tus apuestas estan registradas, suerte!",
+    "You already have joined this league!": "\xA1Ya te has unido a esta liga!",
     "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicit\xF3 un restablecimiento de contrase\xF1a para su cuenta.",
     "You have joined this league!": "\xA1Te has unido a esta liga!",
     "Your email address is not verified.": "Tu direcci\xF3n de correo electr\xF3nico no est\xE1 verificada.",
+    "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Tu liga puede comenzar: cada ronda de la Champions Liga corresponde a un d\xEDa de Apuestamigo en el que compites. \xA1No olvides hacer tus predicciones antes de cada ronda de la Champions liga, despu\xE9s del comienzo del primer partido, ser\xE1 DEMASIADO TARDE! (y no es necesario sobornar al administrador, \xE9l no puede hacer nada por usted ...)",
     "Your message has been sent.": "Su mensaje ha sido enviado correctamente",
     "click here to request another": "haga clic aqu\xED para solicitar otro",
     "cookie_consentment": "Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en l\xEDnea.",
@@ -103591,6 +103623,7 @@ module.exports = {
     "throttle": "Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos."
   },
   "es.nav": {
+    "about": "Como funciona",
     "contact": "Contacto",
     "creer": "Crear una liga",
     "ligues": "Mis Ligas"
@@ -103757,6 +103790,7 @@ module.exports = {
   },
   "fr.all": {
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\xE9rification a \xE9t\xE9 envoy\xE9 \xE0 votre adresse email.",
+    "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Apr\xE8s vous \xEAtre enregitr\xE9 et/ou identifi\xE9, cr\xE9ez une ligue avec vos potes ou coll\xE8gues (ou plus, il n'y a pas de limite de joueurs par ligue, mais c'est quand m\xEAme autrement plus fun avec ses potes et connaissances). Vous vous defierez ENTRE VOUS pendant une saison de ligue des Champions jusqu'au soir de la finale pour savoir qui est le meilleur pronostiqueur de la bande.",
     "All rights reserved.": "Tous droits r\xE9serv\xE9s.",
     "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez v\xE9rifier votre courrier \xE9lectronique pour un lien de v\xE9rification.",
     "Bets": "Pronostics",
@@ -103774,6 +103808,7 @@ module.exports = {
     "Forbidden": "Interdit",
     "Forgot Your Password?": "Vous avez oubli\xE9 votre mot de passe ?",
     "Go Home": "Aller \xE0 l'accueil",
+    "Go! It's your turn!": "Allez Go! A vous de jouer!",
     "Hello!": "Bonjour !",
     "Hey": "Salut",
     "If you did not create an account, no further action is required.": "Si vous n'avez pas cr\xE9\xE9 de compte, aucune action suppl\xE9mentaire n'est requise.",
@@ -103789,8 +103824,11 @@ module.exports = {
     "Members only": "Membres seulement",
     "Message": "Message",
     "Name": "Nom",
+    "No, Apuestamigo is not yet another online betting site ...": "Non, Apuestamigo n'est pas un \xE9ni\xE8me site de pari en ligne...",
     "Not Found": "Non trouv\xE9",
     "Oh no": "Oh non",
+    "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.": "Une fois votre ligue cr\xE9\xE9e, vous la partagez avec vos potes en leur envoyant le mot de passe qui se trouve au niveau des param\xE8tres de la ligue. Ils/Elles pourront ainsi vous rejoindre au sein d'une ligue une fois enregistr\xE9 en ins\xE9rant le token. Rien de bien compliqu\xE9.",
+    "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.": "Au fil des matchs, votre classement \xE9volue face \xE0 vos amis (un score exact trouv\xE9 donne 3 points / bon r\xE9sultat mais pas exact 1 point / le reste 0). Le champion est bien s\xFBr celui qui a le plus de points \xE0 la fin de la saison.",
     "Page Expired": "Page expir\xE9e",
     "Page Not Found": "Page non trouv\xE9e",
     "Parameters": "Parametres",
@@ -103811,6 +103849,7 @@ module.exports = {
     "Server Error": "Erreur serveur",
     "Service Unavailable": "Service indisponible",
     "Share this league:": "Partage cette ligue:",
+    "So how does Apuestamigo work?": "Bon, alors, comment \xE7a marche Apuestamigo?",
     "Sorry, the page you are looking for could not be found.": "D\xE9sol\xE9, la page que vous recherchez est introuvable.",
     "Sorry, we are doing some maintenance. Please check back soon.": "D\xE9sol\xE9, nous sommes en maintenance. Veuillez revenir plus tard.",
     "Sorry, you are forbidden from accessing this page.": "D\xE9sol\xE9, vous ne pouvez acc\xE9der \xE0 cette page.",
@@ -103829,14 +103868,17 @@ module.exports = {
     "Verify Email Address": "V\xE9rification de l'adresse email",
     "Verify Your Email Address": "V\xE9rifiez votre adresse email",
     "We won't ask for your password again for a few hours.": "Nous ne vous demanderons plus votre mot de passe pour quelques heures",
+    "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "",
     "What's the name of your league?": "Comment s'appelle votre ligue?",
     "Whoops!": "Oups !",
     "Whoops, something went wrong on our servers.": "Oups, quelque chose s'est mal pass\xE9 sur nos serveurs.",
     "Yeah! your bets are registered and updated! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s et mis \xE0 jour! Bonne chance!",
     "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
+    "You already have joined this league!": "Vous avez d\xE9j\xE0 rejoint cette ligue!",
     "You are receiving this email because we received a password reset request for your account.": "Vous recevez cet email car nous avons re\xE7u une demande de r\xE9initialisation de mot de passe pour votre compte.",
     "You have joined this league!": "Vous avez rejoints cette ligue!",
     "Your email address is not verified.": "Votre adresse email n'a pas \xE9t\xE9 v\xE9rifi\xE9e.",
+    "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Votre ligue peut alors commencer : chaque tour de ligue des Champions correspond \xE0 une journ\xE9e Apuestamigo dans laquelle vous vous affrontez. N'oubliez donc pas de faire vos pronostics avant chaque tour de ligue des Champions, apr\xE8s le d\xE9but du premier match, il sera TROP TARD! (et pas la peine de soudoyer l'administrateur, il ne pourra rien pour vous...)",
     "Your message has been sent.": "Votre message a \xE9t\xE9 envoy\xE9",
     "click here to request another": "cliquer ici pour faire une autre demande",
     "cookie_consentment": "En poursuivant votre navigation sur ce site, vous consentez \xE0 notre utilisation des cookies pour am\xE9liorer votre exp\xE9rience en ligne.",
@@ -103857,6 +103899,7 @@ module.exports = {
     "throttle": "Tentatives de connexion trop nombreuses. Veuillez essayer de nouveau dans :seconds secondes."
   },
   "fr.nav": {
+    "about": "Comment \xE7a marche",
     "contact": "Contact",
     "creer": "Creer une ligue",
     "ligues": "Mes ligues"
@@ -104103,6 +104146,11 @@ var Ziggy = {
     },
     "langues": {
       "uri": "langues",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "about": {
+      "uri": "about",
       "methods": ["GET", "HEAD"],
       "domain": null
     },

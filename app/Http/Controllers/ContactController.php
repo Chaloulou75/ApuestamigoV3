@@ -34,4 +34,10 @@ class ContactController extends Controller
 
         return view('layouts/partials/langues');
     }
+
+    public function about()
+
+    {
+        return view('pages/about');
+    }
 }

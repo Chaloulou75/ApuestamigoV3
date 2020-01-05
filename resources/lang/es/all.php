@@ -78,6 +78,14 @@ return [
   'Send' => 'Enviar mensaje',
   'Message' => 'Mensaje',
   'Translations' => 'Idioma',
+  'So how does Apuestamigo work?'=> 'Entonces, ¿cómo funciona Apuestamigo?',
+  'No, Apuestamigo is not yet another online betting site ...' => 'No, Apuestamigo no es otro sitio de apuestas en línea ...',
+  'Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.' => 'Bueno, sí, necesariamente un poco, pero de manera diferente. Esto es solo para guiarte los primeros días, el resto vendrá solo.',
+  'After you have registered and / or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it\'s still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.' => 'Después de que te hayas registrado y / o identificado, crea una liga con tus amigos o colegas (o más, no hay límite de jugadores por liga, pero aún es mucho más divertido con tus amigos y conocidos). Te desafiarás a tus amigos durante una temporada de la Champions Liga hasta la noche de la final para descubrir quién es el mejor pronosticador de la banda.',
+  'Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.' => 'Una vez que se ha creado su liga, la comparte con sus amigos enviándoles el token que se encuentra en la configuración de la liga. Pueden unirse a usted en una liga una vez registrado insertando el token. Nada muy complicado.',
+  'Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can\'t do anything for you ...)'=> 'Tu liga puede comenzar: cada ronda de la Champions Liga corresponde a un día de Apuestamigo en el que compites. ¡No olvides hacer tus predicciones antes de cada ronda de la Champions liga, después del comienzo del primer partido, será DEMASIADO TARDE! (y no es necesario sobornar al administrador, él no puede hacer nada por usted ...)',
+  'Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points / good result but not exact 1 point / the rest 0). The champion is of course the one with the most points at the end of the season.' => 'En el transcurso de los partidos, su clasificación evoluciona frente a sus amigos (un puntaje exacto encontrado da 3 puntos / buen resultado pero no 1 punto exacto / el resto 0). El campeón es, por supuesto, el que tiene más puntos al final de la temporada.',
+  'Go! It\'s your turn!'=> '¡Vamos! ¡Es tu turno!',
 
 
   //messages
@@ -96,5 +104,6 @@ return [
   //cookie
   'Learn_More' =>'Leer mas',
   'cookie_consentment' => 'Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en línea.',
+
 
   ];
