@@ -88,6 +88,7 @@ return [
   'your league has been modified' => 'your league has been modified',
   'your league has been deleted' => 'your league has been deleted',
   'You have joined this league!' => 'You have joined this league!',
+  'You already have joined this league!' => 'You already have joined this league!',
   'Your message has been sent.' => 'Your message has been sent',
   
 

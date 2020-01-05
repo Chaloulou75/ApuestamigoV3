@@ -192,6 +192,15 @@ class LigueController extends Controller
             
             //lié le user avec la ligue créé
             $user = Auth::user();
+
+            $userLigueExist = $user->ligues()->wherePivot('ligue_id', $ligue->id)->exists();
+            //dd($userLigueExist);
+
+            if($userLigueExist === true){
+
+                return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', __('all.You already have joined this league!'));
+            }
+
             $user->ligues()->attach($ligue);
           
             return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', __('all.You have joined this league!'));

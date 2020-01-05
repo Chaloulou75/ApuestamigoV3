@@ -90,6 +90,7 @@ return [
   'your league has been modified' => 'la liga esta modificada',
   'your league has been deleted' => 'tu liga esta borrada',
   'You have joined this league!'  =>'¡Te has unido a esta liga!',
+  'You already have joined this league!' => '¡Ya te has unido a esta liga!',
   'Your message has been sent.' => 'Su mensaje ha sido enviado correctamente',
 
   //cookie
