@@ -14,7 +14,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
     </head>
-    <body class="body bg-blue-500">
+    <body class="body bg-scroll" style="background-image: url(/img/champions.png)">
         <div id="app">
 
             <navbar-component :user='@json(Auth::user())'></navbar-component>
