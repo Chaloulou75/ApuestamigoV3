@@ -14,7 +14,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
     </head>
-    <body class="body bg-gray-700">
+    <body class="body bg-blue-500">
         <div id="app">
 
             <navbar-component :user='@json(Auth::user())'></navbar-component>

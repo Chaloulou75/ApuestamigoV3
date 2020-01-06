@@ -103868,7 +103868,7 @@ module.exports = {
     "Verify Email Address": "V\xE9rification de l'adresse email",
     "Verify Your Email Address": "V\xE9rifiez votre adresse email",
     "We won't ask for your password again for a few hours.": "Nous ne vous demanderons plus votre mot de passe pour quelques heures",
-    "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "",
+    "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "Bon, si, n\xE9cessairement un peu, mais diff\xE9remment. C'est juste pour vous guider les premiers jours, le reste viendra tout seul.",
     "What's the name of your league?": "Comment s'appelle votre ligue?",
     "Whoops!": "Oups !",
     "Whoops, something went wrong on our servers.": "Oups, quelque chose s'est mal pass\xE9 sur nos serveurs.",
