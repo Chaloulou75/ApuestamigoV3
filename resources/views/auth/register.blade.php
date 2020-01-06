@@ -9,7 +9,7 @@
         @csrf
 
         <div class="mb-4">
-            <label for="name" class="block text-white text-base font-bold mb-2">{{ __('all.Name') }}</label>
+            <label for="name" class="block text-white text-base font-medium mb-2">{{ __('all.Name') }}</label>
 
             <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
              @error('name') bg-red-dark @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="email" class="block text-white text-base font-bold mb-2">{{ __('all.E-Mail Address') }}</label>
+            <label for="email" class="block text-white text-base font-medium mb-2">{{ __('all.E-Mail Address') }}</label>
            
                 <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email" autofocus>
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="club" class="block text-white text-base font-bold mb-2">
+            <label for="club" class="block text-white text-base font-medium mb-2">
                 {{ __('all.Favorite Club') }}
             </label>            
               <select id="club" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="{{ old('club') }}" required>              
@@ -92,7 +92,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="password" class="block text-white text-base font-bold mb-2">
+            <label for="password" class="block text-white text-base font-medium mb-2">
                 {{ __('all.Password') }}
             </label>            
             <input id="password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') bg-red-dark @enderror" name="password" required autocomplete="new-password">
@@ -105,7 +105,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="password-confirm" class="block text-white text-base font-bold mb-2"class="block text-gray-700 text-base font-bold mb-2">
+            <label for="password-confirm" class="block text-white text-base font-medium mb-2">
                 {{ __('all.Confirm Password') }}
             </label>
             <input id="password-confirm" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirmation" required autocomplete="new-password">            
@@ -113,7 +113,7 @@
 
         <div class="mb-4">
             <div class="flex items-center justify-between">
-                <button class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+                <button class="bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
                     {{ __('all.Register') }}
                 </button>
             </div>
