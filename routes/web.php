@@ -36,6 +36,8 @@ Route::group(
 
 	Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigues');
 
+	Route::post('/ligues/{ligue}/quitLigue', 'LigueController@quitLigue')->name('quitLigue');
+
 	Route::resource('ligues', 'LigueController');
 
 	Route::get('/ligues/{ligue}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');

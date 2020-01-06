@@ -71,12 +71,12 @@ class LigueController extends Controller
             $user_club = Auth::user()->club;
 
             $validator = Validator::make($request->all(), [
-                'name' => 'required|max:255',
+                'name' => 'required|min:2|max:100',
                 'token' => 'unique',
             ]);
 
             if ($validator->fails()) {
-                return redirect('ligues/create')
+                return redirect('ligues.create')
                             ->withErrors($validator)
                             ->withInput();
             }
@@ -93,7 +93,7 @@ class LigueController extends Controller
             $user->ligues()->attach($ligue);
 
             //redirection avec message
-            return redirect('/ligues')->with('message.level', 'success')->with('message.content',  __('all.the league')  . $name .   __('all.is now created, share it with this token') .' : ' . $token . ' ');
+            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content',  __('all.the league')  . $name .   __('all.is now created, share it with this token') .' : ' . $token . ' ');
         }
 
         return redirect('login');
@@ -155,7 +155,7 @@ class LigueController extends Controller
             'name' => $name,           
             ]);
 
-        return redirect('/ligues')->with('message.level', 'success')->with('message.content', __('all.your league has been modified'));
+        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your league has been modified'));
     }
 
     /**
@@ -170,7 +170,7 @@ class LigueController extends Controller
         $ligue = ligue::findOrFail($ligue->id);
         $ligue->delete();
         
-        return redirect('/ligues')->with('message.level', 'success')->with('message.content', __('all.your league has been deleted'));       
+        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your league has been deleted'));       
     }
 
     public function joinLiguesIndex()
@@ -207,6 +207,17 @@ class LigueController extends Controller
         }
 
         return redirect('login');
+
+    }
+
+    public function quitLigue(Ligue $ligue)
+    {                  
+            //le user 
+            $user = Auth::user();
+
+            $user->ligues()->detach($ligue);
+
+            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.Ok you are not anymore in this league!'));
 
     }
 

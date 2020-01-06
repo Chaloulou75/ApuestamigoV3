@@ -86,7 +86,8 @@ return [
   'Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can\'t do anything for you ...)'=> 'Tu liga puede comenzar: cada ronda de la Champions Liga corresponde a un día de Apuestamigo en el que compites. ¡No olvides hacer tus predicciones antes de cada ronda de la Champions liga, después del comienzo del primer partido, será DEMASIADO TARDE! (y no es necesario sobornar al administrador, él no puede hacer nada por usted ...)',
   'Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points / good result but not exact 1 point / the rest 0). The champion is of course the one with the most points at the end of the season.' => 'En el transcurso de los partidos, su clasificación evoluciona frente a sus amigos (un puntaje exacto encontrado da 3 puntos / buen resultado pero no 1 punto exacto / el resto 0). El campeón es, por supuesto, el que tiene más puntos al final de la temporada.',
   'Go! It\'s your turn!'=> '¡Vamos! ¡Es tu turno!',
-
+  'Leave this league?' => 'Dejar esta  liga?',
+  'Leave' => 'Dejar',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Tus apuestas estan registradas, suerte!',
@@ -100,6 +101,7 @@ return [
   'You have joined this league!'  =>'¡Te has unido a esta liga!',
   'You already have joined this league!' => '¡Ya te has unido a esta liga!',
   'Your message has been sent.' => 'Su mensaje ha sido enviado correctamente',
+  'Ok, you are not anymore in this league!' => 'Ok, ya no estás en esta liga!',
 
   //cookie
   'Learn_More' =>'Leer mas',

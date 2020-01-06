@@ -19,6 +19,6 @@ class NoCacheMiddleware
 
         $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
 
-        return $next($request);
+        return $response;
     }
 }

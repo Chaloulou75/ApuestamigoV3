@@ -90296,7 +90296,7 @@ var render = function() {
     "header",
     {
       staticClass:
-        "bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
+        "bg-transparent sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
     },
     [
       _c(
