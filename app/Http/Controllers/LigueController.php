@@ -212,12 +212,12 @@ class LigueController extends Controller
 
     public function quitLigue(Ligue $ligue)
     {                  
-            //le user 
-            $user = Auth::user();
+        //le user 
+        $user = Auth::user();
 
-            $user->ligues()->detach($ligue);
+        $user->ligues()->detach($ligue);
 
-            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.Ok, you are not anymore in this league!'));
+        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.Ok, you are not anymore in this league!'));
 
     }
 

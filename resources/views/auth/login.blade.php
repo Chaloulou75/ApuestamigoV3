@@ -25,7 +25,7 @@
                   @enderror
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-blue-600 hover:bg-blue-800 text-white font-medium py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
           {{ __('all.Login') }}
         </button>
         @if (Route::has('password.request'))  
