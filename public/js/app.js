@@ -90308,7 +90308,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-gray-800",
+                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-gray-900",
                 attrs: { href: "/" }
               },
               [_vm._v("\n            Apuestamigo\n     ")]
@@ -90375,7 +90375,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 ",
+                    "block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 ",
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
@@ -90390,7 +90390,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
@@ -90405,7 +90405,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("about") }
                 },
                 [
@@ -90420,7 +90420,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-800 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("langues") }
                 },
                 [
@@ -103324,6 +103324,8 @@ module.exports = {
     "Invalid signature.": "Invalid signature.",
     "Join a league": "Join a league",
     "Learn_More": "Learn More",
+    "Leave": "Leave",
+    "Leave this league?": "Leave this league?",
     "Login": "Login",
     "Logout": "Sign Out",
     "Members only": "Members only",
@@ -103332,6 +103334,7 @@ module.exports = {
     "No, Apuestamigo is not yet another online betting site ...": "No, Apuestamigo is not yet another online betting site ...",
     "Not Found": "Not Found",
     "Oh no": "Oh no",
+    "Ok, you are not anymore in this league!": "Ok, you are not anymore in this league!",
     "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.": "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.",
     "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.": "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.",
     "Page Expired": "Page Expired",
@@ -103551,6 +103554,8 @@ module.exports = {
     "Invalid signature.": "Firma no v\xE1lida.",
     "Join a league": "\xDAnete a una liga",
     "Learn_More": "Leer mas",
+    "Leave": "Dejar",
+    "Leave this league?": "Dejar esta  liga?",
     "Login": "Entrar",
     "Logout": "Salir",
     "Members only": "Solo miembros",
@@ -103559,6 +103564,7 @@ module.exports = {
     "No, Apuestamigo is not yet another online betting site ...": "No, Apuestamigo no es otro sitio de apuestas en l\xEDnea ...",
     "Not Found": "No encontrado",
     "Oh no": "Oh no ",
+    "Ok, you are not anymore in this league!": "Ok, ya no est\xE1s en esta liga!",
     "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.": "Una vez que se ha creado su liga, la comparte con sus amigos envi\xE1ndoles el token que se encuentra en la configuraci\xF3n de la liga. Pueden unirse a usted en una liga una vez registrado insertando el token. Nada muy complicado.",
     "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.": "En el transcurso de los partidos, su clasificaci\xF3n evoluciona frente a sus amigos (un puntaje exacto encontrado da 3 puntos / buen resultado pero no 1 punto exacto / el resto 0). El campe\xF3n es, por supuesto, el que tiene m\xE1s puntos al final de la temporada.",
     "Page Expired": "P\xE1gina Expirada",
@@ -103819,6 +103825,8 @@ module.exports = {
     "Invalid signature.": "Signature invalide",
     "Join a league": "Rejoindre une ligue",
     "Learn_More": "Lire plus",
+    "Leave": "Quitter",
+    "Leave this league?": "Quitter cette ligue?",
     "Login": "Connexion",
     "Logout": "D\xE9connexion",
     "Members only": "Membres seulement",
@@ -103827,6 +103835,7 @@ module.exports = {
     "No, Apuestamigo is not yet another online betting site ...": "Non, Apuestamigo n'est pas un \xE9ni\xE8me site de pari en ligne...",
     "Not Found": "Non trouv\xE9",
     "Oh no": "Oh non",
+    "Ok, you are not anymore in this league!": "Ok, tu n'es plus dans cette ligue!",
     "Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.": "Une fois votre ligue cr\xE9\xE9e, vous la partagez avec vos potes en leur envoyant le mot de passe qui se trouve au niveau des param\xE8tres de la ligue. Ils/Elles pourront ainsi vous rejoindre au sein d'une ligue une fois enregistr\xE9 en ins\xE9rant le token. Rien de bien compliqu\xE9.",
     "Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points \/ good result but not exact 1 point \/ the rest 0). The champion is of course the one with the most points at the end of the season.": "Au fil des matchs, votre classement \xE9volue face \xE0 vos amis (un score exact trouv\xE9 donne 3 points / bon r\xE9sultat mais pas exact 1 point / le reste 0). Le champion est bien s\xFBr celui qui a le plus de points \xE0 la fin de la saison.",
     "Page Expired": "Page expir\xE9e",
@@ -104139,6 +104148,21 @@ var Ziggy = {
       "methods": ["POST"],
       "domain": null
     },
+    "verification.notice": {
+      "uri": "email\/verify",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "verification.verify": {
+      "uri": "email\/verify\/{id}\/{hash}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "verification.resend": {
+      "uri": "email\/resend",
+      "methods": ["POST"],
+      "domain": null
+    },
     "home": {
       "uri": "home",
       "methods": ["GET", "HEAD"],
@@ -104171,6 +104195,11 @@ var Ziggy = {
     },
     "joinLigues": {
       "uri": "ligues\/joinLigues",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "quitLigue": {
+      "uri": "ligues\/{ligue}\/quitLigue",
       "methods": ["POST"],
       "domain": null
     },

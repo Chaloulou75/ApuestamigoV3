@@ -217,7 +217,7 @@ class LigueController extends Controller
 
             $user->ligues()->detach($ligue);
 
-            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.Ok you are not anymore in this league!'));
+            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.Ok, you are not anymore in this league!'));
 
     }
 
