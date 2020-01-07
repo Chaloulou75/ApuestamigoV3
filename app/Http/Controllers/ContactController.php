@@ -23,7 +23,7 @@ class ContactController extends Controller
         ]);
 
     	$mailable = new ContactMessagesCreated($request->name, $request->email, $request->msg);
-    	Mail::to('c.jeandey@gmail.com')->send($mailable);
+    	Mail::to('apuestamigo@gmail.com')->send($mailable);
 
     	return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
     }
