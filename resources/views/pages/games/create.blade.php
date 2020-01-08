@@ -62,8 +62,18 @@
 		      @endforeach
 		      </select>
 		    </div>
+		    <div class="mb-6">
+		    	<label class="block text-white text-sm font-bold mb-2" for="gamedate">Choose a date:</label>
+
+				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
+					   type="datetime-local" id="gamedate"
+				       name="gamedate" value="">
+
+
+		    </div>
+		    
 		    <div class="flex items-center justify-between">
-		      <button class="bg-gray-700 hover:bg-gray-900 text-white text-sm py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+		      <button class="w-full bg-gray-700 hover:bg-gray-900 text-white text-sm py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
 		        Enregistrer le match
 		      </button>
 		      

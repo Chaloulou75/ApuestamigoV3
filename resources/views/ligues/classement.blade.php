@@ -20,7 +20,7 @@
 			  </thead>
 			  <tbody>
 			  	@foreach ($ligue->users as $user)
-			    <tr class="border border-solid border-white hover:bg-teal-600">
+			    <tr class="border border-solid border-white hover:bg-blue-800">
 			      <th scope="row" class="p-3 px-5"> {{ $loop->iteration }} </th>
 				  <td class="p-3 px-5"> {{ $user->name }} </td>
 				  <td class="p-3 px-5"> {{ $user->club }} </td>

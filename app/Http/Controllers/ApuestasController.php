@@ -49,8 +49,8 @@ class ApuestasController extends Controller
         $user = Auth::user(); 
         $now = Carbon::now();
         $timeJournee = $this->timeJournee();
-        $journee = $this->dateJournee();
-        
+        $journee = $this->dateJournee(); 
+
         if( $now->lessThanOrEqualTo($timeJournee))
         {     
             $games = $this->gamesIds();
@@ -70,16 +70,16 @@ class ApuestasController extends Controller
             
                             $result1 = $request->resultatEq1[$i];
                             $result2 = $request->resultatEq2[$i];
-                            $game = $game->id;                                              
-
-                            Match::create(
-                            ['journee' => $journee,
-                             'game_id' => $game,                         
-                             'user_id' => $user->id, 
-                             'ligue_id' => $ligue->id,                     
-                             'resultatEq1' => $result1, 
-                             'resultatEq2' => $result2]
-                            );
+                            $game = $game->id; 
+                                                                        
+                                Match::create(
+                                ['journee' => $journee,
+                                 'game_id' => $game,                         
+                                 'user_id' => $user->id, 
+                                 'ligue_id' => $ligue->id,                     
+                                 'resultatEq1' => $result1, 
+                                 'resultatEq2' => $result2]
+                                );
                         } 
 
                     }
@@ -97,16 +97,16 @@ class ApuestasController extends Controller
         
                         $result1 = $request->resultatEq1[$i];
                         $result2 = $request->resultatEq2[$i];
-                        $game = $game->id;                                              
-
-                        Match::updateOrCreate(
-                        ['journee' => $journee,
-                         'game_id' => $game,                         
-                         'user_id' => $user->id, 
-                         'ligue_id' => $ligue->id],                     
-                         ['resultatEq1' => $result1, 
-                         'resultatEq2' => $result2]
-                        );
+                        $game = $game->id;                                                          
+                            Match::updateOrCreate(
+                            ['journee' => $journee,
+                             'game_id' => $game,                         
+                             'user_id' => $user->id, 
+                             'ligue_id' => $ligue->id],                     
+                             ['resultatEq1' => $result1, 
+                             'resultatEq2' => $result2]
+                            );
+                        
                     }    
                 }
             }
@@ -329,6 +329,7 @@ class ApuestasController extends Controller
 
     protected function timeJournee()
     {
+
         $now = Carbon::now();
         $dateJournee1 = Carbon::create(2019, 9, 14, 18, 55, 00, 'Europe/Paris');
         $dateJournee2 = Carbon::create(2019, 10, 1, 18, 55, 00, 'Europe/Paris');
@@ -413,6 +414,17 @@ class ApuestasController extends Controller
 
             $timejournee = $dateJournee14;
             return $timejournee;
+        }
+    }
+
+    protected function DateMatch()
+    {
+        $datematchs = Game::where('journee', $journee)->get('gamedate');
+
+        foreach ($datematchs as $datematch) 
+        {
+            return $datematch;
+             
         }
     }
 }

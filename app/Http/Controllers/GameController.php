@@ -63,13 +63,12 @@ class GameController extends Controller
         $journee = $request->input('journee');
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
-
-         
-
+        $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
 
         $game = Game::updateOrCreate(
                     ['journee' => $journee, 'equipe1_id' => $equipe1],
-                    ['equipe2_id' => $equipe2]
+                    ['equipe2_id' => $equipe2,
+                    'gamedate' => $dategame]
                 );
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est inséré.');                      

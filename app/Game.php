@@ -12,7 +12,7 @@ class Game extends Model
      * @var array
      */
     protected $fillable = [
-        'equipe1_id','equipe2_id', 'journee' 
+        'equipe1_id','equipe2_id', 'journee', 'gamedate' 
     ];
 
     public function homeTeam()

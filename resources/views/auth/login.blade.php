@@ -11,7 +11,7 @@
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" id="email" type="email" placeholder="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
               @error('email')
-                  <p class="text-red-500 text-xs italic"><strong>{{ $message }}</strong></p>    
+                  <p class="text-red-500 text-xs italic pt-2"><strong>{{ $message }}</strong></p>    
               @enderror
           
       </div>
@@ -21,7 +21,7 @@
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline @error('password') bg-red-dark @enderror" id="password" type="password" name="password" required autocomplete="current-password" >
                   @error('password')
-                      <p class="text-red-500 text-xs italic"><strong>{{ $message }}</strong></p>    
+                      <p class="text-red-500 text-xs italic pt-2"><strong>{{ $message }}</strong></p>    
                   @enderror
       </div>
       <div class="flex items-center justify-between">
