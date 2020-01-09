@@ -33,9 +33,9 @@
 
 			@foreach ($games as $game)	
 
-		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-600 hover:text-white hover:font-bold"> 
-		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
-		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell">  {{ $game->gamedate }} </div>
+		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-600 hover:text-white"> 
+		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
+		      <div class="table-cell py-4 text-center text-sm hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format(' j F Y H:i') }} </div>
 			  <div class="table-cell px-4 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 text-center">
