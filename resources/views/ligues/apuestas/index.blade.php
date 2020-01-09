@@ -22,6 +22,7 @@
 		    <div class="table-row w-full mx-auto border border-solid border-white">
 		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell"></div>
 		      <div class="table-cell px-4 py-4 text-right hidden md:table-cell"></div>
+		      <div class="table-cell px-4 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold">Home</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"> {{ $journee }}</div>
@@ -34,6 +35,7 @@
 
 		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-600 hover:text-white hover:font-bold"> 
 		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
+		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell">  {{ $game->gamedate }} </div>
 			  <div class="table-cell px-4 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 text-center">
