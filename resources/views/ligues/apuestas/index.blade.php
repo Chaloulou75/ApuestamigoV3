@@ -20,8 +20,8 @@
 
 		<div class="table w-full md:w-11/12 mx-auto text-sm text-gray-900 bg-gray-400 shadow-md border-2 border-solid border-white rounded"> 
 		    <div class="table-row w-full mx-auto border border-solid border-white">
-		      <div class="table-cell px-4 py-4 text-center hidden md:table-cell"></div>
-		      <div class="table-cell px-4 py-4 text-right hidden md:table-cell"></div>
+		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell"></div>
+		      <div class="table-cell py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-4 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold">Home</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
