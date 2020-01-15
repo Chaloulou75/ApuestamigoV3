@@ -22,7 +22,7 @@ export default {
     getFormat () {
       return this.formatDistanceToNow(new Date(2020, 1, 18, 21, 0, 0), 
                         { includeSeconds: true,
-                          locale: enGB, 
+                          locale: getLocale(locale), 
                           addSuffix: true })                                        
     } 
   }

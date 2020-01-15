@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ {Equipe, Game, Ligue, Match};
+use App\ {User, Equipe, Game, Ligue, Match};
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class ApuestasController extends Controller
         $user = Auth::user(); // le user
         $journee = $this->dateJournee(); //la journee
         $gamesIds = Game::where('journee', $journee)->get('id'); //les matchs concernés
-
+        
         if (Auth::user()) 
         {
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
@@ -143,8 +143,8 @@ class ApuestasController extends Controller
                                   ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                         }])
                         ->where('journee', $journee)
-                        ->get();
-                        // les matchs  
+                        ->get();// les matchs
+                                     
             return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee'));
         }
         return redirect()->guest('login');

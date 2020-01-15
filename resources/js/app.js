@@ -63,16 +63,6 @@ const app = new Vue({
     el: '#app',
 });
 
-//Javascript to toggle the menu
-// document.getElementById('nav-toggle').onclick = function(){
-// document.getElementById("nav-content").classList.toggle("hidden");
-// }
-// //Javascript to toggle the logout button
-// document.getElementById('logout-toggle').onclick = function(){
-// document.getElementById("logout-content").classList.toggle("hidden");
-// }
-
-
 //copie du token
 document.getElementById('copyToken').onclick = function copyTok() {
   var copyText = document.getElementById("copyToken");

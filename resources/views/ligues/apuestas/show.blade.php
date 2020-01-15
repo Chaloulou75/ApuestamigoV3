@@ -35,16 +35,17 @@
 		      <div class="table-cell px-4 py-4 text-left hidden md:table-cell "></div>
 		    </div>		    			  
 
-			@foreach ($games as $game)	
+			@foreach ($games as $key => $game)
+				
 
 		    <div class="table-row mx-auto border border-solid border-white hover:bg-gray-600 hover:text-white hover:font-bold">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
-		      <div class="table-cell py-4 text-center text-sm hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format(' j F Y H:i') }} </div>
+		      <div class="table-cell py-4 text-center text-xs hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format('j F Y H:i') }} </div>
 			  <div class="table-cell px-4 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq1"></label>
-				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded {{ $errors->has('resultatEq1') ? ' bg-red-dark' : '' }}" name="resultatEq1[]" value="">
+				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
 					<option>{{ $game->matchs->first()['resultatEq1'] }}</option>
 					<option value="0">0</option>
 	                <option value="1">1</option>
@@ -58,10 +59,12 @@
 	                <option value="9">9</option>
 	            </select>
 			  </div>
+			  {{-- <div class="table-cell px-4 py-4 text-center text-red"> {{ $adminResult->matchs->first()['resultatEq1'] }} </div> --}}
 			  <div class="table-cell px-4 py-4 text-center"> - </div>
+			  {{-- <div class="table-cell px-4 py-4 text-center text-red"> {{ $adminResult->matchs->first()['resultatEq2'] }}</div> --}}
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq2"></label>
-				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded {{ $errors->has('resultatEq2') ? ' bg-red-dark' : '' }}" name="resultatEq2[]" value="">
+				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
 					<option>{{ $game->matchs->first()['resultatEq2'] }}</option>
 					<option value="0" >0</option>	      
 	                <option value="1" >1</option>
@@ -78,7 +81,7 @@
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 hidden md:table-cell font-bold text-left">{{ $game->awayTeam->name}}</div>
 		    </div>
-
+			
 		   @endforeach 
 		</div>
 
