@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::group(
 [
 	'prefix' => LaravelLocalization::setLocale(),
@@ -21,7 +23,7 @@ Route::group(
 	    return view('index');
 	});
 
-	Auth::routes(['verify' => true]);
+	
 
 	Route::get('/home', 'HomeController@index')->name('home');
 
