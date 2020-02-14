@@ -2102,7 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
     getFormat: function getFormat() {
       return this.formatDistanceToNow(new Date(2020, 1, 18, 21, 0, 0), {
         includeSeconds: true,
-        locale: getLocale(locale),
+        locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_1__["fr"],
         addSuffix: true
       });
     }
