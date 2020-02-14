@@ -32,7 +32,9 @@ class ApuestasController extends Controller
                         ->whereIn('id', $gamesIds)
                         ->get();// les matchs 
             
-            return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee'));
+            return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee'));  
+
+            
         }
         return redirect()->guest('login');
            
