@@ -41,7 +41,7 @@
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq1"></label>
 				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
-					<option>{{ $game->matchs->first()['resultatEq1'] }}</option>
+					<option>{{ isset($game->matchs->first()['resultatEq1']) }}</option>
 					<option value="0">0</option>
 	                <option value="1">1</option>
 	                <option value="2">2</option>
@@ -58,7 +58,7 @@
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq2"></label>
 				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
-					<option>{{ $game->matchs->first()['resultatEq2'] }}</option>
+					<option>{{ isset($game->matchs->first()['resultatEq2']) }}</option>
 					<option value="0" >0</option>	      
 	                <option value="1" >1</option>
 	                <option value="2" >2</option>
