@@ -88,6 +88,7 @@ return [
   'Go! It\'s your turn!'=> '¡Vamos! ¡Es tu turno!',
   'Leave this league?' => 'Dejar esta  liga?',
   'Leave' => 'Dejar',
+  'Sorry you have to be the owner to delete the league' => 'Lo sentimos, debes ser el propietario para eliminar la liga',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Tus apuestas estan registradas, suerte!',

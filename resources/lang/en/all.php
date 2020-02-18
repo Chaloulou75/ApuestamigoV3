@@ -87,6 +87,7 @@ return [
   'Go! It\'s your turn!'=> 'Go! It\'s your turn!',
   'Leave this league?' => 'Leave this league?',
   'Leave' => 'Leave',
+  'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',

@@ -167,10 +167,23 @@ class LigueController extends Controller
     public function destroy(Ligue $ligue)
     {
         //delete une ligue
+
+
         $ligue = ligue::findOrFail($ligue->id);
-        $ligue->delete();
+
+        if( $ligue->user_name === Auth::user()->name)
+        {
+            $ligue->delete();
         
-        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your league has been deleted'));       
+            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your league has been deleted'));   
+        } 
+
+        else
+        {
+            return back()->with('message.level', 'success')->with('message.content', __('all.Sorry you have to be the owner to delete the league'));
+
+        }   
+             
     }
 
     public function joinLiguesIndex()

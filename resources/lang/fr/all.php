@@ -97,6 +97,8 @@ return [
     'Go! It\'s your turn!'=>'Allez Go! A vous de jouer!',
     'Leave this league?' => 'Quitter cette ligue?',
     'Leave' => 'Quitter',
+    'Sorry you have to be the owner to delete the league' => 'Vous devez être le propriétaire pour supprimer la ligue',
+
 
     //messages
     'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',
