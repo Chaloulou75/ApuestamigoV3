@@ -2082,6 +2082,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
 /* harmony import */ var date_fns_locale__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/locale */ "./node_modules/date-fns/esm/locale/index.js");
+/* harmony import */ var date_fns_tz__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns-tz */ "./node_modules/date-fns-tz/esm/index.js");
 //
 //
 //
@@ -2090,6 +2091,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6931,6 +6933,1395 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/_lib/tzIntlTimeZoneName/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/_lib/tzIntlTimeZoneName/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return tzIntlTimeZoneName; });
+/**
+ * Returns the formatted time zone name of the provided `timeZone` or the current
+ * system time zone if omitted, accounting for DST according to the UTC value of
+ * the date.
+ */
+function tzIntlTimeZoneName(length, date, options) {
+  var dtf = getDTF(length, options.timeZone, options.locale)
+  return dtf.formatToParts ? partsTimeZone(dtf, date) : hackyTimeZone(dtf, date)
+}
+
+function partsTimeZone(dtf, date) {
+  var formatted = dtf.formatToParts(date)
+  return formatted[formatted.length - 1].value
+}
+
+function hackyTimeZone(dtf, date) {
+  var formatted = dtf.format(date).replace(/\u200E/g, '')
+  var tzNameMatch = / [\w-+ ]+$/.exec(formatted)
+  return tzNameMatch ? tzNameMatch[0].substr(1) : ''
+}
+
+// If a locale has been provided `en-US` is used as a fallback in case it is an
+// invalid locale, otherwise the locale is left undefined to use the system locale.
+function getDTF(length, timeZone, locale) {
+  if (locale && !locale.code) {
+    throw new Error(
+      "date-fns-tz error: Please set a language code on the locale object imported from date-fns, e.g. `locale.code = 'en-US'`"
+    )
+  }
+  return new Intl.DateTimeFormat(locale ? [locale.code, 'en-US'] : undefined, {
+    timeZone: timeZone,
+    timeZoneName: length
+  })
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/_lib/tzParseTimezone/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/_lib/tzParseTimezone/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return tzParseTimezone; });
+/* harmony import */ var _tzTokenizeDate_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../tzTokenizeDate/index.js */ "./node_modules/date-fns-tz/esm/_lib/tzTokenizeDate/index.js");
+
+
+var MILLISECONDS_IN_HOUR = 3600000
+var MILLISECONDS_IN_MINUTE = 60000
+
+var patterns = {
+  timezone: /([Z+-].*)$/,
+  timezoneZ: /^(Z)$/,
+  timezoneHH: /^([+-])(\d{2})$/,
+  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/,
+  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/
+}
+
+// Parse various time zone offset formats to an offset in milliseconds
+function tzParseTimezone(timezoneString, date) {
+  var token
+  var absoluteOffset
+
+  // Z
+  token = patterns.timezoneZ.exec(timezoneString)
+  if (token) {
+    return 0
+  }
+
+  var hours
+
+  // ±hh
+  token = patterns.timezoneHH.exec(timezoneString)
+  if (token) {
+    hours = parseInt(token[2], 10)
+
+    if (!validateTimezone(hours)) {
+      return NaN
+    }
+
+    absoluteOffset = hours * MILLISECONDS_IN_HOUR
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
+  }
+
+  // ±hh:mm or ±hhmm
+  token = patterns.timezoneHHMM.exec(timezoneString)
+  if (token) {
+    hours = parseInt(token[2], 10)
+    var minutes = parseInt(token[3], 10)
+
+    if (!validateTimezone(hours, minutes)) {
+      return NaN
+    }
+
+    absoluteOffset =
+      hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
+  }
+
+  // IANA time zone
+  token = patterns.timezoneIANA.exec(timezoneString)
+  if (token) {
+    // var [fYear, fMonth, fDay, fHour, fMinute, fSecond] = tzTokenizeDate(date, timezoneString)
+    var tokens = Object(_tzTokenizeDate_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, timezoneString)
+    var asUTC = Date.UTC(
+      tokens[0],
+      tokens[1] - 1,
+      tokens[2],
+      tokens[3],
+      tokens[4],
+      tokens[5]
+    )
+    var timestampWithMsZeroed = date.getTime() - (date.getTime() % 1000)
+    return -(asUTC - timestampWithMsZeroed)
+  }
+
+  return 0
+}
+
+function validateTimezone(hours, minutes) {
+  if (minutes != null && (minutes < 0 || minutes > 59)) {
+    return false
+  }
+
+  return true
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/_lib/tzTokenizeDate/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/_lib/tzTokenizeDate/index.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return tzTokenizeDate; });
+/**
+ * Returns the [year, month, day, hour, minute, seconds] tokens of the provided
+ * `date` as it will be rendered in the `timeZone`.
+ */
+function tzTokenizeDate(date, timeZone) {
+  var dtf = getDateTimeFormat(timeZone)
+  return dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date)
+}
+
+var typeToPos = {
+  year: 0,
+  month: 1,
+  day: 2,
+  hour: 3,
+  minute: 4,
+  second: 5
+}
+
+function partsOffset(dtf, date) {
+  var formatted = dtf.formatToParts(date)
+  var filled = []
+  for (var i = 0; i < formatted.length; i++) {
+    var pos = typeToPos[formatted[i].type]
+
+    if (pos >= 0) {
+      filled[pos] = parseInt(formatted[i].value, 10)
+    }
+  }
+  return filled
+}
+
+function hackyOffset(dtf, date) {
+  var formatted = dtf.format(date).replace(/\u200E/g, '')
+  var parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted)
+  // var [, fMonth, fDay, fYear, fHour, fMinute, fSecond] = parsed
+  // return [fYear, fMonth, fDay, fHour, fMinute, fSecond]
+  return [parsed[3], parsed[1], parsed[2], parsed[4], parsed[5], parsed[6]]
+}
+
+// Get a cached Intl.DateTimeFormat instance for the IANA `timeZone`. This can be used
+// to get deterministic local date/time output according to the `en-US` locale which
+// can be used to extract local time parts as necessary.
+var dtfCache = {}
+function getDateTimeFormat(timeZone) {
+  if (!dtfCache[timeZone]) {
+    // New browsers use `hourCycle`, IE and Chrome <73 does not support it and uses `hour12`
+    var testDateFormatted = new Intl.DateTimeFormat('en-US', {
+      hour12: false,
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }).format(new Date('2014-06-25T04:00:00.123Z'))
+    var hourCycleSupported =
+      testDateFormatted === '06/25/2014, 00:00:00' ||
+      testDateFormatted === '‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00'
+
+    dtfCache[timeZone] = hourCycleSupported
+      ? new Intl.DateTimeFormat('en-US', {
+          hour12: false,
+          timeZone: timeZone,
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        })
+      : new Intl.DateTimeFormat('en-US', {
+          hourCycle: 'h23',
+          timeZone: timeZone,
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        })
+  }
+  return dtfCache[timeZone]
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/format/formatters/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/format/formatters/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_tzIntlTimeZoneName__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../_lib/tzIntlTimeZoneName */ "./node_modules/date-fns-tz/esm/_lib/tzIntlTimeZoneName/index.js");
+/* harmony import */ var _lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../_lib/tzParseTimezone */ "./node_modules/date-fns-tz/esm/_lib/tzParseTimezone/index.js");
+
+
+
+var MILLISECONDS_IN_MINUTE = 60 * 1000
+
+var formatters = {
+  // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+  X: function(date, token, localize, options) {
+    var originalDate = options._originalDate || date
+    var timezoneOffset = options.timeZone
+      ? Object(_lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_1__["default"])(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
+      : originalDate.getTimezoneOffset()
+
+    if (timezoneOffset === 0) {
+      return 'Z'
+    }
+
+    switch (token) {
+      // Hours and optional minutes
+      case 'X':
+        return formatTimezoneWithOptionalMinutes(timezoneOffset)
+
+      // Hours, minutes and optional seconds without `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `XX`
+      case 'XXXX':
+      case 'XX': // Hours and minutes without `:` delimeter
+        return formatTimezone(timezoneOffset)
+
+      // Hours, minutes and optional seconds with `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `XXX`
+      case 'XXXXX':
+      case 'XXX': // Hours and minutes with `:` delimeter
+      default:
+        return formatTimezone(timezoneOffset, ':')
+    }
+  },
+
+  // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+  x: function(date, token, localize, options) {
+    var originalDate = options._originalDate || date
+    var timezoneOffset = options.timeZone
+      ? Object(_lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_1__["default"])(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
+      : originalDate.getTimezoneOffset()
+
+    switch (token) {
+      // Hours and optional minutes
+      case 'x':
+        return formatTimezoneWithOptionalMinutes(timezoneOffset)
+
+      // Hours, minutes and optional seconds without `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `xx`
+      case 'xxxx':
+      case 'xx': // Hours and minutes without `:` delimeter
+        return formatTimezone(timezoneOffset)
+
+      // Hours, minutes and optional seconds with `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `xxx`
+      case 'xxxxx':
+      case 'xxx': // Hours and minutes with `:` delimeter
+      default:
+        return formatTimezone(timezoneOffset, ':')
+    }
+  },
+
+  // Timezone (GMT)
+  O: function(date, token, localize, options) {
+    var originalDate = options._originalDate || date
+    var timezoneOffset = options.timeZone
+      ? Object(_lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_1__["default"])(options.timeZone, originalDate) / MILLISECONDS_IN_MINUTE
+      : originalDate.getTimezoneOffset()
+
+    switch (token) {
+      // Short
+      case 'O':
+      case 'OO':
+      case 'OOO':
+        return 'GMT' + formatTimezoneShort(timezoneOffset, ':')
+      // Long
+      case 'OOOO':
+      default:
+        return 'GMT' + formatTimezone(timezoneOffset, ':')
+    }
+  },
+
+  // Timezone (specific non-location)
+  z: function(date, token, localize, options) {
+    var originalDate = options._originalDate || date
+
+    switch (token) {
+      // Short
+      case 'z':
+      case 'zz':
+      case 'zzz':
+        return Object(_lib_tzIntlTimeZoneName__WEBPACK_IMPORTED_MODULE_0__["default"])('short', originalDate, options)
+      // Long
+      case 'zzzz':
+      default:
+        return Object(_lib_tzIntlTimeZoneName__WEBPACK_IMPORTED_MODULE_0__["default"])('long', originalDate, options)
+    }
+  }
+}
+
+function addLeadingZeros(number, targetLength) {
+  var sign = number < 0 ? '-' : ''
+  var output = Math.abs(number).toString()
+  while (output.length < targetLength) {
+    output = '0' + output
+  }
+  return sign + output
+}
+
+function formatTimezone(offset, dirtyDelimeter) {
+  var delimeter = dirtyDelimeter || ''
+  var sign = offset > 0 ? '-' : '+'
+  var absOffset = Math.abs(offset)
+  var hours = addLeadingZeros(Math.floor(absOffset / 60), 2)
+  var minutes = addLeadingZeros(absOffset % 60, 2)
+  return sign + hours + delimeter + minutes
+}
+
+function formatTimezoneWithOptionalMinutes(offset, dirtyDelimeter) {
+  if (offset % 60 === 0) {
+    var sign = offset > 0 ? '-' : '+'
+    return sign + addLeadingZeros(Math.abs(offset) / 60, 2)
+  }
+  return formatTimezone(offset, dirtyDelimeter)
+}
+
+function formatTimezoneShort(offset, dirtyDelimeter) {
+  var sign = offset > 0 ? '-' : '+'
+  var absOffset = Math.abs(offset)
+  var hours = Math.floor(absOffset / 60)
+  var minutes = absOffset % 60
+  if (minutes === 0) {
+    return sign + String(hours)
+  }
+  var delimeter = dirtyDelimeter || ''
+  return sign + String(hours) + delimeter + addLeadingZeros(minutes, 2)
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (formatters);
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/format/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/format/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return format; });
+/* harmony import */ var date_fns_esm_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns/esm/format */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var _formatters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formatters */ "./node_modules/date-fns-tz/esm/format/formatters/index.js");
+/* harmony import */ var _toDate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toDate */ "./node_modules/date-fns-tz/esm/toDate/index.js");
+
+
+
+
+var tzFormattingTokensRegExp = /([xXOz]+)|''|'(''|[^'])+('|$)/g
+
+/**
+ * @name format
+ * @category Common Helpers
+ * @summary Format the date.
+ *
+ * @description
+ * Return the formatted date string in the given format. The result may vary by locale.
+ *
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://git.io/fxCyr
+ *
+ * The characters wrapped between two single quotes characters (') are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ * (see the last example)
+ *
+ * Format of the string is based on Unicode Technical Standard #35:
+ * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+ * with a few additions (see note 7 below the table).
+ *
+ * Accepted patterns:
+ * | Unit                            | Pattern | Result examples                   | Notes |
+ * |---------------------------------|---------|-----------------------------------|-------|
+ * | Era                             | G..GGG  | AD, BC                            |       |
+ * |                                 | GGGG    | Anno Domini, Before Christ        | 2     |
+ * |                                 | GGGGG   | A, B                              |       |
+ * | Calendar year                   | y       | 44, 1, 1900, 2017                 | 5     |
+ * |                                 | yo      | 44th, 1st, 0th, 17th              | 5,7   |
+ * |                                 | yy      | 44, 01, 00, 17                    | 5     |
+ * |                                 | yyy     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | yyyy    | 0044, 0001, 1900, 2017            | 5     |
+ * |                                 | yyyyy   | ...                               | 3,5   |
+ * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5     |
+ * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7   |
+ * |                                 | YY      | 44, 01, 00, 17                    | 5,8   |
+ * |                                 | YYY     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5,8   |
+ * |                                 | YYYYY   | ...                               | 3,5   |
+ * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | 5,7   |
+ * |                                 | RR      | -43, 00, 01, 1900, 2017           | 5,7   |
+ * |                                 | RRR     | -043, 000, 001, 1900, 2017        | 5,7   |
+ * |                                 | RRRR    | -0043, 0000, 0001, 1900, 2017     | 5,7   |
+ * |                                 | RRRRR   | ...                               | 3,5,7 |
+ * | Extended year                   | u       | -43, 0, 1, 1900, 2017             | 5     |
+ * |                                 | uu      | -43, 01, 1900, 2017               | 5     |
+ * |                                 | uuu     | -043, 001, 1900, 2017             | 5     |
+ * |                                 | uuuu    | -0043, 0001, 1900, 2017           | 5     |
+ * |                                 | uuuuu   | ...                               | 3,5   |
+ * | Quarter (formatting)            | Q       | 1, 2, 3, 4                        |       |
+ * |                                 | Qo      | 1st, 2nd, 3rd, 4th                | 7     |
+ * |                                 | QQ      | 01, 02, 03, 04                    |       |
+ * |                                 | QQQ     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 | QQQQ    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 | QQQQQ   | 1, 2, 3, 4                        | 4     |
+ * | Quarter (stand-alone)           | q       | 1, 2, 3, 4                        |       |
+ * |                                 | qo      | 1st, 2nd, 3rd, 4th                | 7     |
+ * |                                 | qq      | 01, 02, 03, 04                    |       |
+ * |                                 | qqq     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 | qqqq    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 | qqqqq   | 1, 2, 3, 4                        | 4     |
+ * | Month (formatting)              | M       | 1, 2, ..., 12                     |       |
+ * |                                 | Mo      | 1st, 2nd, ..., 12th               | 7     |
+ * |                                 | MM      | 01, 02, ..., 12                   |       |
+ * |                                 | MMM     | Jan, Feb, ..., Dec                |       |
+ * |                                 | MMMM    | January, February, ..., December  | 2     |
+ * |                                 | MMMMM   | J, F, ..., D                      |       |
+ * | Month (stand-alone)             | L       | 1, 2, ..., 12                     |       |
+ * |                                 | Lo      | 1st, 2nd, ..., 12th               | 7     |
+ * |                                 | LL      | 01, 02, ..., 12                   |       |
+ * |                                 | LLL     | Jan, Feb, ..., Dec                |       |
+ * |                                 | LLLL    | January, February, ..., December  | 2     |
+ * |                                 | LLLLL   | J, F, ..., D                      |       |
+ * | Local week of year              | w       | 1, 2, ..., 53                     |       |
+ * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
+ * |                                 | ww      | 01, 02, ..., 53                   |       |
+ * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
+ * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
+ * |                                 | II      | 01, 02, ..., 53                   | 7     |
+ * | Day of month                    | d       | 1, 2, ..., 31                     |       |
+ * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
+ * |                                 | dd      | 01, 02, ..., 31                   |       |
+ * | Day of year                     | D       | 1, 2, ..., 365, 366               | 8     |
+ * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
+ * |                                 | DD      | 01, 02, ..., 365, 366             | 8     |
+ * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
+ * |                                 | DDDD    | ...                               | 3     |
+ * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | EEEEE   | M, T, W, T, F, S, S               |       |
+ * |                                 | EEEEEE  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | ISO day of week (formatting)    | i       | 1, 2, 3, ..., 7                   | 7     |
+ * |                                 | io      | 1st, 2nd, ..., 7th                | 7     |
+ * |                                 | ii      | 01, 02, ..., 07                   | 7     |
+ * |                                 | iii     | Mon, Tue, Wed, ..., Su            | 7     |
+ * |                                 | iiii    | Monday, Tuesday, ..., Sunday      | 2,7   |
+ * |                                 | iiiii   | M, T, W, T, F, S, S               | 7     |
+ * |                                 | iiiiii  | Mo, Tu, We, Th, Fr, Su, Sa        | 7     |
+ * | Local day of week (formatting)  | e       | 2, 3, 4, ..., 1                   |       |
+ * |                                 | eo      | 2nd, 3rd, ..., 1st                | 7     |
+ * |                                 | ee      | 02, 03, ..., 01                   |       |
+ * |                                 | eee     | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 | eeee    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | eeeee   | M, T, W, T, F, S, S               |       |
+ * |                                 | eeeeee  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | Local day of week (stand-alone) | c       | 2, 3, 4, ..., 1                   |       |
+ * |                                 | co      | 2nd, 3rd, ..., 1st                | 7     |
+ * |                                 | cc      | 02, 03, ..., 01                   |       |
+ * |                                 | ccc     | Mon, Tue, Wed, ..., Su            |       |
+ * |                                 | cccc    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | ccccc   | M, T, W, T, F, S, S               |       |
+ * |                                 | cccccc  | Mo, Tu, We, Th, Fr, Su, Sa        |       |
+ * | AM, PM                          | a..aaa  | AM, PM                            |       |
+ * |                                 | aaaa    | a.m., p.m.                        | 2     |
+ * |                                 | aaaaa   | a, p                              |       |
+ * | AM, PM, noon, midnight          | b..bbb  | AM, PM, noon, midnight            |       |
+ * |                                 | bbbb    | a.m., p.m., noon, midnight        | 2     |
+ * |                                 | bbbbb   | a, p, n, mi                       |       |
+ * | Flexible day period             | B..BBB  | at night, in the morning, ...     |       |
+ * |                                 | BBBB    | at night, in the morning, ...     | 2     |
+ * |                                 | BBBBB   | at night, in the morning, ...     |       |
+ * | Hour [1-12]                     | h       | 1, 2, ..., 11, 12                 |       |
+ * |                                 | ho      | 1st, 2nd, ..., 11th, 12th         | 7     |
+ * |                                 | hh      | 01, 02, ..., 11, 12               |       |
+ * | Hour [0-23]                     | H       | 0, 1, 2, ..., 23                  |       |
+ * |                                 | Ho      | 0th, 1st, 2nd, ..., 23rd          | 7     |
+ * |                                 | HH      | 00, 01, 02, ..., 23               |       |
+ * | Hour [0-11]                     | K       | 1, 2, ..., 11, 0                  |       |
+ * |                                 | Ko      | 1st, 2nd, ..., 11th, 0th          | 7     |
+ * |                                 | KK      | 1, 2, ..., 11, 0                  |       |
+ * | Hour [1-24]                     | k       | 24, 1, 2, ..., 23                 |       |
+ * |                                 | ko      | 24th, 1st, 2nd, ..., 23rd         | 7     |
+ * |                                 | kk      | 24, 01, 02, ..., 23               |       |
+ * | Minute                          | m       | 0, 1, ..., 59                     |       |
+ * |                                 | mo      | 0th, 1st, ..., 59th               | 7     |
+ * |                                 | mm      | 00, 01, ..., 59                   |       |
+ * | Second                          | s       | 0, 1, ..., 59                     |       |
+ * |                                 | so      | 0th, 1st, ..., 59th               | 7     |
+ * |                                 | ss      | 00, 01, ..., 59                   |       |
+ * | Fraction of second              | S       | 0, 1, ..., 9                      |       |
+ * |                                 | SS      | 00, 01, ..., 99                   |       |
+ * |                                 | SSS     | 000, 0001, ..., 999               |       |
+ * |                                 | SSSS    | ...                               | 3     |
+ * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |       |
+ * |                                 | XX      | -0800, +0530, Z                   |       |
+ * |                                 | XXX     | -08:00, +05:30, Z                 |       |
+ * |                                 | XXXX    | -0800, +0530, Z, +123456          | 2     |
+ * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
+ * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |       |
+ * |                                 | xx      | -0800, +0530, +0000               |       |
+ * |                                 | xxx     | -08:00, +05:30, +00:00            | 2     |
+ * |                                 | xxxx    | -0800, +0530, +0000, +123456      |       |
+ * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Timezone (GMT)                  | O...OOO | GMT-8, GMT+5:30, GMT+0            |       |
+ * |                                 | OOOO    | GMT-08:00, GMT+05:30, GMT+00:00   | 2     |
+ * | Timezone (specific non-locat.)  | z...zzz | PDT, EST, CEST                    | 6     |
+ * |                                 | zzzz    | Pacific Daylight Time             | 2,6   |
+ * | Seconds timestamp               | t       | 512969520                         | 7     |
+ * |                                 | tt      | ...                               | 3,7   |
+ * | Milliseconds timestamp          | T       | 512969520900                      | 7     |
+ * |                                 | TT      | ...                               | 3,7   |
+ * | Long localized date             | P       | 05/29/1453                        | 7     |
+ * |                                 | PP      | May 29, 1453                      | 7     |
+ * |                                 | PPP     | May 29th, 1453                    | 7     |
+ * |                                 | PPPP    | Sunday, May 29th, 1453            | 2,7   |
+ * | Long localized time             | p       | 12:00 AM                          | 7     |
+ * |                                 | pp      | 12:00:00 AM                       | 7     |
+ * |                                 | ppp     | 12:00:00 AM GMT+2                 | 7     |
+ * |                                 | pppp    | 12:00:00 AM GMT+02:00             | 2,7   |
+ * | Combination of date and time    | Pp      | 05/29/1453, 12:00 AM              | 7     |
+ * |                                 | PPpp    | May 29, 1453, 12:00:00 AM         | 7     |
+ * |                                 | PPPppp  | May 29th, 1453 at ...             | 7     |
+ * |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     | 2,7   |
+ * Notes:
+ * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular:
+ *
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
+ *    the output will be the same as default pattern for this unit, usually
+ *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
+ *    are marked with "2" in the last column of the table.
+ *
+ *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
+ *
+ * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
+ *    The output will be padded with zeros to match the length of the pattern.
+ *
+ *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
+ *
+ * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
+ *    These tokens represent the shortest form of the quarter.
+ *
+ * 5. The main difference between `y` and `u` patterns are B.C. years:
+ *
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
+ *
+ *    Also `yy` always returns the last two digits of a year,
+ *    while `uu` pads single digit years to 2 characters and returns other years unchanged:
+ *
+ *    | Year | `yy` | `uu` |
+ *    |------|------|------|
+ *    | 1    |   01 |   01 |
+ *    | 14   |   14 |   14 |
+ *    | 376  |   76 |  376 |
+ *    | 1453 |   53 | 1453 |
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
+ *    and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
+ *
+ * 6. Specific non-location timezones are created using the Intl browser API. The output is determined by the
+ *    preferred standard of the current locale (en-US by default) which may not always give the expected result.
+ *    For this reason it is recommended to supply a `locale` in the format options when formatting a time zone name.
+ *
+ * 7. These patterns are not in the Unicode Technical Standard #35:
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `t`: seconds timestamp
+ *    - `T`: milliseconds timestamp
+ *    - `o`: ordinal number modifier
+ *    - `P`: long localized date
+ *    - `p`: long localized time
+ *
+ * 8. These tokens are often confused with others. See: https://git.io/fxCyr
+ *
+ *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole
+ *   library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * - The second argument is now required for the sake of explicitness.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *   format(new Date(2016, 0, 1))
+ *
+ *   // v2.0.0 onward
+ *   format(new Date(2016, 0, 1), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+ *   ```
+ *
+ * - New format string API for `format` function
+ *   which is based on [Unicode Technical Standard
+ *   #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table). See [this
+ *   post](https://blog.date-fns.org/post/unicode-tokens-in-date-fns-v2-sreatyki91jg) for more details.
+ *
+ * - Characters are now escaped using single quote symbols (`'`) instead of square brackets.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {String} format - the string of tokens
+ * @param {OptionsWithTZ} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link
+ *   https://date-fns.org/docs/toDate}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See
+ *   [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
+ *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
+ *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens
+ *   (`yy`, `yyyy`). See: https://git.io/fxCyr
+ * @param {String} [options.timeZone=''] - used to specify the IANA time zone offset of a date String.
+ * @returns {String} the formatted date string
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.locale` must contain `localize` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see:
+ *   https://git.io/fxCyr
+ *
+ * @example
+ * // Represent 11 February 2014 in middle-endian format:
+ * var result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+ * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * import { eoLocale } from 'date-fns/esm/locale/eo'
+ * var result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
+ *   locale: eoLocale
+ * })
+ * //=> '2-a de julio 2014'
+ *
+ * @example
+ * // Escape string by single quote characters:
+ * var result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
+ * //=> "3 o'clock"
+ */
+function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
+  var formatStr = String(dirtyFormatStr)
+  var options = dirtyOptions || {}
+
+  var matches = formatStr.match(tzFormattingTokensRegExp)
+  if (matches) {
+    var date = Object(_toDate__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyDate, options)
+    formatStr = matches.reduce(function(result, token) {
+      return token[0] === "'"
+        ? result
+        : result.replace(
+            token,
+            "'" + _formatters__WEBPACK_IMPORTED_MODULE_1__["default"][token[0]](date, token, null, options) + "'"
+          )
+    }, formatStr)
+  }
+
+  return Object(date_fns_esm_format__WEBPACK_IMPORTED_MODULE_0__["default"])(dirtyDate, formatStr, options)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/index.js ***!
+  \***********************************************/
+/*! exports provided: format, toDate, utcToZonedTime, zonedTimeToUtc */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _format_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./format/index.js */ "./node_modules/date-fns-tz/esm/format/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "format", function() { return _format_index_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toDate/index.js */ "./node_modules/date-fns-tz/esm/toDate/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "toDate", function() { return _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _utcToZonedTime_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utcToZonedTime/index.js */ "./node_modules/date-fns-tz/esm/utcToZonedTime/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "utcToZonedTime", function() { return _utcToZonedTime_index_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _zonedTimeToUtc_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./zonedTimeToUtc/index.js */ "./node_modules/date-fns-tz/esm/zonedTimeToUtc/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zonedTimeToUtc", function() { return _zonedTimeToUtc_index_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/toDate/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/toDate/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return toDate; });
+/* harmony import */ var date_fns_esm_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns/esm/_lib/toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
+/* harmony import */ var date_fns_esm_lib_getTimezoneOffsetInMilliseconds_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js */ "./node_modules/date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js");
+/* harmony import */ var _lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_lib/tzParseTimezone */ "./node_modules/date-fns-tz/esm/_lib/tzParseTimezone/index.js");
+
+
+
+
+var MILLISECONDS_IN_HOUR = 3600000
+var MILLISECONDS_IN_MINUTE = 60000
+var DEFAULT_ADDITIONAL_DIGITS = 2
+
+var patterns = {
+  dateTimeDelimeter: /[T ]/,
+  plainTime: /:/,
+  timeZoneDelimeter: /[Z ]/i,
+
+  // year tokens
+  YY: /^(\d{2})$/,
+  YYY: [
+    /^([+-]\d{2})$/, // 0 additional digits
+    /^([+-]\d{3})$/, // 1 additional digit
+    /^([+-]\d{4})$/ // 2 additional digits
+  ],
+  YYYY: /^(\d{4})/,
+  YYYYY: [
+    /^([+-]\d{4})/, // 0 additional digits
+    /^([+-]\d{5})/, // 1 additional digit
+    /^([+-]\d{6})/ // 2 additional digits
+  ],
+
+  // date tokens
+  MM: /^-(\d{2})$/,
+  DDD: /^-?(\d{3})$/,
+  MMDD: /^-?(\d{2})-?(\d{2})$/,
+  Www: /^-?W(\d{2})$/,
+  WwwD: /^-?W(\d{2})-?(\d{1})$/,
+
+  HH: /^(\d{2}([.,]\d*)?)$/,
+  HHMM: /^(\d{2}):?(\d{2}([.,]\d*)?)$/,
+  HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
+
+  // timezone tokens (to identify the presence of a tz)
+  timezone: /([Z+-].*| UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/
+}
+
+/**
+ * @name toDate
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If an argument is a string, the function tries to parse it.
+ * Function accepts complete ISO 8601 formats as well as partial implementations.
+ * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * If the function cannot parse the string or the values are invalid, it returns Invalid Date.
+ *
+ * If the argument is none of the above, the function returns Invalid Date.
+ *
+ * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
+ * All *date-fns* functions will throw `RangeError` if `options.additionalDigits` is not 0, 1, 2 or undefined.
+ *
+ * @param {Date|String|Number} argument - the value to convert
+ * @param {OptionsWithTZ} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @param {String} [options.timeZone=''] - used to specify the IANA time zone offset of a date String.
+ * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Convert string '2014-02-11T11:30:30' to date:
+ * var result = toDate('2014-02-11T11:30:30')
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Convert string '+02014101' to date,
+ * // if the additional number of digits in the extended year format is 1:
+ * var result = toDate('+02014101', {additionalDigits: 1})
+ * //=> Fri Apr 11 2014 00:00:00
+ */
+function toDate(argument, dirtyOptions) {
+  if (arguments.length < 1) {
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
+  }
+
+  if (argument === null) {
+    return new Date(NaN)
+  }
+
+  var options = dirtyOptions || {}
+
+  var additionalDigits =
+    options.additionalDigits == null
+      ? DEFAULT_ADDITIONAL_DIGITS
+      : Object(date_fns_esm_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options.additionalDigits)
+  if (
+    additionalDigits !== 2 &&
+    additionalDigits !== 1 &&
+    additionalDigits !== 0
+  ) {
+    throw new RangeError('additionalDigits must be 0, 1 or 2')
+  }
+
+  // Clone the date
+  if (
+    argument instanceof Date ||
+    (typeof argument === 'object' &&
+      Object.prototype.toString.call(argument) === '[object Date]')
+  ) {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(argument.getTime())
+  } else if (
+    typeof argument === 'number' ||
+    Object.prototype.toString.call(argument) === '[object Number]'
+  ) {
+    return new Date(argument)
+  } else if (
+    !(
+      typeof argument === 'string' ||
+      Object.prototype.toString.call(argument) === '[object String]'
+    )
+  ) {
+    return new Date(NaN)
+  }
+
+  var dateStrings = splitDateString(argument)
+
+  var parseYearResult = parseYear(dateStrings.date, additionalDigits)
+  var year = parseYearResult.year
+  var restDateString = parseYearResult.restDateString
+
+  var date = parseDate(restDateString, year)
+
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
+
+  if (date) {
+    var timestamp = date.getTime()
+    var time = 0
+    var offset
+
+    if (dateStrings.time) {
+      time = parseTime(dateStrings.time)
+
+      if (isNaN(time)) {
+        return new Date(NaN)
+      }
+    }
+
+    if (dateStrings.timezone || options.timeZone) {
+      offset = Object(_lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_2__["default"])(
+        dateStrings.timezone || options.timeZone,
+        new Date(timestamp + time)
+      )
+      if (isNaN(offset)) {
+        return new Date(NaN)
+      }
+    } else {
+      // get offset accurate to hour in timezones that change offset
+      offset = Object(date_fns_esm_lib_getTimezoneOffsetInMilliseconds_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(timestamp + time))
+      offset = Object(date_fns_esm_lib_getTimezoneOffsetInMilliseconds_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+        new Date(timestamp + time + offset)
+      )
+    }
+
+    return new Date(timestamp + time + offset)
+  } else {
+    return new Date(NaN)
+  }
+}
+
+function splitDateString(dateString) {
+  var dateStrings = {}
+  var array = dateString.split(patterns.dateTimeDelimeter)
+  var timeString
+
+  if (patterns.plainTime.test(array[0])) {
+    dateStrings.date = null
+    timeString = array[0]
+  } else {
+    dateStrings.date = array[0]
+    timeString = array[1]
+    dateStrings.timezone = array[2]
+    if (patterns.timeZoneDelimeter.test(dateStrings.date)) {
+      dateStrings.date = dateString.split(patterns.timeZoneDelimeter)[0]
+      timeString = dateString.substr(dateStrings.date.length, dateString.length)
+    }
+  }
+
+  if (timeString) {
+    var token = patterns.timezone.exec(timeString)
+    if (token) {
+      dateStrings.time = timeString.replace(token[1], '')
+      dateStrings.timezone = token[1]
+    } else {
+      dateStrings.time = timeString
+    }
+  }
+
+  return dateStrings
+}
+
+function parseYear(dateString, additionalDigits) {
+  var patternYYY = patterns.YYY[additionalDigits]
+  var patternYYYYY = patterns.YYYYY[additionalDigits]
+
+  var token
+
+  // YYYY or ±YYYYY
+  token = patterns.YYYY.exec(dateString) || patternYYYYY.exec(dateString)
+  if (token) {
+    var yearString = token[1]
+    return {
+      year: parseInt(yearString, 10),
+      restDateString: dateString.slice(yearString.length)
+    }
+  }
+
+  // YY or ±YYY
+  token = patterns.YY.exec(dateString) || patternYYY.exec(dateString)
+  if (token) {
+    var centuryString = token[1]
+    return {
+      year: parseInt(centuryString, 10) * 100,
+      restDateString: dateString.slice(centuryString.length)
+    }
+  }
+
+  // Invalid ISO-formatted year
+  return {
+    year: null
+  }
+}
+
+function parseDate(dateString, year) {
+  // Invalid ISO-formatted year
+  if (year === null) {
+    return null
+  }
+
+  var token
+  var date
+  var month
+  var week
+
+  // YYYY
+  if (dateString.length === 0) {
+    date = new Date(0)
+    date.setUTCFullYear(year)
+    return date
+  }
+
+  // YYYY-MM
+  token = patterns.MM.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
+
+    if (!validateDate(year, month)) {
+      return new Date(NaN)
+    }
+
+    date.setUTCFullYear(year, month)
+    return date
+  }
+
+  // YYYY-DDD or YYYYDDD
+  token = patterns.DDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    var dayOfYear = parseInt(token[1], 10)
+
+    if (!validateDayOfYearDate(year, dayOfYear)) {
+      return new Date(NaN)
+    }
+
+    date.setUTCFullYear(year, 0, dayOfYear)
+    return date
+  }
+
+  // yyyy-MM-dd or YYYYMMDD
+  token = patterns.MMDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
+    var day = parseInt(token[2], 10)
+
+    if (!validateDate(year, month, day)) {
+      return new Date(NaN)
+    }
+
+    date.setUTCFullYear(year, month, day)
+    return date
+  }
+
+  // YYYY-Www or YYYYWww
+  token = patterns.Www.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
+
+    if (!validateWeekDate(year, week)) {
+      return new Date(NaN)
+    }
+
+    return dayOfISOWeekYear(year, week)
+  }
+
+  // YYYY-Www-D or YYYYWwwD
+  token = patterns.WwwD.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
+    var dayOfWeek = parseInt(token[2], 10) - 1
+
+    if (!validateWeekDate(year, week, dayOfWeek)) {
+      return new Date(NaN)
+    }
+
+    return dayOfISOWeekYear(year, week, dayOfWeek)
+  }
+
+  // Invalid ISO-formatted date
+  return null
+}
+
+function parseTime(timeString) {
+  var token
+  var hours
+  var minutes
+
+  // hh
+  token = patterns.HH.exec(timeString)
+  if (token) {
+    hours = parseFloat(token[1].replace(',', '.'))
+
+    if (!validateTime(hours)) {
+      return NaN
+    }
+
+    return (hours % 24) * MILLISECONDS_IN_HOUR
+  }
+
+  // hh:mm or hhmm
+  token = patterns.HHMM.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseFloat(token[2].replace(',', '.'))
+
+    if (!validateTime(hours, minutes)) {
+      return NaN
+    }
+
+    return (
+      (hours % 24) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    )
+  }
+
+  // hh:mm:ss or hhmmss
+  token = patterns.HHMMSS.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseInt(token[2], 10)
+    var seconds = parseFloat(token[3].replace(',', '.'))
+
+    if (!validateTime(hours, minutes, seconds)) {
+      return NaN
+    }
+
+    return (
+      (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE +
+      seconds * 1000
+    )
+  }
+
+  // Invalid ISO-formatted time
+  return null
+}
+
+function dayOfISOWeekYear(isoWeekYear, week, day) {
+  week = week || 0
+  day = day || 0
+  var date = new Date(0)
+  date.setUTCFullYear(isoWeekYear, 0, 4)
+  var fourthOfJanuaryDay = date.getUTCDay() || 7
+  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
+  date.setUTCDate(date.getUTCDate() + diff)
+  return date
+}
+
+// Validation functions
+
+var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+function isLeapYearIndex(year) {
+  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+}
+
+function validateDate(year, month, date) {
+  if (month < 0 || month > 11) {
+    return false
+  }
+
+  if (date != null) {
+    if (date < 1) {
+      return false
+    }
+
+    var isLeapYear = isLeapYearIndex(year)
+    if (isLeapYear && date > DAYS_IN_MONTH_LEAP_YEAR[month]) {
+      return false
+    }
+    if (!isLeapYear && date > DAYS_IN_MONTH[month]) {
+      return false
+    }
+  }
+
+  return true
+}
+
+function validateDayOfYearDate(year, dayOfYear) {
+  if (dayOfYear < 1) {
+    return false
+  }
+
+  var isLeapYear = isLeapYearIndex(year)
+  if (isLeapYear && dayOfYear > 366) {
+    return false
+  }
+  if (!isLeapYear && dayOfYear > 365) {
+    return false
+  }
+
+  return true
+}
+
+function validateWeekDate(year, week, day) {
+  if (week < 0 || week > 52) {
+    return false
+  }
+
+  if (day != null && (day < 0 || day > 6)) {
+    return false
+  }
+
+  return true
+}
+
+function validateTime(hours, minutes, seconds) {
+  if (hours != null && (hours < 0 || hours >= 25)) {
+    return false
+  }
+
+  if (minutes != null && (minutes < 0 || minutes >= 60)) {
+    return false
+  }
+
+  if (seconds != null && (seconds < 0 || seconds >= 60)) {
+    return false
+  }
+
+  return true
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/utcToZonedTime/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/utcToZonedTime/index.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return utcToZonedTime; });
+/* harmony import */ var _lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/tzParseTimezone */ "./node_modules/date-fns-tz/esm/_lib/tzParseTimezone/index.js");
+/* harmony import */ var date_fns_esm_subMilliseconds__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/esm/subMilliseconds */ "./node_modules/date-fns/esm/subMilliseconds/index.js");
+/* harmony import */ var _toDate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toDate */ "./node_modules/date-fns-tz/esm/toDate/index.js");
+
+
+
+
+/**
+ * @name utcToZonedTime
+ * @category Time Zone Helpers
+ * @summary Get a date/time representing local time in a given time zone from the UTC date
+ *
+ * @description
+ * Returns a date instance with values representing the local time in the time zone
+ * specified of the UTC time from the date provided. In other words, when the new date
+ * is formatted it will show the equivalent hours in the target time zone regardless
+ * of the current system time zone.
+ *
+ * @param {Date|String|Number} date - the date with the relevant UTC time
+ * @param {String} timeZone - the time zone to get local time for, can be an offset or IANA time zone
+ * @param {OptionsWithTZ} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Date} the new date with the equivalent time in the time zone
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // In June 10am UTC is 6am in New York (-04:00)
+ * const result = utcToZonedTime('2014-06-25T10:00:00.000Z', 'America/New_York')
+ * //=> Jun 25 2014 06:00:00
+ */
+function utcToZonedTime(dirtyDate, timeZone, options) {
+  var date = Object(_toDate__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyDate, options)
+
+  // This date has the UTC time values of the input date at the system time zone
+  var utcDate = new Date(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds(),
+    date.getUTCMilliseconds()
+  )
+  // We just need to apply the offset indicated by the time zone to this localized date
+  var offsetMilliseconds = Object(_lib_tzParseTimezone__WEBPACK_IMPORTED_MODULE_0__["default"])(timeZone, date)
+
+  return offsetMilliseconds
+    ? Object(date_fns_esm_subMilliseconds__WEBPACK_IMPORTED_MODULE_1__["default"])(utcDate, offsetMilliseconds)
+    : utcDate
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns-tz/esm/zonedTimeToUtc/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns-tz/esm/zonedTimeToUtc/index.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return zonedTimeToUtc; });
+/* harmony import */ var date_fns_esm_lib_cloneObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns/esm/_lib/cloneObject */ "./node_modules/date-fns/esm/_lib/cloneObject/index.js");
+/* harmony import */ var date_fns_esm_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/esm/format */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var _toDate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toDate */ "./node_modules/date-fns-tz/esm/toDate/index.js");
+
+
+
+
+/**
+ * @name zonedTimeToUtc
+ * @category Time Zone Helpers
+ * @summary Get the UTC date/time from a date representing local time in a given time zone
+ *
+ * @description
+ * Returns a date instance with the UTC time of the provided date of which the values
+ * represented the local time in the time zone specified. In other words, if the input
+ * date represented local time in time time zone, the timestamp of the output date will
+ * give the equivalent UTC of that local time regardless of the current system time zone.
+ *
+ * @param {Date|String|Number} date - the date with values representing the local time
+ * @param {String} timeZone - the time zone of this local time, can be an offset or IANA time zone
+ * @param {OptionsWithTZ} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @returns {Date} the new date with the equivalent time in the time zone
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // In June 10am in Los Angeles is 5pm UTC
+ * const result = zonedTimeToUtc(new Date(2014, 5, 25, 10, 0, 0), 'America/Los_Angeles')
+ * //=> 2014-06-25T17:00:00.000Z
+ */
+function zonedTimeToUtc(date, timeZone, options) {
+  if (date instanceof Date) {
+    date = Object(date_fns_esm_format__WEBPACK_IMPORTED_MODULE_1__["default"])(date, "yyyy-MM-dd'T'HH:mm:ss.SSS")
+  }
+  var extendedOptions = Object(date_fns_esm_lib_cloneObject__WEBPACK_IMPORTED_MODULE_0__["default"])(options)
+  extendedOptions.timeZone = timeZone
+  return Object(_toDate__WEBPACK_IMPORTED_MODULE_2__["default"])(date, extendedOptions)
 }
 
 
@@ -104344,14 +105735,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************!*\
   !*** ./resources/js/components/DateComponent.vue ***!
   \***************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DateComponent_vue_vue_type_template_id_548c1d14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DateComponent.vue?vue&type=template&id=548c1d14& */ "./resources/js/components/DateComponent.vue?vue&type=template&id=548c1d14&");
 /* harmony import */ var _DateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DateComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/DateComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _DateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _DateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -104381,7 +105773,7 @@ component.options.__file = "resources/js/components/DateComponent.vue"
 /*!****************************************************************************!*\
   !*** ./resources/js/components/DateComponent.vue?vue&type=script&lang=js& ***!
   \****************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104618,6 +106010,7 @@ module.exports = {
     "Service Unavailable": "Service Unavailable",
     "Share this league:": "Share this league:",
     "So how does Apuestamigo work?": "So how does Apuestamigo work?",
+    "Sorry you have to be the owner to delete the league": "You have to be the owner to delete the league",
     "Start of the next round": "Start of the next round",
     "This action is unauthorized.": "This action is unauthorized.",
     "This password reset link will expire in =>count minutes.": "This password reset link will expire in =>count minutes.",
@@ -104849,6 +106242,7 @@ module.exports = {
     "Service Unavailable": "Servicio no disponible",
     "Share this league:": "Comparte esta liga:",
     "So how does Apuestamigo work?": "Entonces, \xBFc\xF3mo funciona Apuestamigo?",
+    "Sorry you have to be the owner to delete the league": "Lo sentimos, debes ser el propietario para eliminar la liga",
     "Start of the next round": "Comienzo de la siguiente ronda",
     "This action is unauthorized.": "Esta acci\xF3n no est\xE1 autorizada.",
     "This password reset link will expire in :count minutes.": "Este enlace de restablecimiento de contrase\xF1a caducar\xE1 en :count minutos.",
@@ -105120,6 +106514,7 @@ module.exports = {
     "Service Unavailable": "Service indisponible",
     "Share this league:": "Partage cette ligue:",
     "So how does Apuestamigo work?": "Bon, alors, comment \xE7a marche Apuestamigo?",
+    "Sorry you have to be the owner to delete the league": "Vous devez \xEAtre le propri\xE9taire pour supprimer la ligue",
     "Sorry, the page you are looking for could not be found.": "D\xE9sol\xE9, la page que vous recherchez est introuvable.",
     "Sorry, we are doing some maintenance. Please check back soon.": "D\xE9sol\xE9, nous sommes en maintenance. Veuillez revenir plus tard.",
     "Sorry, you are forbidden from accessing this page.": "D\xE9sol\xE9, vous ne pouvez acc\xE9der \xE0 cette page.",
