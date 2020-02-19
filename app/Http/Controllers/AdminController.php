@@ -147,73 +147,73 @@ class AdminController extends Controller
                         if(is_null($resultsAdmin[$i]['resultatEq1']) || is_null($resultsAdmin[$i]['resultatEq2']) ) 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Helas, le résultat du match n'est pas encore connu, ça fait Null point pour l'instant!"."<br>";
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => NULL]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->update(['pointMatch' => NULL]);
                         }
 
                         elseif(is_null($apuestas[$i]['resultatEq1']) || is_null($apuestas[$i]['resultatEq2']) ) 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Helas, tu as oublié de faire tes pronos, ça fait Null point!"."<br>";
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => NULL]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->update(['pointMatch' => NULL]);
                         }
 
                         elseif($resultsAdmin[$i]['resultatEq1'] === $apuestas[$i]['resultatEq1'] && $resultsAdmin[$i]['resultatEq2'] === $apuestas[$i]['resultatEq2'])
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .' a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] . " pour le match n° ".$apuestas[$i]['game_id'] ." ce qui fait 3 points" ."<br>";
 
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => 3]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->update(['pointMatch' => 3]);
                         } 
 
                         elseif($resultsAdmin[$i]['resultatEq1'] > $resultsAdmin[$i]['resultatEq2'] && $apuestas[$i]['resultatEq1'] > $apuestas[$i]['resultatEq2'] && $apuestas[$i]['resultatEq1'] !== $resultsAdmin[$i]['resultatEq1']) 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." ça fait 1 point!"."<br>";
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => 1]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->update(['pointMatch' => 1]);
                         }
 
                         elseif($resultsAdmin[$i]['resultatEq1'] < $resultsAdmin[$i]['resultatEq2'] && $apuestas[$i]['resultatEq1'] < $apuestas[$i]['resultatEq2'] && $apuestas[$i]['resultatEq1'] !== $resultsAdmin[$i]['resultatEq1']) 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." ça fait 1 point!"."<br>";
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => 1]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->update(['pointMatch' => 1]);
                         }
 
                         elseif($resultsAdmin[$i]['resultatEq1'] === $resultsAdmin[$i]['resultatEq2'] && $apuestas[$i]['resultatEq1'] === $apuestas[$i]['resultatEq2'] && $apuestas[$i]['resultatEq1'] !== $resultsAdmin[$i]['resultatEq1']) 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." ça fait 1 point!"."<br>";
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => 1]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->update(['pointMatch' => 1]);
                         }
 
                         else 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Désolé mais 0 point!"."<br>";
 
-                            Match::where('journee', $journee)                              
-                                          ->where('user_id', $user->id)
-                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
-                                          ->where('game_id','=', $apuestas[$i]['game_id'])
-                                          ->update(['pointMatch' => 0]);
+                            Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
+                                        ->update(['pointMatch' => 0]);
                         }
                     }                    
                 } 
