@@ -139,7 +139,7 @@ class AdminController extends Controller
             {
             // on récupere les matchs ds cqe ligue/journee pour chaque user
             $apuestas = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->get();
-                dd($resultsAdmin);
+                
                 for($i = 0; $i < count($resultsAdmin); $i++)
                 {
                     if(isset($apuestas[$i])){
