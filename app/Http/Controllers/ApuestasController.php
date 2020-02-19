@@ -161,7 +161,7 @@ class ApuestasController extends Controller
         $dateJournee4 = Carbon::create(2019, 11, 5, 18, 55, 00, 'Europe/Paris');
         $dateJournee5 = Carbon::create(2019, 11, 26, 18, 55, 00, 'Europe/Paris');
         $dateJournee6 = Carbon::create(2019, 12, 10, 18, 55, 00, 'Europe/Paris');
-        $dateJournee7 = Carbon::create(2020, 2, 18, 21, 00, 00, 'Europe/Paris');
+        $dateJournee7 = Carbon::create(2020, 2, 19, 21, 00, 00, 'Europe/Paris');
         $dateJournee8 = Carbon::create(2020, 3, 10, 21, 00, 00, 'Europe/Paris');
         $dateJournee9 = Carbon::create(2020, 4, 7, 21, 00, 00, 'Europe/Paris');
         $dateJournee10 = Carbon::create(2020, 4, 14, 21, 00, 00, 'Europe/Paris');
