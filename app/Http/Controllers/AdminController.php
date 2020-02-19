@@ -105,7 +105,7 @@ class AdminController extends Controller
     {
         $this->getUsersApuestas($journee);
 
-        return redirect()->back()->with('message.level', 'success')->with('message.content', "Les points sont mis à jours pour la journée ".$journee ." ");          
+        //return redirect()->back()->with('message.level', 'success')->with('message.content', "Les points sont mis à jours pour la journée ".$journee ." ");          
     }
     public function countPoints($journee)
     {
@@ -147,6 +147,16 @@ class AdminController extends Controller
                         if(is_null($apuestas[$i]['resultatEq1']) || is_null($apuestas[$i]['resultatEq2']) ) 
                         {
                             echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Helas, tu as oublié de faire tes pronos, ça fait 0 point!"."<br>";
+                            Match::where('journee', $journee)
+                                          ->where('game_id', $apuestas[$i]['game_id'])
+                                          ->where('user_id', $user->id)
+                                          ->where('ligue_id', $apuestas[$i]['ligue_id'])
+                                          ->update(['pointMatch' => 0]);
+                        }
+
+                        elseif(is_null($resultsAdmin[$i]['resultatEq1']) || is_null($resultsAdmin[$i]['resultatEq2']) ) 
+                        {
+                            echo "le score est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Helas, le résultat du match n'est pas encore connu, ça fait 0 point pour l'instant!"."<br>";
                             Match::where('journee', $journee)
                                           ->where('game_id', $apuestas[$i]['game_id'])
                                           ->where('user_id', $user->id)
