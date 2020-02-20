@@ -136,36 +136,26 @@ class AdminController extends Controller
         {
             foreach ($user->ligues as $key => $ligue) 
             {
-            // on récupere les matchs ds cqe ligue/journee pour chaque user
-            $apuestas = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->get();
-                
-                for($i = 0; $i < count($resultsAdmin); $i++)
-                {
-                  
+              // on récupere les matchs ds cqe ligue/journee pour chaque user
+              $apuestas = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->get();  
+
+                for($i = 0; $i < count($resultsAdmin); $i++) 
+                { 
+
                     if(isset($apuestas[$i]))
                     {
 
                       if ($resultsAdmin[$i]['game_id'] === $apuestas[$i]['game_id']) 
                       {                  
                         
-                        if(is_null($resultsAdmin[$i]['resultatEq1']) || is_null($resultsAdmin[$i]['resultatEq2']) ) 
+                        if(is_null($resultsAdmin[$i]['resultatEq1']) || is_null($resultsAdmin[$i]['resultatEq2']) || is_null($apuestas[$i]['resultatEq1']) || is_null($apuestas[$i]['resultatEq2']) ) 
                         {
                             echo "le score pour le match n° ".$resultsAdmin[$i]['game_id'] ." est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Helas, le résultat du match n'est pas encore connu, ça fait Null point pour l'instant!"."<br>";
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->where('game_id','=', $apuestas[$i]['game_id'])
                                         ->update(['pointMatch' => NULL]);
-                        }
-
-                        elseif(is_null($apuestas[$i]['resultatEq1']) || is_null($apuestas[$i]['resultatEq2']) ) 
-                        {
-                            echo "le score pour le match n° ".$resultsAdmin[$i]['game_id'] ." est : " . $resultsAdmin[$i]['resultatEq1'] .'-'. $resultsAdmin[$i]['resultatEq2'] .' et '. $user->name .' dans la ligue '. $apuestas[$i]['ligue_id'] .'  a mis '. $apuestas[$i]['resultatEq1'] .'-'. $apuestas[$i]['resultatEq2'] .  " pour le match n° ".$apuestas[$i]['game_id'] ." Helas, tu as oublié de faire tes pronos, ça fait Null point!"."<br>";
-                            Match::where('journee','=', $journee)
-                                        ->where('user_id','=', $user->id)
-                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
-                                        ->update(['pointMatch' => 0]);
                         }
 
                         elseif($resultsAdmin[$i]['resultatEq1'] === $apuestas[$i]['resultatEq1'] && $resultsAdmin[$i]['resultatEq2'] === $apuestas[$i]['resultatEq2'])
@@ -175,7 +165,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->where('game_id','=', $apuestas[$i]['game_id'])
                                         ->update(['pointMatch' => 3]);
                         } 
 
@@ -185,7 +175,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->where('game_id','=', $apuestas[$i]['game_id'])
                                         ->update(['pointMatch' => 1]);
                         }
 
@@ -195,7 +185,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->where('game_id','=', $apuestas[$i]['game_id'])
                                         ->update(['pointMatch' => 1]);
                         }
 
@@ -205,7 +195,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
+                                        ->where('game_id','=', $apuestas[$i]['game_id'])
                                         ->update(['pointMatch' => 1]);
                         }
 
@@ -216,18 +206,19 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
+                                        ->where('game_id','=', $apuestas[$i]['game_id']) 
                                         ->update(['pointMatch' => 0]);
                         }
                       }
 
                       else{
-                        echo "il y a surement un bug"."<br>";
+                        echo "il y a surement un bug pour ". $user->name .' - ' . $resultsAdmin[$i]['game_id'] . " - " .$apuestas[$i]['game_id'] . "<br>";
+
 
                         Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
+                                        ->where('game_id','=', $apuestas[$i]['game_id']) 
                                         ->update(['pointMatch' => Null]);
                       }
 
