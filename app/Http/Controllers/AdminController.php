@@ -132,11 +132,8 @@ class AdminController extends Controller
                      $query->where('journee', 'like', '%'. $journee .'%');
              }])->get(); //->where('admin', '=', 0)
 
-        $games = Game::where('journee', '=', $journee)->get('id');
-
         foreach ($users as $user) 
         {
-
             foreach ($user->ligues as $key => $ligue) 
             {
             // on récupere les matchs ds cqe ligue/journee pour chaque user
@@ -144,9 +141,10 @@ class AdminController extends Controller
                 
                 for($i = 0; $i < count($resultsAdmin); $i++)
                 {
+                  
                     if(isset($apuestas[$i]))
                     {
-                      
+
                       if ($resultsAdmin[$i]['game_id'] === $apuestas[$i]['game_id']) 
                       {                  
                         
@@ -224,13 +222,13 @@ class AdminController extends Controller
                       }
 
                       else{
-                        echo "il y a surement un bug";
+                        echo "il y a surement un bug"."<br>";
 
-                        // Match::where('journee','=', $journee)
-                        //                 ->where('user_id','=', $user->id)
-                        //                 ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                        //                 ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
-                        //                 ->update(['pointMatch' => Null]);
+                        Match::where('journee','=', $journee)
+                                        ->where('user_id','=', $user->id)
+                                        ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
+                                        ->update(['pointMatch' => Null]);
                       }
 
                     }
