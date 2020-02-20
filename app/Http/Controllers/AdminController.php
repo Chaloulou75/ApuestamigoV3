@@ -144,7 +144,11 @@ class AdminController extends Controller
                 
                 for($i = 0; $i < count($resultsAdmin); $i++)
                 {
-                    if(isset($apuestas[$i])){
+                    if(isset($apuestas[$i]))
+                    {
+                      
+                      if ($resultsAdmin[$i]['game_id'] === $apuestas[$i]['game_id']) 
+                      {                  
                         
                         if(is_null($resultsAdmin[$i]['resultatEq1']) || is_null($resultsAdmin[$i]['resultatEq2']) ) 
                         {
@@ -217,7 +221,20 @@ class AdminController extends Controller
                                         ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
                                         ->update(['pointMatch' => 0]);
                         }
-                    }                    
+                      }
+
+                      else{
+                        echo "il y a surement un bug";
+
+                        // Match::where('journee','=', $journee)
+                        //                 ->where('user_id','=', $user->id)
+                        //                 ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
+                        //                 ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
+                        //                 ->update(['pointMatch' => Null]);
+                      }
+
+                    }
+
                 } 
             }     
         }        
