@@ -152,7 +152,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
                                         ->update(['pointMatch' => NULL]);
                         }
 
@@ -162,7 +162,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
                                         ->update(['pointMatch' => 0]);
                         }
 
@@ -173,7 +173,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
                                         ->update(['pointMatch' => 3]);
                         } 
 
@@ -183,7 +183,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
                                         ->update(['pointMatch' => 1]);
                         }
 
@@ -193,7 +193,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
                                         ->update(['pointMatch' => 1]);
                         }
 
@@ -203,7 +203,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id'])
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id'])
                                         ->update(['pointMatch' => 1]);
                         }
 
@@ -214,7 +214,7 @@ class AdminController extends Controller
                             Match::where('journee','=', $journee)
                                         ->where('user_id','=', $user->id)
                                         ->where('ligue_id','=', $apuestas[$i]['ligue_id'])
-                                        ->where('game_id','=', $apuestas[$i]['game_id']) 
+                                        ->where('game_id','=', $resultsAdmin[$i]['game_id']) 
                                         ->update(['pointMatch' => 0]);
                         }
                     }                    
