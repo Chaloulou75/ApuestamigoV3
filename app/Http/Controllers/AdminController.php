@@ -141,8 +141,14 @@ class AdminController extends Controller
                 // on récupere les matchs ds chaque ligue/journee pour chaque user
                 $apuestas = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->whereNotNull(['resultatEq1', 'resultatEq2'])->whereIn('game_id', $gameAdminIds )->get();
 
-                for($i = 0; $i < count($resultsAdmin); $i++) 
-                {
+                foreach ($gameAdminIds as $i => $gameAdminId) {
+                  # code...
+                // }
+
+
+
+                // for($i = 0; $i < count($resultsAdmin); $i++) 
+                // {
                     if(isset($apuestas[$i]))
                     {
 
