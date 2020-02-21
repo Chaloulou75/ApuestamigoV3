@@ -142,10 +142,7 @@ class AdminController extends Controller
                 $apuestas = $user->matchs()->where('journee', $journee)->where('ligue_id', $ligue->id)->whereNotNull(['resultatEq1', 'resultatEq2'])->whereIn('game_id', $gameAdminIds )->get();
 
                 foreach ($gameAdminIds as $i => $gameAdminId) {
-                  # code...
                 // }
-
-
 
                 // for($i = 0; $i < count($resultsAdmin); $i++) 
                 // {
