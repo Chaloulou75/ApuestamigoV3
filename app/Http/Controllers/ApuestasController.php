@@ -69,7 +69,7 @@ class ApuestasController extends Controller
 
                         $dateMatch =  $game->gamedate;
 
-                        if($now->lessThanOrEqualTo($dateMatch))
+                        if( $now->lessThanOrEqualTo($dateMatch))
                         {
 
                             $result1 = $request->resultatEq1[$i];
@@ -122,8 +122,6 @@ class ApuestasController extends Controller
         }
         return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.Yeah! your bets are registered and updated! Good luck!') );                      
                         
-        //}
-        //return redirect()->back()->with('message.level', 'success')->with('message.content', __('Too late for this date!'));
     }
 
     /**
