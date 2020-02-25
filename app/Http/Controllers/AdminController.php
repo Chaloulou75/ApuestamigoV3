@@ -162,9 +162,6 @@ class AdminController extends Controller
           $scoreOff1 = $resultAdmin->resultatEq1;
           $scoreOff2 = $resultAdmin->resultatEq2;
 
-          // echo "Le score pour le match n: " . $resultAdmin->game_id . " a pour score officiel : " . $resultAdmin->resultatEq1 . " - " . $resultAdmin->resultatEq2 . "<br>";
-        
-
           $users = User::with(['ligues', 'matchs' => function ($query) use($journee, $gameId){
                      $query->where('journee', 'like', '%'. $journee .'%')
                            ->where('game_id', 'like', '%'. $gameId .'%');
@@ -182,8 +179,6 @@ class AdminController extends Controller
                 $apuestaGameId = $apuesta->game_id;
                 $scoreapuesta1 = $apuesta->resultatEq1;
                 $scoreapuesta2 = $apuesta->resultatEq2;
-
-                // echo "Le joueur " .$user->name. " a mis pour le match n: " . $apuesta->game_id . " a pour score : " . $apuesta->resultatEq1 . " - " . $apuesta->resultatEq2 . "<br>";
 
                 if ($apuestaGameId !== $gameId) 
                 {

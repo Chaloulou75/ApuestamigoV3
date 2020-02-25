@@ -3,7 +3,7 @@
 return [
 
   'A fresh verification link has been sent to your email address.'=> 'Se ha enviado un nuevo enlace de verificación a su correo electrónico.',
-  'All rights reserved.'=> 'Todos los derechos reservados.',
+  'All rights reserved.'=> 'Todos los derechos reservados',
   'Before proceeding, please check your email for a verification link.'=> 'Antes de continuar, por favor, confirme su correo electrónico con el enlace de verificación que le fue enviado.',
   'click here to request another'=> 'haga clic aquí para solicitar otro',
   'Confirm Password'=> 'Confirmar contraseña',

@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes(['verify' => true]);
+
 
 Route::group(
 [
@@ -23,6 +23,9 @@ Route::group(
 	    return view('index');
 	});	
 
+	
+	Auth::routes(['verify' => true]);
+	
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	Route::get('/langues', 'ContactController@langues')->name('langues');
@@ -61,3 +64,5 @@ Route::group(
 	});
 
 });
+
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

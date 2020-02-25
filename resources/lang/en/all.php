@@ -3,7 +3,7 @@
 return [
 
 'A fresh verification link has been sent to your email address.'=> 'A fresh verification link has been sent to your email address.',
-  'All rights reserved.'=> 'All rights reserved.',
+  'All rights reserved.'=> 'All rights reserved',
   'Before proceeding, please check your email for a verification link.'=> 'Before proceeding, please check your email for a verification link.',
   'click here to request another'=> 'click here to request another',
   'Confirm Password'=> 'Confirm Password',
@@ -90,7 +90,7 @@ return [
   'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
 
   //messages
-  'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',
+  'Yeah! your bets are registered! Good luck!' => 'Yeah! your bets are registered! Good luck!',
   'Yeah! your bets are registered and updated! Good luck!' => 'Yeah! your bets are registered and updated! Good luck!',
   'Too late for this date!' => 'Too late for this date',
   'scores updated' => 'the scores are updated',

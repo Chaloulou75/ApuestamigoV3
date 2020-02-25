@@ -105735,15 +105735,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************!*\
   !*** ./resources/js/components/DateComponent.vue ***!
   \***************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DateComponent_vue_vue_type_template_id_548c1d14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DateComponent.vue?vue&type=template&id=548c1d14& */ "./resources/js/components/DateComponent.vue?vue&type=template&id=548c1d14&");
 /* harmony import */ var _DateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DateComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/DateComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _DateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _DateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -105773,7 +105772,7 @@ component.options.__file = "resources/js/components/DateComponent.vue"
 /*!****************************************************************************!*\
   !*** ./resources/js/components/DateComponent.vue?vue&type=script&lang=js& ***!
   \****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105950,7 +105949,7 @@ module.exports = {
   "en.all": {
     "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.",
-    "All rights reserved.": "All rights reserved.",
+    "All rights reserved.": "All rights reserved",
     "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
     "Bets": "Bets",
     "Change": "Change",
@@ -106027,7 +106026,7 @@ module.exports = {
     "What's the name of your league?": "What's the name of your league?",
     "Whoops!": "Whoops!",
     "Yeah! your bets are registered and updated! Good luck!": "Yeah! your bets are registered and updated! Good luck!",
-    "Yeah! your bets are registered! Good luck!": "Yeah! Tes pronos sont enregistr\xE9s! Bonne chance!",
+    "Yeah! your bets are registered! Good luck!": "Yeah! your bets are registered! Good luck!",
     "You already have joined this league!": "You already have joined this league!",
     "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
     "You have joined this league!": "You have joined this league!",
@@ -106181,7 +106180,7 @@ module.exports = {
   "es.all": {
     "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificaci\xF3n a su correo electr\xF3nico.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Despu\xE9s de que te hayas registrado y / o identificado, crea una liga con tus amigos o colegas (o m\xE1s, no hay l\xEDmite de jugadores por liga, pero a\xFAn es mucho m\xE1s divertido con tus amigos y conocidos). Te desafiar\xE1s a tus amigos durante una temporada de la Champions Liga hasta la noche de la final para descubrir qui\xE9n es el mejor pronosticador de la banda.",
-    "All rights reserved.": "Todos los derechos reservados.",
+    "All rights reserved.": "Todos los derechos reservados",
     "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electr\xF3nico con el enlace de verificaci\xF3n que le fue enviado.",
     "Bets": "Apuestas",
     "Change": "Cambiar",
@@ -106452,7 +106451,7 @@ module.exports = {
   "fr.all": {
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\xE9rification a \xE9t\xE9 envoy\xE9 \xE0 votre adresse email.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Apr\xE8s vous \xEAtre enregistr\xE9 et/ou identifi\xE9, cr\xE9ez une ligue avec vos potes ou coll\xE8gues (ou plus, il n'y a pas de limite de joueurs par ligue, mais c'est quand m\xEAme autrement plus fun avec ses potes et connaissances). Vous vous defierez ENTRE VOUS pendant une saison de ligue des Champions jusqu'au soir de la finale pour savoir qui est le meilleur pronostiqueur de la bande.",
-    "All rights reserved.": "Tous droits r\xE9serv\xE9s.",
+    "All rights reserved.": "Tous droits r\xE9serv\xE9s",
     "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez v\xE9rifier votre courrier \xE9lectronique pour un lien de v\xE9rification.",
     "Bets": "Pronostics",
     "Change": "Changer",
