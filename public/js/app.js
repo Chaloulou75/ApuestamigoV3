@@ -2104,7 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getFormat: function getFormat() {
-      return this.formatDistanceToNow(new Date(2020, 1, 26, 17, 0, 0), {
+      return this.formatDistanceToNow(new Date(2020, 2, 10, 17, 0, 0), {
         includeSeconds: true,
         locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_1__["fr"],
         addSuffix: true

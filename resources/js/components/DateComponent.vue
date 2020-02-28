@@ -21,7 +21,7 @@ export default {
 
   methods: {
     getFormat () {
-      return this.formatDistanceToNow(new Date(2020, 1, 26, 17, 0, 0),  
+      return this.formatDistanceToNow(new Date(2020, 2, 10, 17, 0, 0),  
                         { includeSeconds: true,                          
                           locale: fr, 
                           addSuffix: true })                                        
