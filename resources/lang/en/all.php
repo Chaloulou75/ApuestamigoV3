@@ -47,6 +47,7 @@ return [
   'Your email address is not verified.'=> 'Your email address is not verified.',
   'Whoops!'=> 'Whoops!',
 
+  'Betting leagues between friends on the champions league.' => 'Betting leagues between friends on the Champions League.',
   'Profil' => 'Profile',
   'Favorite Club' => 'Favorite Club',
   'Ranking' => 'Ranking',

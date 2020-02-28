@@ -48,6 +48,7 @@ return [
   'Your email address is not verified.'=> 'Tu dirección de correo electrónico no está verificada.',
   'Whoops!'=> '¡Vaya!',
 
+  'Betting leagues between friends on the champions league.' => 'Ligas de apuestas entre amigos sobre la Champions Liga.',
   'Profil' => 'Perfil',
   'your profile has been updated' => 'su perfil ha sido actualizado',
   'Favorite Club' => 'Club Favorito',
