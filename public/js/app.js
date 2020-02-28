@@ -92980,7 +92980,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-gray-900",
+                  "block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-indigo-500",
                 attrs: { href: "/" }
               },
               [_vm._v("\n            Apuestamigo\n     ")]
@@ -93047,7 +93047,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 ",
+                    "block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 ",
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
@@ -93062,7 +93062,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
@@ -93077,7 +93077,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("about") }
                 },
                 [
@@ -93092,7 +93092,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2",
+                    "mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2",
                   attrs: { href: _vm.route("langues") }
                 },
                 [

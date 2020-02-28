@@ -8,7 +8,7 @@
         <!-- <img class="h-8" src="/img/logo-inverted.svg" alt="Workcation"> -->
         <a 
           :href=" '/' " 
-          class="block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-gray-900">
+          class="block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-indigo-500">
               Apuestamigo
        </a>
       </div>
@@ -29,25 +29,25 @@
       <div class="px-2 pt-2 pb-4 sm:flex sm:p-0">
         
         <a :href="route('ligues.index')" 
-            class="block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 "> 
+            class="block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 "> 
               <i class="fas fa-award pr-1"></i>
               {{ __('nav.ligues') }}
         </a>
 
         <a :href="route('ligues.create')" 
-            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2"> 
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2"> 
           <i class='far fa-hand-point-right pr-1'></i>
            {{ __('nav.creer') }}
         </a>
 
         <a :href="route('about')" 
-            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2"> 
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2"> 
           <i class="fas fa-info-circle pr-1"></i> 
            {{ __('nav.about') }}
         </a>
 
         <a :href="route('langues')" 
-            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-gray-900 sm:mt-0 sm:ml-2">
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2">
             <!-- <i class="fas fa-globe "></i> -->
             <i class="fas fa-globe-americas pr-1"></i>
               {{ __('all.Translations') }}
