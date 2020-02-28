@@ -76,7 +76,7 @@
 
         <div class="flex items-center">
           <img class="h-8 w-8 border border-gray-900 rounded-full object-cover bg-white" src="/img/cup.png" alt="cup">
-          <span class="ml-3 text-white">{{user.name}} </span>
+          <span class="ml-3 text-white"><a :href="route('profile.show', user)"> {{user.name}} </a></span>
         </div>
 
         <div class="mt-4">

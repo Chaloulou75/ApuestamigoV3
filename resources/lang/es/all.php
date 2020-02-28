@@ -48,6 +48,8 @@ return [
   'Your email address is not verified.'=> 'Tu dirección de correo electrónico no está verificada.',
   'Whoops!'=> '¡Vaya!',
 
+  'Profil' => 'Perfil',
+  'your profile has been updated' => 'su perfil ha sido actualizado',
   'Favorite Club' => 'Club Favorito',
   'Ranking' => 'Posiciones',
   'Bets' => 'Apuestas',
@@ -64,6 +66,7 @@ return [
   'Dashboard' => 'Tablero',
   'supporter' => 'oficionado de:',
   'created by:' => 'creado por:',
+  'leagues' => 'Ligas',
   'Name' => 'Nombre',
   'Club' => 'Club',
   'Points' => 'Puntos',
@@ -72,6 +75,7 @@ return [
   'Hey' => 'Hola',
   'your bets' =>'tus apuestas',
   'Start of the next round' => 'Comienzo de la siguiente ronda',
+  'Start of the next match' => 'Proximo partido',
   'you have to login or register to play.' => 'tienes que iniciar sesión o registrarte para juegar.',
   'let\'s play' => 'es tu turno',
   'Registrar' => 'Registrar',
@@ -88,6 +92,9 @@ return [
   'Go! It\'s your turn!'=> '¡Vamos! ¡Es tu turno!',
   'Leave this league?' => 'Dejar esta  liga?',
   'Leave' => 'Dejar',
+  'Edit' => 'Editar',
+  'Delete my account' => 'Suprimir mi cuenta',
+  'your profile has been deleted' => 'su perfil ha sido eliminado',
   'Sorry you have to be the owner to delete the league' => 'Lo sentimos, debes ser el propietario para eliminar la liga',
 
   //messages

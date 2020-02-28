@@ -3,7 +3,7 @@
 @section('content')
 
   <div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8">
-    <form class="bg-gray-900 shadow-md border-2 border-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('login') }}">
+    <form class="bg-teal-900 shadow-md border-2 border-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('login') }}">
       @csrf
       <div class="mb-4">
           <label for="email" class="block text-white text-base font-medium mb-2">

@@ -5,7 +5,7 @@
 
 <div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8">
 
-    <form class="bg-gray-900 shadow-md border-2 border-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('register') }}">
+    <form class="bg-teal-900 shadow-md border-2 border-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('register') }}">
         @csrf
 
         <div class="mb-4">

@@ -9,6 +9,8 @@
 
     <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
 
+      <a :href="route('profile.show', user)" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ user.name }}</a>
+
       <a :href="route('admin.index')" v-if="isAdmin" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Admin</a>
 
       <a :href="route('contact.create')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ __('nav.contact') }}</a>

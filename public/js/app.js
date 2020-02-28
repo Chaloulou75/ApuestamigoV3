@@ -1929,6 +1929,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2102,7 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getFormat: function getFormat() {
-      return this.formatDistanceToNow(new Date(2020, 1, 18, 21, 0, 0), {
+      return this.formatDistanceToNow(new Date(2020, 1, 26, 17, 0, 0), {
         includeSeconds: true,
         locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_1__["fr"],
         addSuffix: true
@@ -92735,6 +92737,16 @@ var render = function() {
               "absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl"
           },
           [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white",
+                attrs: { href: _vm.route("profile.show", _vm.user) }
+              },
+              [_vm._v(_vm._s(_vm.user.name))]
+            ),
+            _vm._v(" "),
             _vm.isAdmin
               ? _c(
                   "a",
@@ -92874,7 +92886,7 @@ var render = function() {
       },
       [
         _c("p", [
-          _vm._v(" " + _vm._s(_vm.__("all.Start of the next round")) + " "),
+          _vm._v(" " + _vm._s(_vm.__("all.Start of the next match")) + " "),
           _c("span", { staticClass: "font-bold" }, [
             _vm._v(_vm._s(_vm.getFormat()) + " ")
           ])
@@ -93155,7 +93167,13 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("span", { staticClass: "ml-3 text-white" }, [
-                      _vm._v(_vm._s(_vm.user.name) + " ")
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: _vm.route("profile.show", _vm.user) }
+                        },
+                        [_vm._v(" " + _vm._s(_vm.user.name) + " ")]
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -105959,8 +105977,10 @@ module.exports = {
     "Copy to clipboard": "Copy to clipboard",
     "Dashboard": "Dashboard",
     "Delete": "Delete",
+    "Delete my account": "Delete my account",
     "Delete this league?": "Delete this league?",
     "E-Mail Address": "E-Mail Address",
+    "Edit": "Edit",
     "Favorite Club": "Favorite Club",
     "Forbidden": "Forbidden",
     "Forgot Your Password?": "Forgot Your Password?",
@@ -105996,6 +106016,7 @@ module.exports = {
     "Please confirm your password before continuing.": "Please confirm your password before continuing.",
     "Please note, this action is irreversible.": "Please note, this action is irreversible.",
     "Points": "Points",
+    "Profil": "Profile",
     "Ranking": "Ranking",
     "Regards": "Regards",
     "Register": "Register",
@@ -106010,6 +106031,7 @@ module.exports = {
     "Share this league:": "Share this league:",
     "So how does Apuestamigo work?": "So how does Apuestamigo work?",
     "Sorry you have to be the owner to delete the league": "You have to be the owner to delete the league",
+    "Start of the next match": "Start of the next match",
     "Start of the next round": "Start of the next round",
     "This action is unauthorized.": "This action is unauthorized.",
     "This password reset link will expire in =>count minutes.": "This password reset link will expire in =>count minutes.",
@@ -106037,6 +106059,7 @@ module.exports = {
     "cookie_consentment": "By continuing to browse this site, you consent to our use of cookies to improve your online experience.",
     "created by:": "created by:",
     "is now created, share it with this token": " is now created, share it with this token",
+    "leagues": "Leagues",
     "let's play": "let's play",
     "scores updated": "the scores are updated",
     "supporter": "supporter of:",
@@ -106044,7 +106067,9 @@ module.exports = {
     "you have to login or register to play.": "you have to login or register to play.",
     "your bets": "your bets",
     "your league has been deleted": "your league has been deleted",
-    "your league has been modified": "your league has been modified"
+    "your league has been modified": "your league has been modified",
+    "your profile has been deleted": "your profile has been deleted",
+    "your profile has been updated": "your profile has been updated"
   },
   "en.auth": {
     "failed": "These credentials do not match our records.",
@@ -106190,8 +106215,10 @@ module.exports = {
     "Copy to clipboard": "Copiar al portapapeles",
     "Dashboard": "Tablero",
     "Delete": "Suprimir",
+    "Delete my account": "Suprimir mi cuenta",
     "Delete this league?": "Suprimir esta liga?",
     "E-Mail Address": "Correo electr\xF3nico",
+    "Edit": "Editar",
     "Favorite Club": "Club Favorito",
     "Forbidden": "Prohibido",
     "Forgot Your Password?": "\xBFOlvid\xF3 su contrase\xF1a?",
@@ -106228,6 +106255,7 @@ module.exports = {
     "Please confirm your password before continuing.": "Por favor, confirma tu contrase\xF1a antes de continuar.",
     "Please note, this action is irreversible.": "Tenga en cuenta que esta acci\xF3n es irreversible.",
     "Points": "Puntos",
+    "Profil": "Perfil",
     "Ranking": "Posiciones",
     "Regards": "Saludos",
     "Register": "Registrar",
@@ -106242,6 +106270,7 @@ module.exports = {
     "Share this league:": "Comparte esta liga:",
     "So how does Apuestamigo work?": "Entonces, \xBFc\xF3mo funciona Apuestamigo?",
     "Sorry you have to be the owner to delete the league": "Lo sentimos, debes ser el propietario para eliminar la liga",
+    "Start of the next match": "Proximo partido",
     "Start of the next round": "Comienzo de la siguiente ronda",
     "This action is unauthorized.": "Esta acci\xF3n no est\xE1 autorizada.",
     "This password reset link will expire in :count minutes.": "Este enlace de restablecimiento de contrase\xF1a caducar\xE1 en :count minutos.",
@@ -106269,6 +106298,7 @@ module.exports = {
     "cookie_consentment": "Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en l\xEDnea.",
     "created by:": "creado por:",
     "is now created, share it with this token": " esta creada, compartela con este token",
+    "leagues": "Ligas",
     "let's play": "es tu turno",
     "scores updated": "los resultados estan actualizados",
     "supporter": "oficionado de:",
@@ -106276,7 +106306,9 @@ module.exports = {
     "you have to login or register to play.": "tienes que iniciar sesi\xF3n o registrarte para juegar.",
     "your bets": "tus apuestas",
     "your league has been deleted": "tu liga esta borrada",
-    "your league has been modified": "la liga esta modificada"
+    "your league has been modified": "la liga esta modificada",
+    "your profile has been deleted": "su perfil ha sido eliminado",
+    "your profile has been updated": "su perfil ha sido actualizado"
   },
   "es.auth": {
     "failed": "Estas credenciales no coinciden con nuestros registros.",
@@ -106461,8 +106493,10 @@ module.exports = {
     "Copy to clipboard": "Copier dans le presse-papier",
     "Dashboard": "Tableau de bord",
     "Delete": "Supprimer",
+    "Delete my account": "Supprimer mon compte",
     "Delete this league?": "Supprimer cette ligue?",
     "E-Mail Address": "Adresse email",
+    "Edit": "Modifier",
     "Error": "Erreur",
     "Favorite Club": "Club Favoris",
     "Forbidden": "Interdit",
@@ -106500,6 +106534,7 @@ module.exports = {
     "Please confirm your password before continuing.": "Veuillez confirmer votre mot de passe avant de continuer",
     "Please note, this action is irreversible.": "Attention, cette action est irr\xE9versible.",
     "Points": "Points",
+    "Profil": "Profil",
     "Ranking": "Classement",
     "Regards": "Cordialement",
     "Register": "S'inscrire",
@@ -106520,6 +106555,7 @@ module.exports = {
     "Sorry, you are making too many requests to our servers.": "D\xE9sol\xE9, vous faites trop de requ\xEAtes vers nos serveurs.",
     "Sorry, you are not authorized to access this page.": "D\xE9sol\xE9, vous n'\xEAtes pas autoris\xE9 \xE0 acc\xE9der \xE0 cette page.",
     "Sorry, your session has expired. Please refresh and try again.": "D\xE9sol\xE9, votre session a expir\xE9. Veuillez actualiser la page et r\xE9essayer.",
+    "Start of the next match": "Prochain match",
     "Start of the next round": "D\xE9but du prochain tour",
     "This action is unauthorized.": "Cette action n'est pas autoris\xE9e.",
     "This password reset link will expire in =>count minutes.": "Ce lien de r\xE9initialisation du mot de passe expirera dans =>count minutes.",
@@ -106549,6 +106585,7 @@ module.exports = {
     "created by:": "cree par:",
     "hi": "salut",
     "is now created, share it with this token": " est maintenant cr\xE9\xE9e, partage la avec ce token",
+    "leagues": "Ligues",
     "let's play": "\xE0 toi de jouer",
     "scores updated": "les scores ont \xE9t\xE9 mis \xE0 jour",
     "supporter": "supporter de:",
@@ -106556,7 +106593,9 @@ module.exports = {
     "you have to login or register to play.": "vous devez vous identifier ou vous enregistrer pour jouer.",
     "your bets": "tes paris",
     "your league has been deleted": "ta ligue est bien supprim\xE9e!",
-    "your league has been modified": "ta ligue est bien modifi\xE9e!"
+    "your league has been modified": "ta ligue est bien modifi\xE9e!",
+    "your profile has been deleted": "ton profil a \xE9t\xE9 supprim\xE9",
+    "your profile has been updated": "ton profil a \xE9t\xE9 mis \xE0 jour"
   },
   "fr.auth": {
     "failed": "Ces identifiants ne correspondent pas \xE0 nos enregistrements",
@@ -106831,6 +106870,41 @@ var Ziggy = {
     "about": {
       "uri": "about",
       "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "profile.index": {
+      "uri": "profile",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "profile.create": {
+      "uri": "profile\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "profile.store": {
+      "uri": "profile",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "profile.show": {
+      "uri": "profile\/{profile}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "profile.edit": {
+      "uri": "profile\/{profile}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "profile.update": {
+      "uri": "profile\/{profile}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "profile.destroy": {
+      "uri": "profile\/{profile}",
+      "methods": ["DELETE"],
       "domain": null
     },
     "contact.create": {

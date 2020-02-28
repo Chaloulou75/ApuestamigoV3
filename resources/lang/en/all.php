@@ -2,7 +2,7 @@
 
 return [
 
-'A fresh verification link has been sent to your email address.'=> 'A fresh verification link has been sent to your email address.',
+  'A fresh verification link has been sent to your email address.'=> 'A fresh verification link has been sent to your email address.',
   'All rights reserved.'=> 'All rights reserved',
   'Before proceeding, please check your email for a verification link.'=> 'Before proceeding, please check your email for a verification link.',
   'click here to request another'=> 'click here to request another',
@@ -47,6 +47,7 @@ return [
   'Your email address is not verified.'=> 'Your email address is not verified.',
   'Whoops!'=> 'Whoops!',
 
+  'Profil' => 'Profile',
   'Favorite Club' => 'Favorite Club',
   'Ranking' => 'Ranking',
   'Bets' => 'Bets',
@@ -63,6 +64,7 @@ return [
   'Dashboard' => 'Dashboard',
   'supporter' => 'supporter of:',
   'created by:' => 'created by:',
+  'leagues' => 'Leagues',
   'Name' => 'Name',
   'Club' => 'Club',
   'Points' => 'Points',
@@ -71,6 +73,7 @@ return [
   'Hey' => 'Hey',
   'your bets' =>'your bets',
   'Start of the next round' => 'Start of the next round',
+  'Start of the next match' => 'Start of the next match',
   'you have to login or register to play.' => 'you have to login or register to play.',
   'let\'s play' => 'let\'s play',
   'Registrar' =>'Register',
@@ -87,6 +90,10 @@ return [
   'Go! It\'s your turn!'=> 'Go! It\'s your turn!',
   'Leave this league?' => 'Leave this league?',
   'Leave' => 'Leave',
+  'Edit' => 'Edit',
+  'your profile has been updated' => 'your profile has been updated',
+  'Delete my account' => 'Delete my account',
+  'your profile has been deleted' => 'your profile has been deleted',
   'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
 
   //messages

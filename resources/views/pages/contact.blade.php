@@ -5,7 +5,7 @@
 
 <div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
 
-    <form class="bg-gray-900 border-2 border-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('contact.store') }}">
+    <form class="bg-teal-900 border-2 border-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('contact.store') }}">
         @csrf
 
         <div class="mb-4">
@@ -48,7 +48,7 @@
 
         <div class="mb-4">
             <div class="block items-center justify-between">
-                <button class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+                <button class="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
                     {{ __('all.Send') }} &raquo;
                 </button>
             </div>

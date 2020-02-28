@@ -32,6 +32,8 @@ Route::group(
 
 	Route::get('/about', 'ContactController@about')->name('about');
 
+	Route::resource('profile', 'ProfileController');
+
 	Route::get('/contact', 'ContactController@create')->name('contact.create');
 	Route::post('/contact', 'ContactController@store')->name('contact.store');
 

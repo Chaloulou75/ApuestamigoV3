@@ -2,7 +2,7 @@
 
 return [
 
-'A fresh verification link has been sent to your email address.'=> 'Un nouveau lien de vérification a été envoyé à votre adresse email.',
+    'A fresh verification link has been sent to your email address.'=> 'Un nouveau lien de vérification a été envoyé à votre adresse email.',
     'All rights reserved.'=> 'Tous droits réservés',
     'Before proceeding, please check your email for a verification link.'=> 'Avant de continuer, veuillez vérifier votre courrier électronique pour un lien de vérification.',
     'click here to request another'=> 'cliquer ici pour faire une autre demande',
@@ -57,6 +57,8 @@ return [
     'You are receiving this email because we received a password reset request for your account.'=> 'Vous recevez cet email car nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.',
     'Your email address is not verified.'=> 'Votre adresse email n\'a pas été vérifiée.',
 
+    'Profil' => 'Profil',
+    'your profile has been updated' => 'ton profil a été mis à jour',
     'Favorite Club' => 'Club Favoris',
     'Ranking' => 'Classement',
     'Bets' => 'Pronostics',
@@ -73,6 +75,7 @@ return [
     'Dashboard' => 'Tableau de bord',
     'supporter' => 'supporter de:',
     'created by:' => 'cree par:',
+    'leagues' => 'Ligues',
     'Name' => 'Nom',
     'Club' => 'Club',
     'Points' => 'Points',
@@ -81,6 +84,7 @@ return [
     'Hey' => 'Salut',
     'your bets' =>'tes paris',
     'Start of the next round' => 'Début du prochain tour',
+    'Start of the next match' => 'Prochain match',
     'you have to login or register to play.' => 'vous devez vous identifier ou vous enregistrer pour jouer.',
     'let\'s play' => 'à toi de jouer',
     'Registrar' => 'Enregistrer',
@@ -97,6 +101,9 @@ return [
     'Go! It\'s your turn!'=>'Allez Go! A vous de jouer!',
     'Leave this league?' => 'Quitter cette ligue?',
     'Leave' => 'Quitter',
+    'Edit' => 'Modifier',
+    'Delete my account' => 'Supprimer mon compte',
+    'your profile has been deleted' => 'ton profil a été supprimé',
     'Sorry you have to be the owner to delete the league' => 'Vous devez être le propriétaire pour supprimer la ligue',
 
 
