@@ -6,12 +6,12 @@
 
   @include('layouts/partials/navLigue')  
   
-	<div class="container text-white">
+	<div class="container text-teal-900">
 
 		<div class="px-3 py-4 flex justify-center">
-			<table class="table-auto w-full text-md bg-gray-900 shadow-md border-2 border-solid border-white rounded mb-4">
+			<table class="table-auto w-full text-md bg-teal-100 shadow-md border-t-4 border-solid rounded border-teal-500 rounded mb-4">
 			  <thead>
-			    <tr class="border border-solid border-white">
+			    <tr class="border border-solid border-teal-500">
 			      <th scope="col" class="p-3 px-5">#</th>
 			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Name')}}</th>
 			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Club')}}</th>
@@ -20,7 +20,7 @@
 			  </thead>
 			  <tbody>
 			  	@foreach ($ligue->users as $user)
-			    <tr class="border border-solid border-white hover:bg-blue-800">
+			    <tr class="border border-solid border-teal-500 hover:bg-blue-200">
 			      <th scope="row" class="p-3 px-5"> {{ $loop->iteration }} </th>
 				  <td class="p-3 px-5"> {{ $user->name }} </td>
 				  <td class="p-3 px-5"> {{ $user->club }} </td>

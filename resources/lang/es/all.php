@@ -47,8 +47,10 @@ return [
   'You are receiving this email because we received a password reset request for your account.'=> 'Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.',
   'Your email address is not verified.'=> 'Tu dirección de correo electrónico no está verificada.',
   'Whoops!'=> '¡Vaya!',
+  
+  //head
+  'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Ligas de apuestas entre amigos sobre la Champions Liga y descubre quién es el mejor tipster.',
 
-  'Betting leagues between friends on the champions league.' => 'Ligas de apuestas entre amigos sobre la Champions Liga.',
   'Profil' => 'Perfil',
   'your profile has been updated' => 'su perfil ha sido actualizado',
   'Favorite Club' => 'Club Favorito',

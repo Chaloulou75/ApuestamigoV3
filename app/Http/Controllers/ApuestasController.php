@@ -135,7 +135,7 @@ class ApuestasController extends Controller
     {
         $user = Auth::user(); // user
         $journee = $fecha; //la journee
-
+            
         if (Auth::user()) 
         {
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
@@ -144,7 +144,7 @@ class ApuestasController extends Controller
                                   ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                         }])
                         ->where('journee', $journee)
-                        ->get();// les matchs
+                        ->get();// les matchs              
                                      
             return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee'));
         }

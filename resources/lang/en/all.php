@@ -47,7 +47,9 @@ return [
   'Your email address is not verified.'=> 'Your email address is not verified.',
   'Whoops!'=> 'Whoops!',
 
-  'Betting leagues between friends on the champions league.' => 'Betting leagues between friends on the Champions League.',
+  //head
+  'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Create Betting leagues between friends on the Champions League and find who is the best tipster.',
+
   'Profil' => 'Profile',
   'Favorite Club' => 'Favorite Club',
   'Ranking' => 'Ranking',
