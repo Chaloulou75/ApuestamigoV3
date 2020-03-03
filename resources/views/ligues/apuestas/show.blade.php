@@ -29,16 +29,18 @@
 		      <div class="table-cell px-1 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">Home</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
-		      {{-- <div class="table-cell px-1 py-4 text-center font-bold"></div> --}}
+		      <div class="table-cell px-1 py-4 text-center font-bold"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold"> {{ $journee }}</div>
-		      {{-- <div class="table-cell px-1 py-4 text-center font-bold"></div> --}}
+		      <div class="table-cell px-1 py-4 text-center font-bold"></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold">Away</div>
 		      <div class="table-cell px-4 py-4 text-left hidden md:table-cell "></div>
 		    </div>		    			  
 
 			@foreach ($games as $key => $game)
-				
+			
+			{{-- <p> le score pour le match n° @if(isset($game->id)) {{ $game->id }} @endif est :  @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif  - @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif et pour l'admin le match n° @if(isset($resultAdmin->matchs[$key]->game_id)) {{ $resultAdmin->matchs[$key]->game_id }} @endif</br></p> --}}
+
 		    <div class="table-row mx-auto border border-solid rounded border-teal-500 hover:bg-blue-200">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
 		      <div class="table-cell px-1 py-4 text-center text-xs hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format('j F Y H:i') }} </div>
@@ -60,11 +62,19 @@
 	                <option value="9">9</option>
 	            </select>
 			  </div>
-			  {{-- <div class="table-cell px-1 py-4 text-center text-red"> @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif 
-			  </div> --}}
+			  <div class="table-cell px-1 py-4 text-center text-red"> 
+			  	@if(isset($resultAdmin->matchs[$key]->resultatEq1) 
+			  	&& isset($resultAdmin->matchs[$key]->game_id) 
+			  	&& $game->id == $resultAdmin->matchs[$key]->game_id)
+			  	{{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif 
+			  </div>
 			  <div class="table-cell px-1 py-4 text-center"> - </div>
-			  {{-- <div class="table-cell px-1 py-4 text-center text-red">  @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif 
-			  </div> --}}
+			  <div class="table-cell px-1 py-4 text-center text-red">  
+			  	@if(isset($resultAdmin->matchs[$key]->resultatEq2)
+			  	&& isset($resultAdmin->matchs[$key]->game_id) 
+			  	&& $game->id == $resultAdmin->matchs[$key]->game_id) 
+			  	{{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif 
+			  </div>
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq2"></label>
 				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">

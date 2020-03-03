@@ -152,8 +152,7 @@ class ApuestasController extends Controller
                 //et ses scores par match              
                     $gameId = $scoreOff->game_id;
                     $scoreOff1 = $scoreOff->resultatEq1;
-                    $scoreOff2 = $scoreOff->resultatEq2;
-                // echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .'. </br>' ;         
+                    $scoreOff2 = $scoreOff->resultatEq2;         
                      
                 }
             }    
@@ -166,7 +165,7 @@ class ApuestasController extends Controller
                             ->where('journee', $journee)
                             ->get();// les matchs
 
-            return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee' ));  //'resultAdmin'          
+            return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin' ));  //          
 
         }
         return redirect()->guest('login');
