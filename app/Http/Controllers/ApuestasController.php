@@ -33,7 +33,6 @@ class ApuestasController extends Controller
                         ->get();// les matchs 
             
             return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee'));  
-
             
         }
         return redirect()->guest('login');
@@ -135,18 +134,31 @@ class ApuestasController extends Controller
     {
         $user = Auth::user(); // user
         $journee = $fecha; //la journee
-            
+
         if (Auth::user()) 
         {
+       
+            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
+                                $query->where('journee', 'like', '%'. $journee .'%');
+                            }])
+                                ->where('admin', 1)
+                                ->get(); //collection des userAdmin et de leurs resultats pour la journee
+
+            foreach ($resultsAdmin as $k => $resultAdmin) 
+            {
+                
+            }    
+                //score inséré par le user/journée/ dans cette ligue
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                            $query->where('journee', 'like', '%'. $journee .'%')
-                                  ->where('user_id', 'like', '%'. $user->id .'%')
-                                  ->where('ligue_id', 'like', '%'. $ligue->id .'%');
-                        }])
-                        ->where('journee', $journee)
-                        ->get();// les matchs              
-                                     
-            return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee'));
+                                $query->where('journee', 'like', '%'. $journee .'%')
+                                      ->where('user_id', 'like', '%'. $user->id .'%')
+                                      ->where('ligue_id', 'like', '%'. $ligue->id .'%');
+                            }])
+                            ->where('journee', $journee)
+                            ->get();// les matchs
+
+            return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee', 'resultAdmin' ));  //'resultAdmin'          
+
         }
         return redirect()->guest('login');
     }
@@ -161,7 +173,7 @@ class ApuestasController extends Controller
         $dateJournee5 = Carbon::create(2019, 11, 26, 18, 55, 00, 'Europe/Paris');
         $dateJournee6 = Carbon::create(2019, 12, 10, 18, 55, 00, 'Europe/Paris');
         $dateJournee7 = Carbon::create(2020, 2, 26, 21, 00, 00, 'Europe/Paris');
-        $dateJournee8 = Carbon::create(2020, 3, 10, 21, 00, 00, 'Europe/Paris');
+        $dateJournee8 = Carbon::create(2020, 3, 18, 21, 00, 00, 'Europe/Paris');
         $dateJournee9 = Carbon::create(2020, 4, 7, 21, 00, 00, 'Europe/Paris');
         $dateJournee10 = Carbon::create(2020, 4, 14, 21, 00, 00, 'Europe/Paris');
         $dateJournee11 = Carbon::create(2020, 4, 28, 21, 00, 00, 'Europe/Paris');

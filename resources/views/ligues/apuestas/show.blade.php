@@ -29,9 +29,9 @@
 		      <div class="table-cell px-1 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">Home</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
-		      {{-- <div class="table-cell px-1 py-4 text-center font-bold"></div> --}}
+		      <div class="table-cell px-1 py-4 text-center font-bold"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold"> {{ $journee }}</div>
-		      {{-- <div class="table-cell px-1 py-4 text-center font-bold"></div> --}}
+		      <div class="table-cell px-1 py-4 text-center font-bold"></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold">Away</div>
 		      <div class="table-cell px-4 py-4 text-left hidden md:table-cell "></div>
@@ -60,11 +60,11 @@
 	                <option value="9">9</option>
 	            </select>
 			  </div>
-			  {{-- <div class="table-cell px-1 py-4 text-center text-red"> @if(isset($scoreOff1)) {{ $scoreOff1 }} @endif 
-			  </div> --}}
+			  <div class="table-cell px-1 py-4 text-center text-red"> @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif 
+			  </div>
 			  <div class="table-cell px-1 py-4 text-center"> - </div>
-			  {{-- <div class="table-cell px-1 py-4 text-center text-red">  @if(isset($scoreOff2)) {{ $scoreOff2 }} @endif 
-			  </div> --}}
+			  <div class="table-cell px-1 py-4 text-center text-red">  @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif 
+			  </div>
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq2"></label>
 				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
@@ -84,7 +84,6 @@
 			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
 			  <div class="table-cell px-4 py-4 hidden md:table-cell font-bold text-left">{{ $game->awayTeam->name}}</div>
 		    </div>
-			
 		   @endforeach 
 		</div>
 

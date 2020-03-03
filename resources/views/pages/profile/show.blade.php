@@ -11,11 +11,11 @@
         @csrf
         @method('PATCH')
 
-		<div class="border-2 border-gray-600 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-teal-500 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
 
 			<label for="name" class="text-left text-gray-900 text-sm font-semibold"> {{ __('all.Name')}} : </label>
 
-			<input id="name" name="name" type="text" class="text-left text-gray-700 text-sm font-semibold pl-2 @error('name') bg-red-dark @enderror" value="{{ $user->name }}" placeholder="{{ $user->name }}">
+			<input id="name" name="name" type="text" class="bg-teal-100 text-left text-gray-700 text-sm font-semibold px-2 py-2 @error('name') bg-red-dark @enderror" value="{{ $user->name }}" placeholder="{{ $user->name }}">
 		
 			@error('name')
 	            <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
@@ -24,11 +24,11 @@
 	        @enderror	
 		</div>
 		
-		<div class="border-2 border-gray-600 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-teal-500 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
 
 			<label for="email" class="text-left text-gray-900 text-sm font-semibold"> Email : </label>
 
-			<input id="email" name="email" type="email" class="text-left text-gray-700 text-sm font-semibold pl-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
+			<input id="email" name="email" type="email" class="bg-teal-100 text-left text-gray-700 text-sm font-semibold px-2 py-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
 			@error('email')
                 <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
                     <strong>{{ $message }}</strong>
@@ -36,11 +36,11 @@
             @enderror 
 		</div>	
 
-		<div class="border-2 border-gray-600 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-teal-500 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
 
 			<label for="club" class="text-left text-gray-900 text-sm font-semibold"> {{ __('all.Favorite Club') }} : </label>
 
-			<select id="club" class="text-left text-gray-700 text-sm font-semibold {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="">              
+			<select id="club" class="bg-teal-100 text-left text-gray-700 text-sm font-semibold px-2 py-2 {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="">              
                 <option value="Borussia Dortmund"  @if($user->club == 'Borussia Dortmund')selected @endif>Borussia Dortmund</option>
                 <option value="Bayer Leverkusen" @if( $user->club == 'Bayer Leverkusen')selected @endif>Bayer Leverkusen</option>
                 <option value="FC Bayern" @if($user->club == 'FC Bayern')selected @endif>FC Bayern</option>
