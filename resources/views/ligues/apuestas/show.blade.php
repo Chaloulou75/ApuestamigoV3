@@ -60,11 +60,11 @@
 	                <option value="9">9</option>
 	            </select>
 			  </div>
-			  <div class="table-cell px-1 py-4 text-center text-red"> @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif 
-			  </div>
+			  {{-- <div class="table-cell px-1 py-4 text-center text-red"> @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif 
+			  </div> --}}
 			  <div class="table-cell px-1 py-4 text-center"> - </div>
-			  <div class="table-cell px-1 py-4 text-center text-red">  @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif 
-			  </div>
+			  {{-- <div class="table-cell px-1 py-4 text-center text-red">  @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif 
+			  </div> --}}
 			  <div class="table-cell px-4 py-4 text-center">
 				<label for="resultatEq2"></label>
 				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
