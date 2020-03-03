@@ -138,25 +138,25 @@ class ApuestasController extends Controller
         if (Auth::user()) 
         {
        
-            // $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
-            //                     $query->where('journee', 'like', '%'. $journee .'%');
-            //                 }])
-            //                     ->where('admin', 1)
-            //                     ->get(); //collection des userAdmin et de leurs resultats pour la journee
+            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
+                                $query->where('journee', 'like', '%'. $journee .'%');
+                            }])
+                                ->where('admin', 1)
+                                ->get(); //collection des userAdmin et de leurs resultats pour la journee
 
-            // foreach ($resultsAdmin as $k => $resultAdmin) 
-            // {
-            //     //on recupere 1 seul useradmin
-            //     foreach ($resultAdmin->matchs as $scoreOff) 
-            //     {  
-            //     //et ses scores par match              
-            //         $gameId = $scoreOff->game_id;
-            //         $scoreOff1 = $scoreOff->resultatEq1;
-            //         $scoreOff2 = $scoreOff->resultatEq2;
-            //     // echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .'. </br>' ;         
+            foreach ($resultsAdmin as $k => $resultAdmin) 
+            {
+                //on recupere 1 seul useradmin
+                foreach ($resultAdmin->matchs as $scoreOff) 
+                {  
+                //et ses scores par match              
+                    $gameId = $scoreOff->game_id;
+                    $scoreOff1 = $scoreOff->resultatEq1;
+                    $scoreOff2 = $scoreOff->resultatEq2;
+                // echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .'. </br>' ;         
                      
-            //     }
-            // }    
+                }
+            }    
                 //score inséré par le user/journée/ dans cette ligue
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
                                 $query->where('journee', 'like', '%'. $journee .'%')

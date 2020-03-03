@@ -29,9 +29,9 @@
 		      <div class="table-cell px-1 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">Home</div>
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
-		      <div class="table-cell px-1 py-4 text-center font-bold"></div>
+		      {{-- <div class="table-cell px-1 py-4 text-center font-bold"></div> --}}
 		      <div class="table-cell px-1 py-4 text-center font-bold"> {{ $journee }}</div>
-		      <div class="table-cell px-1 py-4 text-center font-bold"></div>
+		      {{-- <div class="table-cell px-1 py-4 text-center font-bold"></div> --}}
 		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
 		      <div class="table-cell px-4 py-4 text-center font-bold">Away</div>
 		      <div class="table-cell px-4 py-4 text-left hidden md:table-cell "></div>
