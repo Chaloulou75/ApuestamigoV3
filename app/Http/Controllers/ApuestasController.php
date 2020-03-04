@@ -35,8 +35,7 @@ class ApuestasController extends Controller
             return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee'));  
             
         }
-        return redirect()->guest('login');
-           
+        return redirect()->guest('login');           
     }
 
     /**
@@ -134,29 +133,10 @@ class ApuestasController extends Controller
     {
         $user = Auth::user(); // user
         $journee = $fecha; //la journee
-
         if (Auth::user()) 
-        {
-       
-            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
-                                $query->where('journee', 'like', '%'. $journee .'%');
-                            }])
-                                ->where('admin', 1)
-                                ->get(); //collection des userAdmin et de leurs resultats pour la journee
-
-            foreach ($resultsAdmin as $k => $resultAdmin) 
-            {
-                //on recupere 1 seul useradmin
-                foreach ($resultAdmin->matchs as $scoreOff) 
-                {  
-                //et ses scores par match              
-                    $gameId = $scoreOff->game_id;
-                    $scoreOff1 = $scoreOff->resultatEq1;
-                    $scoreOff2 = $scoreOff->resultatEq2;         
-                     
-                }
-            }    
-                //score inséré par le user/journée/ dans cette ligue
+        {       
+              
+            //score inséré par le user/journée/ dans cette ligue
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
                                 $query->where('journee', 'like', '%'. $journee .'%')
                                       ->where('user_id', 'like', '%'. $user->id .'%')
@@ -164,9 +144,28 @@ class ApuestasController extends Controller
                             }])
                             ->where('journee', $journee)
                             ->get();// les matchs
+            reset($games);
 
-            return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin' ));  //          
+            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
+                                    $query->where('journee', 'like', '%'. $journee .'%');
+                                }])
+                                    ->where('admin', 1)
+                                    ->get(); //collection des userAdmin et de leurs resultats pour la journee
+            
 
+            foreach ($resultsAdmin as $k => $resultAdmin) 
+            {
+                reset($resultsAdmin);
+                //on recupere 1 seul useradmin
+                foreach ($resultAdmin->matchs as $scoreOff) 
+                {  
+                    //et ses scores par match              
+                    $gameId = $scoreOff->game_id;
+                    $scoreOff1 = $scoreOff->resultatEq1;
+                    $scoreOff2 = $scoreOff->resultatEq2;                              
+                }
+            }                  
+            return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  //          
         }
         return redirect()->guest('login');
     }
