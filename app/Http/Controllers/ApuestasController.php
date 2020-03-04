@@ -143,6 +143,7 @@ class ApuestasController extends Controller
                                       ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                             }])
                             ->where('journee', $journee)
+                            ->orderBy('id')
                             ->get();// les matchs
 
 
@@ -157,13 +158,13 @@ class ApuestasController extends Controller
             foreach ($resultsAdmin as $k => $resultAdmin) 
             {
                 //on recupere 1 seul useradmin
-                foreach ($resultAdmin->matchs as $scoreOff) 
-                {  
-                    //et ses scores par match              
-                    $gameId = $scoreOff->game_id;
-                    $scoreOff1 = $scoreOff->resultatEq1;
-                    $scoreOff2 = $scoreOff->resultatEq2;                              
-                }
+                // foreach ($resultAdmin->matchs as $scoreOff) 
+                // {  
+                //     //et ses scores par match              
+                //     $gameId = $scoreOff->game_id;
+                //     $scoreOff1 = $scoreOff->resultatEq1;
+                //     $scoreOff2 = $scoreOff->resultatEq2;                              
+                // }
             }                  
             return view('/ligues/apuestas/show', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  //          
         }
