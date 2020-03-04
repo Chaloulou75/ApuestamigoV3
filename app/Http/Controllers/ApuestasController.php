@@ -144,10 +144,11 @@ class ApuestasController extends Controller
                             }])
                             ->where('journee', $journee)
                             ->get();// les matchs
-            reset($games);
+
 
             $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
-                                    $query->where('journee', 'like', '%'. $journee .'%');
+                                    $query->where('journee', 'like', '%'. $journee .'%')
+                                          ->orderBy('game_id');
                                 }])
                                     ->where('admin', 1)
                                     ->get(); //collection des userAdmin et de leurs resultats pour la journee
@@ -155,7 +156,6 @@ class ApuestasController extends Controller
 
             foreach ($resultsAdmin as $k => $resultAdmin) 
             {
-                reset($resultsAdmin);
                 //on recupere 1 seul useradmin
                 foreach ($resultAdmin->matchs as $scoreOff) 
                 {  
