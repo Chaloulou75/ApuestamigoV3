@@ -39,7 +39,7 @@
 
 			@foreach ($games as $key => $game)
 			
-			<p> le score pour le match n° @if(isset($game->id)) {{ $game->id }} @endif est :  @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif  - @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif et pour l'admin le match n° @if(isset($resultAdmin->matchs[$key]->game_id)) {{ $resultAdmin->matchs[$key]->game_id }} @endif</br></p>
+			{{-- <p> le score pour le match n° @if(isset($game->id)) {{ $game->id }} @endif est :  @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif  - @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif et pour l'admin le match n° @if(isset($resultAdmin->matchs[$key]->game_id)) {{ $resultAdmin->matchs[$key]->game_id }} @endif</br></p> --}}
 
 		    <div class="table-row mx-auto border border-solid rounded border-teal-500 hover:bg-blue-200">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
