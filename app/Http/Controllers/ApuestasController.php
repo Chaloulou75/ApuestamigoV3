@@ -30,9 +30,20 @@ class ApuestasController extends Controller
                                   ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                         }])
                         ->whereIn('id', $gamesIds)
+                        ->orderBy('id')
                         ->get();// les matchs 
+
+            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
+                                    $query->where('journee', 'like', '%'. $journee .'%')
+                                          ->orderBy('game_id');
+                                }])
+                                    ->where('admin', 1)
+                                    ->get(); //collection des userAdmin et de leurs resultats pour la journee
             
-            return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee'));  
+            foreach ($resultsAdmin as $k => $resultAdmin) 
+            {}
+            
+            return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
             
         }
         return redirect()->guest('login');           

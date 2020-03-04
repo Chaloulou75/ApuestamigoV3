@@ -21,24 +21,27 @@
 		<div class="table w-full bg-teal-100 shadow-md border-t-4 border-solid border-teal-500 rounded text-sm text-teal-900"> 
 		    <div class="table-row w-full mx-auto border border-solid border-teal-500">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell"></div>
-		      <div class="table-cell px-1 py-4 text-center font-bold hidden md:table-cell">Date</div>
+		      <div class="table-cell px-1 py-4 text-center font-bold hidden md:table-cell">{{__('all.Date')}}</div>
 		      <div class="table-cell px-1 py-4 text-right hidden md:table-cell"></div>
-		      <div class="table-cell px-4 py-4 text-center font-bold">Home</div>
-		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Home')}}</div>
+		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
+		      <div class="table-cell px-1 py-4 text-center"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold"> {{ $journee }}</div>
-		      <div class="table-cell px-4 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
-		      <div class="table-cell px-4 py-4 text-center font-bold">Away</div>
-		      <div class="table-cell px-4 py-4 text-left hidden md:table-cell "></div>
+		      <div class="table-cell px-1 py-4 text-center"></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Away')}}</div>
+		      <div class="table-cell px-1 py-4 text-left hidden md:table-cell "></div>
+		      <div class="table-cell px-1 py-4 text-left font-bold">{{__('all.Points')}}</div>
 		    </div>		    			  
 
-			@foreach ($games as $game)	
+			@foreach ($games as $key => $game)	
 
 		    <div class="table-row mx-auto border border-solid rounded border-teal-500 hover:bg-blue-200"> 
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
 		      <div class="table-cell px-1 py-4 text-center text-xs hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format(' j F Y H:i') }} </div>
 			  <div class="table-cell px-1 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
-			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
-			  <div class="table-cell px-4 py-4 text-center">
+			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
+			  <div class="table-cell px-1 py-4 text-center">
 				<label for="resultatEq1"></label>
 				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
 					<option> @isset($game->matchs->first()['resultatEq1']) {{ $game->matchs->first()['resultatEq1'] }} @endisset </option>
@@ -54,8 +57,20 @@
 	                <option value="9">9</option>
 	            </select>
 			  </div>
+			  <div class="table-cell px-1 py-4 text-center text-red"> 
+			  	@if(isset($resultAdmin->matchs[$key]->resultatEq1) 
+			  	&& isset($resultAdmin->matchs[$key]->game_id) 
+			  	&& $game->id == $resultAdmin->matchs[$key]->game_id)
+			  	{{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif 
+			  </div>
 			  <div class="table-cell px-1 py-4 text-center"> - </div>
-			  <div class="table-cell px-4 py-4 text-center">
+			  <div class="table-cell px-1 py-4 text-center text-red">  
+			  	@if(isset($resultAdmin->matchs[$key]->resultatEq2)
+			  	&& isset($resultAdmin->matchs[$key]->game_id) 
+			  	&& $game->id == $resultAdmin->matchs[$key]->game_id) 
+			  	{{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif 
+			  </div>
+			  <div class="table-cell px-1 py-4 text-center">
 				<label for="resultatEq2"></label>
 				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
 					<option> @isset($game->matchs->first()['resultatEq2']) {{ $game->matchs->first()['resultatEq2'] }} @endisset </option>
@@ -71,8 +86,11 @@
 	                <option value="9" >9</option>
 	            </select>
 			  </div>
-			  <div class="table-cell px-4 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
-			  <div class="table-cell px-4 py-4 hidden font-bold md:table-cell text-left">{{ $game->awayTeam->name}}</div>
+			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
+			  <div class="table-cell px-1 py-4 hidden font-bold md:table-cell text-left">{{ $game->awayTeam->name}}</div>
+			  <div class="table-cell px-1 py-4 text-center font-semibold">
+			  	@if(isset($game->matchs->first()['pointMatch'])) {{ $game->matchs->first()['pointMatch'] }} @endif 
+			  </div>
 		    </div>
 
 		   @endforeach 
