@@ -30,7 +30,7 @@
 		      <div class="table-cell px-1 py-4 text-center"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Away')}}</div>
-		      <div class="table-cell px-1 py-4 text-left hidden md:table-cell "></div>
+		      <div class="table-cell px-1 py-4 text-left hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-left font-bold">{{__('all.Points')}}</div>
 		    </div>		    			  
 
@@ -88,8 +88,25 @@
 			  </div>
 			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
 			  <div class="table-cell px-1 py-4 hidden font-bold md:table-cell text-left">{{ $game->awayTeam->name}}</div>
-			  <div class="table-cell px-1 py-4 text-center font-semibold">
-			  	@if(isset($game->matchs->first()['pointMatch'])) {{ $game->matchs->first()['pointMatch'] }} @endif 
+			  <div class="table-cell px-1 py-4">
+			  	@if(isset($game->matchs->first()['pointMatch'])) 
+			  	 @if($game->matchs->first()['pointMatch'] == 3)
+			  	 	<span class="text-green-500 font-bold flex items-center justify-around">	
+			  	 		<i class="far fa-check-circle font-bold"></i>		  	 		
+			  			{{ $game->matchs->first()['pointMatch'] }}			  			
+			  		</span>
+			  	 @elseif($game->matchs->first()['pointMatch'] == 1)
+			  	 	<span class="text-blue-500 font-bold flex items-center justify-around">
+			  	 		<i class="far fa-check-circle font-bold"></i>
+			  			{{ $game->matchs->first()['pointMatch'] }}			  			
+			  	    </span>
+			  	 @else
+			  	 	<span class="text-red-500 font-bold flex items-center justify-around">
+			  	 		<i class="far fa-times-circle font-bold"></i>
+			  			{{ $game->matchs->first()['pointMatch'] }}			  			
+			  	    </span>   
+			  	 @endif
+			  	@endif
 			  </div>
 		    </div>
 

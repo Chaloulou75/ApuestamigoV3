@@ -39,8 +39,6 @@
 		    </div>		    			  
 
 			@foreach ($games as $key => $game)
-			
-			{{-- <p> le score pour le match n° @if(isset($game->id)) {{ $game->id }} @endif est :  @if(isset($resultAdmin->matchs[$key]->resultatEq1)) {{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif  - @if(isset($resultAdmin->matchs[$key]->resultatEq2)) {{ $resultAdmin->matchs[$key]->resultatEq2 }} @endif et pour l'admin le match n° @if(isset($resultAdmin->matchs[$key]->game_id)) {{ $resultAdmin->matchs[$key]->game_id }} @endif</br></p> --}}
 
 		    <div class="table-row mx-auto border border-solid rounded border-teal-500 hover:bg-blue-200">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
@@ -94,8 +92,25 @@
 			  </div>
 			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
 			  <div class="table-cell px-1 py-4 hidden md:table-cell font-bold text-left">{{ $game->awayTeam->name}}</div>
-			  <div class="table-cell px-1 py-4 text-center font-semibold">
-			  	@if(isset($game->matchs->first()['pointMatch'])) {{ $game->matchs->first()['pointMatch'] }} @endif 
+			  <div class="table-cell px-1 py-4">
+			  	@if(isset($game->matchs->first()['pointMatch'])) 
+			  	 @if($game->matchs->first()['pointMatch'] == 3)
+			  	 	<span class="text-green-500 font-bold flex items-center justify-around">	
+			  	 		<i class="far fa-check-circle font-bold"></i>		  	 		
+			  			{{ $game->matchs->first()['pointMatch'] }}			  			
+			  		</span>
+			  	 @elseif($game->matchs->first()['pointMatch'] == 1)
+			  	 	<span class="text-blue-500 font-bold flex items-center justify-around">
+			  	 		<i class="far fa-check-circle font-bold"></i>
+			  			{{ $game->matchs->first()['pointMatch'] }}			  			
+			  	    </span>
+			  	 @else
+			  	 	<span class="text-red-500 font-bold flex items-center justify-around">
+			  	 		<i class="far fa-times-circle font-bold"></i>
+			  			{{ $game->matchs->first()['pointMatch'] }}			  			
+			  	    </span>   
+			  	 @endif
+			  	@endif
 			  </div>
 		    </div>
 		   @endforeach 
