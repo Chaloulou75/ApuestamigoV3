@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ligue;
 use App\User;
 use Auth;
+use App\Repositories\DateRepository;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Validator;
@@ -12,6 +13,13 @@ use Illuminate\Support\Str;
 
 class LigueController extends Controller
 {
+    private $DateRepository;
+
+    public function __construct( DateRepository $DateRepository)
+    {
+        $this->DateRepository = $DateRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -235,12 +243,14 @@ class LigueController extends Controller
     }
 
     public function classement(Ligue $ligue)
-    {        
-        return view('/ligues/classement', $ligue, compact('ligue'));        
+    {  
+        $journee = $this->DateRepository->dateJournee();     
+        return view('/ligues/classement', $ligue, compact('ligue', 'journee'));        
     }
 
     public function settings(Ligue $ligue)
     {
         return view('/layouts/partials/settings', $ligue, compact('ligue'));
     }
+
 }

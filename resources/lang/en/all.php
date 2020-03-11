@@ -54,6 +54,7 @@ return [
   'Favorite Club' => 'Favorite Club',
   'Ranking' => 'Ranking',
   'Bets' => 'Bets',
+  'Bets of' => 'Bets of',
   'Parameters' => 'Parameters',
   'Change' => 'Change',
   'Change the name of the league?' =>'Change the name of the league?',

@@ -15,10 +15,10 @@
 			<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 
 				@csrf
 		
-		@elseif( Auth::check())
+		@elseif( Auth::check() && Auth::user() == $user)
 			<h3 class="text-base text-left tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.your bets')}} :</h3>
 		@else
-			<h3 class="text-base text-left py-2"></h3>
+			<h3 class="text-base text-left py-2">{{__('all.Bets of')}} <strong>{{$user->name}}</strong>:</h3>
 		@endif
 
 		<div class="table w-full bg-teal-100 shadow-md border-t-4 border-solid border-teal-500 rounded text-sm text-teal-900">
@@ -28,11 +28,11 @@
 		      <div class="table-cell px-1 py-4 text-center font-bold hidden md:table-cell">{{__('all.Date')}}</div>
 		      <div class="table-cell px-1 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Home')}}</div>
-		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee - 1]) }}"> < </a></div>
 		      <div class="table-cell px-1 py-4 text-center"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold"> {{ $journee }}</div>
 		      <div class="table-cell px-1 py-4 text-center"></div>
-		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee + 1]) }}"> > </a></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Away')}}</div>
 		      <div class="table-cell px-1 py-4 text-left hidden md:table-cell "></div>
 		      <div class="table-cell px-1 py-4 text-left font-bold">{{__('all.Points')}}</div>
@@ -48,7 +48,13 @@
 			  <div class="table-cell px-1 py-4 text-center">
 				<label for="resultatEq1"></label>
 				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
-					<option> @if(isset($game->matchs->first()['resultatEq1'])) {{ $game->matchs->first()['resultatEq1'] }} @endif </option>
+					<option>
+					 	@if(isset($game->matchs->first()['resultatEq1']))
+					 		@if(Auth::user() == $user || $now > $game->gamedate)
+					  			{{ $game->matchs->first()['resultatEq1'] }} 
+							@endif
+						@endif 
+					</option>
 					<option value="0">0</option>
 	                <option value="1">1</option>
 	                <option value="2">2</option>
@@ -77,7 +83,13 @@
 			  <div class="table-cell px-1 py-4 text-center">
 				<label for="resultatEq2"></label>
 				<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
-					<option> @if(isset($game->matchs->first()['resultatEq2'])) {{ $game->matchs->first()['resultatEq2'] }} @endif </option>
+					<option> 
+						@if(isset($game->matchs->first()['resultatEq2']))
+							@if(Auth::user() == $user || $now > $game->gamedate) 
+								{{ $game->matchs->first()['resultatEq2'] }} 
+							@endif
+						@endif 
+					</option>
 					<option value="0" >0</option>	      
 	                <option value="1" >1</option>
 	                <option value="2" >2</option>

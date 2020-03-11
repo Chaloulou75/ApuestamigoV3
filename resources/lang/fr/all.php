@@ -65,6 +65,7 @@ return [
     'Favorite Club' => 'Club Favoris',
     'Ranking' => 'Classement',
     'Bets' => 'Pronostics',
+    'Bets of' => 'Les pronostics de',
     'Parameters' => 'Parametres',
     'Change' => 'Changer',
     'Change the name of the league?' => 'Changer le nom de cette ligue?',

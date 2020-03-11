@@ -24,11 +24,11 @@
 		      <div class="table-cell px-1 py-4 text-center font-bold hidden md:table-cell">{{__('all.Date')}}</div>
 		      <div class="table-cell px-1 py-4 text-right hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Home')}}</div>
-		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee - 1]) }}"> < </a></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee - 1]) }}"> < </a></div>
 		      <div class="table-cell px-1 py-4 text-center"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold"> {{ $journee }}</div>
 		      <div class="table-cell px-1 py-4 text-center"></div>
-		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $fecha = $journee + 1]) }}"> > </a></div>
+		      <div class="table-cell px-1 py-4 text-center font-bold"><a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee + 1]) }}"> > </a></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold">{{__('all.Away')}}</div>
 		      <div class="table-cell px-1 py-4 text-left hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-left font-bold">{{__('all.Points')}}</div>

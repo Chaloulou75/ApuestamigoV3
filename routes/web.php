@@ -45,7 +45,7 @@ Route::group(
 
 	Route::resource('ligues', 'LigueController');
 
-	Route::get('/ligues/{ligue}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
+	Route::get('/ligues/{ligue}/{user}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
 
 	Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
 	    'index', 'store'
