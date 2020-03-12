@@ -179,7 +179,7 @@ class ApuestasController extends Controller
             {
 
             }                  
-            return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));  //          
+            return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now')) ;           
         }
         return redirect()->guest('login');
     }
