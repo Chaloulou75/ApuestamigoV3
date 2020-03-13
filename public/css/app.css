@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Gelasio&display=swap);@import url(https://fonts.googleapis.com/css?family=Charm|ZCOOL+XiaoWei);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Gelasio&display=swap);@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
@@ -19787,7 +19787,7 @@ video {
 }
 
 .body {
-  font-family: "Gelasio", "ZCOOL XiaoWei", sans-serif;
+  font-family: "Gelasio", sans-serif;
 }
 
 .carousel-cell {

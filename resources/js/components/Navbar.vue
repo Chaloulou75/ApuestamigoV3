@@ -4,12 +4,13 @@
 
     <div class="flex items-center justify-between px-4 py-3 sm:p-0">
 
-      <div>
-        <!-- <img class="h-8" src="/img/logo-inverted.svg" alt="Workcation"> -->
+      <div class="flex items-center" >
+        <img class="h-8" src="/img/logopoulpe.svg" alt="Poulpe">
         <a 
           :href=" '/' " 
           class="block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-indigo-500">
-              Apuestamigo
+            
+            Apuestamigo 
        </a>
       </div>
 

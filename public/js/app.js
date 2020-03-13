@@ -2266,6 +2266,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -92975,7 +92976,12 @@ var render = function() {
         "div",
         { staticClass: "flex items-center justify-between px-4 py-3 sm:p-0" },
         [
-          _c("div", [
+          _c("div", { staticClass: "flex items-center" }, [
+            _c("img", {
+              staticClass: "h-8",
+              attrs: { src: "/img/logopoulpe.svg", alt: "Poulpe" }
+            }),
+            _vm._v(" "),
             _c(
               "a",
               {
@@ -92983,7 +92989,7 @@ var render = function() {
                   "block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-indigo-500",
                 attrs: { href: "/" }
               },
-              [_vm._v("\n            Apuestamigo\n     ")]
+              [_vm._v("\n          \n          Apuestamigo \n     ")]
             )
           ]),
           _vm._v(" "),
@@ -105968,14 +105974,18 @@ module.exports = {
     "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.",
     "All rights reserved.": "All rights reserved",
+    "Away": "Away",
     "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
     "Bets": "Bets",
+    "Bets of": "Bets of",
+    "Betting leagues between friends on the champions league and find who is the best tipster.": "Create Betting leagues between friends on the Champions League and find who is the best tipster.",
     "Change": "Change",
     "Change the name of the league?": "Change the name of the league?",
     "Club": "Club",
     "Confirm Password": "Confirm Password",
     "Copy to clipboard": "Copy to clipboard",
     "Dashboard": "Dashboard",
+    "Date": "Date",
     "Delete": "Delete",
     "Delete my account": "Delete my account",
     "Delete this league?": "Delete this league?",
@@ -105988,6 +105998,7 @@ module.exports = {
     "Go! It's your turn!": "Go! It's your turn!",
     "Hello!": "Hello!",
     "Hey": "Hey",
+    "Home": "Home",
     "If you did not create an account, no further action is required.": "If you did not create an account, no further action is required.",
     "If you did not receive the email": "If you did not receive the email",
     "If you did not request a password reset, no further action is required.": "If you did not request a password reset, no further action is required.",
@@ -106206,14 +106217,18 @@ module.exports = {
     "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificaci\xF3n a su correo electr\xF3nico.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Despu\xE9s de que te hayas registrado y / o identificado, crea una liga con tus amigos o colegas (o m\xE1s, no hay l\xEDmite de jugadores por liga, pero a\xFAn es mucho m\xE1s divertido con tus amigos y conocidos). Te desafiar\xE1s a tus amigos durante una temporada de la Champions Liga hasta la noche de la final para descubrir qui\xE9n es el mejor pronosticador de la banda.",
     "All rights reserved.": "Todos los derechos reservados",
+    "Away": "Visitante",
     "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electr\xF3nico con el enlace de verificaci\xF3n que le fue enviado.",
     "Bets": "Apuestas",
+    "Bets of": "Las apuestas de",
+    "Betting leagues between friends on the champions league and find who is the best tipster.": "Ligas de apuestas entre amigos sobre la Champions Liga y descubre qui\xE9n es el mejor tipster.",
     "Change": "Cambiar",
     "Change the name of the league?": "Cambiar el nombre de la liga?",
     "Club": "Club",
     "Confirm Password": "Confirmar contrase\xF1a",
     "Copy to clipboard": "Copiar al portapapeles",
     "Dashboard": "Tablero",
+    "Date": "Fecha",
     "Delete": "Suprimir",
     "Delete my account": "Suprimir mi cuenta",
     "Delete this league?": "Suprimir esta liga?",
@@ -106226,6 +106241,7 @@ module.exports = {
     "Go! It's your turn!": "\xA1Vamos! \xA1Es tu turno!",
     "Hello!": "\xA1Hola!",
     "Hey": "Hola",
+    "Home": "Local",
     "If you did not create an account, no further action is required.": "Si no ha creado una cuenta, no se requiere ninguna acci\xF3n adicional.",
     "If you did not receive the email": "Si no ha recibido el correo electr\xF3nico",
     "If you did not request a password reset, no further action is required.": "Si no ha solicitado el restablecimiento de contrase\xF1a, omita este correo electr\xF3nico.",
@@ -106484,14 +106500,18 @@ module.exports = {
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\xE9rification a \xE9t\xE9 envoy\xE9 \xE0 votre adresse email.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Apr\xE8s vous \xEAtre enregistr\xE9 et/ou identifi\xE9, cr\xE9ez une ligue avec vos potes ou coll\xE8gues (ou plus, il n'y a pas de limite de joueurs par ligue, mais c'est quand m\xEAme autrement plus fun avec ses potes et connaissances). Vous vous defierez ENTRE VOUS pendant une saison de ligue des Champions jusqu'au soir de la finale pour savoir qui est le meilleur pronostiqueur de la bande.",
     "All rights reserved.": "Tous droits r\xE9serv\xE9s",
+    "Away": "Exterieur",
     "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez v\xE9rifier votre courrier \xE9lectronique pour un lien de v\xE9rification.",
     "Bets": "Pronostics",
+    "Bets of": "Les pronostics de",
+    "Betting leagues between friends on the champions league and find who is the best tipster.": "Ligues de paris entre amis sur la Champions League et trouvez qui est le meilleur pronostiqueur.",
     "Change": "Changer",
     "Change the name of the league?": "Changer le nom de cette ligue?",
     "Club": "Club",
     "Confirm Password": "Confirmez le mot de passe",
     "Copy to clipboard": "Copier dans le presse-papier",
     "Dashboard": "Tableau de bord",
+    "Date": "Date",
     "Delete": "Supprimer",
     "Delete my account": "Supprimer mon compte",
     "Delete this league?": "Supprimer cette ligue?",
@@ -106505,6 +106525,7 @@ module.exports = {
     "Go! It's your turn!": "Allez Go! A vous de jouer!",
     "Hello!": "Bonjour !",
     "Hey": "Salut",
+    "Home": "Domicile",
     "If you did not create an account, no further action is required.": "Si vous n'avez pas cr\xE9\xE9 de compte, aucune action suppl\xE9mentaire n'est requise.",
     "If you did not receive the email": "Si vous n'avez pas re\xE7u l'email",
     "If you did not request a password reset, no further action is required.": "Si vous n'avez pas demand\xE9 de r\xE9initialisation de mot de passe, aucune autre action n'est requise.",
@@ -106968,7 +106989,7 @@ var Ziggy = {
       "domain": null
     },
     "apuestas.show": {
-      "uri": "ligues\/{ligue}\/apuestas\/{fecha}",
+      "uri": "ligues\/{ligue}\/{user}\/apuestas\/{fecha}",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
