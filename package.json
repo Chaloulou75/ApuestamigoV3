@@ -33,6 +33,7 @@
         "flickity-fade": "^1.0.0",
         "js-cookie": "^2.2.1",
         "lang.js": "^1.1.14",
+        "minimist": "^1.2.5",
         "tailwindcss": "^1.2.0",
         "vue-clipboard2": "^0.3.1",
         "vue-flickity": "^1.2.1",
