@@ -1,8 +1,8 @@
   
 <template>
-  <header class="bg-transparent sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+  <header class="sticky top-0 bg-transparent sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
 
-    <div class="flex items-center justify-between px-4 py-3 sm:p-0">
+    <div class="flex items-center justify-between px-4 py-3 sm:p-0 sticky">
 
       <div class="flex items-center" >
         <img class="h-8" src="/img/logopoulpe.svg" alt="Poulpe">

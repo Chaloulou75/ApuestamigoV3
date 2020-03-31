@@ -9488,6 +9488,10 @@ var longFormatters = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return getTimezoneOffsetInMilliseconds; });
 var MILLISECONDS_IN_MINUTE = 60000;
+
+function getDateMillisecondsPart(date) {
+  return date.getTime() % MILLISECONDS_IN_MINUTE;
+}
 /**
  * Google Chrome as of 67.0.3396.87 introduced timezones with offset that includes seconds.
  * They usually appear for dates that denote time before the timezones were introduced
@@ -9500,11 +9504,13 @@ var MILLISECONDS_IN_MINUTE = 60000;
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
 
+
 function getTimezoneOffsetInMilliseconds(dirtyDate) {
   var date = new Date(dirtyDate.getTime());
   var baseTimezoneOffset = Math.ceil(date.getTimezoneOffset());
   date.setSeconds(0, 0);
-  var millisecondsPartOfTimezoneOffset = date.getTime() % MILLISECONDS_IN_MINUTE;
+  var hasNegativeUTCOffset = baseTimezoneOffset > 0;
+  var millisecondsPartOfTimezoneOffset = hasNegativeUTCOffset ? (MILLISECONDS_IN_MINUTE + getDateMillisecondsPart(date)) % MILLISECONDS_IN_MINUTE : getDateMillisecondsPart(date);
   return baseTimezoneOffset * MILLISECONDS_IN_MINUTE + millisecondsPartOfTimezoneOffset;
 }
 
@@ -10106,18 +10112,19 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * @name add
  * @category Common Helpers
- * @summary Add the specified years, months, days, hours, minutes and seconds to the given date.
+ * @summary Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
  * @description
- * Add the specified years, months, days, hours, minutes and seconds to the given date.
+ * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be added
+ * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
  * | years          | Amount of years to be added        |
  * | months         | Amount of months to be added       |
+ * | weeks          | Amount of weeks to be added       |
  * | days           | Amount of days to be added         |
  * | hours          | Amount of hours to be added        |
  * | minutes        | Amount of minutes to be added      |
@@ -10132,13 +10139,14 @@ __webpack_require__.r(__webpack_exports__);
  * // Add the following duration to 1 September 2014, 10:19:50
  * var result = add(new Date(2014, 8, 1, 10, 19, 50), {
  *   years: 2,
- *   months: 24,
+ *   months: 9,
+ *   weeks: 1,
  *   days: 7,
  *   hours: 5,
  *   minutes: 9,
  *   seconds: 30,
  * })
- * //=> Sat Sep 8 2018 15:29:20
+ * //=> Thu Jun 15 2017 15:29:20
  */
 
 function add(dirtyDate, duration) {
@@ -10146,14 +10154,15 @@ function add(dirtyDate, duration) {
   if (!duration || typeof duration !== 'object') return new Date(NaN);
   var years = 'years' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.years) : 0;
   var months = 'months' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.months) : 0;
+  var weeks = 'weeks' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.weeks) : 0;
   var days = 'days' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.days) : 0;
   var hours = 'hours' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.hours) : 0;
   var minutes = 'minutes' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.minutes) : 0;
   var seconds = 'seconds' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.seconds) : 0; // Add years and months
 
-  var dateWithMonths = Object(_addMonths_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyDate), months + years * 12); // Add days
+  var dateWithMonths = Object(_addMonths_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyDate), months + years * 12); // Add weeks and days
 
-  var dateWithDays = Object(_addDays_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dateWithMonths, days); // Add days, hours, minutes and seconds
+  var dateWithDays = Object(_addDays_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dateWithMonths, days + weeks * 7); // Add days, hours, minutes and seconds
 
   var minutesToAdd = minutes + hours * 60;
   var secondsToAdd = seconds + minutesToAdd * 60;
@@ -10191,7 +10200,7 @@ __webpack_require__.r(__webpack_exports__);
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of business days to be added
+ * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
  *
@@ -10254,7 +10263,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of days to be added
+ * @param {Number} amount - the amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the days added
  * @throws {TypeError} 2 arguments required
  *
@@ -10304,7 +10313,7 @@ var MILLISECONDS_IN_HOUR = 3600000;
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of hours to be added
+ * @param {Number} amount - the amount of hours to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the hours added
  * @throws {TypeError} 2 arguments required
  *
@@ -10360,7 +10369,7 @@ __webpack_require__.r(__webpack_exports__);
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be added
+ * @param {Number} amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the ISO week-numbering years added
  * @throws {TypeError} 2 arguments required
  *
@@ -10407,7 +10416,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be added
+ * @param {Number} amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the milliseconds added
  * @throws {TypeError} 2 arguments required
  *
@@ -10456,7 +10465,7 @@ var MILLISECONDS_IN_MINUTE = 60000;
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of minutes to be added
+ * @param {Number} amount - the amount of minutes to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the minutes added
  * @throws {TypeError} 2 arguments required
  *
@@ -10505,7 +10514,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be added
+ * @param {Number} amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the months added
  * @throws {TypeError} 2 arguments required
  *
@@ -10561,7 +10570,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of quarters to be added
+ * @param {Number} amount - the amount of quarters to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the quarters added
  * @throws {TypeError} 2 arguments required
  *
@@ -10609,7 +10618,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of seconds to be added
+ * @param {Number} amount - the amount of seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the seconds added
  * @throws {TypeError} 2 arguments required
  *
@@ -10656,7 +10665,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of weeks to be added
+ * @param {Number} amount - the amount of weeks to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the weeks added
  * @throws {TypeError} 2 arguments required
  *
@@ -10704,7 +10713,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of years to be added
+ * @param {Number} amount - the amount of years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the years added
  * @throws {TypeError} 2 arguments required
  *
@@ -12204,8 +12213,11 @@ function differenceInYears(dirtyDateLeft, dirtyDateRight) {
   var dateLeft = Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dirtyDateLeft);
   var dateRight = Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dirtyDateRight);
   var sign = Object(_compareAsc_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dateLeft, dateRight);
-  var difference = Math.abs(Object(_differenceInCalendarYears_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dateLeft, dateRight));
-  dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference); // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
+  var difference = Math.abs(Object(_differenceInCalendarYears_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dateLeft, dateRight)); // Set both dates to a valid leap year for accurate comparison when dealing
+  // with leap days
+
+  dateLeft.setFullYear('1584');
+  dateRight.setFullYear('1584'); // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
 
   var isLastYearNotFull = Object(_compareAsc_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dateLeft, dateRight) === -sign;
@@ -12350,7 +12362,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @example
  * // Each month between 6 February 2014 and 10 August 2014:
- * var result = eachDayOfInterval({
+ * var result = eachMonthOfInterval({
  *   start: new Date(2014, 1, 6),
  *   end: new Date(2014, 7, 10)
  * })
@@ -12692,7 +12704,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @example
  * // Each year between 6 February 2014 and 10 August 2017:
- * var result = eachDayOfInterval({
+ * var result = eachYearOfInterval({
  *   start: new Date(2014, 1, 6),
  *   end: new Date(2017, 7, 10)
  * })
@@ -14602,7 +14614,7 @@ function formatISO(dirtyDate, dirtyOptions) {
 
     if (offset !== 0) {
       var absoluteOffset = Math.abs(offset);
-      var hourOffset = Object(_lib_addLeadingZeros_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(absoluteOffset / 60, 2);
+      var hourOffset = Object(_lib_addLeadingZeros_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(Math.floor(absoluteOffset / 60), 2);
       var minuteOffset = Object(_lib_addLeadingZeros_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(absoluteOffset % 60, 2); // If less than 0, the sign is +, because it is ahead of time.
 
       var sign = offset < 0 ? '+' : '-';
@@ -15125,7 +15137,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the given date
- * @returns {Number} the day of week
+ * @returns {0|1|2|3|4|5|6} the day of week
  * @throws {TypeError} 1 argument required
  *
  * @example
@@ -34873,7 +34885,7 @@ var locale = {
 /*!***************************************************!*\
   !*** ./node_modules/date-fns/esm/locale/index.js ***!
   \***************************************************/
-/*! exports provided: af, arDZ, arMA, arSA, az, be, bg, bn, ca, cs, cy, da, de, el, enAU, enCA, enGB, enUS, eo, es, et, faIR, fi, fr, frCA, gl, gu, he, hi, hr, hu, hy, id, is, it, ja, ka, kk, ko, lt, lv, ms, nb, nl, nn, pl, pt, ptBR, ro, ru, sk, sl, sr, srLatn, sv, ta, te, th, tr, ug, uk, vi, zhCN, zhTW */
+/*! exports provided: af, arDZ, arMA, arSA, az, be, bg, bn, ca, cs, cy, da, de, el, enAU, enCA, enGB, enUS, eo, es, et, faIR, fi, fr, frCA, gl, gu, he, hi, hr, hu, hy, id, is, it, ja, ka, kk, ko, lt, lv, ms, mt, nb, nl, nn, pl, pt, ptBR, ro, ru, sk, sl, sr, srLatn, sv, ta, te, th, tr, ug, uk, vi, zhCN, zhTW */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35004,73 +35016,77 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ms_index_js__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./ms/index.js */ "./node_modules/date-fns/esm/locale/ms/index.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ms", function() { return _ms_index_js__WEBPACK_IMPORTED_MODULE_41__["default"]; });
 
-/* harmony import */ var _nb_index_js__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./nb/index.js */ "./node_modules/date-fns/esm/locale/nb/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return _nb_index_js__WEBPACK_IMPORTED_MODULE_42__["default"]; });
+/* harmony import */ var _mt_index_js__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./mt/index.js */ "./node_modules/date-fns/esm/locale/mt/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mt", function() { return _mt_index_js__WEBPACK_IMPORTED_MODULE_42__["default"]; });
 
-/* harmony import */ var _nl_index_js__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./nl/index.js */ "./node_modules/date-fns/esm/locale/nl/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nl", function() { return _nl_index_js__WEBPACK_IMPORTED_MODULE_43__["default"]; });
+/* harmony import */ var _nb_index_js__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./nb/index.js */ "./node_modules/date-fns/esm/locale/nb/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return _nb_index_js__WEBPACK_IMPORTED_MODULE_43__["default"]; });
 
-/* harmony import */ var _nn_index_js__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./nn/index.js */ "./node_modules/date-fns/esm/locale/nn/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nn", function() { return _nn_index_js__WEBPACK_IMPORTED_MODULE_44__["default"]; });
+/* harmony import */ var _nl_index_js__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./nl/index.js */ "./node_modules/date-fns/esm/locale/nl/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nl", function() { return _nl_index_js__WEBPACK_IMPORTED_MODULE_44__["default"]; });
 
-/* harmony import */ var _pl_index_js__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./pl/index.js */ "./node_modules/date-fns/esm/locale/pl/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pl", function() { return _pl_index_js__WEBPACK_IMPORTED_MODULE_45__["default"]; });
+/* harmony import */ var _nn_index_js__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./nn/index.js */ "./node_modules/date-fns/esm/locale/nn/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nn", function() { return _nn_index_js__WEBPACK_IMPORTED_MODULE_45__["default"]; });
 
-/* harmony import */ var _pt_index_js__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./pt/index.js */ "./node_modules/date-fns/esm/locale/pt/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pt", function() { return _pt_index_js__WEBPACK_IMPORTED_MODULE_46__["default"]; });
+/* harmony import */ var _pl_index_js__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./pl/index.js */ "./node_modules/date-fns/esm/locale/pl/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pl", function() { return _pl_index_js__WEBPACK_IMPORTED_MODULE_46__["default"]; });
 
-/* harmony import */ var _pt_BR_index_js__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./pt-BR/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ptBR", function() { return _pt_BR_index_js__WEBPACK_IMPORTED_MODULE_47__["default"]; });
+/* harmony import */ var _pt_index_js__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./pt/index.js */ "./node_modules/date-fns/esm/locale/pt/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pt", function() { return _pt_index_js__WEBPACK_IMPORTED_MODULE_47__["default"]; });
 
-/* harmony import */ var _ro_index_js__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./ro/index.js */ "./node_modules/date-fns/esm/locale/ro/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ro", function() { return _ro_index_js__WEBPACK_IMPORTED_MODULE_48__["default"]; });
+/* harmony import */ var _pt_BR_index_js__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./pt-BR/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ptBR", function() { return _pt_BR_index_js__WEBPACK_IMPORTED_MODULE_48__["default"]; });
 
-/* harmony import */ var _ru_index_js__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./ru/index.js */ "./node_modules/date-fns/esm/locale/ru/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ru", function() { return _ru_index_js__WEBPACK_IMPORTED_MODULE_49__["default"]; });
+/* harmony import */ var _ro_index_js__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./ro/index.js */ "./node_modules/date-fns/esm/locale/ro/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ro", function() { return _ro_index_js__WEBPACK_IMPORTED_MODULE_49__["default"]; });
 
-/* harmony import */ var _sk_index_js__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./sk/index.js */ "./node_modules/date-fns/esm/locale/sk/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sk", function() { return _sk_index_js__WEBPACK_IMPORTED_MODULE_50__["default"]; });
+/* harmony import */ var _ru_index_js__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./ru/index.js */ "./node_modules/date-fns/esm/locale/ru/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ru", function() { return _ru_index_js__WEBPACK_IMPORTED_MODULE_50__["default"]; });
 
-/* harmony import */ var _sl_index_js__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./sl/index.js */ "./node_modules/date-fns/esm/locale/sl/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sl", function() { return _sl_index_js__WEBPACK_IMPORTED_MODULE_51__["default"]; });
+/* harmony import */ var _sk_index_js__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./sk/index.js */ "./node_modules/date-fns/esm/locale/sk/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sk", function() { return _sk_index_js__WEBPACK_IMPORTED_MODULE_51__["default"]; });
 
-/* harmony import */ var _sr_index_js__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./sr/index.js */ "./node_modules/date-fns/esm/locale/sr/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sr", function() { return _sr_index_js__WEBPACK_IMPORTED_MODULE_52__["default"]; });
+/* harmony import */ var _sl_index_js__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./sl/index.js */ "./node_modules/date-fns/esm/locale/sl/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sl", function() { return _sl_index_js__WEBPACK_IMPORTED_MODULE_52__["default"]; });
 
-/* harmony import */ var _sr_Latn_index_js__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./sr-Latn/index.js */ "./node_modules/date-fns/esm/locale/sr-Latn/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "srLatn", function() { return _sr_Latn_index_js__WEBPACK_IMPORTED_MODULE_53__["default"]; });
+/* harmony import */ var _sr_index_js__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./sr/index.js */ "./node_modules/date-fns/esm/locale/sr/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sr", function() { return _sr_index_js__WEBPACK_IMPORTED_MODULE_53__["default"]; });
 
-/* harmony import */ var _sv_index_js__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./sv/index.js */ "./node_modules/date-fns/esm/locale/sv/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sv", function() { return _sv_index_js__WEBPACK_IMPORTED_MODULE_54__["default"]; });
+/* harmony import */ var _sr_Latn_index_js__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./sr-Latn/index.js */ "./node_modules/date-fns/esm/locale/sr-Latn/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "srLatn", function() { return _sr_Latn_index_js__WEBPACK_IMPORTED_MODULE_54__["default"]; });
 
-/* harmony import */ var _ta_index_js__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./ta/index.js */ "./node_modules/date-fns/esm/locale/ta/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ta", function() { return _ta_index_js__WEBPACK_IMPORTED_MODULE_55__["default"]; });
+/* harmony import */ var _sv_index_js__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./sv/index.js */ "./node_modules/date-fns/esm/locale/sv/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sv", function() { return _sv_index_js__WEBPACK_IMPORTED_MODULE_55__["default"]; });
 
-/* harmony import */ var _te_index_js__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./te/index.js */ "./node_modules/date-fns/esm/locale/te/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "te", function() { return _te_index_js__WEBPACK_IMPORTED_MODULE_56__["default"]; });
+/* harmony import */ var _ta_index_js__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./ta/index.js */ "./node_modules/date-fns/esm/locale/ta/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ta", function() { return _ta_index_js__WEBPACK_IMPORTED_MODULE_56__["default"]; });
 
-/* harmony import */ var _th_index_js__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./th/index.js */ "./node_modules/date-fns/esm/locale/th/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "th", function() { return _th_index_js__WEBPACK_IMPORTED_MODULE_57__["default"]; });
+/* harmony import */ var _te_index_js__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./te/index.js */ "./node_modules/date-fns/esm/locale/te/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "te", function() { return _te_index_js__WEBPACK_IMPORTED_MODULE_57__["default"]; });
 
-/* harmony import */ var _tr_index_js__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./tr/index.js */ "./node_modules/date-fns/esm/locale/tr/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "tr", function() { return _tr_index_js__WEBPACK_IMPORTED_MODULE_58__["default"]; });
+/* harmony import */ var _th_index_js__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./th/index.js */ "./node_modules/date-fns/esm/locale/th/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "th", function() { return _th_index_js__WEBPACK_IMPORTED_MODULE_58__["default"]; });
 
-/* harmony import */ var _ug_index_js__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./ug/index.js */ "./node_modules/date-fns/esm/locale/ug/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ug", function() { return _ug_index_js__WEBPACK_IMPORTED_MODULE_59__["default"]; });
+/* harmony import */ var _tr_index_js__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./tr/index.js */ "./node_modules/date-fns/esm/locale/tr/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "tr", function() { return _tr_index_js__WEBPACK_IMPORTED_MODULE_59__["default"]; });
 
-/* harmony import */ var _uk_index_js__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./uk/index.js */ "./node_modules/date-fns/esm/locale/uk/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "uk", function() { return _uk_index_js__WEBPACK_IMPORTED_MODULE_60__["default"]; });
+/* harmony import */ var _ug_index_js__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./ug/index.js */ "./node_modules/date-fns/esm/locale/ug/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ug", function() { return _ug_index_js__WEBPACK_IMPORTED_MODULE_60__["default"]; });
 
-/* harmony import */ var _vi_index_js__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./vi/index.js */ "./node_modules/date-fns/esm/locale/vi/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "vi", function() { return _vi_index_js__WEBPACK_IMPORTED_MODULE_61__["default"]; });
+/* harmony import */ var _uk_index_js__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./uk/index.js */ "./node_modules/date-fns/esm/locale/uk/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "uk", function() { return _uk_index_js__WEBPACK_IMPORTED_MODULE_61__["default"]; });
 
-/* harmony import */ var _zh_CN_index_js__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./zh-CN/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zhCN", function() { return _zh_CN_index_js__WEBPACK_IMPORTED_MODULE_62__["default"]; });
+/* harmony import */ var _vi_index_js__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./vi/index.js */ "./node_modules/date-fns/esm/locale/vi/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "vi", function() { return _vi_index_js__WEBPACK_IMPORTED_MODULE_62__["default"]; });
 
-/* harmony import */ var _zh_TW_index_js__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./zh-TW/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zhTW", function() { return _zh_TW_index_js__WEBPACK_IMPORTED_MODULE_63__["default"]; });
+/* harmony import */ var _zh_CN_index_js__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./zh-CN/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zhCN", function() { return _zh_CN_index_js__WEBPACK_IMPORTED_MODULE_63__["default"]; });
+
+/* harmony import */ var _zh_TW_index_js__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./zh-TW/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zhTW", function() { return _zh_TW_index_js__WEBPACK_IMPORTED_MODULE_64__["default"]; });
 
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+
 
 
 
@@ -39597,6 +39613,467 @@ var locale = {
     /* Monday */
     ,
     firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/mt/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/mt/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'inqas minn sekonda',
+    other: 'inqas minn {{count}} sekondi'
+  },
+  xSeconds: {
+    one: 'sekonda',
+    other: '{{count}} sekondi'
+  },
+  halfAMinute: 'nofs minuta',
+  lessThanXMinutes: {
+    one: 'inqas minn minuta',
+    other: 'inqas minn {{count}} minuti'
+  },
+  xMinutes: {
+    one: 'minuta',
+    other: '{{count}} minuti'
+  },
+  aboutXHours: {
+    one: 'madwar siegħa',
+    other: 'madwar {{count}} siegħat'
+  },
+  xHours: {
+    one: 'siegħa',
+    other: '{{count}} siegħat'
+  },
+  xDays: {
+    one: 'ġurnata',
+    other: '{{count}} ġranet'
+  },
+  aboutXMonths: {
+    one: 'madwar xahar',
+    other: 'madwar {{count}} xhur'
+  },
+  xMonths: {
+    one: 'xahar',
+    other: '{{count}} xhur'
+  },
+  aboutXYears: {
+    one: 'madwar sena',
+    two: 'madwar sentejn',
+    other: 'madwar {{count}} snin'
+  },
+  xYears: {
+    one: 'sena',
+    two: 'sentejn',
+    other: '{{count}} snin'
+  },
+  overXYears: {
+    one: 'aktar minn sena',
+    two: 'aktar minn sentejn',
+    other: 'aktar minn {{count}} snin'
+  },
+  almostXYears: {
+    one: 'kważi sena',
+    two: 'kważi sentejn',
+    other: 'kważi {{count}} snin'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var adverb = token.match(/years/i);
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else if (count === 2 && adverb) {
+    result = formatDistanceLocale[token].two;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return "f'" + result;
+    } else {
+      return result + ' ilu';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/mt/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/mt/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/mt/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/mt/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'li għadda' 'fil-'p",
+  yesterday: "'Il-bieraħ fil-'p",
+  today: "'Illum fil-'p",
+  tomorrow: "'Għada fil-'p",
+  nextWeek: "eeee 'fil-'p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/mt/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/mt/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['Q', 'W'],
+  abbreviated: ['QK', 'WK'],
+  wide: ['qabel Kristu', 'wara Kristu']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1. kwart', '2. kwart', '3. kwart', '4. kwart']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'Ġ', 'L', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Fra', 'Mar', 'Apr', 'Mej', 'Ġun', 'Lul', 'Aww', 'Set', 'Ott', 'Nov', 'Diċ'],
+  wide: ['Jannar', 'Frar', 'Marzu', 'April', 'Mejju', 'Ġunju', 'Lulju', 'Awwissu', 'Settembru', 'Ottubru', 'Novembru', 'Diċembru']
+};
+var dayValues = {
+  narrow: ['Ħ', 'T', 'T', 'E', 'Ħ', 'Ġ', 'S'],
+  short: ['Ħa', 'Tn', 'Tl', 'Er', 'Ħa', 'Ġi', 'Si'],
+  abbreviated: ['Ħad', 'Tne', 'Tli', 'Erb', 'Ħam', 'Ġim', 'Sib'],
+  wide: ['Il-Ħadd', 'It-Tnejn', 'It-Tlieta', 'L-Erbgħa', 'Il-Ħamis', 'Il-Ġimgħa', 'Is-Sibt']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'nofsillejl',
+    noon: 'nofsinhar',
+    morning: 'għodwa',
+    afternoon: 'wara nofsinhar',
+    evening: 'filgħaxija',
+    night: 'lejl'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'nofsillejl',
+    noon: 'nofsinhar',
+    morning: 'għodwa',
+    afternoon: 'wara nofsinhar',
+    evening: 'filgħaxija',
+    night: 'lejl'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'nofsillejl',
+    noon: 'nofsinhar',
+    morning: 'għodwa',
+    afternoon: 'wara nofsinhar',
+    evening: 'filgħaxija',
+    night: 'lejl'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: "f'nofsillejl",
+    noon: "f'nofsinhar",
+    morning: 'filgħodu',
+    afternoon: 'wara nofsinhar',
+    evening: 'filgħaxija',
+    night: 'billejl'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: "f'nofsillejl",
+    noon: "f'nofsinhar",
+    morning: 'filgħodu',
+    afternoon: 'wara nofsinhar',
+    evening: 'filgħaxija',
+    night: 'billejl'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: "f'nofsillejl",
+    noon: "f'nofsinhar",
+    morning: 'filgħodu',
+    afternoon: 'wara nofsinhar',
+    evening: 'filgħaxija',
+    night: 'billejl'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/mt/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/mt/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(q|w)/i,
+  abbreviated: /^(q\.?\s?k\.?|b\.?\s?c\.?\s?e\.?|w\.?\s?k\.?)/i,
+  wide: /^(qabel kristu|before common era|wara kristu|common era)/i
+};
+var parseEraPatterns = {
+  any: [/^(q|b)/i, /^(w|c)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^k[1234]/i,
+  wide: /^[1234](\.)? kwart/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmaglsond]/i,
+  abbreviated: /^(jan|fra|mar|apr|mej|ġun|lul|aww|set|ott|nov|diċ)/i,
+  wide: /^(jannar|frar|marzu|april|mejju|ġunju|lulju|awwissu|settembru|ottubru|novembru|diċembru)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^ġ/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^mej/i, /^ġ/i, /^l/i, /^aw/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[ħteġs]/i,
+  short: /^(ħa|tn|tl|er|ħa|ġi|si)/i,
+  abbreviated: /^(ħad|tne|tli|erb|ħam|ġim|sib)/i,
+  wide: /^(il-ħadd|it-tnejn|it-tlieta|l-erbgħa|il-ħamis|il-ġimgħa|is-sibt)/i
+};
+var parseDayPatterns = {
+  narrow: [/^ħ/i, /^t/i, /^t/i, /^e/i, /^ħ/i, /^ġ/i, /^s/i],
+  any: [/^(il-)?ħad/i, /^(it-)?tn/i, /^(it-)?tl/i, /^(l-)?er/i, /^(il-)?ham/i, /^(il-)?ġi/i, /^(is-)?si/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|f'nofsillejl|f'nofsinhar|(ta') (għodwa|wara nofsinhar|filgħaxija|lejl))/i,
+  any: /^([ap]\.?\s?m\.?|f'nofsillejl|f'nofsinhar|(ta') (għodwa|wara nofsinhar|filgħaxija|lejl))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^f'nofsillejl/i,
+    noon: /^f'nofsinhar/i,
+    morning: /għodwa/i,
+    afternoon: /wara(\s.*)nofsinhar/i,
+    evening: /filgħaxija/i,
+    night: /lejl/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/mt/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/mt/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/mt/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/mt/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/mt/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/mt/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/mt/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Maltese locale.
+ * @language Maltese
+ * @iso-639-2 mlt
+ * @author Andras Matzon [@amatzon](@link https://github.com/amatzon)
+ * @author Bryan Borg [@bryanMt](@link https://github.com/bryanMt)
+ */
+
+var locale = {
+  code: 'mt',
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (locale);
@@ -50478,16 +50955,37 @@ var formatLong = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+
+
+function checkWeek(_date, _baseDate, _options, baseFormat) {
+  if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_date, _baseDate, _options)) {
+    return baseFormat; // in same week
+  } else if (_date.getTime() > _baseDate.getTime()) {
+    return "'下个'" + baseFormat; // in next week
+  }
+
+  return "'上个'" + baseFormat; // in last week
+}
+
 var formatRelativeLocale = {
-  lastWeek: "'上个' eeee p",
+  lastWeek: checkWeek,
+  // days before yesterday, maybe in this week or last week
   yesterday: "'昨天' p",
   today: "'今天' p",
   tomorrow: "'明天' p",
-  nextWeek: "'下个' eeee p",
-  other: 'P'
+  nextWeek: checkWeek,
+  // days after tomorrow, maybe in this week or next week
+  other: 'PP p'
 };
 function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale[token];
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(_date, _baseDate, _options, 'eeee p');
+  }
+
+  return format;
 }
 
 /***/ }),
@@ -53189,7 +53687,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  *    | BC 1 |   1 |   0 |
  *    | BC 2 |   2 |  -1 |
  *
- *    Also `yy` will try to guess the century of two digit year by proximity with `backupDate`:
+ *    Also `yy` will try to guess the century of two digit year by proximity with `referenceDate`:
  *
  *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
  *
@@ -53232,18 +53730,18 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * Units of an equal priority overwrite each other in the order of appearance.
  *
  * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
- * the values will be taken from 3rd argument `backupDate` which works as a context of parsing.
+ * the values will be taken from 3rd argument `referenceDate` which works as a context of parsing.
  *
- * `backupDate` must be passed for correct work of the function.
- * If you're not sure which `backupDate` to supply, create a new instance of Date:
+ * `referenceDate` must be passed for correct work of the function.
+ * If you're not sure which `referenceDate` to supply, create a new instance of Date:
  * `parse('02/11/2014', 'MM/dd/yyyy', new Date())`
  * In this case parsing will be done in the context of the current date.
- * If `backupDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * If `referenceDate` is `Invalid Date` or a value not convertible to valid `Date`,
  * then `Invalid Date` will be returned.
  *
  * The result may vary by locale.
  *
- * If `formatString` matches with `dateString` but does not provides tokens, `backupDate` will be returned.
+ * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
  *
  * If parsing failed, `Invalid Date` will be returned.
  * Invalid Date is a Date, whose time value is NaN.
@@ -53267,7 +53765,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
- * @param {Date|Number} backupDate - defines values missing from the parsed dateString
+ * @param {Date|Number} referenceDate - defines values missing from the parsed dateString
  * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
@@ -53301,7 +53799,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
  * //=> Sun Feb 28 2010 00:00:00
  */
 
-function parse(dirtyDateString, dirtyFormatString, dirtyBackupDate, dirtyOptions) {
+function parse(dirtyDateString, dirtyFormatString, dirtyReferenceDate, dirtyOptions) {
   Object(_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_9__["default"])(3, arguments);
   var dateString = String(dirtyDateString);
   var formatString = String(dirtyFormatString);
@@ -53330,7 +53828,7 @@ function parse(dirtyDateString, dirtyFormatString, dirtyBackupDate, dirtyOptions
 
   if (formatString === '') {
     if (dateString === '') {
-      return Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyBackupDate);
+      return Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyReferenceDate);
     } else {
       return new Date(NaN);
     }
@@ -53453,7 +53951,7 @@ function parse(dirtyDateString, dirtyFormatString, dirtyBackupDate, dirtyOptions
   }).map(function (setterArray) {
     return setterArray[0];
   });
-  var date = Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyBackupDate);
+  var date = Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyReferenceDate);
 
   if (isNaN(date)) {
     return new Date(NaN);
@@ -53513,9 +54011,7 @@ function cleanEscapedString(input) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return parseISO; });
 /* harmony import */ var _lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
-/* harmony import */ var _lib_getTimezoneOffsetInMilliseconds_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_lib/getTimezoneOffsetInMilliseconds/index.js */ "./node_modules/date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js");
-/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
-
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
 
 
 var MILLISECONDS_IN_HOUR = 3600000;
@@ -53588,7 +54084,7 @@ var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/;
  */
 
 function parseISO(argument, dirtyOptions) {
-  Object(_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(1, arguments);
+  Object(_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(1, arguments);
   var options = dirtyOptions || {};
   var additionalDigits = options.additionalDigits == null ? DEFAULT_ADDITIONAL_DIGITS : Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options.additionalDigits);
 
@@ -53631,23 +54127,15 @@ function parseISO(argument, dirtyOptions) {
       return new Date(NaN);
     }
   } else {
-    var fullTime = timestamp + time;
-    var fullTimeDate = new Date(fullTime);
-    offset = Object(_lib_getTimezoneOffsetInMilliseconds_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(fullTimeDate); // Adjust time when it's coming from DST
+    var dirtyDate = new Date(timestamp + time); // js parsed string assuming it's in UTC timezone
+    // but we need it to be parsed in our timezone
+    // so we use utc values to build date in our timezone.
+    // Year values from 0 to 99 map to the years 1900 to 1999
+    // so set year explicitly with setFullYear.
 
-    var fullTimeDateDiffDay = new Date(fullTime);
-
-    if (offset > 0) {
-      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() + 1);
-    } else {
-      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() - 1);
-    }
-
-    var offsetDiff = Object(_lib_getTimezoneOffsetInMilliseconds_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(fullTimeDateDiffDay) - offset;
-
-    if (offsetDiff > 0) {
-      offset += offsetDiff;
-    }
+    var result = new Date(dirtyDate.getUTCFullYear(), dirtyDate.getUTCMonth(), dirtyDate.getUTCDate(), dirtyDate.getUTCHours(), dirtyDate.getUTCMinutes(), dirtyDate.getUTCSeconds(), dirtyDate.getUTCMilliseconds());
+    result.setFullYear(dirtyDate.getUTCFullYear());
+    return result;
   }
 
   return new Date(timestamp + time + offset);
@@ -53855,7 +54343,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param {String|Number|Date} argument A fully formed ISO1806 date string to convert
+ * @param {String|Number|Date} argument A fully formed ISO8601 date string to convert
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
@@ -53898,7 +54386,7 @@ __webpack_require__.r(__webpack_exports__);
  * @summary Rounds the given date to the nearest minute
  *
  * @description
- * Rounds the given date to the nearest minute (or number of minutes). 
+ * Rounds the given date to the nearest minute (or number of minutes).
  * Rounds up when the given date is exactly between the nearest round minutes.
  *
  * ### v2.0.0 breaking changes:
@@ -55703,18 +56191,19 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * @name sub
  * @category Common Helpers
- * @summary Subtract the specified years, months, days, hours, minutes and seconds from the given date.
+ * @summary Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
  * @description
- * Subtract the specified years, months, days, hours, minutes and seconds from the given date.
+ * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be subtracted
+ * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|
  * | years   | Amount of years to be subtracted   |
  * | months  | Amount of months to be subtracted  |
+ * | weeks   | Amount of weeks to be subtracted   |
  * | days    | Amount of days to be subtracted    |
  * | hours   | Amount of hours to be subtracted   |
  * | minutes | Amount of minutes to be subtracted |
@@ -55726,10 +56215,11 @@ __webpack_require__.r(__webpack_exports__);
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Subtract the following duration from 8 June 2017 15:29:20
- * const result = sub(new Date(2017, 5, 8, 15, 29, 20), {
+ * // Subtract the following duration from 15 June 2017 15:29:20
+ * const result = sub(new Date(2017, 5, 15, 15, 29, 20), {
  *   years: 2,
  *   months: 9,
+ *   weeks: 1,
  *   days: 7,
  *   hours: 5,
  *   minutes: 9,
@@ -55743,14 +56233,15 @@ function sub(dirtyDate, duration) {
   if (!duration || typeof duration !== 'object') return new Date(NaN);
   var years = 'years' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.years) : 0;
   var months = 'months' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.months) : 0;
+  var weeks = 'weeks' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.weeks) : 0;
   var days = 'days' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.days) : 0;
   var hours = 'hours' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.hours) : 0;
   var minutes = 'minutes' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.minutes) : 0;
   var seconds = 'seconds' in duration ? Object(_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(duration.seconds) : 0; // Subtract years and months
 
-  var dateWithoutMonths = Object(_subMonths_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyDate), months + years * 12); // Subtract days
+  var dateWithoutMonths = Object(_subMonths_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyDate), months + years * 12); // Subtract weeks and days
 
-  var dateWithoutDays = Object(_subDays_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dateWithoutMonths, days); // Subtract hours, minutes and seconds
+  var dateWithoutDays = Object(_subDays_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dateWithoutMonths, days + weeks * 7); // Subtract hours, minutes and seconds
 
   var minutestoSub = minutes + hours * 60;
   var secondstoSub = seconds + minutestoSub * 60;
@@ -55786,7 +56277,7 @@ __webpack_require__.r(__webpack_exports__);
  * Substract the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of business days to be subtracted
+ * @param {Number} amount - the amount of business days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the business days subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -55833,7 +56324,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of days to be subtracted
+ * @param {Number} amount - the amount of days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the days subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -55880,7 +56371,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of hours to be subtracted
+ * @param {Number} amount - the amount of hours to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the hours subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -55934,7 +56425,7 @@ __webpack_require__.r(__webpack_exports__);
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
+ * @param {Number} amount - the amount of ISO week-numbering years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the ISO week-numbering years subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -55981,7 +56472,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @param {Number} amount - the amount of milliseconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the milliseconds subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -56028,7 +56519,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of minutes to be subtracted
+ * @param {Number} amount - the amount of minutes to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the minutes subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -56075,7 +56566,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be subtracted
+ * @param {Number} amount - the amount of months to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the months subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -56122,7 +56613,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of quarters to be subtracted
+ * @param {Number} amount - the amount of quarters to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the quarters subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -56169,7 +56660,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of seconds to be subtracted
+ * @param {Number} amount - the amount of seconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the seconds subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -56216,7 +56707,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of weeks to be subtracted
+ * @param {Number} amount - the amount of weeks to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the weeks subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -56263,7 +56754,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of years to be subtracted
+ * @param {Number} amount - the amount of years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the years subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -92969,12 +93460,15 @@ var render = function() {
     "header",
     {
       staticClass:
-        "bg-transparent sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
+        "sticky top-0 bg-transparent sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
     },
     [
       _c(
         "div",
-        { staticClass: "flex items-center justify-between px-4 py-3 sm:p-0" },
+        {
+          staticClass:
+            "flex items-center justify-between px-4 py-3 sm:p-0 sticky"
+        },
         [
           _c("div", { staticClass: "flex items-center" }, [
             _c("img", {
