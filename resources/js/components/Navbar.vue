@@ -8,7 +8,7 @@
         <img class="h-8" src="/img/logopoulpe.svg" alt="Poulpe">
         <a 
           :href=" '/' " 
-          class="block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-indigo-500">
+          class="block px-2 py-1 text-white text-2xl rounded font-medium hover:bg-indigo-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             
             Apuestamigo 
        </a>
@@ -30,25 +30,25 @@
       <div class="px-2 pt-2 pb-4 sm:flex sm:p-0">
         
         <a :href="route('ligues.index')" 
-            class="block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 "> 
+            class="block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
               <i class="fas fa-award pr-1"></i>
               {{ __('nav.ligues') }}
         </a>
 
         <a :href="route('ligues.create')" 
-            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2"> 
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
           <i class='far fa-hand-point-right pr-1'></i>
            {{ __('nav.creer') }}
         </a>
 
         <a :href="route('about')" 
-            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2"> 
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
           <i class="fas fa-info-circle pr-1"></i> 
            {{ __('nav.about') }}
         </a>
 
         <a :href="route('langues')" 
-            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2">
+            class="mt-1 block px-2 py-1 text-white text-sm rounded hover:bg-indigo-500 sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             <!-- <i class="fas fa-globe "></i> -->
             <i class="fas fa-globe-americas pr-1"></i>
               {{ __('all.Translations') }}
@@ -56,14 +56,14 @@
         
         <a :href="route('login')" 
             v-if="! isAuthenticated"
-            class="mt-1 block px-4 py-2 text-sm leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2 " >
+            class="mt-1 block px-4 py-2 text-sm leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 " >
             <i class='fas fa-user pr-1'></i>
             {{ __('all.Login') }}
         </a>
                
         <a :href="route('register')"
             v-if="! isAuthenticated" 
-            class="mt-1 block px-4 py-2 text-sm leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2">
+            class="mt-1 block px-4 py-2 text-sm leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
           <i class="fas fa-user-circle pr-1"></i>
           {{ __('all.Register') }}
         </a>
@@ -77,25 +77,25 @@
 
         <div class="flex items-center">
           <img class="h-8 w-8 border border-gray-900 rounded-full object-cover bg-white" src="/img/cup.png" alt="cup">
-          <span class="ml-3 text-white"><a :href="route('profile.show', user)"> {{user.name}} </a></span>
+          <span class="ml-3 text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"><a :href="route('profile.show', user)"> {{user.name}} </a></span>
         </div>
 
         <div class="mt-4">
 
           <a :href="route('admin.index')" 
               v-if="isAdmin"
-              class="block text-gray-400 hover:text-white">
+              class="block text-gray-400 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
               Admin
           </a>
 
           <a :href="route('contact.create')" 
-              class="mt-2 block text-gray-400 hover:text-white">
+              class="mt-2 block text-gray-400 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
               {{ __('nav.contact') }}
           </a>
 
           <a href="#" 
              @click.prevent="logout" 
-             class="mt-2 block text-gray-400 hover:text-white">
+             class="mt-2 block text-gray-400 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             {{ __('all.Logout') }}
           </a>
           

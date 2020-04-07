@@ -1,4 +1,4 @@
-<template>
+ transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110<template>
   <div class="relative">
     <button @click="isOpen = !isOpen" class="relative z-10 block h-8 w-8 rounded-full overflow-hidden border border-gray-900 focus:outline-none focus:border-white">
       <img class="h-full w-full object-cover bg-white" src="/img/cup.png" alt="cup">
@@ -9,13 +9,13 @@
 
     <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
 
-      <a :href="route('profile.show', user)" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ user.name }}</a>
+      <a :href="route('profile.show', user)" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">{{ user.name }}</a>
 
-      <a :href="route('admin.index')" v-if="isAdmin" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Admin</a>
+      <a :href="route('admin.index')" v-if="isAdmin" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">Admin</a>
 
-      <a :href="route('contact.create')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ __('nav.contact') }}</a>
+      <a :href="route('contact.create')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">{{ __('nav.contact') }}</a>
 
-      <a href="#" @click.prevent="logout" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">{{ __('all.Logout') }}</a>
+      <a href="#" @click.prevent="logout" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">{{ __('all.Logout') }}</a>
       
     </div>
   </div>
