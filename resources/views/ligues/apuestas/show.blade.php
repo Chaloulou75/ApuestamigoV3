@@ -8,7 +8,7 @@
 
   	<date-component></date-component>
   
-	<div class="container text-white">
+	<div class="container text-gray-800">
 
 		@if ( Auth::user()->admin == 1) 
 			<h3 class="text-base text-left tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, set all scores!</h3>

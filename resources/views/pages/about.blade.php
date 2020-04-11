@@ -6,7 +6,7 @@
 <div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
 
 	<div class="border-t-4 border-double rounded border-gray-600 bg-transparent mb-4 p-1">
-  		<h1 class="text-center text-white text-3xl tracking-wider font-semibold">{{ __('nav.about') }}</h1>
+  		<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('nav.about') }}</h1>
   	</div>
 
   	<div class="border-2 border-solid border-white rounded py-4 px-4 bg-teal-900 shadow-2xl">

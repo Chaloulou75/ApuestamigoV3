@@ -9,13 +9,13 @@
 
     <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
 
-      <a :href="route('profile.show', user)" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">{{ user.name }}</a>
+      <a :href="route('profile.show', user)" class="block px-4 py-2 text-gray-800 hover:bg-teal-700 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1">{{ user.name }}</a>
 
-      <a :href="route('admin.index')" v-if="isAdmin" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">Admin</a>
+      <a :href="route('admin.index')" v-if="isAdmin" class="block px-4 py-2 text-gray-800 hover:bg-teal-700 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1">Admin</a>
 
-      <a :href="route('contact.create')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">{{ __('nav.contact') }}</a>
+      <a :href="route('contact.create')" class="block px-4 py-2 text-gray-800 hover:bg-teal-700 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1">{{ __('nav.contact') }}</a>
 
-      <a href="#" @click.prevent="logout" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">{{ __('all.Logout') }}</a>
+      <a href="#" @click.prevent="logout" class="block px-4 py-2 text-gray-800 hover:bg-teal-700 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1">{{ __('all.Logout') }}</a>
       
     </div>
   </div>

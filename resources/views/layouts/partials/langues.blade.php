@@ -5,7 +5,7 @@
 
 <div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
 
-	<div class="border-2 border-solid border-white rounded py-4 px-4 bg-teal-900 shadow-2xl">
+	<div class="border-2 border-solid border-teal-400 rounded py-4 px-4 bg-teal-900 shadow-2xl">
 
 	<h1 class="text-2xl font-base text-white m-3"> {{__('all.Translations')}}</h1>
 

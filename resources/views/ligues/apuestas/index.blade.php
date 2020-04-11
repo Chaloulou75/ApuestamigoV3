@@ -8,7 +8,7 @@
 
   	<date-component></date-component>
   
-	<div class="text-white">
+	<div class="text-gray-800">
 
 		@if (Auth::check())		
 			<h3 class="text-base text-left tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.let\'s play')}}.</h3>

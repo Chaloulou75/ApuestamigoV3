@@ -4,7 +4,7 @@
 
 <div class="w-full lg:w-3/4 m-auto p-1">
 	<div class="border-t-4 border-double rounded border-gray-600 bg-transparent mb-4 p-1">
-		<h1 class="text-center text-white text-3xl tracking-wider font-semibold">{{ __('all.Profil') }}</h1>
+		<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('all.Profil') }}</h1>
 	</div>
 
 	<form class="bg-transparent shadow-md border-2 border-gray-600 rounded px-8 pt-6 pb-4 mb-1" method="POST" action="{{ route('profile.update', $user) }}">

@@ -1,4 +1,5 @@
 // Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Gelasio&display=swap');
 
 // Variables
@@ -16,9 +17,11 @@
 
 @tailwind utilities;
 
+@import "~animate.css/animate.css";
+
 .body {
 
-	font-family: 'Gelasio', sans-serif ;
+	font-family: 'Gelasio', 'Montserrat', sans-serif ;
 }
 
 .carousel-cell {
