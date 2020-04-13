@@ -8,7 +8,7 @@
 
   	<date-component></date-component>
   
-	<div class="container text-gray-800">
+	<div class="container text-gray-800 animated jackInTheBox">
 
 		@if ( Auth::user()->admin == 1) 
 			<h3 class="text-base text-left tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, set all scores!</h3>
@@ -21,7 +21,7 @@
 			<h3 class="text-base text-left py-2">{{__('all.Bets of')}} <strong>{{$user->name}}</strong>:</h3>
 		@endif
 
-		<div class="table w-full bg-teal-100 shadow-md border-t-4 border-solid border-teal-500 rounded text-sm text-teal-900">
+		<div class="table w-full bg-teal-100 shadow-md border-4 border-solid border-teal-500 rounded text-sm text-teal-900">
 
 		    <div class="table-row w-full mx-auto border border-solid border-white">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell"></div>

@@ -8,7 +8,7 @@
 
   	<date-component></date-component>
   
-	<div class="text-gray-800">
+	<div class="text-gray-800 animated jackInTheBox">
 
 		@if (Auth::check())		
 			<h3 class="text-base text-left tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.let\'s play')}}.</h3>
@@ -18,7 +18,7 @@
 		<form method="POST" action="{{ action('ApuestasController@store', $ligue) }}"> 
 			@csrf
 
-		<div class="table w-full bg-teal-100 shadow-md border-t-4 border-solid border-teal-500 rounded text-sm text-teal-900"> 
+		<div class="table w-full bg-teal-100 shadow-md border-4 border-solid border-teal-500 rounded text-sm text-teal-900"> 
 		    <div class="table-row w-full mx-auto border border-solid border-teal-500">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold hidden md:table-cell">{{__('all.Date')}}</div>

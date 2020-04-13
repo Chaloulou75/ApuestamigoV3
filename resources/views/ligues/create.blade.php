@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8">
+  <div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8 animated bounceInDown">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('ligues.store') }}">
       @csrf
       <div class="mb-4">
@@ -16,7 +16,7 @@
           
       </div>
       <div class="flex items-center justify-between">
-        <button class="w-full bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="w-full bg-teal-500 hover:bg-julienred text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           {{ __('nav.creer') }}
         </button>
       </div>

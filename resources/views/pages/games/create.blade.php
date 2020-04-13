@@ -4,7 +4,7 @@
 
 <div class="w-full md:w-4/5 mx-auto p-1">
 
-		<h3 class="text-md text-center py-2 text-white">Hey {{ $user->name }}, mets les prochains matchs</h3>
+		<h3 class="text-md text-center py-2 text-gray-800">Hey {{ $user->name }}, mets les prochains matchs</h3>
 		@if ($errors->any())
 		    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
 		        <ul>

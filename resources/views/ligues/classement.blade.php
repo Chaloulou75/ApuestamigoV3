@@ -6,9 +6,9 @@
 
   @include('layouts/partials/navLigue')  
   
-	<div class="container text-teal-900">
+	<div class="w-full text-juliengris">
 
-		<div class="px-3 py-4 flex justify-center">
+		<div class="px-3 py-4 flex justify-center animated rotateInUpLeft">
 			<table class="table-auto w-full text-md bg-teal-100 shadow-md border-t-4 border-solid rounded border-teal-500 rounded mb-4">
 			  <thead>
 			    <tr class="border border-solid border-teal-500">

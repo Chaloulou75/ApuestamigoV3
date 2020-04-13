@@ -5,15 +5,15 @@
 
 <div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
 
-	<div class="border-t-4 border-double rounded border-gray-600 bg-transparent mb-4 p-1">
+	<div class="border-t-4 border-double border-julienred bg-transparent mb-4 p-1 animated bounceInRight">
   		<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('nav.about') }}</h1>
   	</div>
 
-  	<div class="border-2 border-solid border-white rounded py-4 px-4 bg-teal-900 shadow-2xl">
+  	<div class="border-2 border-solid border-julienred rounded py-4 px-4 bg-teal-100 shadow-2xl animated bounceInUp">
 
-	  	<h2 class="text-white text-2xl mb-2">{{ __('all.So how does Apuestamigo work?')}}</h2>
+	  	<h2 class="text-juliengris text-2xl mb-2">{{ __('all.So how does Apuestamigo work?')}}</h2>
 
-	  	<p class="text-white text-justify mb-2 ">
+	  	<p class="text-juliengris text-justify mb-2 ">
 	  		{{ __('all.No, Apuestamigo is not yet another online betting site ...' ) }}</br>
 	  		{{ __('all.Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.') }}</br></br>
 

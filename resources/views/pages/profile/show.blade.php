@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="w-full lg:w-3/4 m-auto p-1">
-	<div class="border-t-4 border-double rounded border-gray-600 bg-transparent mb-4 p-1">
+	<div class="border-t-4 border-double rounded border-julienred bg-transparent mb-4 p-1">
 		<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('all.Profil') }}</h1>
 	</div>
 
