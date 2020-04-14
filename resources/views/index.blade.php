@@ -3,8 +3,11 @@
 @section('content')
 	
 	<div class="w-full lg:w-3/4 m-auto p-1">
-		<div class="border-t-4 border-double rounded border-julienred bg-transparent mb-4 p-1 animated bounceInRight">
-			<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('all.Dashboard') }}</h1>
+
+		<div class="border-t-4 border-double border-julienred bg-transparent mb-4 p-1">
+			<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">
+				{{ __('all.Dashboard') }}
+			</h1>
 		</div>
 
 		<div class="flex flex-wrap items-stretch content-start justify-around my-4 animated bounceInUp">

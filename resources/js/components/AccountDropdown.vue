@@ -5,7 +5,7 @@
         
     </button>
 
-    <button v-if="isOpen" @click="isOpen = false" tabindex="-1" class="fixed inset-0 h-full w-full bg-teal-200  cursor-default"></button><!-- opacity-50 -->
+    <button v-if="isOpen" @click="isOpen = false" tabindex="-1" class="fixed inset-0 h-full w-full bg-teal-200 opacity-50  cursor-default"></button><!-- -->
 
     <div v-if="isOpen" class="absolute z-20 right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
 
