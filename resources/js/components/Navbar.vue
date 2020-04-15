@@ -1,6 +1,6 @@
   
 <template>
-  <header class="bg-teal-200 text-juliengris border-b-4 border-julienred sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+  <header class="bg-red-100 text-juliengris border-b-4 border-julienred sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
 
     <div class="flex items-center justify-between px-4 py-3 sm:p-0 sticky">
 
@@ -8,7 +8,7 @@
         <img class="h-8" src="/img/logopoulpe.svg" alt="Poulpe">
         <a 
           :href=" '/' " 
-          class="animated fadeInLeftBig slow block px-2 py-1 text-2xl rounded font-medium hover:text-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+          class="animated fadeInLeftBig block px-2 py-1 text-2xl rounded font-medium hover:text-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             
             Apuestamigo 
        </a>
@@ -27,28 +27,28 @@
 
     <nav :class="isOpen ? 'block' : 'hidden'" class="sm:block">
 
-      <div class="px-2 pt-2 pb-4 sm:flex sm:p-0">
+      <div class="px-2 pt-2 pb-1 sm:flex sm:p-0">
         
         <a :href="route('ligues.index')" 
-            class="animated fadeInLeftBig block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+            class="animated bounceInDown block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
               <i class="fas fa-award pr-1"></i>
               {{ __('nav.ligues') }}
         </a>
 
         <a :href="route('ligues.create')" 
-            class="animated fadeInLeftBig delay-1s mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
           <i class='far fa-hand-point-right pr-1'></i>
            {{ __('nav.creer') }}
         </a>
 
         <a :href="route('about')" 
-            class="animated fadeInLeftBig delay-1s slow mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
           <i class="fas fa-info-circle pr-1"></i> 
            {{ __('nav.about') }}
         </a>
 
         <a :href="route('langues')" 
-            class="animated fadeInLeftBig delay-1s fast mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             <!-- <i class="fas fa-globe "></i> -->
             <i class="fas fa-globe-americas pr-1"></i>
               {{ __('all.Translations') }}
@@ -56,46 +56,46 @@
         
         <a :href="route('login')" 
             v-if="! isAuthenticated"
-            class="animated fadeInLeftBig slower mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+            class="animated bounceInDown mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             <i class='fas fa-user pr-1'></i>
             {{ __('all.Login') }}
         </a>
                
         <a :href="route('register')"
             v-if="! isAuthenticated" 
-            class="animated fadeInLeftBig delay-1s mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+            class="animated bounceInDown mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
           <i class="fas fa-user-circle pr-1"></i>
           {{ __('all.Register') }}
         </a>
 
         
       
-        <AccountDropdown v-if="isAuthenticated" :user="user" @logout="logout" class="animated fadeInLeftBig hidden sm:block sm:ml-6"/>
+        <AccountDropdown v-if="isAuthenticated" :user="user" @logout="logout" class="animated bounceInDown hidden sm:block sm:ml-6"/>
       </div>
 
-      <div class="px-2 py-2 border-t border-gray-800 sm:hidden" v-if="isAuthenticated">
+      <div class="px-2 py-1 sm:hidden" v-if="isAuthenticated">
 
-        <div class="flex items-center animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+        <div class="flex items-center animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
           <img class="h-8 w-8 border border-gray-900 rounded-full object-cover bg-white" src="/img/cup.png" alt="cup">
           <span class="ml-3"><a :href="route('profile.show', user)"> {{user.name}} </a></span>
         </div>
 
-        <div class="mt-2">
+        <div class="mt-1">
 
           <a :href="route('admin.index')" 
               v-if="isAdmin"
-              class="animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+              class="animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
               Admin
           </a>
 
           <a :href="route('contact.create')" 
-              class="animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+              class="animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
               {{ __('nav.contact') }}
           </a>
 
           <a href="#" 
              @click.prevent="logout" 
-             class="animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+             class="animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             {{ __('all.Logout') }}
           </a>
           

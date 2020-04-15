@@ -94609,7 +94609,7 @@ var render = function() {
     _vm.isOpen
       ? _c("button", {
           staticClass:
-            "fixed inset-0 h-full w-full bg-teal-200  cursor-default",
+            "fixed inset-0 h-full w-full bg-teal-200 opacity-50  cursor-default",
           attrs: { tabindex: "-1" },
           on: {
             click: function($event) {
@@ -94858,7 +94858,7 @@ var render = function() {
     "header",
     {
       staticClass:
-        "bg-teal-200 text-juliengris border-b-4 border-julienred sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
+        "bg-red-100 text-juliengris border-b-4 border-julienred sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
     },
     [
       _c(
@@ -94878,7 +94878,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "animated fadeInLeftBig slow block px-2 py-1 text-2xl rounded font-medium hover:text-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                  "animated fadeInLeftBig block px-2 py-1 text-2xl rounded font-medium hover:text-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                 attrs: { href: "/" }
               },
               [_vm._v("\n          \n          Apuestamigo \n     ")]
@@ -94939,13 +94939,13 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "px-2 pt-2 pb-4 sm:flex sm:p-0" },
+            { staticClass: "px-2 pt-2 pb-1 sm:flex sm:p-0" },
             [
               _c(
                 "a",
                 {
                   staticClass:
-                    "animated fadeInLeftBig block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animated bounceInDown block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
@@ -94960,7 +94960,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "animated fadeInLeftBig delay-1s mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animated bounceInDown mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
@@ -94975,7 +94975,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "animated fadeInLeftBig delay-1s slow mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animated bounceInDown mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("about") }
                 },
                 [
@@ -94990,7 +94990,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "animated fadeInLeftBig delay-1s fast mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animated bounceInDown mt-1 block px-2 py-1 text-sm border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("langues") }
                 },
                 [
@@ -95008,7 +95008,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "animated fadeInLeftBig slower mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animated bounceInDown mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: _vm.route("login") }
                     },
                     [
@@ -95027,7 +95027,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "animated fadeInLeftBig delay-1s mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animated bounceInDown mt-1 block px-4 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: _vm.route("register") }
                     },
                     [
@@ -95044,7 +95044,7 @@ var render = function() {
               _vm.isAuthenticated
                 ? _c("AccountDropdown", {
                     staticClass:
-                      "animated fadeInLeftBig hidden sm:block sm:ml-6",
+                      "animated bounceInDown hidden sm:block sm:ml-6",
                     attrs: { user: _vm.user },
                     on: { logout: _vm.logout }
                   })
@@ -95054,88 +95054,84 @@ var render = function() {
           ),
           _vm._v(" "),
           _vm.isAuthenticated
-            ? _c(
-                "div",
-                { staticClass: "px-2 py-2 border-t border-gray-800 sm:hidden" },
-                [
+            ? _c("div", { staticClass: "px-2 py-1 sm:hidden" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex items-center animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                  },
+                  [
+                    _c("img", {
+                      staticClass:
+                        "h-8 w-8 border border-gray-900 rounded-full object-cover bg-white",
+                      attrs: { src: "/img/cup.png", alt: "cup" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-3" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: _vm.route("profile.show", _vm.user) }
+                        },
+                        [_vm._v(" " + _vm._s(_vm.user.name) + " ")]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-1" }, [
+                  _vm.isAdmin
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                          attrs: { href: _vm.route("admin.index") }
+                        },
+                        [_vm._v("\n            Admin\n        ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
-                    "div",
+                    "a",
                     {
                       staticClass:
-                        "flex items-center animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                        "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                      attrs: { href: _vm.route("contact.create") }
                     },
                     [
-                      _c("img", {
-                        staticClass:
-                          "h-8 w-8 border border-gray-900 rounded-full object-cover bg-white",
-                        attrs: { src: "/img/cup.png", alt: "cup" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-3" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: _vm.route("profile.show", _vm.user) }
-                          },
-                          [_vm._v(" " + _vm._s(_vm.user.name) + " ")]
-                        )
-                      ])
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.__("nav.contact")) +
+                          "\n        "
+                      )
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "mt-2" }, [
-                    _vm.isAdmin
-                      ? _c(
-                          "a",
-                          {
-                            staticClass:
-                              "animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
-                            attrs: { href: _vm.route("admin.index") }
-                          },
-                          [_vm._v("\n            Admin\n        ")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
-                        attrs: { href: _vm.route("contact.create") }
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.__("nav.contact")) +
-                            "\n        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "animated fadeInLeftBig mt-1 block px-2 py-2 text-sm leading-none border border-juliengris rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.logout($event)
-                          }
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-julienred  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.logout($event)
                         }
-                      },
-                      [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(_vm.__("all.Logout")) +
-                            "\n        "
-                        )
-                      ]
-                    )
-                  ])
-                ]
-              )
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.__("all.Logout")) +
+                          "\n        "
+                      )
+                    ]
+                  )
+                ])
+              ])
             : _vm._e()
         ]
       )
