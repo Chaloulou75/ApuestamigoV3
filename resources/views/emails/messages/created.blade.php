@@ -1,13 +1,12 @@
 @component('mail::message')
 
-# Hey admin
+# Hey Carlito
 
--{{$name}}
+-Tu as reçu un mail de {{$name}}
 
--{{$email}}
+- tu peux lui répondre à cette adresse: {{$email}}
 
-
-
+-Son message est le suivant:
 
 @component('mail::panel')
 {{ $msg}}

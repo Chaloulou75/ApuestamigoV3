@@ -36,7 +36,7 @@ class LigueController extends Controller
             $user= Auth::user();
 
             //les ligues du user connecté
-            $ligues = $user->ligues()->get();
+            $ligues = $user->ligues()->latest()->get();
 
             return view('/ligues', compact('ligues', 'user'));
         }
