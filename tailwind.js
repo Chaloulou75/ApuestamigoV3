@@ -18,6 +18,9 @@ module.exports = {
       julienred: '#dd4a37',
       juliengris: '#45545f',
 
+      francaverde: '#99cc66',
+      francagris: '#333333',
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',

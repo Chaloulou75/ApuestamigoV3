@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="border-2 rounded-full border-gray-500 flex-auto text-white text-center bg-gray-900 px-4 py-2 m-2">
+        <div class="border-2 rounded-full border-francaverde flex-auto text-white text-center bg-francagris px-4 py-2 m-2">
            <p> {{__('all.Start of the next match')}} <span class="font-bold">{{ getFormat() }} </span></p> 
         </div>
     </div>

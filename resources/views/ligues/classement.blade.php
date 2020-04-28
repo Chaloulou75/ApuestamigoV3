@@ -6,12 +6,12 @@
 
   @include('layouts/partials/navLigue')  
   
-	<div class="w-full text-juliengris">
+	<div class="w-full text-francagris">
 
 		<div class="px-3 py-4 flex justify-center animated rotateInUpLeft">
-			<table class="table-auto w-full text-md bg-teal-100 shadow-md border-t-4 border-solid rounded border-teal-500 rounded mb-4">
+			<table class="table-auto w-full text-md bg-white shadow-md border-t-4 border-solid rounded border-francaverde rounded mb-4">
 			  <thead>
-			    <tr class="border border-solid border-teal-500">
+			    <tr class="border border-solid border-francaverde">
 			      <th scope="col" class="p-3 px-5">#</th>
 			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Name')}}</th>
 			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Club')}}</th>
@@ -20,9 +20,9 @@
 			  </thead>
 			  <tbody>
 			  	@foreach ($ligue->users as $user)
-			    <tr class="border border-solid border-teal-500">
+			    <tr class="border border-solid border-francaverde">
 			      <th scope="row" class="p-3 px-5"> {{ $loop->iteration }} </th>
-				  <td class="p-3 px-5 hover:underline hover:text-orange-500 hover:font-semibold"><a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee ]) }}"> {{ $user->name }} </a></td>
+				  <td class="p-3 px-5 hover:underline hover:text-francaverde hover:font-semibold"><a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee ]) }}"> {{ $user->name }} </a></td>
 				  <td class="p-3 px-5"> {{ $user->club }} </td>
 				  <td class="text-center p-3 px-5"> {{ $user->pivot->totalPoints }} </td> 
 			    </tr>

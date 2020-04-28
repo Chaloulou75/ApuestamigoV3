@@ -5,7 +5,7 @@
 
 <div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
 
-	<div class="border-2 border-solid border-julienred rounded py-4 px-4 bg-teal-100 shadow-2xl animated bounceInDown">
+	<div class="border-2 border-solid border-francaverde rounded py-4 px-4 bg-white shadow-2xl animated bounceInDown">
 
 	<h1 class="text-2xl font-base text-juliengris m-3"> {{__('all.Translations')}}</h1>
 

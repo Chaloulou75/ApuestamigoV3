@@ -13,7 +13,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
     </head>
-    <body class="body bg-red-100">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
+    <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
         <div id="app">
 
             <navbar-component :user='@json(Auth::user())'></navbar-component>

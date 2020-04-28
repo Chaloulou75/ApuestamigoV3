@@ -5,17 +5,17 @@
 
 <div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8 animated bounceInDown">
 
-    <form class="bg-teal-100 shadow-md border-2 border-julienred rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('register') }}">
+    <form class="bg-white shadow-md border-2 border-francaverde rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('register') }}">
         @csrf
 
         <div class="mb-4">
-            <label for="name" class="block text-juliengris text-base font-medium mb-2">{{ __('all.Name') }}</label>
+            <label for="name" class="block text-francagris text-base font-medium mb-2">{{ __('all.Name') }}</label>
 
             <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
              @error('name') bg-red-dark @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
             @error('name')
-                <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
+                <span class=" mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
@@ -23,22 +23,22 @@
         </div>
 
         <div class="mb-4">
-            <label for="email" class="block text-juliengris text-base font-medium mb-2">{{ __('all.E-Mail Address') }}</label>
+            <label for="email" class="block text-francagris text-base font-medium mb-2">{{ __('all.E-Mail Address') }}</label>
            
                 <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email" autofocus>
 
                 @error('email')
-                    <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
+                    <span class=" mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror           
         </div>
 
         <div class="mb-4">
-            <label for="club" class="block text-juliengris text-base font-medium mb-2">
+            <label for="club" class="block text-francagris text-base font-medium mb-2">
                 {{ __('all.Favorite Club') }}
             </label>            
-              <select id="club" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="{{ old('club') }}" required>              
+              <select id="club" class="shadow appearance-none border rounded w-full py-2 px-3 text-francagris leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="{{ old('club') }}" required>              
                 <option value="Borussia Dortmund"  @if(old('club') == 'Borussia Dortmund')selected @endif>Borussia Dortmund</option>
                 <option value="Bayer Leverkusen" @if(old('club') == 'Bayer Leverkusen')selected @endif>Bayer Leverkusen</option>
                 <option value="FC Bayern" @if(old('club') == 'FC Bayern')selected @endif>FC Bayern</option>
@@ -85,27 +85,27 @@
               </select>
 
                 @if ($errors->has('club'))
-                    <span class="mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
+                    <span class="mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
                         <strong>{{ $errors->first('club') }}</strong>
                     </span>
                 @endif            
         </div>
 
         <div class="mb-4">
-            <label for="password" class="block text-juliengris text-base font-medium mb-2">
+            <label for="password" class="block text-francagris text-base font-medium mb-2">
                 {{ __('all.Password') }}
             </label>            
             <input id="password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') bg-red-dark @enderror" name="password" required autocomplete="new-password">
 
             @error('password')
-                <span class="mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
+                <span class="mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror            
         </div>
 
         <div class="mb-4">
-            <label for="password-confirm" class="block text-juliengris text-base font-medium mb-2">
+            <label for="password-confirm" class="block text-francagris text-base font-medium mb-2">
                 {{ __('all.Confirm Password') }}
             </label>
             <input id="password-confirm" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirmation" required autocomplete="new-password">            
@@ -113,13 +113,13 @@
 
         <div class="mb-4">
             <div class="flex items-center justify-between">
-                <button class="w-full bg-teal-100 hover:bg-julienred text-juliengris hover:text-white font-medium py-2 px-4 border-2 border-julienred rounded focus:outline-none focus:shadow-outline" type="submit">
+                <button class="w-full bg-francagris hover:bg-white text-white hover:text-francagris font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
                     {{ __('all.Register') }}
                 </button>
             </div>
         </div>
     </form>
-    <p class="text-center text-juliengris text-xs">
+    <p class="text-center text-white text-xs">
       &copy;2020 Charles Jeandey. {{__('all.All rights reserved.')}}.
     </p>
 </div>

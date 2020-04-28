@@ -5,11 +5,11 @@
 
 <div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
 
-	<div class="border-t-4 border-double border-julienred bg-transparent mb-4 p-1 animated bounceInRight">
-  		<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('nav.about') }}</h1>
+	<div class="border-t-4 border-double border-francaverde bg-transparent mb-4 p-1 animated bounceInRight">
+  		<h1 class="text-center text-white text-3xl tracking-wider font-semibold">{{ __('nav.about') }}</h1>
   	</div>
 
-  	<div class="border-2 border-solid border-julienred rounded py-4 px-4 bg-teal-100 shadow-2xl animated bounceInUp">
+  	<div class="border-2 border-solid border-francaverde rounded py-4 px-4 bg-teal-100 shadow-2xl animated bounceInUp">
 
 	  	<h2 class="text-juliengris text-2xl mb-2">{{ __('all.So how does Apuestamigo work?')}}</h2>
 

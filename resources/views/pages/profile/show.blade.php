@@ -3,15 +3,15 @@
 @section('content')
 
 <div class="w-full lg:w-3/4 m-auto p-1">
-	<div class="border-t-4 border-double rounded border-julienred bg-transparent mb-4 p-1">
-		<h1 class="text-center text-gray-800 text-3xl tracking-wider font-semibold">{{ __('all.Profil') }}</h1>
+	<div class="border-t-4 border-double rounded border-francaverde bg-transparent mb-4 p-1">
+		<h1 class="text-center text-white text-3xl tracking-wider font-semibold">{{ __('all.Profil') }}</h1>
 	</div>
 
-	<form class="bg-transparent shadow-md border-2 border-gray-600 rounded px-8 pt-6 pb-4 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
+	<form class="bg-transparent shadow-md border-2 border-francaverde rounded px-8 pt-6 pb-4 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
         @csrf
         @method('PATCH')
 
-		<div class="border-t-4 border-teal-500 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-francagris rounded bg-francaverde p-4 mb-4 flex flex-col justify-between">
 
 			<label for="name" class="text-left text-gray-900 text-sm font-semibold"> {{ __('all.Name')}} : </label>
 
@@ -24,7 +24,7 @@
 	        @enderror	
 		</div>
 		
-		<div class="border-t-4 border-teal-500 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-francagris rounded bg-francaverde p-4 mb-4 flex flex-col justify-between">
 
 			<label for="email" class="text-left text-gray-900 text-sm font-semibold"> Email : </label>
 
@@ -36,7 +36,7 @@
             @enderror 
 		</div>	
 
-		<div class="border-t-4 border-teal-500 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-francagris rounded bg-francaverde p-4 mb-4 flex flex-col justify-between">
 
 			<label for="club" class="text-left text-gray-900 text-sm font-semibold"> {{ __('all.Favorite Club') }} : </label>
 
@@ -101,7 +101,7 @@
             </div>
         </div>
 	</form>
-	<form class="bg-transparent shadow-md border-2 border-gray-600 rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('profile.destroy', $user) }}">
+	<form class="bg-transparent shadow-md border-2 border-francaverde rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('profile.destroy', $user) }}">
         @csrf
         @method('DELETE')
 		<div class="border-2 border-gray-600 rounded bg-gray-300 p-4 flex flex-col justify-between">
