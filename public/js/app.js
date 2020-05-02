@@ -94591,7 +94591,7 @@ var render = function() {
       "button",
       {
         staticClass:
-          "relative z-10 block h-8 w-8 rounded-full overflow-hidden border-2 border-teal-400 focus:outline-none focus:border-julienred",
+          "relative z-10 block h-8 w-8 rounded-full overflow-hidden border-2 border-francaverde focus:outline-none focus:border-francaverde",
         on: {
           click: function($event) {
             _vm.isOpen = !_vm.isOpen
@@ -94600,7 +94600,7 @@ var render = function() {
       },
       [
         _c("img", {
-          staticClass: "h-full w-full object-cover bg-white",
+          staticClass: "h-full w-full object-contain bg-white overflow-hidden",
           attrs: { src: "/img/cup.png", alt: "cup" }
         })
       ]
@@ -94631,7 +94631,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-francagris transition duration-500 ease-in-out transform hover:-translate-y-1",
+                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
                 attrs: { href: _vm.route("profile.show", _vm.user) }
               },
               [_vm._v(_vm._s(_vm.user.name))]
@@ -94642,7 +94642,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-francagris transition duration-500 ease-in-out transform hover:-translate-y-1",
+                      "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
                     attrs: { href: _vm.route("admin.index") }
                   },
                   [_vm._v("Admin")]
@@ -94653,7 +94653,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-francagris transition duration-500 ease-in-out transform hover:-translate-y-1",
+                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
                 attrs: { href: _vm.route("contact.create") }
               },
               [_vm._v(_vm._s(_vm.__("nav.contact")))]
@@ -94663,7 +94663,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-francagris transition duration-500 ease-in-out transform hover:-translate-y-1",
+                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
@@ -94885,7 +94885,7 @@ var render = function() {
               "button",
               {
                 staticClass:
-                  "block hover:text-julienred focus:text-julienred focus:outline-none",
+                  "block hover:text-francaverde focus:text-francaverde focus:outline-none",
                 attrs: { type: "button" },
                 on: {
                   click: function($event) {
@@ -95054,12 +95054,12 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "flex items-center animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francagris hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                      "flex items-center animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                   },
                   [
                     _c("img", {
                       staticClass:
-                        "h-8 w-8 border border-gray-900 rounded-full object-cover bg-white",
+                        "h-8 w-8 border border-francaverde rounded-full object-contain overflow-hidden bg-white",
                       attrs: { src: "/img/cup.png", alt: "cup" }
                     }),
                     _vm._v(" "),
@@ -95081,7 +95081,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francagris hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                            "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                           attrs: { href: _vm.route("admin.index") }
                         },
                         [_vm._v("\n            Admin\n        ")]
@@ -95092,7 +95092,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francagris hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: _vm.route("contact.create") }
                     },
                     [
@@ -95108,7 +95108,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francagris hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {
