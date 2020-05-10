@@ -108690,36 +108690,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
   namedRoutes: {
-    "debugbar.openhandler": {
-      "uri": "_debugbar\/open",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "debugbar.clockwork": {
-      "uri": "_debugbar\/clockwork\/{id}",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "debugbar.telescope": {
-      "uri": "_debugbar\/telescope\/{id}",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "debugbar.assets.css": {
-      "uri": "_debugbar\/assets\/stylesheets",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "debugbar.assets.js": {
-      "uri": "_debugbar\/assets\/javascript",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "debugbar.cache.delete": {
-      "uri": "_debugbar\/cache\/{key}\/{tags?}",
-      "methods": ["DELETE"],
-      "domain": null
-    },
     "login": {
       "uri": "login",
       "methods": ["GET", "HEAD"],

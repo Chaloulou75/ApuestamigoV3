@@ -23367,6 +23367,13 @@ video {
   transition-duration: 1000ms;
 }
 
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
 .body {
   font-family: "Gelasio", "Montserrat", sans-serif;
 }

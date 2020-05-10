@@ -1,4 +1,4 @@
-<div class="bg-white border-t-4 border-francaverde rounded-b text-francagris px-4 py-3 mb-4 animated bounceInDown">
+<div class="bg-white border-t-4 border-francaverde rounded-b text-francagris px-4 py-3 mb-4 animated bounceInDown transition-none">
   <h1 class="text-center text-3xl font-medium">{{ $ligue->name }}</h1>
   <div class="sm:flex block justify-between text-sm lg:text-base p-2">
     <div class="w-auto border-2 border-solid rounded-full border-francaverde flex-grow text-center hover:text-francagris text-white bg-francagris hover:bg-white font-medium px-4 py-2 m-1">
