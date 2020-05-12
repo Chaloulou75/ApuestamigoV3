@@ -19,9 +19,7 @@ Route::group(
 	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 
 					'no-cache']], function(){
 
-	Route::get('/', function() {
-	    return view('index');
-	});	
+	Route::get('/', 'PagesController@welcome')->name('welcome');	
 
 	
 	Auth::routes(['verify' => true]);
