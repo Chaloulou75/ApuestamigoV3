@@ -1,8 +1,6 @@
 let mix = require('laravel-mix');
 require('laravel-mix-tailwind');
 
-require('laravel-mix-purgecss');
-
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const path = require('path')
 
@@ -36,5 +34,4 @@ mix.js('resources/js/app.js', 'public/js')
 	            ziggy: path.resolve('vendor/tightenco/ziggy/dist/js/route.js'),
 	        },
 	    },
-	})
-   	.purgeCss();
+	});
