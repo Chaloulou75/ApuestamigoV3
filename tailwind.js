@@ -1,11 +1,11 @@
 module.exports = {
-  purge: {
-      content: [
-        './resources/**/*.html',
-        './resources/**/*.vue',
-        './resources/views/**/*.blade.php',
-      ],
-  },
+  // purge: {
+  //     content: [
+  //       './resources/**/*.html',
+  //       './resources/**/*.vue',
+  //       './resources/views/**/*.blade.php',
+  //     ],
+  // },
   prefix: '',
   important: false,
   separator: ':',
