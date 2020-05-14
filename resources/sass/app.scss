@@ -11,14 +11,23 @@
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 
+/* purgecss start ignore */
 
 @tailwind base;
 
 @tailwind components;
 
+/* purgecss end ignore */
+
 @tailwind utilities;
 
 @import "~animate.css/animate.css";
+
+/* purgecss start ignore */
+
+html, body {
+  overflow-x: hidden; 
+}
 
 .animated {
   -webkit-animation-duration: 1s;
@@ -72,3 +81,5 @@
   visibility: visible;
   opacity: 1;
 }
+
+/* purgecss end ignore */

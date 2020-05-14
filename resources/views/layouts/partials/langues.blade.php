@@ -13,7 +13,7 @@
 	  <div class="flex items-center pr-2">    
 	    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="overflow-hidden flex items-center justify-center focus:outline-none focus:border-julienred m-2">
 	        
-	        <img class="h-8 w-8 border border-gray-900 focus:outline-none focus:border-juliengris rounded-full object-cover" alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
+	        <img class="h-8 w-8 border border-gray-900 focus:outline-none focus:border-juliengris rounded-full object-cover" loading="lazy" alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
 	        
 		    <div class="text-juliengris ml-2 mr-2">
 		     	{{ $properties['native'] }} 

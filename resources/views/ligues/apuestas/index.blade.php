@@ -40,7 +40,7 @@
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
 		      <div class="table-cell px-1 py-4 text-center text-xs hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format(' j F Y H:i') }} </div>
 			  <div class="table-cell px-1 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
-			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
+			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" loading="lazy" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></div>
 			  <div class="table-cell px-1 py-4 text-center">
 				<label for="resultatEq1"></label>
 				<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
@@ -86,7 +86,7 @@
 	                <option value="9" >9</option>
 	            </select>
 			  </div>
-			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
+			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" loading="lazy" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
 			  <div class="table-cell px-1 py-4 hidden font-bold md:table-cell text-left">{{ $game->awayTeam->name}}</div>
 			  <div class="table-cell px-1 py-4">
 			  	@if(isset($game->matchs->first()['pointMatch'])) 

@@ -95415,7 +95415,7 @@ var render = function() {
       [
         _c("img", {
           staticClass: "h-full w-full object-contain bg-white overflow-hidden",
-          attrs: { src: "/img/cup.png", alt: "cup" }
+          attrs: { src: "/img/cup.png", loading: "auto", alt: "cup" }
         })
       ]
     ),
@@ -95874,7 +95874,11 @@ var render = function() {
                     _c("img", {
                       staticClass:
                         "h-8 w-8 border border-francaverde rounded-full object-contain overflow-hidden bg-white",
-                      attrs: { src: "/img/cup.png", alt: "cup" }
+                      attrs: {
+                        src: "/img/cup.png",
+                        loading: "auto",
+                        alt: "cup"
+                      }
                     }),
                     _vm._v(" "),
                     _c("span", { staticClass: "ml-3" }, [

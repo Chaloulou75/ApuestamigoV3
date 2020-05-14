@@ -76,7 +76,7 @@
       <div class="px-2 py-1 sm:hidden" v-if="isAuthenticated">
 
         <div class="flex items-center animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-          <img class="h-8 w-8 border border-francaverde rounded-full object-contain overflow-hidden bg-white" src="/img/cup.png" alt="cup">
+          <img class="h-8 w-8 border border-francaverde rounded-full object-contain overflow-hidden bg-white" src="/img/cup.png" loading="auto" alt="cup">
           <span class="ml-3"><a :href="route('profile.show', user)"> {{user.name}} </a></span>
         </div>
 
