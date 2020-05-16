@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://www.apuestamigo.com/</loc>
+        <lastmod>2020-05-16T22:47:24+02:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.apuestamigo.com/ligues/create</loc>
+        <lastmod>2020-05-16T22:47:24+02:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.apuestamigo.com/ligues/joinLigues</loc>
+        <lastmod>2020-05-16T22:47:24+02:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.apuestamigo.com/login</loc>
+        <lastmod>2020-05-16T22:47:25+02:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.apuestamigo.com/password/reset</loc>
+        <lastmod>2020-05-16T22:47:25+02:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

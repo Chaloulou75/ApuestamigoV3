@@ -16,6 +16,7 @@
         "laravel/tinker": "^1.0",
         "mariuzzo/laravel-js-localization": "^1.5",
         "mcamara/laravel-localization": "^1.4",
+        "spatie/laravel-sitemap": "^5.7",
         "stripe/stripe-php": "^7.12",
         "tightenco/ziggy": "^0.8.1"
     },

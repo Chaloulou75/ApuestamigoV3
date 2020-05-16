@@ -21,7 +21,7 @@
 
 	<div class="text-gray-600 text-center uppercase text-xs my-2 md:mt-4">
 		<p>
-			&copy;2020 charles Jeandey all right reserved, </br> site designed and developped by <span class="text-julienred"> charles Jeandey</span>.
+			&copy; {{ date('Y') }} &middot; charles jeandey all right reserved, </br> site designed and developped by <a href="https://www.linkedin.com/in/charles-jeandey" target="_blank"><span class="text-julien-red">carlito</span></a>.
 		</p>
 
 	</div>
