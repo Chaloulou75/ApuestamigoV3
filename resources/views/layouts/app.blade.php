@@ -6,6 +6,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content=" {{  __('all.Betting leagues between friends on the champions league and find who is the best tipster.')}}">
+        <meta name="google-site-verification" content="6W4yift1Bmm_Vc73-PUZ4DcHn3VS7OIYfIXjXRcGDD0" />
         <title>{{ config('app.name', 'Apuestamigo') }}</title>
         
         <!-- Styles -->
