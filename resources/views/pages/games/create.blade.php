@@ -4,9 +4,9 @@
 
 <div class="w-full md:w-4/5 mx-auto p-1">
 
-		<h3 class="text-md text-center py-2 text-gray-800">Hey {{ $user->name }}, mets les prochains matchs</h3>
+		<h3 class="text-md text-center text-white py-2">Hey {{ $user->name }}, mets les prochains matchs</h3>
 		@if ($errors->any())
-		    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+		    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-200 p-4" role="alert">
 		        <ul>
 		            @foreach ($errors->all() as $error)
 		                <li>{{ $error }}</li>
@@ -19,7 +19,7 @@
 		  <form class="bg-gray-900 shadow-md border-2 border-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ action('GameController@store') }}">
 		  		@csrf
 		  	<div class="mb-4">
-		      <label class="block text-white text-sm font-bold mb-2" for="journee">
+		      <label class="block text-white text-sm font-base mb-2" for="journee">
 		        Journée
 		      </label>
 		      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="journee" name="journee" placeholder="{{old('journee')}}">
@@ -41,7 +41,7 @@
 		    </div>
 
 		    <div class="mb-4">
-		      <label class="block text-white text-sm font-bold mb-2" for="equipe1_id">
+		      <label class="block text-white text-sm font-base mb-2" for="equipe1_id">
 		        Home Team
 		      </label>
 		      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="equipe1_id" name="equipe1_id"  placeholder="{{old('equipe1_id')}}">
@@ -53,7 +53,7 @@
 		      </select>
 		    </div>
 		    <div class="mb-6">
-		      <label class="block text-white text-sm font-bold mb-2" for="equipe2_id"> Away Team</label>
+		      <label class="block text-white text-sm font-base mb-2" for="equipe2_id"> Away Team</label>
 		      <select class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="equipe2_id" name="equipe2_id" placeholder="{{old('equipe2_id')}}">
 		      @foreach ($equipes as $equipe)
 
@@ -63,17 +63,15 @@
 		      </select>
 		    </div>
 		    <div class="mb-6">
-		    	<label class="block text-white text-sm font-bold mb-2" for="gamedate">Choose a date:</label>
+		    	<label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date:</label>
 
 				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
 					   type="datetime-local" id="gamedate"
 				       name="gamedate" value="">
-
-
 		    </div>
 		    
 		    <div class="flex items-center justify-between">
-		      <button class="w-full bg-gray-700 hover:bg-gray-900 text-white text-sm py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+		      <button class="w-full bg-white hover:bg-gray-900 text-gray-900 hover:text-white text-sm py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
 		        Enregistrer le match
 		      </button>
 		      

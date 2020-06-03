@@ -20,7 +20,6 @@ Route::group(
 					'no-cache']], function(){
 
 	Route::get('/', 'PagesController@welcome')->name('welcome');	
-
 	
 	Auth::routes(['verify' => true]);
 	
@@ -36,7 +35,6 @@ Route::group(
 	Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 	Route::get('/ligues/joinLigues', 'LigueController@joinLiguesIndex')->name('joinLiguesIndex');
-
 	Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigues');
 
 	Route::post('/ligues/{ligue}/quitLigue', 'LigueController@quitLigue')->name('quitLigue');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ {User, Equipe, Game};
+use App\Http\Requests\StoreGame;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,8 +41,7 @@ class GameController extends Controller
     {
         $user = Auth::user();
 
-        $equipes = Equipe::all();
-        
+        $equipes = Equipe::all();        
 
         return view('/pages/games/create', compact('equipes', 'user'));
     }
@@ -52,13 +52,9 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGame $request)
     {
-        $validatedData = $request->validate([
-            'journee' => 'required|min:1|max:2',
-            'equipe1_id' => 'required',
-            'equipe2_id' => 'required',
-        ]);
+        $validatedData = $request->validated();
 
         $journee = $request->input('journee');
         $equipe1 = $request->input('equipe1_id');

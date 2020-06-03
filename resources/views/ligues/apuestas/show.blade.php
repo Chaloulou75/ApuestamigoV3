@@ -128,15 +128,15 @@
 		   @endforeach 
 		</div>
 
-		@if ( Auth::user()->admin == 1) 
+		@admin
 
 		<div class="flex justify-center">
-			<button type="submit" class="bg-francagris hover:bg-francaverde text-white hover:text-francagris font-medium text-center tracking-widest border-2 rounded-full hover:border-white border-francaverde flex-auto py-2 px-4 m-2">
+			<button type="submit" class="bg-francagris hover:bg-white text-white hover:text-gray-900 font-medium text-center tracking-widest border-2 rounded-full border-francaverde flex-auto py-2 px-4 m-2">
 		  		{{__('all.Registrar')}}
 			</button>
 		</div>
 
-		@endif
+		@endadmin
 
 		</form>
 	</div>
