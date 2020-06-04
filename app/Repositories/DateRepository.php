@@ -16,12 +16,12 @@ class DateRepository
         $dateJournee5 = Carbon::create(2019, 11, 26, 18, 55, 00, 'Europe/Paris');
         $dateJournee6 = Carbon::create(2019, 12, 10, 18, 55, 00, 'Europe/Paris');
         $dateJournee7 = Carbon::create(2020, 2, 26, 21, 00, 00, 'Europe/Paris');
-        $dateJournee8 = Carbon::create(2020, 3, 18, 21, 00, 00, 'Europe/Paris');
-        $dateJournee9 = Carbon::create(2020, 4, 7, 21, 00, 00, 'Europe/Paris');
-        $dateJournee10 = Carbon::create(2020, 4, 14, 21, 00, 00, 'Europe/Paris');
-        $dateJournee11 = Carbon::create(2020, 4, 28, 21, 00, 00, 'Europe/Paris');
-        $dateJournee12 = Carbon::create(2020, 5, 5, 21, 00, 00, 'Europe/Paris');
-        $dateJournee13 = Carbon::create(2020, 5, 30, 21, 00, 00, 'Europe/Paris');
+        $dateJournee8 = Carbon::create(2020, 8, 12, 21, 00, 00, 'Europe/Paris');
+        $dateJournee9 = Carbon::create(2020, 8, 16, 21, 00, 00, 'Europe/Paris');
+        $dateJournee10 = Carbon::create(2020, 8, 20, 21, 00, 00, 'Europe/Paris');
+        $dateJournee11 = Carbon::create(2020, 8, 24, 21, 00, 00, 'Europe/Paris');
+        $dateJournee12 = Carbon::create(2020, 8, 27, 21, 00, 00, 'Europe/Paris');
+        $dateJournee13 = Carbon::create(2020, 8, 30, 21, 00, 00, 'Europe/Paris');
 
         if($now->lessThanOrEqualTo($dateJournee1))        
         {

@@ -46,10 +46,10 @@ Vue.mixin({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
-Vue.component('date-component', require('./components/DateComponent.vue').default);
-Vue.component('cookie-banner-component', require('./components/CookieBannerConsentmentComponent.vue').default);
+//Vue.component('date-component', require('./components/DateComponent.vue').default);
+//Vue.component('cookie-banner-component', require('./components/CookieBannerConsentmentComponent.vue').default);
 Vue.component('navbar-component', require('./components/Navbar.vue').default);
 Vue.component('account-dropdown', require('./components/AccountDropdown.vue').default);
 

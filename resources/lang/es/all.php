@@ -7,6 +7,7 @@ return [
   'Before proceeding, please check your email for a verification link.'=> 'Antes de continuar, por favor, confirme su correo electrónico con el enlace de verificación que le fue enviado.',
   'click here to request another'=> 'haga clic aquí para solicitar otro',
   'Confirm Password'=> 'Confirmar contraseña',
+  'Don\'t have an account?' => '¿No tienes una cuenta?',
   'E-Mail Address'=> 'Correo electrónico',
   'Forbidden'=> 'Prohibido',
   'Forgot Your Password?'=> '¿Olvidó su contraseña?',

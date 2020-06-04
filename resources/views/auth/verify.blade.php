@@ -4,8 +4,8 @@
 <div class="container mx-auto mx-auto">
     <div class="flex flex-wrap justify-center">
         <div class="md:w-2/3 pr-4 pl-4">
-            <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
-                <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest">{{ __('all.Verify Your Email Address') }}</div>
+            <div class="relative flex flex-col min-w-0 rounded break-words bg-francagris border-b-1 border-francaverde text-white">
+                <div class="py-3 px-6 mb-0 bg-francagris border-b-1 border-francaverde text-white">{{ __('all.Verify Your Email Address') }}</div>
 
                 <div class="flex-auto p-6">
                     @if (session('resent'))

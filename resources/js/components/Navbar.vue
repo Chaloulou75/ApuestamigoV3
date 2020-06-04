@@ -30,25 +30,25 @@
       <div class="px-2 pt-2 pb-1 sm:flex sm:p-0">
         
         <a :href="route('ligues.index')" 
-            class="animated bounceInDown block px-2 py-1 text-sm rounded hover:text-francagris hover:bg-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+            class="animated bounceInDown block px-2 py-1 text-sm hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
               <i class="fas fa-award pr-1"></i>
               {{ __('nav.ligues') }}
         </a>
 
         <a :href="route('ligues.create')" 
-            class="animated bounceInDown mt-1 block px-2 py-1 text-sm rounded hover:text-francagris hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
           <i class='far fa-hand-point-right pr-1'></i>
            {{ __('nav.creer') }}
         </a>
 
         <a :href="route('about')" 
-            class="animated bounceInDown mt-1 block px-2 py-1 text-sm rounded hover:text-francagris hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
           <i class="fas fa-info-circle pr-1"></i> 
            {{ __('nav.about') }}
         </a>
 
         <a :href="route('langues')" 
-            class="animated bounceInDown mt-1 block px-2 py-1 text-sm rounded hover:text-francagris hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             <!-- <i class="fas fa-globe "></i> -->
             <i class="fas fa-globe-americas pr-1"></i>
               {{ __('all.Translations') }}
@@ -56,17 +56,17 @@
         
         <a :href="route('login')" 
             v-if="! isAuthenticated"
-            class="animated bounceInDown mt-1 block px-4 py-2 text-sm leading-none border border-white hover:border-francaverde rounded hover:text-francagris hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             <i class='fas fa-user pr-1'></i>
             {{ __('all.Login') }}
         </a>
                
-        <a :href="route('register')"
+        <!-- <a :href="route('register')"
             v-if="! isAuthenticated" 
-            class="animated bounceInDown mt-1 block px-4 py-2 text-sm leading-none border border-white hover:border-francaverde rounded hover:text-francagris hover:bg-white sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+            class="animated bounceInDown mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
           <i class="fas fa-user-circle pr-1"></i>
           {{ __('all.Register') }}
-        </a>
+        </a> -->
 
         
       

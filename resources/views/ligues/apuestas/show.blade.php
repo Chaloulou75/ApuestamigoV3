@@ -6,19 +6,19 @@
 
   @include('layouts/partials/navLigue')  
 
-  	<date-component></date-component>
+  	@livewire('next-game')
   
 	<div class="container text-francagris animated jackInTheBox">
 
 		@if ( Auth::user()->admin == 1) 
-			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, set all scores!</h3>
+			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, set all scores!</h3>
 			<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 
 				@csrf
 		
 		@elseif( Auth::check() && Auth::user() == $user)
-			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.your bets')}} :</h3>
+			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.your bets')}} :</h3>
 		@else
-			<h3 class="text-base text-left text-white py-2">{{__('all.Bets of')}} <strong>{{$user->name}}</strong>:</h3>
+			<h3 class="text-base text-left text-white py-2">{{__('all.Bets of')}} <span class="text-francaverde">{{$user->name}}</span>:</h3>
 		@endif
 
 		<div class="table w-full bg-white shadow-md border-4 border-solid border-francaverde rounded text-sm text-francagris">
@@ -130,8 +130,8 @@
 
 		@admin
 
-		<div class="flex justify-center">
-			<button type="submit" class="bg-francagris hover:bg-white text-white hover:text-gray-900 font-medium text-center tracking-widest border-2 rounded-full border-francaverde flex-auto py-2 px-4 m-2">
+		<div class="text-center">
+			<button type="submit" class="bg-francagris hover:bg-white text-white hover:text-gray-900 font-medium text-center tracking-widest border-2 rounded-lg border-francaverde uppercase py-2 px-4 m-2">
 		  		{{__('all.Registrar')}}
 			</button>
 		</div>

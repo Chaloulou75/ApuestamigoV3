@@ -12,6 +12,7 @@
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @livewireStyles
         
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
@@ -50,5 +51,7 @@
         </div>
 
         <script src="/js/app.js"></script>
+        @stack('scripts')
+        @livewireScripts
     </body>
 </html>

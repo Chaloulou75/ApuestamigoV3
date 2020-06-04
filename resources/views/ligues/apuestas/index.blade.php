@@ -6,19 +6,19 @@
 
   @include('layouts/partials/navLigue')  
 
-  	<date-component></date-component>
+	@livewire('next-game')
   
 	<div class="text-francagris animated jackInTheBox">
 
 		@if (Auth::check())		
-			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <strong>{{$user->name}}</strong>, {{__('all.let\'s play')}}.</h3>
+			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.let\'s play')}}.</h3>
 		@else	
-			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}}, {{__('all.you have to login or register to play.')}}</h3>
+			<h3 class="text-base text-left text-francaverde tracking-wide py-2">{{__('all.Hey')}}, {{__('all.you have to login or register to play.')}}</h3>
 		@endif
 		<form method="POST" action="{{ action('ApuestasController@store', $ligue) }}"> 
 			@csrf
 
-		<div class="table w-full bg-white shadow-md border-4 border-solid border-francaverde rounded text-sm text-francagris"> 
+		<div class="table w-full bg-white shadow-md border-4 border-solid border-francaverde rounded-lg text-sm text-francagris"> 
 		    <div class="table-row w-full mx-auto border border-solid border-francaverde">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell"></div>
 		      <div class="table-cell px-1 py-4 text-center font-bold hidden md:table-cell">{{__('all.Date')}}</div>
@@ -112,10 +112,10 @@
 
 		   @endforeach 
 		</div>
-		
-		<div class="flex justify-center">
-			<button type="submit" class="bg-francagris hover:bg-francaverde text-white hover:text-francagris font-medium text-center tracking-widest border-2 rounded-full hover:border-white border-francaverde flex-auto py-2 px-4 m-2">
-		  		{{__('all.Registrar')}}
+
+		<div class="text-center">
+			<button type="submit" class="bg-francagris hover:bg-white text-white hover:text-gray-900 font-medium text-center tracking-widest border-2 rounded-lg border-francaverde uppercase py-2 px-4 my-2">
+	  			{{__('all.Registrar')}}
 			</button>
 		</div>
 		</form>
