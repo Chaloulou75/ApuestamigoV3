@@ -9,6 +9,7 @@ return [
     'Confirm Password'=> 'Confirmez le mot de passe',
     'E-Mail Address'=> 'Adresse email',
     'Don\'t have an account?' => 'Vous n\'avez pas de compte?',
+    'Already have an account?' => 'Vous avez déjà un compte?',
     'Error'=> 'Erreur',
     'Forbidden'=> 'Interdit',
     'Forgot Your Password?'=> 'Vous avez oublié votre mot de passe ?',

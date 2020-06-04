@@ -8,6 +8,7 @@ return [
   'click here to request another'=> 'click here to request another',
   'Confirm Password'=> 'Confirm Password',
   'Don\'t have an account?' => 'Don\'t have an account?',
+  'Already have an account?' => 'Already have an account?',
   'E-Mail Address'=> 'E-Mail Address',
   'Forbidden'=> 'Forbidden',
   'Forgot Your Password?'=> 'Forgot Your Password?',

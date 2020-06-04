@@ -126,9 +126,9 @@
                                 {{ __('all.Register') }}
                             </button>
 
-                            <p class="w-full text-xs text-center mt-8 -mb-4">
-                                {{ __('Already have an account?') }}
-                                <a class="hover:text-francaverde no-underline" href="{{ route('login') }}">
+                            <p class="w-full text-xs text-center my-4">
+                                {{ __('all.Already have an account?') }}
+                                <a class="hover:text-francaverde underline" href="{{ route('login') }}">
                                     {{ __('all.Login') }}
                                 </a>
                             </p>
@@ -136,7 +136,7 @@
                     </form>
                 </div>
                 <p class="text-center text-white text-xs mt-5">
-                      &copy;2020 Charles Jeandey. {{__('all.All rights reserved.')}}.
+                      &copy; {{ date('Y') }} &middot; Charles Jeandey. {{__('all.All rights reserved.')}}.
                 </p>
             </div>
         </div>

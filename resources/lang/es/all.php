@@ -8,6 +8,7 @@ return [
   'click here to request another'=> 'haga clic aquí para solicitar otro',
   'Confirm Password'=> 'Confirmar contraseña',
   'Don\'t have an account?' => '¿No tienes una cuenta?',
+  'Already have an account?' => '¿Ya tienes una cuenta?',
   'E-Mail Address'=> 'Correo electrónico',
   'Forbidden'=> 'Prohibido',
   'Forgot Your Password?'=> '¿Olvidó su contraseña?',
