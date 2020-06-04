@@ -16,16 +16,19 @@ class NextGame extends Component
 
     	$nextGame = Game::where('gamedate', '>', $now)->orderBy('gamedate', 'asc')->first();
         
-        if(isset($nextGame))
+        if($nextGame)
         {    
             $nextGameDateValue = $nextGame->gamedate;        
             $nextGameDate = $now->diff($nextGameDateValue)->format('%m Months %d days %h h %i min %s sec');
             $this->nextGameDate = $nextGameDate; 
         }
-        
-        $nextGameDateValue = Carbon::create(2020, 9, 15, 21, 0, 0, 'Europe/Paris');
-        $nextGameDate = $now->diff($nextGameDateValue)->format('%m Months %d days %h h %i min %s sec');
-        $this->nextGameDate = $nextGameDate;  
+        else
+        {
+            $nextGameDateValue = Carbon::create(2020, 9, 15, 21, 0, 0, 'Europe/Paris');
+            $nextGameDate = $now->diff($nextGameDateValue)->format('%m Months %d days %h h %i min %s sec');
+            $this->nextGameDate = $nextGameDate;   
+        }
+         
         
     	
     }

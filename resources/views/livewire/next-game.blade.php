@@ -3,11 +3,3 @@
        <p> {{__('all.Start of the next match')}} <span class="text-francaverde">: {{ $nextGameDate }}</span></p> 
     </div>
 </div>
-
-@push('scripts')
-<script>
-        document.addEventListener('livewire:load', () => {
-            setInterval(function(){ window.livewire.emit('alive'); }, 1800000);
-        });
-</script>
-@endpush
