@@ -1,14 +1,7 @@
-<div class="flex-grow lg:w-1/3 justify-around m-4 border-4 border-white rounded bg-francaverde p-4 shadow-xl focus:shadow-outline">	    
-    <p class="flex text-sm text-francagris items-center m-3 pb-4">
-        <svg class="fill-current text-francagris w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> 
-          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-        </svg>
-        {{ __('all.Members only')}}
-    </p>
-
-	<div class="text-center mx-auto px-auto mb-4 pb-4">
-      	<a href="{{ route('ligues.create') }}" class="bg-francagris hover:bg-white text-white hover:text-francagris text-base text-center py-2 px-4 border-2 border-white hover:border-francagris rounded">
-			{{ __('nav.creer')}}
-		</a>
-	</div>	      				      		
+<div class="flex-grow lg:w-1/3 justify-around border-4 border-francaverde rounded bg-francagris m-4 p-4 shadow-xl focus:shadow-outline">	    
+      <a href="{{ route('ligues.create') }}" class="block mx-auto bg-francagris text-white hover:text-francaverde text-base text-center py-10 px-4">
+        <svg class="inline-block w-6 h-6 mr-3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+			     {{ __('nav.creer')}}
+		  </a>
+	      				      		
 </div>

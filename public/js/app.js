@@ -1931,6 +1931,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -2037,6 +2049,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AccountDropdown__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AccountDropdown */ "./resources/js/components/AccountDropdown.vue");
+//
+//
+//
 //
 //
 //
@@ -43311,10 +43326,34 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
+                  "block px-4 py-2 text-gray-900 hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1",
                 attrs: { href: _vm.route("profile.show", _vm.user) }
               },
-              [_vm._v(_vm._s(_vm.user.name))]
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-6 w-6 inline-block pr-1",
+                    attrs: {
+                      fill: "none",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                      "stroke-width": "2",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v("\n      " + _vm._s(_vm.user.name) + "\n    ")
+              ]
             ),
             _vm._v(" "),
             _vm.isAdmin
@@ -43322,10 +43361,34 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
+                      "block px-4 py-2 text-gray-900 hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1",
                     attrs: { href: _vm.route("admin.index") }
                   },
-                  [_vm._v("Admin")]
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "h-6 w-6 inline-block pr-1",
+                        attrs: {
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v("\n      Admin\n    ")
+                  ]
                 )
               : _vm._e(),
             _vm._v(" "),
@@ -43333,17 +43396,41 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
+                  "block px-4 py-2 text-gray-900 hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1",
                 attrs: { href: _vm.route("contact.create") }
               },
-              [_vm._v(_vm._s(_vm.__("nav.contact")))]
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-6 w-6 inline-block pr-1",
+                    attrs: {
+                      fill: "none",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                      "stroke-width": "2",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v("\n      " + _vm._s(_vm.__("nav.contact")) + "\n    ")
+              ]
             ),
             _vm._v(" "),
             _c(
               "a",
               {
                 staticClass:
-                  "block px-4 py-2 text-juliengris hover:bg-francaverde hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1",
+                  "block px-4 py-2 text-gray-900 hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1",
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
@@ -43352,7 +43439,33 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v(_vm._s(_vm.__("all.Logout")))]
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-6 w-6 inline-block pr-1",
+                    attrs: {
+                      fill: "none",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                      "stroke-width": "2",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(
+                  "\n          " + _vm._s(_vm.__("all.Logout")) + " \n    "
+                )
+              ]
             )
           ]
         )
@@ -43495,7 +43608,28 @@ var render = function() {
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
-                  _c("i", { staticClass: "fas fa-award pr-1" }),
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "inline-block h-5 w-5",
+                      attrs: {
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        }
+                      })
+                    ]
+                  ),
                   _vm._v(
                     "\n            " + _vm._s(_vm.__("nav.ligues")) + "\n      "
                   )
@@ -43510,7 +43644,28 @@ var render = function() {
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
-                  _c("i", { staticClass: "far fa-hand-point-right pr-1" }),
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "inline-block h-5 w-5",
+                      attrs: {
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                        }
+                      })
+                    ]
+                  ),
                   _vm._v(
                     "\n         " + _vm._s(_vm.__("nav.creer")) + "\n      "
                   )
@@ -43525,7 +43680,28 @@ var render = function() {
                   attrs: { href: _vm.route("about") }
                 },
                 [
-                  _c("i", { staticClass: "fas fa-info-circle pr-1" }),
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "inline-block h-5 w-5",
+                      attrs: {
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        }
+                      })
+                    ]
+                  ),
                   _vm._v(
                     " \n         " + _vm._s(_vm.__("nav.about")) + "\n      "
                   )
@@ -43540,7 +43716,28 @@ var render = function() {
                   attrs: { href: _vm.route("langues") }
                 },
                 [
-                  _c("i", { staticClass: "fas fa-globe-americas pr-1" }),
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "inline-block h-5 w-5",
+                      attrs: {
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+                        }
+                      })
+                    ]
+                  ),
                   _vm._v(
                     "\n            " +
                       _vm._s(_vm.__("all.Translations")) +
@@ -43620,7 +43817,31 @@ var render = function() {
                             "animated bounceInDown mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-white hover:bg-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                           attrs: { href: _vm.route("admin.index") }
                         },
-                        [_vm._v("\n            Admin\n        ")]
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "h-5 w-6 inline-block pr-1",
+                              attrs: {
+                                fill: "none",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "stroke-width": "2",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v("\n            Admin\n        ")
+                        ]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -43632,6 +43853,28 @@ var render = function() {
                       attrs: { href: _vm.route("contact.create") }
                     },
                     [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "h-5 w-5 inline-block pr-1",
+                          attrs: {
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            viewBox: "0 0 24 24",
+                            stroke: "currentColor"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(
                         "\n            " +
                           _vm._s(_vm.__("nav.contact")) +
@@ -43654,6 +43897,28 @@ var render = function() {
                       }
                     },
                     [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "h-6 w-6 inline-block pr-1",
+                          attrs: {
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            viewBox: "0 0 24 24",
+                            stroke: "currentColor"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(
                         "\n          " +
                           _vm._s(_vm.__("all.Logout")) +
@@ -56195,6 +56460,7 @@ module.exports = {
     "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.",
     "All rights reserved.": "All rights reserved",
+    "Already have an account?": "Already have an account?",
     "Away": "Away",
     "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
     "Bets": "Bets",
@@ -56210,6 +56476,7 @@ module.exports = {
     "Delete": "Delete",
     "Delete my account": "Delete my account",
     "Delete this league?": "Delete this league?",
+    "Don't have an account?": "Don't have an account?",
     "E-Mail Address": "E-Mail Address",
     "Edit": "Edit",
     "Favorite Club": "Favorite Club",
@@ -56438,6 +56705,7 @@ module.exports = {
     "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificaci\xF3n a su correo electr\xF3nico.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Despu\xE9s de que te hayas registrado y / o identificado, crea una liga con tus amigos o colegas (o m\xE1s, no hay l\xEDmite de jugadores por liga, pero a\xFAn es mucho m\xE1s divertido con tus amigos y conocidos). Te desafiar\xE1s a tus amigos durante una temporada de la Champions Liga hasta la noche de la final para descubrir qui\xE9n es el mejor pronosticador de la banda.",
     "All rights reserved.": "Todos los derechos reservados",
+    "Already have an account?": "\xBFYa tienes una cuenta?",
     "Away": "Visitante",
     "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electr\xF3nico con el enlace de verificaci\xF3n que le fue enviado.",
     "Bets": "Apuestas",
@@ -56453,6 +56721,7 @@ module.exports = {
     "Delete": "Suprimir",
     "Delete my account": "Suprimir mi cuenta",
     "Delete this league?": "Suprimir esta liga?",
+    "Don't have an account?": "\xBFNo tienes una cuenta?",
     "E-Mail Address": "Correo electr\xF3nico",
     "Edit": "Editar",
     "Favorite Club": "Club Favorito",
@@ -56721,6 +56990,7 @@ module.exports = {
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\xE9rification a \xE9t\xE9 envoy\xE9 \xE0 votre adresse email.",
     "After you have registered and \/ or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it's still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.": "Apr\xE8s vous \xEAtre enregistr\xE9 et/ou identifi\xE9, cr\xE9ez une ligue avec vos potes ou coll\xE8gues (ou plus, il n'y a pas de limite de joueurs par ligue, mais c'est quand m\xEAme autrement plus fun avec ses potes et connaissances). Vous vous defierez ENTRE VOUS pendant une saison de ligue des Champions jusqu'au soir de la finale pour savoir qui est le meilleur pronostiqueur de la bande.",
     "All rights reserved.": "Tous droits r\xE9serv\xE9s",
+    "Already have an account?": "Vous avez d\xE9j\xE0 un compte?",
     "Away": "Exterieur",
     "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez v\xE9rifier votre courrier \xE9lectronique pour un lien de v\xE9rification.",
     "Bets": "Pronostics",
@@ -56736,6 +57006,7 @@ module.exports = {
     "Delete": "Supprimer",
     "Delete my account": "Supprimer mon compte",
     "Delete this league?": "Supprimer cette ligue?",
+    "Don't have an account?": "Vous n'avez pas de compte?",
     "E-Mail Address": "Adresse email",
     "Edit": "Modifier",
     "Error": "Erreur",
