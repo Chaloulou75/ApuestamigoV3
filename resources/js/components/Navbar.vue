@@ -1,4 +1,3 @@
-  
 <template>
   <header class="bg-francagris text-white border-b-4 border-francaverde sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
 
