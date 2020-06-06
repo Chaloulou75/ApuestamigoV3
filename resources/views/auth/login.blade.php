@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto pt-8 animated bounceInDown">
+<div class="container mx-auto pt-8">
   <div class="flex flex-wrap justify-center">
     <div class="w-full max-w-sm">
       <div class="flex flex-col break-words bg-francagris text-white border-2 border-francaverde rounded shadow-md">
@@ -48,7 +48,7 @@
 
           <div class="flex flex-wrap items-center">
             <div class="flex items-center justify-between">
-              <button class="bg-francagris hover:bg-white text-white hover:text-gray-900 font-normal py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
+              <button class="bg-francagris text-white hover:text-francaverde font-normal py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
                 {{ __('all.Login') }}
               </button>
               @if (Route::has('password.request'))  

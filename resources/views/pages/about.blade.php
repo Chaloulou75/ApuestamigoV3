@@ -3,17 +3,17 @@
 @section('content')
                
 
-<div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
+<div class="w-full lg:w-1/2 mx-auto">
 
-	<div class="border-t-4 border-double border-francaverde bg-transparent mb-4 p-1 animated bounceInRight">
-  		<h1 class="text-center text-white text-3xl tracking-wider font-semibold">{{ __('nav.about') }}</h1>
+	<div class="border-t-4 border-double border-francaverde bg-francagris mb-4">
+  		<h1 class="text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('nav.about') }}</h1>
   	</div>
 
-  	<div class="border-2 border-solid border-francaverde rounded py-4 px-4 bg-teal-100 shadow-2xl animated bounceInUp">
+  	<div class="border-2 border-solid border-francaverde rounded py-4 px-4 bg-francagris shadow-2xl">
 
-	  	<h2 class="text-juliengris text-2xl mb-2">{{ __('all.So how does Apuestamigo work?')}}</h2>
+	  	<h2 class="text-white text-2xl mb-2">{{ __('all.So how does Apuestamigo work?')}}</h2>
 
-	  	<p class="text-juliengris text-justify mb-2 ">
+	  	<p class="text-white mb-2">
 	  		{{ __('all.No, Apuestamigo is not yet another online betting site ...' ) }}</br>
 	  		{{ __('all.Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.') }}</br></br>
 
@@ -27,10 +27,6 @@
 
 	  	</p>
 	  	<p class="text-white text-xl"> {{ __('all.Go! It\'s your turn!') }}</p>
-
   	</div>
-
-
 </div>
-
 @endsection

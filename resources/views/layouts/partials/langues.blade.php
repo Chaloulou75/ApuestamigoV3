@@ -2,20 +2,18 @@
 
 @section('content')
                
+<div class="w-full md:w-1/3 mx-auto">
 
-<div class="w-full max-w-xs lg:max-w-xl lg:w-2/3 m-auto p-auto pt-8">
+	<h1 class="text-2xl font-medium text-white text-center py-4"> {{__('all.Translations')}}</h1>
 
-	<div class="border-2 border-solid border-francaverde rounded py-4 px-4 bg-white shadow-2xl animated bounceInDown">
-
-	<h1 class="text-2xl font-base text-juliengris m-3"> {{__('all.Translations')}}</h1>
+	<div class="items-center border-2 border-solid border-francaverde rounded py-4 px-4 bg-francagris ">
 
 	@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-	  <div class="flex items-center pr-2">    
-	    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="overflow-hidden flex items-center justify-center focus:outline-none focus:border-julienred m-2">
+	  <div class="flex items-start ">    
+	    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="overflow-hidden flex items-center justify-between focus:outline-none mx-auto my-3">	        
+	        <img class="h-8 w-8 border border-francaverde focus:outline-none focus:border-white rounded-full object-cover mr-3" loading="lazy" alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
 	        
-	        <img class="h-8 w-8 border border-gray-900 focus:outline-none focus:border-juliengris rounded-full object-cover" loading="lazy" alt="{{ $properties['native'] }}" src="{!! asset('img/flags/' . $localeCode. '.png') !!}"/>
-	        
-		    <div class="text-juliengris ml-2 mr-2">
+		    <div class="text-white hover:text-francaverde mx-auto">
 		     	{{ $properties['native'] }} 
 		 	</div>
 		</a>

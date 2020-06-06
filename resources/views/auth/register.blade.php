@@ -5,7 +5,7 @@
 <div class="container mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
-                <div class="flex flex-col break-words bg-francagris text-white border-2 border-francaverde rounded shadow-md mt-6 animated bounceInDown">
+                <div class="flex flex-col break-words bg-francagris text-white border-2 border-francaverde rounded shadow-md mt-6">
 
                     <div class="font-normal text-francaverde py-3 px-6 mb-0">
                         {{ __('all.Register') }}

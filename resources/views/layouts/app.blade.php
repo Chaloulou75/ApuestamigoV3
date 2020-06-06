@@ -27,16 +27,16 @@
 
             @if(session('success'))
 
-            <div class="container mx-auto mx-auto">
-                <div class="relative px-3 py-3 mb-4 border rounded text-green-darker border-green-dark bg-green-lighter">
+            <div class="container mx-auto">
+                <div class="relative px-3 py-3 mb-4 border rounded text-green-600 border-green-500 bg-green-400">
                     {{ session ('success')}}
                 </div>
             </div>
             @endif
             
             @if (session('error'))
-            <div class="container mx-auto mx-auto">
-                <div class="relative px-3 py-3 mb-4 border rounded text-red-darker border-red-dark bg-red-lighter">
+            <div class="container mx-auto">
+                <div class="relative px-3 py-3 mb-4 border rounded text-red-700 border-red-500 bg-red-400">
                     {{ session ('error')}}
                 </div>
             </div>

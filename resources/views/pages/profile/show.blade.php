@@ -2,20 +2,20 @@
 
 @section('content')
 
-<div class="w-full lg:w-3/4 m-auto p-1">
-	<div class="border-t-4 border-double rounded border-francaverde bg-transparent mb-4 p-1">
-		<h1 class="text-center text-white text-3xl tracking-wider font-semibold">{{ __('all.Profil') }}</h1>
+<div class="w-full md:w-1/2 mx-auto">
+	<div class="border-t-4 border-double rounded border-francaverde bg-francagris">
+		<h1 class="text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('all.Profil') }}</h1>
 	</div>
 
-	<form class="bg-transparent shadow-md border-2 border-francaverde rounded px-8 pt-6 pb-4 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
+	<form class="bg-francagris px-6 py-6 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
         @csrf
         @method('PATCH')
 
-		<div class="border-t-4 border-francagris rounded bg-francaverde p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-francaverde rounded bg-francagris py-4 mb-4 flex flex-col justify-between">
 
-			<label for="name" class="text-left text-gray-900 text-sm font-semibold"> {{ __('all.Name')}} : </label>
+			<label for="name" class="text-left text-white text-sm font-medium"> {{ __('all.Name')}} : </label>
 
-			<input id="name" name="name" type="text" class="bg-teal-100 text-left text-gray-700 text-sm font-semibold px-2 py-2 @error('name') bg-red-dark @enderror" value="{{ $user->name }}" placeholder="{{ $user->name }}">
+			<input id="name" name="name" type="text" class="bg-teal-100 text-left text-gray-900 text-sm font-medium px-2 py-2 @error('name') bg-red-dark @enderror" value="{{ $user->name }}" placeholder="{{ $user->name }}">
 		
 			@error('name')
 	            <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
@@ -24,11 +24,11 @@
 	        @enderror	
 		</div>
 		
-		<div class="border-t-4 border-francagris rounded bg-francaverde p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-francaverde rounded bg-francagris py-4 mb-4 flex flex-col justify-between">
 
-			<label for="email" class="text-left text-gray-900 text-sm font-semibold"> Email : </label>
+			<label for="email" class="text-left text-white text-sm font-medium"> Email : </label>
 
-			<input id="email" name="email" type="email" class="bg-teal-100 text-left text-gray-700 text-sm font-semibold px-2 py-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
+			<input id="email" name="email" type="email" class="bg-teal-100 text-left text-gray-900 text-sm font-medium px-2 py-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
 			@error('email')
                 <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
                     <strong>{{ $message }}</strong>
@@ -36,11 +36,11 @@
             @enderror 
 		</div>	
 
-		<div class="border-t-4 border-francagris rounded bg-francaverde p-4 mb-4 flex flex-col justify-between">
+		<div class="border-t-4 border-francaverde rounded bg-francagris py-4 mb-4 flex flex-col justify-between">
 
-			<label for="club" class="text-left text-gray-900 text-sm font-semibold"> {{ __('all.Favorite Club') }} : </label>
+			<label for="club" class="text-left text-white text-sm font-medium"> {{ __('all.Favorite Club') }} : </label>
 
-			<select id="club" class="bg-teal-100 text-left text-gray-700 text-sm font-semibold px-2 py-2 {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="">              
+			<select id="club" class="bg-teal-100 text-left text-gray-900 text-sm font-medium px-2 py-2 {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="">              
                 <option value="Borussia Dortmund"  @if($user->club == 'Borussia Dortmund')selected @endif>Borussia Dortmund</option>
                 <option value="Bayer Leverkusen" @if( $user->club == 'Bayer Leverkusen')selected @endif>Bayer Leverkusen</option>
                 <option value="FC Bayern" @if($user->club == 'FC Bayern')selected @endif>FC Bayern</option>
@@ -95,39 +95,26 @@
 
 		<div class="mb-4">
             <div class="flex items-center justify-between">
-                <button class="w-full bg-teal-900 hover:bg-teal-600 text-white font-medium py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+                <button class="w-full bg-francagris text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                     {{ __('all.Edit') }}
                 </button>
             </div>
         </div>
 	</form>
-	<form class="bg-transparent shadow-md border-2 border-francaverde rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('profile.destroy', $user) }}">
+
+	<form class="bg-francagris px-6 py-4 mb-4" method="POST" action="{{ route('profile.destroy', $user) }}">
         @csrf
         @method('DELETE')
-		<div class="border-2 border-gray-600 rounded bg-gray-300 p-4 flex flex-col justify-between">
-          <p class="block text-red-800 text-sm font-bold mb-2">{{ __('all.Please note, this action is irreversible.') }} </p>
-          <button class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 border-2 border-white rounded focus:outline-none focus:shadow-outline" type="submit">
+		<div class="border-2 border-francaverde rounded bg-francagris p-4 flex flex-col justify-between">
+          <p class="block text-white text-sm font-medium mb-2">{{ __('all.Please note, this action is irreversible.') }} </p>
+          <button class="w-full bg-julienred text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
                 <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                 {{ __('all.Delete my account') }}
            </button>
       	</div>
-    	{{-- <div class="flex items-center justify-between">
-            
-        </div> --}}
-
 	</form>
 </div>
 
-@endsection		 
-	{{-- <div>
-		<p class="text-left text-white text-lg font-bold"> {{ __('nav.ligues') }} : </p>
-
-		@foreach( $user->ligues as $userligue)
-		<div class="border-2 border-gray-600 rounded bg-gray-300 p-4 mb-4 flex flex-col justify-between">
-
-			<p class="text-left text-gray-700 text-lg font-bold">{{ $userligue->name }} </p>
-
-		</div>
-		@endforeach 
-	</div> --}}
+@endsection
 

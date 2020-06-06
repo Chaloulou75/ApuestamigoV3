@@ -2,15 +2,15 @@
 
 @section('content')
 	
-	<div class="w-full lg:w-3/4 m-auto p-1">
+	<div class="w-full lg:w-3/4 mx-auto">
 
-		<div class="border-t-4 border-double border-francaverde bg-transparent mb-4 p-1">
-			<h1 class="text-center text-white text-3xl tracking-wider font-semibold">
+		<div class="border-t-4 border-double border-francaverde bg-transparent ">
+			<h1 class="text-center text-white text-3xl tracking-wider font-semibold my-4">
 				{{ __('all.Dashboard') }}
 			</h1>
 		</div>
 
-		<div class="flex flex-wrap items-stretch content-start justify-around my-4 animated bounceInUp">
+		<div class="flex flex-wrap items-stretch content-start justify-around my-4">
 
 			@include('layouts.partials.cards.ligueCreate')
 

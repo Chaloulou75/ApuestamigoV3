@@ -8,18 +8,19 @@
 
   	@livewire('next-game')
   
-	<div class="container text-francagris animated jackInTheBox">
+	<div class="container text-francagris">
 
-		@if ( Auth::user()->admin == 1) 
+		@admin
 			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, set all scores!</h3>
 			<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 
 				@csrf
-		
-		@elseif( Auth::check() && Auth::user() == $user)
+		@endadmin
+		@auth
 			<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.your bets')}} :</h3>
-		@else
+		@endauth	
+		@guest
 			<h3 class="text-base text-left text-white py-2">{{__('all.Bets of')}} <span class="text-francaverde">{{$user->name}}</span>:</h3>
-		@endif
+		@endguest
 
 		<div class="table w-full bg-white shadow-md border-4 border-solid border-francaverde rounded text-sm text-francagris">
 
@@ -40,7 +41,7 @@
 
 			@foreach ($games as $key => $game)
 
-		    <div class="table-row mx-auto border border-solid rounded border-francaverde hover:bg-francaverde">
+		    <div class="table-row mx-auto border border-solid rounded border-francaverde">
 		      <div class="table-cell px-1 py-4 text-center hidden md:table-cell">  {{ $loop->iteration }} </div>
 		      <div class="table-cell px-1 py-4 text-center text-xs hidden md:table-cell">  {{ \Carbon\Carbon::parse($game->gamedate)->format('j F Y H:i') }} </div>
 			  <div class="table-cell px-1 py-4 text-right font-bold hidden md:table-cell"> {{ $game->homeTeam->name }} </div>
@@ -104,21 +105,21 @@
 			  </div>
 			  <div class="table-cell px-1 py-4 text-center"> <img class="inline" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></div>
 			  <div class="table-cell px-1 py-4 hidden md:table-cell font-bold text-left">{{ $game->awayTeam->name}}</div>
-			  <div class="table-cell px-1 py-4">
+			  <div class="table-cell px-1 py-4 text-left">
 			  	@if(isset($game->matchs->first()['pointMatch'])) 
 			  	 @if($game->matchs->first()['pointMatch'] == 3)
-			  	 	<span class="text-green-500 font-bold flex items-center justify-around">	
-			  	 		<i class="far fa-check-circle font-bold"></i>		  	 		
+			  	 	<span class="text-green-500 font-bold justify-around">	
+			  	 		<svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>		  	 		
 			  			{{ $game->matchs->first()['pointMatch'] }}			  			
 			  		</span>
 			  	 @elseif($game->matchs->first()['pointMatch'] == 1)
-			  	 	<span class="text-blue-500 font-bold flex items-center justify-around">
-			  	 		<i class="far fa-check-circle font-bold"></i>
+			  	 	<span class="text-blue-500 font-bold justify-around">
+			  	 		<svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 			  			{{ $game->matchs->first()['pointMatch'] }}			  			
 			  	    </span>
 			  	 @else
-			  	 	<span class="text-red-500 font-bold flex items-center justify-around">
-			  	 		<i class="far fa-times-circle font-bold"></i>
+			  	 	<span class="text-julienred font-bold justify-around">
+			  	 		<svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 			  			{{ $game->matchs->first()['pointMatch'] }}			  			
 			  	    </span>   
 			  	 @endif

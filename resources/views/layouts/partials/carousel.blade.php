@@ -1,4 +1,4 @@
-<div class="min-w-full pt-4"> 
+<div class="max-w-xl mx-auto pt-4 my-4"> 
 
     <carousel-component>
     

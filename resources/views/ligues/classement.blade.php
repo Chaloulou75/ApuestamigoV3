@@ -8,7 +8,7 @@
   
 	<div class="w-full text-francagris">
 
-		<div class="px-3 py-4 flex justify-center animated rotateInUpLeft">
+		<div class="px-3 py-4 flex justify-center">
 			<table class="table-auto w-full text-md bg-white shadow-md border-t-4 border-solid rounded border-francaverde rounded mb-4">
 			  <thead>
 			    <tr class="border border-solid border-francaverde">

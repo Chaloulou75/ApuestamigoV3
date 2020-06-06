@@ -4,7 +4,7 @@
 
 <div class="w-full md:w-4/5 mx-auto p-1">
 
-		<h3 class="text-md text-center text-white py-2">Hey {{ $user->name }}, mets les prochains matchs</h3>
+		<h3 class="text-base text-center text-white py-2">Hey <span class="text-francaverde">{{ $user->name }}</span>, mets les prochains matchs</h3>
 		@if ($errors->any())
 		    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-200 p-4" role="alert">
 		        <ul>
@@ -15,8 +15,8 @@
 		    </div>
 		@endif
 
-		<div class="w-full max-w-xs lg:w-1/3 m-auto p-auto pt-8">
-		  <form class="bg-gray-900 shadow-md border-2 border-white rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ action('GameController@store') }}">
+		<div class="w-full lg:w-1/3 mx-auto bg-francagris shadow-md border-2 border-white rounded py-8 px-8 my-4">
+		  <form class="mx-auto" method="POST" action="{{ action('GameController@store') }}">
 		  		@csrf
 		  	<div class="mb-4">
 		      <label class="block text-white text-sm font-base mb-2" for="journee">
@@ -52,7 +52,7 @@
 		        @endforeach
 		      </select>
 		    </div>
-		    <div class="mb-6">
+		    <div class="mb-4">
 		      <label class="block text-white text-sm font-base mb-2" for="equipe2_id"> Away Team</label>
 		      <select class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="equipe2_id" name="equipe2_id" placeholder="{{old('equipe2_id')}}">
 		      @foreach ($equipes as $equipe)
@@ -62,7 +62,7 @@
 		      @endforeach
 		      </select>
 		    </div>
-		    <div class="mb-6">
+		    <div class="mb-4">
 		    	<label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date:</label>
 
 				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
@@ -71,7 +71,7 @@
 		    </div>
 		    
 		    <div class="flex items-center justify-between">
-		      <button class="w-full bg-white hover:bg-gray-900 text-gray-900 hover:text-white text-sm py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
+		      <button class="w-full bg-francagris text-white hover:text-francaverde text-sm py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
 		        Enregistrer le match
 		      </button>
 		      
