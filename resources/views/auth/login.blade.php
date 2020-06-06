@@ -4,7 +4,7 @@
 <div class="container mx-auto pt-8">
   <div class="flex flex-wrap justify-center">
     <div class="w-full max-w-sm">
-      <div class="flex flex-col break-words bg-francagris text-white border-2 border-francaverde rounded shadow-md">
+      <div class="animate__animated animate__flipInY flex flex-col break-words bg-francagris text-white border-2 border-francaverde rounded shadow-md">
         <div class="font-normal bg-francagris text-francaverde py-3 px-6 mb-0">
             {{ __('all.Login') }}
         </div>

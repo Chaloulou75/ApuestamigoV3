@@ -43237,7 +43237,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "block px-4 py-2 text-white hover:text-francaverde",
+                      "animate__animated animate__lightSpeedInLeft block px-4 py-2 text-white hover:text-francaverde",
                     attrs: { href: _vm.route("profile.show", _vm.user) }
                   },
                   [
@@ -43274,7 +43274,7 @@ var render = function() {
                       "a",
                       {
                         staticClass:
-                          "block px-4 py-2 text-white hover:text-francaverde",
+                          "animate__animated animate__lightSpeedInLeft block px-4 py-2 text-white hover:text-francaverde",
                         attrs: { href: _vm.route("admin.index") }
                       },
                       [
@@ -43309,7 +43309,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "block px-4 py-2 text-white hover:text-francaverde",
+                      "animate__animated animate__lightSpeedInLeft block px-4 py-2 text-white hover:text-francaverde",
                     attrs: { href: _vm.route("contact.create") }
                   },
                   [
@@ -43347,7 +43347,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "block px-4 py-2 text-white hover:text-francaverde",
+                      "animate__animated animate__lightSpeedInLeft block px-4 py-2 text-white hover:text-francaverde",
                     attrs: { href: "#" },
                     on: {
                       click: function($event) {
@@ -43456,10 +43456,10 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "animate__animated animate__lightSpeedInLeft block px-2 py-1 text-2xl rounded font-medium hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                  "animate__animated animate__flipInY block px-2 py-1 text-2xl rounded font-medium hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                 attrs: { href: "/" }
               },
-              [_vm._v("\n          \n          Apuestamigo \n     ")]
+              [_vm._v("\n          \n        Apuestamigo\n     ")]
             )
           ]),
           _vm._v(" "),
@@ -43523,7 +43523,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "block px-2 py-1 text-sm hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animate__animated animate__lightSpeedInLeft block px-2 py-1 text-sm hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("ligues.index") }
                 },
                 [
@@ -43559,7 +43559,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("ligues.create") }
                 },
                 [
@@ -43595,7 +43595,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("about") }
                 },
                 [
@@ -43631,7 +43631,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                    "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                   attrs: { href: _vm.route("langues") }
                 },
                 [
@@ -43670,7 +43670,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: _vm.route("login") }
                     },
                     [
@@ -43722,7 +43722,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "flex items-center mt-1 block px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                      "animate__animated animate__lightSpeedInLeft flex items-center mt-1 block px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                   },
                   [
                     _c("img", {
@@ -43753,7 +43753,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                            "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                           attrs: { href: _vm.route("admin.index") }
                         },
                         [
@@ -43788,7 +43788,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: _vm.route("contact.create") }
                     },
                     [
@@ -43826,7 +43826,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
+                        "animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110",
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {

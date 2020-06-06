@@ -6,7 +6,7 @@
 
   @include('layouts/partials/navLigue')
 
-  <div class="bg-white border-t-4 border-francaverde rounded-b text-gray-900 px-4 py-3 shadow-md my-4" role="alert">
+  <div class="animate__animated animate__flipInX bg-white border-t-4 border-francaverde rounded-b text-gray-900 px-4 py-3 shadow-md my-4" role="alert">
     <div class="flex">
       <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
       </div>
@@ -22,7 +22,7 @@
 
   <div class="flex flex-col md:flex-row items-stretch justify-between my-4"> 
 
-    <div class="flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
+    <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@quitLigue', $ligue) }}">
         @csrf
         <div class="mb-4">
@@ -39,7 +39,7 @@
       </form>
     </div>
 
-    <div class="flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
+    <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@update', $ligue) }}">
         @csrf
         @method('PUT')
@@ -61,7 +61,7 @@
       </form>
     </div>
 
-    <div class="flex items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4">
+    <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@destroy', $ligue) }}">
         @csrf
         @method('DELETE')

@@ -4,10 +4,10 @@
 
 <div class="w-full md:w-1/2 mx-auto">
 	<div class="border-t-4 border-double rounded border-francaverde bg-francagris">
-		<h1 class="text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('all.Profil') }}</h1>
+		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('all.Profil') }}</h1>
 	</div>
 
-	<form class="bg-francagris px-6 py-6 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
+	<form class="animate__animated animate__fadeInUp bg-francagris px-6 py-6 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
         @csrf
         @method('PATCH')
 
@@ -15,7 +15,7 @@
 
 			<label for="name" class="text-left text-white text-sm font-medium"> {{ __('all.Name')}} : </label>
 
-			<input id="name" name="name" type="text" class="bg-teal-100 text-left text-gray-900 text-sm font-medium px-2 py-2 @error('name') bg-red-dark @enderror" value="{{ $user->name }}" placeholder="{{ $user->name }}">
+			<input id="name" name="name" type="text" class="bg-teal-100 rounded text-left text-gray-900 text-sm font-medium px-2 py-2 @error('name') bg-red-dark @enderror" value="{{ $user->name }}" placeholder="{{ $user->name }}">
 		
 			@error('name')
 	            <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
@@ -28,7 +28,7 @@
 
 			<label for="email" class="text-left text-white text-sm font-medium"> Email : </label>
 
-			<input id="email" name="email" type="email" class="bg-teal-100 text-left text-gray-900 text-sm font-medium px-2 py-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
+			<input id="email" name="email" type="email" class="bg-teal-100 rounded text-left text-gray-900 text-sm font-medium px-2 py-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
 			@error('email')
                 <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
                     <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
 
 			<label for="club" class="text-left text-white text-sm font-medium"> {{ __('all.Favorite Club') }} : </label>
 
-			<select id="club" class="bg-teal-100 text-left text-gray-900 text-sm font-medium px-2 py-2 {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="">              
+			<select id="club" class="bg-teal-100 rounded text-left text-gray-900 text-sm font-medium px-2 py-2 {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="">              
                 <option value="Borussia Dortmund"  @if($user->club == 'Borussia Dortmund')selected @endif>Borussia Dortmund</option>
                 <option value="Bayer Leverkusen" @if( $user->club == 'Bayer Leverkusen')selected @endif>Bayer Leverkusen</option>
                 <option value="FC Bayern" @if($user->club == 'FC Bayern')selected @endif>FC Bayern</option>

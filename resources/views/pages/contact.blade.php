@@ -6,17 +6,17 @@
 <div class="w-full lg:w-1/2 mx-auto">
 
     <div class="border-t-4 border-double border-francaverde bg-francagris mb-4">
-        <h1 class="text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('nav.contact') }}</h1>
+        <h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('nav.contact') }}</h1>
     </div>
 
-    <form class="bg-francagris border-2 border-francaverde shadow-md rounded px-8 py-6 " method="POST" action="{{ route('contact.store') }}">
+    <form class="animate__animated animate__fadeInUp bg-francagris border-2 border-francaverde shadow-md rounded px-8 py-6 " method="POST" action="{{ route('contact.store') }}">
         @csrf
 
         <div class="mb-4">
             <label for="name" class="block text-white text-base font-medium mb-2">{{ __('all.Name') }}</label>
 
             <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-             @error('name') bg-red-dark @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+             @error('name') bg-red-dark @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
 
             @error('name')
                 <span class=" mt-1 text-sm text-orange-400" role="relative px-3 py-3 mb-4 border rounded">
@@ -29,7 +29,7 @@
         <div class="mb-4">
             <label for="email" class="block text-white text-base font-medium mb-2">{{ __('all.E-Mail Address') }}</label>
            
-                <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') bg-red-dark @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                 @error('email')
                     <span class=" mt-1 text-sm text-orange-400" role="relative px-3 py-3 mb-4 border rounded">
@@ -41,7 +41,7 @@
         <div class="mb-4">
             <label for="msg" class="block text-white text-base font-medium mb-2">{{ __('all.Message') }}</label>
            
-                <textarea id="msg" type="msg" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-24 lg:h-40 resize leading-tight focus:outline-none focus:shadow-outline @error('msg') bg-red-dark @enderror" name="msg" value="{{ old('msg') }}" required autocomplete="msg" autofocus></textarea>
+                <textarea id="msg" type="msg" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-24 lg:h-40 resize leading-tight focus:outline-none focus:shadow-outline @error('msg') bg-red-dark @enderror" name="msg" value="{{ old('msg') }}" required autocomplete="msg"></textarea>
 
                 @error('msg')
                     <span class=" mt-1 text-sm text-orange-400" role="relative px-3 py-3 mb-4 border rounded">
