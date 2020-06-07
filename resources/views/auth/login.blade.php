@@ -16,7 +16,7 @@
                 {{ __('all.E-Mail Address') }}:
             </label>
 
-            <input id="email" type="email" class="w-full shadow appearance-none border rounded w-full py-2 px-3 text-francagris mb-3 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <input id="email" type="email" class="w-full shadow appearance-none border rounded w-full py-2 px-3 text-francagris mb-3 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
             @error('email')
                 <p class="text-red-500 text-xs italic mt-1">

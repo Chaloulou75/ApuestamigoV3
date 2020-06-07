@@ -4,7 +4,11 @@
 
 <div class="w-full md:w-4/5 mx-auto p-1">
 
-		<h3 class="text-base text-center text-white py-2">Hey <span class="text-francaverde">{{ $user->name }}</span>, mets les prochains matchs</h3>
+		<h3 class="text-base text-center text-white py-2">
+			Hey <span class="text-francaverde">{{ $user->name }}</span>, mets les prochains matchs
+		</h3>
+		<p class="text-base text-center text-francaverde py-2"><a href="{{route('games.index')}}">Retourner à la liste des matchs</a></p>
+
 		@if ($errors->any())
 		    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-200 p-4" role="alert">
 		        <ul>

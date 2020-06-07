@@ -29,7 +29,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        $games = Game::with(['homeTeam', 'awayTeam'])->orderByDesc('gamedate')->get();
+
+        return view('/pages/games/index', compact('games', 'user'));
     }
 
     /**
@@ -90,7 +94,13 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+
+        $game = Game::with(['homeTeam', 'awayTeam'])->where('id', $id)->firstOrFail();
+
+        $equipes = Equipe::all();        
+
+        return view('/pages/games/edit', compact('equipes', 'game', 'user'));
     }
 
     /**
@@ -100,9 +110,25 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreGame $request, Game $game)
     {
-        //
+        $validatedData = $request->validated();
+
+        $game = Game::with(['homeTeam', 'awayTeam'])->where('id', $game->id)->firstOrFail();
+
+        $journee = $request->input('journee');
+        $equipe1 = $request->input('equipe1_id');
+        $equipe2 = $request->input('equipe2_id');
+        $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
+
+        $game->update([
+                    'journee' => $journee, 
+                    'equipe1_id' => $equipe1,
+                    'equipe2_id' => $equipe2,
+                    'gamedate' => $dategame
+                ]);
+
+        return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est mis à jour.');
     }
 
     /**
@@ -111,8 +137,10 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Game $game)
     {
-        //
+        $game->delete();
+
+        return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match a été supprimé');
     }
 }

@@ -11,7 +11,7 @@
 		<div class="animate__animated animate__flipInX py-4 flex justify-center">
 			<table class="table-auto w-full text-md bg-white shadow-md border-t-4 border-solid rounded border-francaverde rounded mb-4">
 			  <thead>
-			    <tr class="border border-solid border-francaverde">
+			    <tr class="border border-solid border-francaverde bg-teal-200">
 			      <th scope="col" class="p-3 px-5">#</th>
 			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Name')}}</th>
 			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Club')}}</th>
@@ -34,12 +34,6 @@
 			  </tbody>
 			</table>
 		</div>
-
 	</div>
 </div>
-
 @endsection
-
-
-
-

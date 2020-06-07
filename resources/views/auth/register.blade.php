@@ -19,7 +19,7 @@
                                 {{ __('all.Name') }}:
                             </label>
 
-                            <input id="name" type="text" class="form-input w-full shadow appearance-none border rounded py-2 px-3 text-francagris leading-tight focus:outline-none focus:shadow-outline @error('name')  border-red-500 @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" class="form-input w-full shadow appearance-none border rounded py-2 px-3 text-francagris leading-tight focus:outline-none focus:shadow-outline @error('name')  border-red-500 @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
 
                             @error('name')
                                 <p class="text-red-500 text-xs italic mt-4">
