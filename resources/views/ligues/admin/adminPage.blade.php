@@ -13,6 +13,9 @@
 		<a href="{{ route('games.index') }}"> Liste des matchs </a>
 		</div>
 		<div class="animate__animated animate__flipInX border-2 rounded-lg border-francaverde flex-auto text-white text-center bg-francagris hover:text-francaverde px-4 py-2 m-2">
+		<a href="{{ route('equipes.index') }}"> Insérer une équipe </a>
+		</div>
+		<div class="animate__animated animate__flipInX border-2 rounded-lg border-francaverde flex-auto text-white text-center bg-francagris hover:text-francaverde px-4 py-2 m-2">
 		<a href="{{ route('ligues.index') }}"> Montrer les matchs and mettre les scores définitifs. </a>
 		</div>
 		<div class="animate__animated animate__flipInX border-2 rounded-lg border-francaverde flex-auto text-white text-center bg-francagris hover:text-francaverde px-4 py-2 m-2">

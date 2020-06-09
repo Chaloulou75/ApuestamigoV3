@@ -53,6 +53,8 @@ Route::group(
 
 	Route::resource('games', 'GameController')->middleware('admin');
 
+	Route::resource('equipes', 'EquipeController')->middleware('admin');
+
 	Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
 
 	    Route::get('/', 'AdminController@index')->name('admin.index');
