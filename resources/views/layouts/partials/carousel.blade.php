@@ -1,6 +1,12 @@
-<div class="max-w-xl mx-auto pt-4 my-4"> 
+{{-- <div class="max-w-xl mx-auto pt-4 my-4"> 
 
     <carousel-component>
+
+         @foreach($equipes as $equipe)
+
+        <img class="inline w-12 h-10 pr-2 carousel-cell" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}" loading="lazy" alt="club">
+
+        @endforeach  
     
         <img src="/img/ajax.png" loading="lazy" alt="club" class="carousel-cell">
         <img src="/img/as-roma.png" loading="lazy" alt="club" class="carousel-cell">
@@ -41,7 +47,7 @@
         <img src="/img/olympiakos.png" loading="lazy" alt="club" class="carousel-cell">
         <img src="/img/zagreb.png" loading="lazy" alt="club" class="carousel-cell">  
         <img src="/img/slavia.png" loading="lazy" alt="club" class="carousel-cell">
-        <img src="/img/zenith.png" loading="lazy" alt="club" class="carousel-cell">              
+        <img src="/img/zenith.png" loading="lazy" alt="club" class="carousel-cell">         
     
     </carousel-component>
-</div>
+</div> --}}

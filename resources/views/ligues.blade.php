@@ -26,11 +26,4 @@
 	</div>	  	
 </div>
 
-	<div class="text-gray-600 text-center uppercase text-xs my-2 md:mt-4">
-		<p>
-			&copy;2020 charles Jeandey all right reserved, </br> site designed and developped by <span class="text-julienred"> charles Jeandey</span>.
-		</p>
-
-	</div>
-
 @endsection

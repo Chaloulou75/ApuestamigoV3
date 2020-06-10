@@ -55,7 +55,6 @@ class LigueController extends Controller
         // formulaire de creation d'une ligue, doit générer un token aléatoire pour inviter ses potes
         if (Auth::user())
         {
-
             return view('/ligues/create');
         }
 
@@ -69,14 +68,12 @@ class LigueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
-        if (Auth::user()) {
-
+    {        
+        if (Auth::user()) 
+        {
             $name = $request->input('name');
             $token = Str::uuid('name')->toString();
-            $user_name = Auth::user()->name;
-            $user_club = Auth::user()->club;
+            $creator_id = Auth::user()->id;
 
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:2|max:100',
@@ -92,8 +89,7 @@ class LigueController extends Controller
             $ligue = Ligue::create([
                 'name' => $name,
                 'token' => $token,
-                'user_name' => $user_name,
-                'user_club' => $user_club          
+                'creator_id' => $creator_id,        
             ]); 
 
             //lié le user avec la ligue créé
@@ -105,9 +101,6 @@ class LigueController extends Controller
         }
 
         return redirect('login');
-
-        //renvoie mail de confirmation creation nom de ligue + code
-
     }
 
     /**
@@ -175,11 +168,9 @@ class LigueController extends Controller
     public function destroy(Ligue $ligue)
     {
         //delete une ligue
-
-
         $ligue = ligue::findOrFail($ligue->id);
 
-        if( $ligue->user_name === Auth::user()->name)
+        if( $ligue->creator_id === Auth::user()->id)
         {
             $ligue->delete();
         
@@ -207,7 +198,6 @@ class LigueController extends Controller
     {
         if (Auth::user())
         {
-
             $token = $request->input('token');
             $ligue = ligue::where('token', '=',  $token)->firstOrFail();            
             
@@ -217,8 +207,8 @@ class LigueController extends Controller
             $userLigueExist = $user->ligues()->wherePivot('ligue_id', $ligue->id)->exists();
             //dd($userLigueExist);
 
-            if($userLigueExist === true){
-
+            if($userLigueExist === true)
+            {
                 return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', __('all.You already have joined this league!'));
             }
 
@@ -228,7 +218,6 @@ class LigueController extends Controller
         }
 
         return redirect('login');
-
     }
 
     public function quitLigue(Ligue $ligue)
@@ -244,7 +233,8 @@ class LigueController extends Controller
 
     public function classement(Ligue $ligue)
     {  
-        $journee = $this->DateRepository->dateJournee();     
+        $journee = $this->DateRepository->dateJournee(); 
+  
         return view('/ligues/classement', $ligue, compact('ligue', 'journee'));        
     }
 

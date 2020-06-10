@@ -12,7 +12,7 @@ class Ligue extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'token', 'user_name', 'user_club',
+        'name', 'token', 'creator_id',
     ];
 
 

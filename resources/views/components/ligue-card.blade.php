@@ -13,9 +13,9 @@
 	    <div class="flex items-center justify-between">
 	      <img class="w-10 h-10 rounded-full mr-4" src="/img/logo.png" alt="logoChampions">
 	      <div class="text-sm">
-	        <p class="text-gray-100 leading-none">{{ __('all.created by:') }} <span class="font-medium text-francaverde" >{{ $ligue->user_name }}</span> </p>
+	        <p class="text-gray-100 leading-none">{{ __('all.created by:') }} <span class="font-medium text-francaverde" >{{ $ligue->users->first()->name }} </span> </p> 
 	        <p class="text-gray-300">{{ __('all.supporter') }} <span class="font-medium text-francaverde">
-	        	{{ $ligue->user_club }}</span></p>
+	        	{{ $ligue->users->first()->equipe->name }}</span></p>
 	      </div>
 	    </div>
 	</div>

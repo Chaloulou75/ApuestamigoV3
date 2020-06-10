@@ -43,11 +43,18 @@
                         </div>
 
                         <div class="flex flex-wrap mb-6">
-                            <label for="club" class="block text-sm font-normal mb-2">
+                            <label for="equipe_id" class="block text-sm font-normal mb-2">
                                 {{ __('all.Favorite Club') }}
                             </label>            
-                              <select id="club" class="shadow appearance-none border rounded w-full py-2 px-3 text-francagris leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('club') ? ' bg-red-dark' : '' }}" name="club" value="{{ old('club') }}" required>              
-                                <option value="Borussia Dortmund"  @if(old('club') == 'Borussia Dortmund')selected @endif>Borussia Dortmund</option>
+                              <select id="equipe_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-francagris leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('equipe_id') ? ' bg-red-dark' : '' }}" name="equipe_id" value="{{ old('equipe_id') }}" required>  
+
+                                @foreach($equipes as $equipe)
+
+                                <option value="{{ $equipe->id}}"  @if(old('equipe_id') == $equipe->name)selected @endif>{{ $equipe->name}} </option>
+
+                                @endforeach
+
+                                {{-- <option value="Borussia Dortmund"  @if(old('club') == 'Borussia Dortmund')selected @endif>Borussia Dortmund</option>
                                 <option value="Bayer Leverkusen" @if(old('club') == 'Bayer Leverkusen')selected @endif>Bayer Leverkusen</option>
                                 <option value="FC Bayern" @if(old('club') == 'FC Bayern')selected @endif>FC Bayern</option>
                                 <option value="FC Schalke" @if(old('club') == 'FC Schalke')selected @endif>FC Schalke</option>
@@ -89,7 +96,7 @@
                                 <option value="Racing Genk" @if(old('club') == 'Racing Genk')selected @endif>Racing Genk</option>
                                 <option value="Olympiakos" @if(old('club') == 'Olympiakos')selected @endif>Olympiakos</option>
                                 <option value="Young Boys Berne" @if(old('club') == 'Young Boys Berne')selected @endif>Young Boys Berne</option>
-                                <option value="AEK Athen" @if(old('club') == 'AEK Athen')selected @endif>AEK Athen</option>  
+                                <option value="AEK Athen" @if(old('club') == 'AEK Athen')selected @endif>AEK Athen</option> --}}  
                               </select>
 
                                 @if ($errors->has('club'))

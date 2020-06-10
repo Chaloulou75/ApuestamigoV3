@@ -3,19 +3,21 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Equipe;
 
-class LigueCard extends Component
+class CarouselCard extends Component
 {
-    public $ligue;
+    
+    public $equipes;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($ligue)
+    public function __construct($equipes)
     {
-        $this->ligue = $ligue;             
+        $this->equipes = Equipe::all();
     }
 
     /**
@@ -25,6 +27,6 @@ class LigueCard extends Component
      */
     public function render()
     {
-        return view('components.ligue-card');
+        return view('components.carousel-card');
     }
 }

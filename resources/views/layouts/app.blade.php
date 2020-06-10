@@ -20,8 +20,8 @@
 
             <navbar-component :user='@json(Auth::user())'></navbar-component>
 
-            @include('layouts/partials/carousel')
-
+            {{-- @include('layouts/partials/carousel') --}}
+            <x-carousel-card equipes= {{$equipes}}/>
 
             @include('layouts/partials/message')
 

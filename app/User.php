@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email','club', 'password',
+        'name', 'email','club', 'password', 'equipe_id'
     ];
 
     /**
@@ -38,7 +38,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-
     public function ligues()
     {
         return $this->belongsToMany(Ligue::class)->withTimestamps();        
@@ -47,5 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function matchs()
     {
         return $this->hasMany(Match::class);        
+    }
+
+    public function equipe()
+    {
+        return $this->belongsTo(Equipe::class);        
     }
 }

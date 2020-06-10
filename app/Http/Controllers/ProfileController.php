@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Equipe;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -52,7 +53,9 @@ class ProfileController extends Controller
         //user connecté
         $user= Auth::user();
 
-        return view('pages/profile/show', compact('user'));
+        $equipes = Equipe::all();
+
+        return view('pages/profile/show', compact('user', 'equipes'));
     }
 
     /**
@@ -83,7 +86,7 @@ class ProfileController extends Controller
             $validate = $request->validate([
                 'name' => ['string', 'max:255'],
                 'email' => ['string', 'email', 'max:255', 'exists:users'],
-                'club' => ['string'],
+                'equipe_id' => ['string'],
             ]);
 
             $user->fill($data);
