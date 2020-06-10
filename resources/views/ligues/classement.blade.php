@@ -29,7 +29,7 @@
 				  	</a>
 				  </td>
 				  <td class="py-1 px-4">				  	
-				  	<img class="inline w-10 h-8 pr-2" loading="lazy" src="{{ $user->equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}" loading="lazy" alt="club"> 
+				  	<img class="inline w-10 h-8 pr-2" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}" loading="lazy" alt="club"> 
 				  	{{ $user->equipe->name}}
 				  </td>
 				  <td class="text-center py-1 px-4"> {{ $user->pivot->totalPoints }} </td> 
