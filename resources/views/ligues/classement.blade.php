@@ -32,7 +32,7 @@
 				  	<img class="inline w-10 h-8 pr-2" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}" loading="lazy" alt="club"> 
 				  	{{ $user->equipe->name}}
 				  </td>
-				  <td class="text-center py-1 px-4"> {{ $user->pivot->totalPoints }} </td> 
+				  <td class="text-center font-semibold py-1 px-4"> {{ $user->pivot->totalPoints }} </td> 
 			    </tr>
 			    @endforeach
 			  </tbody>

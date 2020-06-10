@@ -57489,6 +57489,41 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "equipes.index": {
+      "uri": "equipes",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "equipes.create": {
+      "uri": "equipes\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "equipes.store": {
+      "uri": "equipes",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "equipes.show": {
+      "uri": "equipes\/{equipe}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "equipes.edit": {
+      "uri": "equipes\/{equipe}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "equipes.update": {
+      "uri": "equipes\/{equipe}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "equipes.destroy": {
+      "uri": "equipes\/{equipe}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "admin.index": {
       "uri": "admin",
       "methods": ["GET", "HEAD"],

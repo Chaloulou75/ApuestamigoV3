@@ -30,10 +30,10 @@
 
 			<input id="email" name="email" type="email" class="bg-teal-100 rounded text-left text-gray-900 text-sm font-medium px-2 py-2" value="{{ $user->email }}" placeholder="{{ $user->email }}">
 			@error('email')
-                <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror 
+          <span class=" mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror 
 		</div>	
 
 		<div class="border-t-4 border-francaverde rounded bg-francagris py-4 mb-4 flex flex-col justify-between">
@@ -42,27 +42,27 @@
 
 			<select id="equipe_id" class="bg-teal-100 rounded text-left text-gray-900 text-sm font-medium px-2 py-2 {{ $errors->has('equipe_id') ? ' bg-red-dark' : '' }}" name="equipe_id" value=""> 
 
-                @foreach($equipes as $equipe)
+        @foreach($equipes as $equipe)
 
-                <option value="{{ $equipe->id}}" @if($user->equipe_id == $equipe->id)selected @endif>{{ $equipe->name}} </option>
-                @endforeach                               
-              </select>
+          <option value="{{ $equipe->id}}" @if($user->equipe_id == $equipe->id)selected @endif>{{ $equipe->name}}</option>
+        @endforeach                               
+      </select>
 
-              @if ($errors->has('equipe_id'))
-                <span class="mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
-                    <strong>{{ $errors->first('equipe_id') }}</strong>
-                </span>
-               @endif
+      @if ($errors->has('equipe_id'))
+        <span class="mt-1 text-sm text-orange-500" role="relative px-3 py-3 mb-4 border rounded">
+            <strong>{{ $errors->first('equipe_id') }}</strong>
+        </span>
+       @endif
 		</div>
 
 		<div class="mb-4">
-            <div class="flex items-center justify-between">
-                <button class="w-full bg-francagris text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
-                    <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                    {{ __('all.Edit') }}
-                </button>
-            </div>
-        </div>
+      <div class="flex items-center justify-between">
+          <button class="w-full bg-francagris text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
+              <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+              {{ __('all.Edit') }}
+          </button>
+      </div>
+  </div>
 	</form>
 
 	<form class="bg-francagris px-6 py-4 mb-4" method="POST" action="{{ route('profile.destroy', $user) }}">

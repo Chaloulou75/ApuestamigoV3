@@ -54,7 +54,7 @@
 	      <th class="px-4 py-4 hidden md:table-cell">{{ $loop->iteration }} </th>
 	      <th class="px-1 py-4 hidden md:table-cell text-xs">  {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }} </th>
 		  <th class="px-1 py-4 text-right hidden md:table-cell"> {{ $game->homeTeam->name }} </th>
-		  <th class="px-1 py-4"> <img class="inline" loading="lazy" src="{{ URL::to('/img/' .$game->homeTeam->logo) }}"></th>
+		  <th class="px-1 py-4"> <img class="inline" loading="lazy" src="{{ $game->homeTeam->logourl ? url($game->homeTeam->logourl) : URL::to('/img/' .$game->homeTeam->logo) }}"></th>
 		  <th class="px-1 py-4 text-center">
 			<label for="resultatEq1"></label>
 			<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
@@ -108,7 +108,7 @@
 	            <option value="9" >9</option>
 	        </select>
 		  </th>
-		  <th class="px-1 py-4"> <img class="inline" loading="lazy" src="{{ URL::to('/img/' .$game->awayTeam->logo) }}"></th>
+		  <th class="px-1 py-4"> <img class="inline" loading="lazy" src="{{ $game->awayTeam->logourl ? url($game->awayTeam->logourl) : URL::to('/img/' .$game->awayTeam->logo) }}"></th>
 		  <th class="px-1 py-4 text-left hidden md:table-cell">{{ $game->awayTeam->name}}</th>
 		  <th class="px-1 py-4">
 		  	@if(isset($game->matchs->first()['pointMatch'])) 

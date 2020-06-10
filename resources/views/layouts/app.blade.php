@@ -20,7 +20,6 @@
 
             <navbar-component :user='@json(Auth::user())'></navbar-component>
 
-            {{-- @include('layouts/partials/carousel') --}}
             <x-carousel-card equipes= {{$equipes}}/>
 
             @include('layouts/partials/message')
@@ -45,9 +44,7 @@
             <main class="py-4">
                 @yield('content')
             </main>
-
-            {{-- <cookie-banner-component></cookie-banner-component>  --}}
-
+            
         </div>
 
         <script src="/js/app.js"></script>

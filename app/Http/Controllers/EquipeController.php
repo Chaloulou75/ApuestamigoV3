@@ -101,9 +101,10 @@ class EquipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Equipe $equipe)
     {
-        //
+        //$equipe = Equipe::where('id', $id)->get();
+        return view('/pages/equipes/edit', compact('equipe'));
     }
 
     /**
@@ -113,9 +114,46 @@ class EquipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Equipe $equipe)
     {
-        //
+        //dd($request);
+
+        $validator = Validator::make($request->all(),[
+                'name' => 'required|min:3',
+                'logo' => 'image|mimes:jpeg,png,jpg,gif,svg',
+                'groupe' => 'max:1',
+            ]);
+
+        if ($validator->fails()) {
+            return redirect('/equipes/edit')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        if($request->hasfile('logo'))
+        {
+            if($equipe->logo){
+
+                Storage::disk('s3')->delete('/img/equipes/logo'.$equipe->logo);
+            }
+            //$filename = $request->avatar->getClientOriginalName();
+            $path = $request->file('logo')->store('img/equipes/logo', 's3');
+
+            Storage::disk('s3')->setVisibility($path, 'public');
+
+            $url = Storage::disk('s3')->url($path);
+
+            $equipe->update([ 'logo' => basename($path),
+                              'logourl' => $url 
+            ]);
+
+        }
+        $equipe->update([
+            'name'=> $request->name,
+            'groupe' => $request->groupe,             
+        ]);
+
+        return redirect()->back()->with('message.level', 'success')->with('message.content', __('Equipe '.$equipe->name.' mise à jour.'));
     }
 
     /**

@@ -5,7 +5,7 @@
 <div class="w-full md:w-4/5 mx-auto">
 
 		<div class="border-t-4 border-double border-francaverde bg-francagris">
-	  		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold my-4">Insérer une nouvelle équipe</h1>
+	  		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold my-4">{{ $equipe->name }}</h1>
 	  	</div>
 			
 		</h1>
@@ -22,13 +22,15 @@
 		@endif
 
 		<div class="w-full lg:w-1/2 mx-auto bg-francagris shadow-md border-2 border-white rounded py-8 px-8 my-4">
-		  <form class="mx-auto" method="POST" enctype="multipart/form-data" action="{{ action('EquipeController@store') }}">
+		  <form class="mx-auto" method="POST" enctype="multipart/form-data" action="{{ action('EquipeController@update', $equipe) }}">
 		  		@csrf
+		  		@method('PUT')
+		  		
 		  	<div class="mb-4">
 		      <label for="name" class="block text-white text-sm font-medium tracking-wide mb-2">{{ __('Nom d\'équipe') }}</label>
 
 	            <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-julien-gris leading-loose focus:outline-none focus:shadow-outline
-	             @error('name') bg-red-dark @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+	             @error('name') bg-red-dark @enderror" name="name" value="{{ $equipe->name }}" required autocomplete="name">
 
 	            @error('name')
 	                <span class=" mt-1 text-sm text-red-500" role="relative px-3 py-3 mb-4 border rounded">
@@ -39,8 +41,11 @@
 
 		      <div class="mb-4">
 		        <label for="logo" class="block text-white text-sm font-medium tracking-wide mb-2 ">{{ __(' logo du club') }}</label>
+				<div class="flex">
+		            <input id="logo" type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-loose focus:outline-none focus:shadow-outline @error('logo') bg-red-dark @enderror" name="logo" value="" autocomplete="logo">
 
-	            <input id="logo" type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-loose focus:outline-none focus:shadow-outline @error('logo') bg-red-dark @enderror" name="logo" value="" required autocomplete="logo">
+		            <img src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}" loading="auto" class="h-12 w-12 object-scale-down" alt="logo">
+		        </div>
 
 	            @error('logo')
 	                <span class=" mt-1 text-sm text-red-500" role="relative px-3 py-3 mb-4 border rounded">
@@ -52,7 +57,7 @@
 		      <label for="groupe" class="block text-white text-sm font-medium tracking-wide mb-2">{{ __('Groupe') }}</label>
 
 	            <input id="groupe" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-julien-gris leading-loose focus:outline-none focus:shadow-outline
-	             @error('groupe') bg-red-dark @enderror" name="groupe" value="{{ old('groupe') }}" autocomplete="groupe">
+	             @error('groupe') bg-red-dark @enderror" name="groupe" value="{{ $equipe->groupe }}" autocomplete="groupe">
 
 	            @error('groupe')
 	                <span class=" mt-1 text-sm text-red-500" role="relative px-3 py-3 mb-4 border rounded">
@@ -63,7 +68,7 @@
 		    
 		    <div class="flex items-center justify-between">
 		      <button class="w-full bg-francagris text-white hover:text-francaverde text-sm py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
-		        Enregistrer l'équipe
+		        Mettre à jour l'équipe
 		      </button>
 		      
 		    </div>

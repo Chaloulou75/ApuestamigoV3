@@ -13,7 +13,7 @@
 		<div class="text-white">			
 			<ul class="py-2 list-disc">
 				@foreach($equipes as $equipe)
-					<li class="animate__animated animate__lightSpeedInLeft py-2">id de l'equipe <span class="text-blue-500">{{$equipe->id}}</span>: <span class="text-francaverde">{{$equipe->name}}</span> dont le logo est <img class="inline w-6 h-6" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}"></span> et est dans le groupe {{$equipe->groupe}} <a class="px-2 text-francaverde" href="{{route('equipes.edit', $equipe->id)}}"> Edit {{$equipe->name}} </a>
+					<li class="animate__animated animate__lightSpeedInLeft py-2">id de l'equipe <span class="text-blue-500">{{$equipe->id}}</span>: <span class="text-francaverde">{{$equipe->name}}</span> dont le logo est <img class="inline w-6 h-6" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}"></span> et est dans le groupe {{$equipe->groupe}} <a class="px-2 text-francaverde" href="{{route('equipes.edit', $equipe)}}"> Edit {{$equipe->name}} </a>
 						<form class="inline-block" method="POST" action="{{route('equipes.destroy', $equipe)}}"> 
 					  		@csrf 
 					  		@method('DELETE')
