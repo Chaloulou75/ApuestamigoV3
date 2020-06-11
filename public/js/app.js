@@ -57489,6 +57489,41 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "donate.index": {
+      "uri": "donate",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "donate.create": {
+      "uri": "donate\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "donate.store": {
+      "uri": "donate",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "donate.show": {
+      "uri": "donate\/{donate}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "donate.edit": {
+      "uri": "donate\/{donate}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "donate.update": {
+      "uri": "donate\/{donate}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "donate.destroy": {
+      "uri": "donate\/{donate}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "equipes.index": {
       "uri": "equipes",
       "methods": ["GET", "HEAD"],

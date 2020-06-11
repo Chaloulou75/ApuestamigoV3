@@ -162,8 +162,16 @@ class EquipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Equipe $equipe)
     {
-        //
+        $gamesWithThisEquipe = Game::where('equipe1_id', $equipe->id)
+                                    ->orWhere('equipe2_id', $equipe->id)
+                                    ->delete();
+
+        Storage::disk('s3')->delete('img/equipes/logo'.$equipe->logo);
+
+        $equipe->delete();
+
+        return back()->with('message.level', 'success')->with('message.content', 'l\'equipe a été supprimé');
     }
 }

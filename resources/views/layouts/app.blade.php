@@ -8,12 +8,10 @@
         <meta name="description" content=" {{  __('all.Betting leagues between friends on the champions league and find who is the best tipster.')}}">
         <meta name="google-site-verification" content="6W4yift1Bmm_Vc73-PUZ4DcHn3VS7OIYfIXjXRcGDD0" />
         <title>{{ config('app.name', 'Apuestamigo') }}</title>
-        
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        @livewireStyles
-        
+        @livewireStyles        
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
         <div id="app">

@@ -18,7 +18,13 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        
+        if( Auth::user()->admin === 1)
+        {
+            $users = User::with('ligues')->latest()->get();
+            return view('pages/profile/index', compact('users'));
+        }
+        return view('index');
+
     }
 
     /**
@@ -50,9 +56,15 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //user connecté
-        $user= Auth::user();
-
+        if( Auth::user()->admin === 1) //si admin, on peut voir n'importe quel profil
+        {
+            $user = User::findOrFail($id);
+        }
+        else //sinon seulement l'user connecté
+        {
+            //user connecté
+            $user= Auth::user();
+        }   
         $equipes = Equipe::all();
 
         return view('pages/profile/show', compact('user', 'equipes'));
@@ -79,7 +91,8 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (Auth::user()) {
+        if (Auth::user() || Auth::user()->admin === 1) 
+        {
             $user = User::find($id);
 
             $data = array_filter($request->all());
@@ -107,7 +120,15 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        $user = Auth::user(); 
+        if( Auth::user()->admin === 1) //si admin, on peut delete n'importe quel profil
+        {
+            $user = User::findOrFail($id);
+        }
+        else //sinon seulement l'user connecté
+        {
+            //user connecté
+            $user= Auth::user();
+        } 
 
         $user->delete();
 
