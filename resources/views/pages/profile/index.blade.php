@@ -17,7 +17,7 @@
 		<div class="text-white text-sm">			
 			<ul class="list-disc">
 				@foreach($users as $user)
-					<li class="animate__animated animate__lightSpeedInLeft">id <span class="text-blue-500">{{$user->id}}</span>: <span class="text-francaverde">{{$user->name}} - ({{$user->email }}) - (admin: {{$user->admin}})</span> dont l'équipe préférée est <span class="text-gray-500">{{$user->equipe->name}} </span> <img class="inline w-10 h-10" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}"></span>  
+					<li class="animate__animated animate__lightSpeedInLeft py-2 px-2">id <span class="text-blue-500">{{$user->id}}</span>: <span class="text-francaverde">{{$user->name}} - ({{$user->email }}) - (admin: {{$user->admin}})</span> dont l'équipe préférée est <span class="text-gray-500">{{$user->equipe->name}} </span> <img class="inline w-10 h-10" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}"></span>  
 						<a class="px-2 text-francaverde" href="{{route('profile.show', $user)}}"> Show {{$user->name}} </a>
 						<form class="inline-block" method="POST" action="{{route('profile.destroy', $user)}}"> 
 					  		@csrf 
@@ -27,7 +27,7 @@
 					</li>
 					<ul class="pl-10 list-decimal">
 					@foreach($user->ligues as $ligue)
-						<li class="animate__animated animate__lightSpeedInLeft">
+						<li class="animate__animated animate__lightSpeedInLeft py-1">
 							<span class="text-gray-500">
 								<a href=" {{route('ligues.show', $ligue)}} "> 
 									{{ $ligue->name }}
