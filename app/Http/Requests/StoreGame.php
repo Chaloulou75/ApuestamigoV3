@@ -27,6 +27,7 @@ class StoreGame extends FormRequest
             'journee' => 'required|min:1|max:2',
             'equipe1_id' => 'required',
             'equipe2_id' => 'required',
+            'year' => 'number|required',
         ];
     }
 }

@@ -64,11 +64,13 @@ class GameController extends Controller
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
+        $year = $request->input('year');
 
         $game = Game::updateOrCreate(
                     ['journee' => $journee, 'equipe1_id' => $equipe1],
                     ['equipe2_id' => $equipe2,
-                    'gamedate' => $dategame]
+                    'gamedate' => $dategame,
+                    'year' => $year]
                 );
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est inséré.');                      
@@ -120,12 +122,14 @@ class GameController extends Controller
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
+        $year = $request->input('year');
 
         $game->update([
                     'journee' => $journee, 
                     'equipe1_id' => $equipe1,
                     'equipe2_id' => $equipe2,
-                    'gamedate' => $dategame
+                    'gamedate' => $dategame,
+                    'year' => $year
                 ]);
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est mis à jour.');

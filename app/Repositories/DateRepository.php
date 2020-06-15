@@ -102,7 +102,9 @@ class DateRepository
         if($now->lessThan($limite))
         {
           $year = '2020'; 
-        }else{
+        }
+        else
+        {
             $year = '2021';
         }
         
