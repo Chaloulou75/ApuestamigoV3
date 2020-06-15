@@ -27,31 +27,30 @@ class ApuestasController extends Controller
     public function index(Ligue $ligue)
     {        
         $user = Auth::user(); // le user
+        $year = $this->DateRepository->year(); //l'annee
         $journee = $this->DateRepository->dateJournee(); //la journee
-        $gamesIds = Game::where('journee', $journee)->get('id'); //les matchs concernés
+        $gamesIds = Game::where('journee', $journee)->where('year', $year)->get('id'); //les matchs concernés
         
         if (Auth::user()) 
         {
-            $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                            $query->where('journee', 'like', '%'. $journee .'%')
-                                  ->where('user_id', 'like', '%'. $user->id .'%')
-                                  ->where('ligue_id', 'like', '%'. $ligue->id .'%');
-                        }])
-                        ->whereIn('id', $gamesIds)
-                        ->orderBy('id')
-                        ->get();// les matchs 
+          $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
+                          $query->where('journee', 'like', '%'. $journee .'%')
+                                ->where('user_id', 'like', '%'. $user->id .'%')
+                                ->where('ligue_id', 'like', '%'. $ligue->id .'%');
+                      }])
+                      ->whereIn('id', $gamesIds)
+                      ->orderBy('id')
+                      ->get();// les matchs 
 
-            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
-                                    $query->where('journee', 'like', '%'. $journee .'%')
-                                          ->orderBy('game_id');
-                                }])
-                                    ->where('admin', 1)
-                                    ->get(); //collection des userAdmin et de leurs resultats pour la journee
-            
-            foreach ($resultsAdmin as $k => $resultAdmin) 
-            {}
-            
-            return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
+          //collection des resultats userAdmin pour la journee
+          $resultAdmin = User::with(['matchs' => function ($query) use($journee){
+                                  $query->where('journee', 'like', '%'. $journee .'%')
+                                        ->orderBy('game_id');
+                              }])
+                                  ->where('admin', 1)
+                                  ->first();
+          
+          return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
             
         }
         return redirect()->guest('login');           
@@ -67,9 +66,10 @@ class ApuestasController extends Controller
     {
         $user = Auth::user(); 
         $now = Carbon::now();
+        $year = $this->DateRepository->year(); //l'annee
         $journee = $this->DateRepository->dateJournee(); 
     
-        $games = Game::where('journee', $journee)->get();
+        $games = Game::where('journee', $journee)->where('year', $year)->get();
 
         $tot= count($request->resultatEq1); 
 
@@ -166,19 +166,14 @@ class ApuestasController extends Controller
                             ->orderBy('id')
                             ->get();// les matchs
 
-
-            $resultsAdmin = User::with(['matchs' => function ($query) use($journee){
+            //collection des resultats userAdmin pour la journee
+            $resultAdmin = User::with(['matchs' => function ($query) use($journee){
                                     $query->where('journee', 'like', '%'. $journee .'%')
                                           ->orderBy('game_id');
                                 }])
                                     ->where('admin', 1)
-                                    ->get(); //collection des userAdmin et de leurs resultats pour la journee
-            
-
-            foreach ($resultsAdmin as $k => $resultAdmin) 
-            {
-
-            }                  
+                                    ->first(); 
+                              
             return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now')) ;           
         }
         return redirect()->guest('login');

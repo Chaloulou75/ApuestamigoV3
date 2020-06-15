@@ -27,10 +27,7 @@ class NextGame extends Component
             $nextGameDateValue = Carbon::create(2020, 9, 15, 21, 0, 0, 'Europe/Paris');
             $nextGameDate = $now->diff($nextGameDateValue)->format('%m Months %d days %h h %i min %s sec');
             $this->nextGameDate = $nextGameDate;   
-        }
-         
-        
-    	
+        } 	
     }
 
     public function render()

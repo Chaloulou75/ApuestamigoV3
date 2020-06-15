@@ -19,7 +19,7 @@ class DateRepository
         $dateJournee8 = Carbon::create(2020, 8, 12, 21, 00, 00, 'Europe/Paris');
         $dateJournee9 = Carbon::create(2020, 8, 16, 21, 00, 00, 'Europe/Paris');
         $dateJournee10 = Carbon::create(2020, 8, 20, 21, 00, 00, 'Europe/Paris');
-        $dateJournee11 = Carbon::create(2020, 8, 24, 21, 00, 00, 'Europe/Paris');
+        $dateJournee11 = Carbon::create(2020, 8, 23, 21, 00, 00, 'Europe/Paris');
         $dateJournee12 = Carbon::create(2020, 8, 27, 21, 00, 00, 'Europe/Paris');
         $dateJournee13 = Carbon::create(2020, 8, 30, 21, 00, 00, 'Europe/Paris');
 
@@ -92,6 +92,23 @@ class DateRepository
             $journee = 0;
             return $journee;
         }
+    }
+
+    public function year()
+    {
+        $now = Carbon::now();
+        $limite = Carbon::create(2020, 8, 31, 23, 59, 00, 'Europe/Paris');
+
+        if($now->lessThan($limite))
+        {
+          $year = '2020'; 
+        }else{
+            $year = '2021';
+        }
+        
+
+        return $year;
+        
     }
     
 }

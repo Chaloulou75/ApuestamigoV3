@@ -2,14 +2,13 @@
 
 # Hey Carlito
 
--Tu as reçu un mail de {{$name}}
+-Tu as reçu un mail de **{{$name}}**
 
-- tu peux lui répondre à cette adresse: {{$email}}
+-tu peux lui répondre à cette adresse: **{{$email}}**
 
 -Son message est le suivant:
-
-@component('mail::panel')
-{{ $msg}}
+@component('mail::table')
+## {{$msg}}
 @endcomponent
 
 Thanks,<br>
