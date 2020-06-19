@@ -130,6 +130,13 @@ return [
     'Your message has been sent.' => 'Votre message a été envoyé',
     'Ok, you are not anymore in this league!' => 'Ok, tu n\'es plus dans cette ligue!',
 
+    'Wanna`\' buy me a beer?' => 'M\'offrir une bière?',
+    'Full Name on card' => 'Prénom et nom indiqués sur la carte',
+    'Card number' => 'Numéro de carte',
+    'city' => 'Ville',
+    'country' => 'Pays',
+    'address' => 'Adresse',
+
     //cookie
     'Learn_More'=>'Lire plus',
     'cookie_consentment' =>'En poursuivant votre navigation sur ce site, vous consentez à notre utilisation des cookies pour améliorer votre expérience en ligne.',

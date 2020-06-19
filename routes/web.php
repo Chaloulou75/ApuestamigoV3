@@ -19,7 +19,7 @@ Route::group(
 	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 
 					'no-cache']], function(){
 
-	Route::get('/', 'PagesController@welcome')->name('welcome');	
+	Route::get('/', 'PagesController@welcome')->name('welcome');
 	
 	Auth::routes(['verify' => true]);
 	
@@ -54,6 +54,9 @@ Route::group(
 	Route::resource('games', 'GameController')->middleware('admin');
 
 	Route::resource('equipes', 'EquipeController')->middleware('admin');
+
+	Route::get('/donate', 'StripeController@index')->name('donate.index');
+	Route::post('/donate', 'StripeController@store')->name('donate.store');
 
 	Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
 

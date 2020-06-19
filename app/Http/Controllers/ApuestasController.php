@@ -150,7 +150,6 @@ class ApuestasController extends Controller
      */
     public function show(Ligue $ligue, User $user, $fecha)
     {
-
         //Auth::user(); // user
         $now = Carbon::now();
         $journee = $fecha; //la journee

@@ -35,7 +35,7 @@
 	  		</a>
 	  	  </th>
 	      <th class="px-1 py-4"></th>
-	      <th class="px-1 py-4"> {{ $journee }}</th>
+	      <th class="px-1 py-4">{{ $journee }}</th>
 	      <th class="px-1 py-4"></th>
 	      <th class="px-1 py-4 hover:text-francaverde">
 	      	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee + 1]) }}">

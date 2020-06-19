@@ -105,6 +105,13 @@ return [
   'your profile has been deleted' => 'your profile has been deleted',
   'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
 
+  'Wanna`\' buy me a beer?' => 'Wanna`\' buy me a beer?',
+  'Full Name on card' => 'First name and last name on credit card',
+  'Card number' => 'Card number',
+  'country' => 'Country',
+  'city' => 'City',
+  'address'=> 'Address',
+
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Yeah! your bets are registered! Good luck!',
   'Yeah! your bets are registered and updated! Good luck!' => 'Yeah! your bets are registered and updated! Good luck!',
