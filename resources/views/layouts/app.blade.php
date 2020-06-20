@@ -9,13 +9,13 @@
         <meta name="google-site-verification" content="6W4yift1Bmm_Vc73-PUZ4DcHn3VS7OIYfIXjXRcGDD0" />
         <title>{{ config('app.name', 'Apuestamigo') }}</title>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170172159-1"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RMT6BBR84"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'UA-170172159-1');
+          gtag('config', 'G-5RMT6BBR84');
         </script>
         <!--  stripe -->
         <script src="https://js.stripe.com/v3/"></script>
