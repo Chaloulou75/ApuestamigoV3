@@ -13,10 +13,10 @@
 <div class="w-full text-francagris md:px-4">
 
 	@auth		
-		<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.let\'s play')}}.</h3>
+		<h3 class="text-base text-left text-white tracking-wide px-2 py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.let\'s play')}}.</h3>
 	@endauth
 	@guest	
-		<h3 class="text-base text-left text-francaverde tracking-wide py-2">{{__('all.Hey')}}, {{__('all.you have to login or register to play.')}}</h3>
+		<h3 class="text-base text-left text-francaverde tracking-wide px-2 py-2">{{__('all.Hey')}}, {{__('all.you have to login or register to play.')}}</h3>
 	@endguest
 
 	<form method="POST" action="{{ action('ApuestasController@store', $ligue) }}"> 

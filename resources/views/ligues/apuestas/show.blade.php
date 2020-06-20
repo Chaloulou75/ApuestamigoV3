@@ -12,15 +12,15 @@
 <div class="w-full text-francagris md:px-4">
 
 	@admin
-		<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, set all scores!</h3>
+		<h3 class="text-base text-left text-white tracking-wide px-2 py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, set all scores!</h3>
 		<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 
 			@csrf
 	@endadmin
 	@auth
-		<h3 class="text-base text-left text-white tracking-wide py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.your bets')}} :</h3>
+		<h3 class="text-base text-left text-white tracking-wide px-2 py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.your bets')}} :</h3>
 	@endauth	
 	@guest
-		<h3 class="text-base text-left text-white py-2">{{__('all.Bets of')}} <span class="text-francaverde">{{$user->name}}</span>:</h3>
+		<h3 class="text-base text-left text-white px-2 py-2">{{__('all.Bets of')}} <span class="text-francaverde">{{$user->name}}</span>:</h3>
 	@endguest
 
 	<table class="animate__animated animate__fadeInUp table-auto w-full bg-white border-t-4 md:border-4 border-francaverde rounded-lg text-sm text-francagris"> 

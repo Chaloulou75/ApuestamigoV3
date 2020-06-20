@@ -25,12 +25,12 @@
 				  <td class="py-1 px-4 hover:underline hover:text-francaverde">
 				  	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee ]) }}">
 				  		 {{ $user->name }} 
-				  		 <svg class="h-8 w-8 inline-block pl-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+				  		 <svg class="h-8 w-8 hidden md:inline-block pl-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
 				  	</a>
 				  </td>
 				  <td class="py-1 px-4">				  	
-				  	<img class="inline w-10 h-10 pr-2" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}" loading="lazy" alt="club"> 
-				  	{{ $user->equipe->name}}
+				  	<img class="inline w-10 h-8 pr-2" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}" loading="lazy" alt="club"> 
+				  	<span class="hidden md:inline-block">{{ $user->equipe->name}}</span>
 				  </td>
 				  <td class="text-center font-semibold py-1 px-4"> {{ $user->pivot->totalPoints }} </td> 
 			    </tr>
