@@ -15,7 +15,7 @@
           {{ __('all.Share this league:') }}
         </p>
         <input id="copyToken" class="text-base shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-transparent" value="{{ $ligue->token }}" onclick="copyTok()" onmouseout="outFunc()">
-        <span class="tooltiptext bg-teal-600" id="myTooltip">{{ __('all.Copy to clipboard') }}</span>
+        <span class="tooltiptext bg-francaverde" id="myTooltip">{{ __('all.Copy to clipboard') }}</span>
       </div>
     </div>
   </div>
@@ -25,6 +25,7 @@
     <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@quitLigue', $ligue) }}">
         @csrf
+        @honeypot
         <div class="mb-4">
             <div class="w-full text-gray-900 text-base font-medium mb-2">
                 {{ __('all.Leave this league?') }} </hr>{{ $ligue->name }}
@@ -42,6 +43,7 @@
     <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@update', $ligue) }}">
         @csrf
+        @honeypot
         @method('PUT')
         <div class="mb-4">
             <label for="name" class="block text-gray-900 text-base font-medium mb-2">
@@ -64,6 +66,7 @@
     <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@destroy', $ligue) }}">
         @csrf
+        @honeypot
         @method('DELETE')
         <div class="mb-4">
             <div class="block text-gray-900 text-base font-medium mb-2">

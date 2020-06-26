@@ -24,6 +24,7 @@
         "livewire/livewire": "^1.1",
         "mariuzzo/laravel-js-localization": "^1.5",
         "mcamara/laravel-localization": "^1.4",
+        "spatie/laravel-honeypot": "^2.2",
         "spatie/laravel-sitemap": "^5.7",
         "spatie/laravel-view-models": "^1.3",
         "stripe/stripe-php": "^7.37",

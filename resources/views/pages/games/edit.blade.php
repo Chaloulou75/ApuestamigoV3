@@ -25,6 +25,7 @@
 	  <form class="mx-auto" method="POST" action="{{ action('GameController@update', $game)}}">	  		
 	  		@method('PUT')
 	  		@csrf
+	  		@honeypot
 	  	<div class="mb-4">
 	      <label class="block text-white text-sm font-base mb-2" for="journee">
 	        Journée

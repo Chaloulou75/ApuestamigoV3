@@ -5,6 +5,7 @@
   <div class="animate__animated animate__fadeInUp w-full lg:w-1/3 mx-auto bg-francagris shadow-md rounded-lg border-2 border-francaverde px-8 py-6 my-4">
     <form class="mx-auto" method="POST" action="{{ route('ligues.store') }}">
       @csrf
+      @honeypot
       <div class="mb-4">
           <label for="name" class="block text-white text-base font-medium mb-2">
               {{ __('all.What\'s the name of your league?') }}

@@ -14,6 +14,7 @@
 		  <div class="{{-- text-julien-gris --}} px-6 py-4">
 		    <form action="{{ route('donate.store') }}" method="post" id="payment-form">
 		    	@csrf
+		    	@honeypot
 
 				<div class="mb-2">
 		            <label for="email" class="block text-francagris text-sm mb-1">

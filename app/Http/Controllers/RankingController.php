@@ -16,11 +16,7 @@ class RankingController extends Controller
      */
     public function index()
     {
-        $ligues = Ligue::with('users')->get();
-
-        $users = $ligues->pluck('users')->collapse()->unique('name')->sortByDesc('pivot.totalPoints')->values()->where('admin', false);
-        
-        return view('/pages/ranking/index', compact('users'));
+        return view('/pages/ranking/index');
     }
 
     /**

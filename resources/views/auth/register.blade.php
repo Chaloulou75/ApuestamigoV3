@@ -13,6 +13,7 @@
 
                     <form class="w-full p-6" method="POST" action="{{ route('register') }}">
                         @csrf
+                        @honeypot
 
                         <div class="flex flex-wrap mb-6">
                             <label for="name" class="block text-sm font-normal mb-2">
@@ -93,7 +94,7 @@
 
                             <p class="w-full text-xs text-center my-4">
                                 {{ __('all.Already have an account?') }}
-                                <a class="hover:text-francaverde underline" href="{{ route('login') }}">
+                                <a class="hover:text-francaverde uppercase tracking-wide underline" href="{{ route('login') }}">
                                     {{ __('all.Login') }}
                                 </a>
                             </p>

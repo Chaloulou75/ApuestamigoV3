@@ -10,6 +10,7 @@
         </div>
 
         <form class="w-full p-6" method="POST" action="{{ route('login') }}">
+          @honeypot
           @csrf
           <div class="flex flex-wrap mb-6">
             <label for="email" class="block text-sm font-normal mb-2">
@@ -61,7 +62,7 @@
             @if (Route::has('register'))
                 <p class="w-full text-xs text-center my-4">
                     {{ __("all.Don't have an account?") }}
-                    <a class="hover:text-francaverde underline" href="{{ route('register') }}">
+                    <a class="hover:text-francaverde tracking-wide uppercase underline" href="{{ route('register') }}">
                         {{ __('all.Register') }}
                     </a>
                 </p>

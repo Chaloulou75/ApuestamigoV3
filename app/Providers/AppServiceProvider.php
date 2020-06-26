@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Auth;    // Must Must use
-use Illuminate\Support\Facades\Blade;   // Must Must use
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,8 +29,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //@admin as blade directive name
         Blade::if('admin', function () {
-            return auth()->check() && auth()->user()->admin == 1;  
-          
+            return auth()->check() && auth()->user()->admin == 1;          
         });
+
+        //tailwind for pagination default template
+        Paginator::useTailwind();
     }
 }

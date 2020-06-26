@@ -71,6 +71,7 @@ return [
   'supporter' => 'supporter of:',
   'created by:' => 'created by:',
   'leagues' => 'Leagues',
+  'league' => 'League',
   'Name' => 'Name',
   'Club' => 'Club',
   'Date' => 'Date',
@@ -111,6 +112,8 @@ return [
   'country' => 'Country',
   'city' => 'City',
   'address'=> 'Address',
+
+  'Global ranking' => 'Global ranking',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Yeah! your bets are registered! Good luck!',

@@ -2162,6 +2162,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -56410,6 +56415,7 @@ module.exports = {
     "Bets": "Bets",
     "Bets of": "Bets of",
     "Betting leagues between friends on the champions league and find who is the best tipster.": "Create Betting leagues between friends on the Champions League and find who is the best tipster.",
+    "Card number": "Card number",
     "Change": "Change",
     "Change the name of the league?": "Change the name of the league?",
     "Club": "Club",
@@ -56426,6 +56432,8 @@ module.exports = {
     "Favorite Club": "Favorite Club",
     "Forbidden": "Forbidden",
     "Forgot Your Password?": "Forgot Your Password?",
+    "Full Name on card": "First name and last name on credit card",
+    "Global ranking": "Global ranking",
     "Go Home": "Go Home",
     "Go! It's your turn!": "Go! It's your turn!",
     "Hello!": "Hello!",
@@ -56486,6 +56494,7 @@ module.exports = {
     "Unauthorized": "Unauthorized",
     "Verify Email Address": "Verify Email Address",
     "Verify Your Email Address": "Verify Your Email Address",
+    "Wanna`' buy me a beer?": "Wanna`' buy me a beer?",
     "We won't ask for your password again for a few hours.": "We won't ask for your password again for a few hours.",
     "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.",
     "What's the name of your league?": "What's the name of your league?",
@@ -56498,10 +56507,14 @@ module.exports = {
     "Your email address is not verified.": "Your email address is not verified.",
     "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)",
     "Your message has been sent.": "Your message has been sent",
+    "address": "Address",
+    "city": "City",
     "click here to request another": "click here to request another",
     "cookie_consentment": "By continuing to browse this site, you consent to our use of cookies to improve your online experience.",
+    "country": "Country",
     "created by:": "created by:",
     "is now created, share it with this token": " is now created, share it with this token",
+    "league": "League",
     "leagues": "Leagues",
     "let's play": "let's play",
     "scores updated": "the scores are updated",
@@ -56655,6 +56668,7 @@ module.exports = {
     "Bets": "Apuestas",
     "Bets of": "Las apuestas de",
     "Betting leagues between friends on the champions league and find who is the best tipster.": "Ligas de apuestas entre amigos sobre la Champions Liga y descubre qui\xE9n es el mejor tipster.",
+    "Card number": "Numero de tarjeta",
     "Change": "Cambiar",
     "Change the name of the league?": "Cambiar el nombre de la liga?",
     "Club": "Club",
@@ -56671,6 +56685,8 @@ module.exports = {
     "Favorite Club": "Club Favorito",
     "Forbidden": "Prohibido",
     "Forgot Your Password?": "\xBFOlvid\xF3 su contrase\xF1a?",
+    "Full Name on card": "Nombre y appellidos impresos en la tarjeta de credito",
+    "Global ranking": "Clasificaci\xF3n general",
     "Go Home": "Ir a inicio",
     "Go! It's your turn!": "\xA1Vamos! \xA1Es tu turno!",
     "Hello!": "\xA1Hola!",
@@ -56732,6 +56748,7 @@ module.exports = {
     "Unauthorized": "No autorizado",
     "Verify Email Address": "Confirma tu correo electr\xF3nico",
     "Verify Your Email Address": "Verifica tu correo electr\xF3nico",
+    "Wanna`' buy me a beer?": "Ofrecerme una cerveza?",
     "We won't ask for your password again for a few hours.": "No pediremos tu contrase\xF1a de nuevo por unas horas.",
     "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "Bueno, s\xED, necesariamente un poco, pero de manera diferente. Esto es solo para guiarte los primeros d\xEDas, el resto vendr\xE1 solo.",
     "What's the name of your league?": "Que es el nombre de tu liga?",
@@ -56744,8 +56761,11 @@ module.exports = {
     "Your email address is not verified.": "Tu direcci\xF3n de correo electr\xF3nico no est\xE1 verificada.",
     "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Tu liga puede comenzar: cada ronda de la Champions Liga corresponde a un d\xEDa de Apuestamigo en el que compites. \xA1No olvides hacer tus predicciones antes de cada ronda de la Champions liga, despu\xE9s del comienzo del partido, ser\xE1 DEMASIADO TARDE! (y no es necesario sobornar al administrador, \xE9l no puede hacer nada por usted ...)",
     "Your message has been sent.": "Su mensaje ha sido enviado correctamente",
+    "address": "Direcci\xF3n",
+    "city": "Ciudad",
     "click here to request another": "haga clic aqu\xED para solicitar otro",
     "cookie_consentment": "Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en l\xEDnea.",
+    "country": "Pa\xEDs",
     "created by:": "creado por:",
     "is now created, share it with this token": " esta creada, compartela con este token",
     "leagues": "Ligas",
@@ -56940,6 +56960,7 @@ module.exports = {
     "Bets": "Pronostics",
     "Bets of": "Les pronostics de",
     "Betting leagues between friends on the champions league and find who is the best tipster.": "Ligues de paris entre amis sur la Champions League et trouvez qui est le meilleur pronostiqueur.",
+    "Card number": "Num\xE9ro de carte",
     "Change": "Changer",
     "Change the name of the league?": "Changer le nom de cette ligue?",
     "Club": "Club",
@@ -56957,6 +56978,8 @@ module.exports = {
     "Favorite Club": "Club Favoris",
     "Forbidden": "Interdit",
     "Forgot Your Password?": "Vous avez oubli\xE9 votre mot de passe ?",
+    "Full Name on card": "Pr\xE9nom et nom indiqu\xE9s sur la carte",
+    "Global ranking": "Classement g\xE9n\xE9ral",
     "Go Home": "Aller \xE0 l'accueil",
     "Go! It's your turn!": "Allez Go! A vous de jouer!",
     "Hello!": "Bonjour !",
@@ -57024,6 +57047,7 @@ module.exports = {
     "Unauthorized": "Non autoris\xE9",
     "Verify Email Address": "V\xE9rification de l'adresse email",
     "Verify Your Email Address": "V\xE9rifiez votre adresse email",
+    "Wanna`' buy me a beer?": "M'offrir une bi\xE8re?",
     "We won't ask for your password again for a few hours.": "Nous ne vous demanderons plus votre mot de passe pour quelques heures",
     "Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.": "Bon, si, n\xE9cessairement un peu, mais diff\xE9remment. C'est juste pour vous guider les premiers jours, le reste viendra tout seul.",
     "What's the name of your league?": "Comment s'appelle votre ligue?",
@@ -57037,8 +57061,11 @@ module.exports = {
     "Your email address is not verified.": "Votre adresse email n'a pas \xE9t\xE9 v\xE9rifi\xE9e.",
     "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Votre ligue peut alors commencer : chaque tour de ligue des Champions correspond \xE0 une journ\xE9e Apuestamigo dans laquelle vous vous affrontez. N'oubliez donc pas de faire vos pronostics avant chaque tour de ligue des Champions, apr\xE8s le d\xE9but des matchs, il sera TROP TARD! (et pas la peine de soudoyer l'administrateur, il ne pourra rien pour vous...)",
     "Your message has been sent.": "Votre message a \xE9t\xE9 envoy\xE9",
+    "address": "Adresse",
+    "city": "Ville",
     "click here to request another": "cliquer ici pour faire une autre demande",
     "cookie_consentment": "En poursuivant votre navigation sur ce site, vous consentez \xE0 notre utilisation des cookies pour am\xE9liorer votre exp\xE9rience en ligne.",
+    "country": "Pays",
     "created by:": "cree par:",
     "hi": "salut",
     "is now created, share it with this token": " est maintenant cr\xE9\xE9e, partage la avec ce token",
@@ -57264,6 +57291,16 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "cashier.payment": {
+      "uri": "stripe\/payment\/{id}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "cashier.webhook": {
+      "uri": "stripe\/webhook",
+      "methods": ["POST"],
+      "domain": null
+    },
     "livewire.upload-file": {
       "uri": "livewire\/upload-file",
       "methods": ["POST"],
@@ -57276,11 +57313,6 @@ var Ziggy = {
     },
     "welcome": {
       "uri": "\/",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "donate.index": {
-      "uri": "donate",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
@@ -57381,6 +57413,41 @@ var Ziggy = {
     },
     "profile.destroy": {
       "uri": "profile\/{profile}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
+    "ranking.index": {
+      "uri": "ranking",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ranking.create": {
+      "uri": "ranking\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ranking.store": {
+      "uri": "ranking",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "ranking.show": {
+      "uri": "ranking\/{ranking}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ranking.edit": {
+      "uri": "ranking\/{ranking}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "ranking.update": {
+      "uri": "ranking\/{ranking}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "ranking.destroy": {
+      "uri": "ranking\/{ranking}",
       "methods": ["DELETE"],
       "domain": null
     },
@@ -57537,6 +57604,16 @@ var Ziggy = {
     "equipes.destroy": {
       "uri": "equipes\/{equipe}",
       "methods": ["DELETE"],
+      "domain": null
+    },
+    "donate.index": {
+      "uri": "donate",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "donate.store": {
+      "uri": "donate",
+      "methods": ["POST"],
       "domain": null
     },
     "admin.index": {

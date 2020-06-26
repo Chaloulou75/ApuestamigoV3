@@ -7,6 +7,7 @@
         <div class="flex-auto p-6">
             <form  method="POST" action="{{ route('password.update') }}">
                 @csrf
+                @honeypot
 
                 <input type="hidden" name="token" value="{{ $token }}">
 

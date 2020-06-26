@@ -10,6 +10,7 @@
 
     <form class="animate__animated animate__fadeInUp bg-francagris border-2 border-francaverde shadow-md rounded px-8 py-6 " method="POST" action="{{ route('contact.store') }}">
         @csrf
+        @honeypot
 
         <div class="mb-4">
             <label for="name" class="block text-white text-base font-medium mb-2">{{ __('all.Name') }}</label>

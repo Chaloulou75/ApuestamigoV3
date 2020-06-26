@@ -9,6 +9,7 @@
 
 	<form class="animate__animated animate__fadeInUp bg-francagris px-6 py-6 mb-1" method="POST" action="{{ route('profile.update', $user) }}">
         @csrf
+        @honeypot
         @method('PATCH')
 
 		<div class="border-t-4 border-francaverde rounded bg-francagris py-4 mb-4 flex flex-col justify-between">

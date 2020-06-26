@@ -127,6 +127,8 @@ return [
   'city' => 'Ciudad',
   'address'=> 'Dirección',
 
+  'Global ranking' => 'Clasificación general',
+
   //cookie
   'Learn_More' =>'Leer mas',
   'cookie_consentment' => 'Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en línea.',

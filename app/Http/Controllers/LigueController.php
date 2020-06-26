@@ -189,7 +189,16 @@ class LigueController extends Controller
     {
         if (Auth::user())
         {
-        	return view('/ligues/joinLigues');
+            $baseligue = Ligue::firstWhere('name', 'The Champions League');
+
+            if(isset($baseligue))
+            {
+              return view('/ligues/joinLigues', compact('baseligue'));  
+            }
+            else{
+               return view('/ligues/joinLigues'); 
+            }
+        	
         }
         return redirect('login');
     }

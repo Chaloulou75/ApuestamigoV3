@@ -22,6 +22,7 @@
 		<div class="w-full lg:w-1/3 mx-auto bg-francagris shadow-md border-2 border-white rounded py-8 px-8 my-4">
 		  <form class="mx-auto" method="POST" action="{{ action('GameController@store') }}">
 		  		@csrf
+		  		@honeypot
 		  	<div class="mb-4">
 		      <label class="block text-white text-sm font-base mb-2" for="journee">
 		        Journée

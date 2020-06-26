@@ -23,6 +23,7 @@
 					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">id de l'equipe <span class="text-blue-500">{{$equipe->id}}</span>: <span class="text-francaverde">{{$equipe->name}}</span> dont le logo est <img class="inline w-10 h-10" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}"></span> et est dans le groupe {{$equipe->groupe}} <a class="px-2 text-francaverde" href="{{route('equipes.edit', $equipe)}}"> Edit {{$equipe->name}} </a>
 						<form class="inline-block" method="POST" action="{{route('equipes.destroy', $equipe)}}"> 
 					  		@csrf 
+					  		@honeypot
 					  		@method('DELETE')
 					  		<button type="submit" class="px-2 text-julienred">Suprimir {{$equipe->name}}</button>
 					  	</form>						

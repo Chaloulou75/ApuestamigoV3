@@ -24,6 +24,7 @@
 		<div class="w-full lg:w-1/2 mx-auto bg-francagris shadow-md border-2 border-white rounded py-8 px-8 my-4">
 		  <form class="mx-auto" method="POST" enctype="multipart/form-data" action="{{ action('EquipeController@update', $equipe) }}">
 		  		@csrf
+		  		@honeypot
 		  		@method('PUT')
 		  		
 		  	<div class="mb-4">

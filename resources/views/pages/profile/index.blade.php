@@ -21,6 +21,7 @@
 						<a class="px-2 text-francaverde" href="{{route('profile.show', $user)}}"> Show {{$user->name}} </a>
 						<form class="inline-block" method="POST" action="{{route('profile.destroy', $user)}}"> 
 					  		@csrf 
+					  		@honeypot
 					  		@method('DELETE')
 					  		<button type="submit" class="px-2 text-julienred">Suprimir {{$user->name}}</button>
 					  	</form>						

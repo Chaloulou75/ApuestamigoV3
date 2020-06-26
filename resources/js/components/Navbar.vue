@@ -40,9 +40,14 @@
            {{ __('nav.creer') }}
         </a>
 
+        <!-- <a :href="route('ranking.index')" 
+            class="animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
+          <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg> 
+           {{ __('all.Global ranking') }}
+        </a> -->
+
         <a :href="route('about')" 
             class="animate__animated animate__lightSpeedInLeft mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"> 
-          <!-- <i class="fas fa-info-circle pr-1"></i> -->
           <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 
            {{ __('nav.about') }}
         </a>

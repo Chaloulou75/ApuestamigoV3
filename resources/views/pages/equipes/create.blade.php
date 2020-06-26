@@ -24,6 +24,7 @@
 		<div class="w-full lg:w-1/2 mx-auto bg-francagris shadow-md border-2 border-white rounded py-8 px-8 my-4">
 		  <form class="mx-auto" method="POST" enctype="multipart/form-data" action="{{ action('EquipeController@store') }}">
 		  		@csrf
+		  		@honeypot
 		  	<div class="mb-4">
 		      <label for="name" class="block text-white text-sm font-medium tracking-wide mb-2">{{ __('Nom d\'équipe') }}</label>
 

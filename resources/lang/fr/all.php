@@ -137,6 +137,8 @@ return [
     'country' => 'Pays',
     'address' => 'Adresse',
 
+    'Global ranking' => 'Classement général',
+
     //cookie
     'Learn_More'=>'Lire plus',
     'cookie_consentment' =>'En poursuivant votre navigation sur ce site, vous consentez à notre utilisation des cookies pour améliorer votre expérience en ligne.',
