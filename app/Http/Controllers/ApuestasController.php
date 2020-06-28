@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ {User, Equipe, Game, Ligue, Match};
+use App\ {User, Equipe, Game, Ligue, Match, DateJournee};
 use Auth;
 use App\Repositories\DateRepository;
 use Carbon\Carbon;
@@ -15,7 +15,7 @@ class ApuestasController extends Controller
     private $DateRepository;
 
     public function __construct(DateRepository $DateRepository)
-    {
+    {        
         $this->DateRepository = $DateRepository;
     }
 
@@ -27,14 +27,16 @@ class ApuestasController extends Controller
     public function index(Ligue $ligue)
     {        
         $user = Auth::user(); // le user
+
         $year = $this->DateRepository->year(); //l'annee
         $journee = $this->DateRepository->dateJournee(); //la journee
-        $gamesIds = Game::where('journee', $journee)->where('year', $year)->get('id'); //les matchs concernés
+
+        $gamesIds = Game::where('journee', $journee->numerojournee)->where('year', $year)->get('id'); //les matchs concernés
         
         if (Auth::user()) 
         {
           $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                          $query->where('journee', 'like', '%'. $journee .'%')
+                          $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
                                 ->where('user_id', 'like', '%'. $user->id .'%')
                                 ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                       }])
@@ -44,7 +46,7 @@ class ApuestasController extends Controller
 
           //collection des resultats userAdmin pour la journee
           $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                  $query->where('journee', 'like', '%'. $journee .'%')
+                                  $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
                                         ->orderBy('game_id');
                               }])
                                   ->where('admin', 1)
@@ -69,11 +71,11 @@ class ApuestasController extends Controller
         $year = $this->DateRepository->year(); //l'annee
         $journee = $this->DateRepository->dateJournee(); 
     
-        $games = Game::where('journee', $journee)->where('year', $year)->get();
+        $games = Game::where('journee', $journee->numerojournee)->where('year', $year)->get();
 
         $tot= count($request->resultatEq1); 
 
-        $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> $journee];
+        $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> $journee->numerojournee];
         $matchs = Match::where($wherePossible)->get();
 
         if( $matchs->count() === 0)
@@ -88,13 +90,12 @@ class ApuestasController extends Controller
 
                         if( $now->lessThanOrEqualTo($dateMatch))
                         {
-
                             $result1 = $request->resultatEq1[$i];
                             $result2 = $request->resultatEq2[$i];
                             $game = $game->id; 
                                                                         
                             Match::create(
-                            ['journee' => $journee,
+                            ['journee' => $journee->numerojournee,
                              'game_id' => $game,                         
                              'user_id' => $user->id, 
                              'ligue_id' => $ligue->id,                     
@@ -126,7 +127,7 @@ class ApuestasController extends Controller
                         $game = $game->id;
 
                         Match::updateOrCreate(
-                        ['journee' => $journee,
+                        ['journee' => $journee->numerojournee,
                          'game_id' => $game,                         
                          'user_id' => $user->id, 
                          'ligue_id' => $ligue->id],                     
@@ -152,22 +153,25 @@ class ApuestasController extends Controller
     {
         //Auth::user(); // user
         $now = Carbon::now();
-        $journee = $fecha; //la journee
+        //$journee = $fecha;//la journee
+        $journee = DateJournee::where('numerojournee', $fecha)->firstOrfail();
+        //dd($fecha);
+
         if (Auth::user()) 
         {                     
             //score inséré par le user/journée/ dans cette ligue
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                                $query->where('journee', 'like', '%'. $journee .'%')
+                                $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
                                       ->where('user_id', 'like', '%'. $user->id .'%')
                                       ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                             }])
-                            ->where('journee', $journee)
+                            ->where('journee', $journee->numerojournee)
                             ->orderBy('id')
                             ->get();// les matchs
 
             //collection des resultats userAdmin pour la journee
             $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                    $query->where('journee', 'like', '%'. $journee .'%')
+                                    $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
                                           ->orderBy('game_id');
                                 }])
                                     ->where('admin', 1)

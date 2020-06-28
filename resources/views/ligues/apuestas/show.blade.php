@@ -24,28 +24,28 @@
 	@endguest
 
 	<table class="animate__animated animate__fadeInUp table-auto w-full bg-white border-t-4 md:border-4 border-francaverde rounded-lg text-sm text-francagris"> 
-	    <thead class="bg-teal-200">
+	    <thead class="bg-francagris text-white">
 	    <tr>
 	      <th class="px-1 py-4 hidden md:table-cell"></th>
-	      <th class="px-1 py-4 hidden md:table-cell">{{__('all.Date')}}</th>
+	      <th class="px-1 py-4 hidden md:table-cell w-24 text-xs break-words font-hairline">{{__('all.Date')}}</th>
 	      <th class="px-1 py-4 hidden md:table-cell"></th>
-	      <th class="px-1 py-4 truncate ">{{__('all.Home')}}</th>
-	      <th class="px-1 py-4 hover:text-francaverde">
-	  		<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee - 1]) }}"> 
+	      <th class="px-1 py-4 font-thin break-words">{{__('all.Home')}}</th>
+	      <th class="px-1 py-4 hover:text-francaverde font-thin">
+	  		<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee->numerojournee - 1]) }}"> 
 	  			<svg class="inline-block h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7"></path></svg> 
 	  		</a>
 	  	  </th>
 	      <th class="px-1 py-4"></th>
-	      <th class="px-1 py-4"> {{ $journee }}</th>
+	      <th class="px-1 py-4 w-24 text-xs break-words font-hairline"> {{ $journee->namejournee }}</th>
 	      <th class="px-1 py-4"></th>
-	      <th class="px-1 py-4 hover:text-francaverde">
-	      	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee + 1]) }}">
+	      <th class="px-1 py-4 hover:text-francaverde font-thin">
+	      	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee->numerojournee + 1]) }}">
 	      	 <svg class="inline-block h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7"></path></svg>
 	      	</a>
 	      </th>
-	      <th class="px-1 py-4 truncate">{{__('all.Away')}}</th>
+	      <th class="px-1 py-4 break-words font-thin">{{__('all.Away')}}</th>
 	      <th class="px-1 py-4 hidden md:table-cell"></th>
-	      <th class="px-1 py-4 truncate">{{__('all.Points')}}</th>
+	      <th class="px-1 py-4 break-words font-thin">{{__('all.Points')}}</th>
 	     </tr>
 	    </thead>		    			  
 
@@ -53,7 +53,7 @@
 		@foreach ($games as $key => $game)		
 	    <tr> 
 	      <th class="px-4 py-4 hidden md:table-cell">{{ $loop->iteration }} </th>
-	      <th class="px-1 py-4 hidden md:table-cell text-xs">  {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }} </th>
+	      <th class="px-1 py-1 hidden md:table-cell w-24 text-xs break-words font-hairline">  {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }} </th>
 		  <th class="px-1 py-4 text-right hidden md:table-cell"> {{ $game->homeTeam->name }} </th>
 		  <th class="px-1 py-4"> <img class="inline w-10 h-10" loading="lazy" src="{{ $game->homeTeam->logourl ? url($game->homeTeam->logourl) : URL::to('/img/' .$game->homeTeam->logo) }}"></th>
 		  <th class="px-1 py-4 text-center">

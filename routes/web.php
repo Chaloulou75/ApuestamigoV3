@@ -57,6 +57,8 @@ Route::group(
 
 	Route::resource('equipes', 'EquipeController')->middleware('admin');
 
+	Route::resource('datejournees', 'DateJourneeController')->middleware('admin');
+
 	Route::get('/donate', 'StripeController@index')->name('donate.index');
 	Route::post('/donate', 'StripeController@store')->name('donate.store');
 

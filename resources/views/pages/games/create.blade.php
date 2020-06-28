@@ -35,11 +35,11 @@
 		            <option value="5" > 5</option>
 		            <option value="6" > 6</option>
 		            <option value="7" > Huitièmes de finale allers</option>
-		            <option value="8" > Huitième de finale retours</option>
-		            <option value="9" > Quart de finale allers</option>
-		            <option value="10" > Quart de finale retours</option>
-		            <option value="11" > Demi finale allers</option>
-		            <option value="12" > Demi finale retours</option>
+		            <option value="8" > Huitièmes de finale retours</option>
+		            <option value="9" > Quarts de finale allers</option>
+		            <option value="10" > Quarts de finale retours</option>
+		            <option value="11" > Demis finale allers</option>
+		            <option value="12" > Demis finale retours</option>
 		            <option value="13" > Finale</option>
 
 	            </select>
