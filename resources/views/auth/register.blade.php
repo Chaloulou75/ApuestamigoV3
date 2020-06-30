@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('recaptcha')
+
+    {!! htmlScriptTagJsApi(['action' => 'homepage']) !!}
+
+@endsection
+
 @section('content')
 
 <div class="container mx-auto">

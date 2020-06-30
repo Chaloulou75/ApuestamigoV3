@@ -19,6 +19,8 @@
         </script>
         <!--  stripe -->
         <script src="https://js.stripe.com/v3/"></script>
+        <!--  recaptcha -->
+        @yield('recaptcha')
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
