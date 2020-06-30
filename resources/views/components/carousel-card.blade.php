@@ -1,4 +1,4 @@
-<div class="animate__animated animate__lightSpeedInLeft max-w-xl mx-auto pt-4 my-4"> 
+<div class="animate__animated animate__flipInX max-w-xl mx-auto pt-4 my-4"> 
 
     <carousel-component>
 

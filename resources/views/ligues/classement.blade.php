@@ -8,31 +8,30 @@
   
 	<div class="w-full text-francagris">
 
-		<div class="animate__animated animate__flipInX py-4 flex justify-center">
-			<table class="table-auto w-full text-md bg-white shadow-md border-t-4 border-solid rounded border-francaverde rounded mb-4">
-			  <thead>
-			    <tr class="border border-solid border-francaverde bg-teal-200">
-			      <th scope="col" class="p-3 px-5">#</th>
-			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Name')}}</th>
-			      <th scope="col" class="text-left p-3 px-5">{{ __('all.Club')}}</th>
-			      <th scope="col" class="text-center p-3 px-5">{{ __('all.Points')}}</th>
+		<div class="animate__animated animate__headShake py-4 flex justify-center">
+			<table class="table-auto w-full bg-white shadow-md border-t-4 border-solid rounded-lg border-francaverde mb-4">
+			  <thead class="table-header-group bg-francagris text-white text-xs">
+			    <tr>
+			      <th scope="col" class="p-3 px-5 font-thin">#</th>
+			      <th scope="col" class="text-left p-3 px-5 font-thin">{{ __('all.Name')}}</th>
+			      <th scope="col" class="text-left p-3 px-5 font-thin">{{ __('all.Club')}}</th>
+			      <th scope="col" class="text-center p-3 px-5 font-thin">{{ __('all.Points')}}</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			  	@foreach ($ligue->users as $user)
-			    <tr class="border border-solid border-francaverde">
-			      <th scope="row" class="py-1 px-4"> {{ $loop->iteration }} </th>
-				  <td class="py-1 px-4 hover:underline hover:text-francaverde">
+			    <tr>
+			      <td scope="row" class="py-2 px-4 text-center"> {{ $loop->iteration }} </td>
+				  <td class="py-2 px-4 hover:underline hover:text-francaverde text-sm">
 				  	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee ]) }}">
 				  		 {{ $user->name }} 
-				  		 <svg class="h-8 w-8 hidden md:inline-block pl-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
 				  	</a>
 				  </td>
-				  <td class="py-1 px-4">				  	
+				  <td class="py-2 px-4">				  	
 				  	<img class="inline w-10 h-8 pr-2" loading="lazy" src="{{ $user->equipe->logourl ? url($user->equipe->logourl) : URL::to('/img/' .$user->equipe->logo) }}" loading="lazy" alt="club"> 
-				  	<span class="hidden md:inline-block">{{ $user->equipe->name}}</span>
+				  	<span class="hidden md:inline-block text-xs">{{ $user->equipe->name}}</span>
 				  </td>
-				  <td class="text-center font-semibold py-1 px-4"> {{ $user->pivot->totalPoints }} </td> 
+				  <td class="text-center font-medium py-2 px-4"> {{ $user->pivot->totalPoints }} </td> 
 			    </tr>
 			    @endforeach
 			  </tbody>

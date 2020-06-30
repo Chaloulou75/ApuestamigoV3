@@ -114,6 +114,7 @@ return [
   'address'=> 'Address',
 
   'Global ranking' => 'Global ranking',
+  'View fixtures' => 'View fixtures',
 
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Yeah! your bets are registered! Good luck!',

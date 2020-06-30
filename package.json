@@ -29,6 +29,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "alpinejs": "^2.4.1",
         "date-fns": "^2.14.0",
         "date-fns-tz": "^1.0.10",
         "flickity": "^2.2.1",

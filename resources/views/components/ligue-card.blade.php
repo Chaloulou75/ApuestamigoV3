@@ -16,8 +16,7 @@
 	        <p class="text-gray-300 leading-none">{{ __('all.created by:') }} 
 	        	<span class="font-medium text-francaverde" >{{ $ligue->users->first()->name }} </span>
 	        	<img class="inline w-10 h-8 mx-2" loading="lazy" src="{{ $ligue->users->first()->equipe->logourl ? url($ligue->users->first()->equipe->logourl) : URL::to('/img/' .$ligue->users->first()->equipe->logo) }}" loading="lazy" alt="club"> 
-	        </p> 
-	        	{{-- {{ $ligue->users->first()->equipe->name }} --}}	        
+	        </p> 	        
 	      </div>
 	    </div>
 	</div>

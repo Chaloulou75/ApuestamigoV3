@@ -30,7 +30,7 @@ class DateJourneeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $datejournees = DateJournee::all();
+        $datejournees = DateJournee::orderBy('timejournee', 'desc')->get();
 
         return view('/pages/datejournees/index', compact('datejournees', 'user'));
     }

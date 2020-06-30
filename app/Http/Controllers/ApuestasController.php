@@ -151,12 +151,10 @@ class ApuestasController extends Controller
      */
     public function show(Ligue $ligue, User $user, $fecha)
     {
-        //Auth::user(); // user
         $now = Carbon::now();
-        //$journee = $fecha;//la journee
-        $journee = DateJournee::where('numerojournee', $fecha)->firstOrfail();
-        //dd($fecha);
 
+        $journee = DateJournee::where('numerojournee', $fecha)->first(); 
+                                
         if (Auth::user()) 
         {                     
             //score inséré par le user/journée/ dans cette ligue
@@ -177,7 +175,7 @@ class ApuestasController extends Controller
                                     ->where('admin', 1)
                                     ->first(); 
                               
-            return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now')) ;           
+            return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
         }
         return redirect()->guest('login');
     }

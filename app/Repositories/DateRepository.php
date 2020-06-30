@@ -12,8 +12,7 @@ class DateRepository
         $now = Carbon::now();
 
         $journee = DateJournee::whereDate('timejournee', '>=', $now)->orderBy('timejournee', 'asc')->first();
-        return $journee;
-        
+        return $journee;     
     }
 
     public function year()

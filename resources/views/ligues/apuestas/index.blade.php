@@ -12,6 +12,8 @@
   
 <div class="w-full text-francagris md:px-4">
 
+	@livewire('links-journees', ['user' => $user, 'ligue' => $ligue])
+
 	@auth		
 		<h3 class="text-base text-left text-white tracking-wide px-2 py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.let\'s play')}}.</h3>
 	@endauth
@@ -29,17 +31,9 @@
 	      <th class="px-1 py-4 hidden md:table-cell w-24 text-xs break-words font-hairline">{{__('all.Date')}}</th>
 	      <th class="px-1 py-4 hidden md:table-cell"></th>
 	      <th class="px-1 py-4 break-words font-thin">{{__('all.Home')}}</th>
-	      <th class="px-1 py-4 hover:text-francaverde font-thin">
-	  		<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee->numerojournee - 1 ]) }}"> 
-	  			<svg class="inline-block h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7"></path></svg> 
-	  		</a>
-	  	  </th>
+	      <th class="px-1 py-4"></th>
 	      <th class="px-1 py-1 w-8 md:w-24 text-xs break-words font-hairline">{{ $journee->namejournee }}</th>
-	      <th class="px-1 py-4 hover:text-francaverde font-thin">
-	      	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee->numerojournee + 1 ]) }}">
-	      	 <svg class="inline-block h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7"></path></svg>
-	      	</a>
-	      </th>
+	      <th class="px-1 py-4"></th>
 	      <th class="px-1 py-4 break-words font-thin">{{__('all.Away')}}</th>
 	      <th class="px-1 py-4 hidden md:table-cell"></th>
 	      <th class="px-1 py-4 break-words font-thin">{{__('all.Points')}}</th>

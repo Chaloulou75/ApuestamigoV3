@@ -138,6 +138,7 @@ return [
     'address' => 'Adresse',
 
     'Global ranking' => 'Classement général',
+    'View fixtures' => 'Voir les autres dates',
 
     //cookie
     'Learn_More'=>'Lire plus',
