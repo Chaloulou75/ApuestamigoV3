@@ -164,7 +164,7 @@ class ApuestasController extends Controller
                             ->where('date_journees_id', $journee->id)
                             ->orderBy('id')
                             ->get();// les matchs
-
+                            
             //collection des resultats userAdmin pour la journee
             $resultAdmin = User::with(['matchs' => function ($query) use($journee){
                                     $query->where('date_journees_id', 'like', '%'. $journee->id .'%')

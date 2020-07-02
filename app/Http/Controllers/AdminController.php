@@ -60,23 +60,19 @@ class AdminController extends Controller
                         foreach ($games as $i => $game) {
 
                           $dateMatch =  $game->gamedate;
-
-                          if($now->greaterThanOrEqualTo($dateMatch))
-                          {
             
-                            $result1 = $request->resultatEq1[$i];
-                            $result2 = $request->resultatEq2[$i];
-                            $game = $game->id;                                              
+                          $result1 = $request->resultatEq1[$i];
+                          $result2 = $request->resultatEq2[$i];
+                          $game = $game->id;                                              
 
-                            Match::create(
-                            ['date_journees_id' => $journee->id,
-                             'game_id' => $game,                         
-                             'user_id' => $user->id, 
-                             'ligue_id' => $ligue->id,                     
-                             'resultatEq1' => $result1, 
-                             'resultatEq2' => $result2]
-                            );
-                          }
+                          Match::create(
+                          ['date_journees_id' => $journee->id,
+                           'game_id' => $game,                         
+                           'user_id' => $user->id, 
+                           'ligue_id' => $ligue->id,                     
+                           'resultatEq1' => $result1, 
+                           'resultatEq2' => $result2]
+                          );
                         } 
                     }                   
                 }
@@ -90,23 +86,19 @@ class AdminController extends Controller
                     foreach ($games as $i => $game) {
 
                       $dateMatch =  $game->gamedate;
-
-                      if($now->greaterThanOrEqualTo($dateMatch))
-                      {
         
-                        $result1 = $request->resultatEq1[$i];
-                        $result2 = $request->resultatEq2[$i];
-                        $game = $game->id;                                              
+                      $result1 = $request->resultatEq1[$i];
+                      $result2 = $request->resultatEq2[$i];
+                      $game = $game->id;                                              
 
-                        Match::updateOrCreate(
-                        ['date_journees_id' => $journee->id,
-                         'game_id' => $game,                         
-                         'user_id' => $user->id, 
-                         'ligue_id' => $ligue->id],                     
-                         ['resultatEq1' => $result1, 
-                         'resultatEq2' => $result2]
-                        );
-                      }
+                      Match::updateOrCreate(
+                      ['date_journees_id' => $journee->id,
+                       'game_id' => $game,                         
+                       'user_id' => $user->id, 
+                       'ligue_id' => $ligue->id],                     
+                       ['resultatEq1' => $result1, 
+                       'resultatEq2' => $result2]
+                      );
                     }    
                 }
             }
