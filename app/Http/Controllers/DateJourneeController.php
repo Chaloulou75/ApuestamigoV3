@@ -30,7 +30,7 @@ class DateJourneeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $datejournees = DateJournee::orderBy('timejournee', 'desc')->get();
+        $datejournees = DateJournee::orderByDesc('timejournee')->get();
 
         return view('/pages/datejournees/index', compact('datejournees', 'user'));
     }
@@ -60,6 +60,7 @@ class DateJourneeController extends Controller
                 'numerojournee' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
+                'season' => 'required',
             ]);
 
         if ($validator->fails()) {
@@ -73,7 +74,8 @@ class DateJourneeController extends Controller
         $data = array(
             'numerojournee'=> $request->numerojournee,
             'namejournee' => $request->namejournee,
-            'timejournee' => $timejournee,             
+            'timejournee' => $timejournee, 
+            'season' => $request->season,            
         );
         
         DateJournee::create($data);
@@ -120,6 +122,7 @@ class DateJourneeController extends Controller
                 'numerojournee' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
+                'season' => 'required',
             ]);
 
         if ($validator->fails()) {
@@ -131,6 +134,7 @@ class DateJourneeController extends Controller
         $datejournee->numerojournee= $request->input('numerojournee');
         $datejournee->namejournee = $request->input('namejournee');
         $datejournee->timejournee = Carbon::parse($request->input('timejournee'), 'Europe/Paris');
+        $datejournee->season = $request->input('season');
 
         $datejournee->save();
 

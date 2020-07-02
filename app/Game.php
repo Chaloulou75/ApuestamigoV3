@@ -12,7 +12,7 @@ class Game extends Model
      * @var array
      */
     protected $fillable = [
-        'equipe1_id','equipe2_id', 'journee', 'gamedate' 
+        'equipe1_id','equipe2_id', 'date_journees_id', 'gamedate' 
     ];
 
     public function homeTeam()
@@ -28,6 +28,11 @@ class Game extends Model
     public function matchs()
     {
         return $this->hasMany(Match::class);        
+    }
+
+    public function journee()
+    {
+        return $this->belongsTo(DateJournee::class, 'date_journees_id');        
     }
 
 }

@@ -28,19 +28,10 @@
 		        Journée
 		      </label>
 		      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="journee" name="journee" placeholder="{{old('journee')}}">
-			      	<option value="1" > 1</option>
-		            <option value="2" > 2</option>
-		            <option value="3" > 3</option>
-		            <option value="4" > 4</option>
-		            <option value="5" > 5</option>
-		            <option value="6" > 6</option>
-		            <option value="7" > Huitièmes de finale allers</option>
-		            <option value="8" > Huitièmes de finale retours</option>
-		            <option value="9" > Quarts de finale allers</option>
-		            <option value="10" > Quarts de finale retours</option>
-		            <option value="11" > Demis finale allers</option>
-		            <option value="12" > Demis finale retours</option>
-		            <option value="13" > Finale</option>
+
+		      	@foreach($journees as $journee)
+			      	<option value="{{$journee->id }}" > {{ $journee->namejournee }}</option>
+			    @endforeach
 
 	            </select>
 		    </div>
@@ -73,11 +64,6 @@
 				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
 					   type="datetime-local" id="gamedate"
 				       name="gamedate" value="">
-		    </div>
-		    <div class="mb-4">
-		    	<label class="block text-white text-sm font-base mb-2" for="year">Year (of the final):</label>
-
-				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" type="number" min="2019" max="2099" step="1" value="2020" id="year" name="year"/>
 		    </div>
  
 		    <div class="flex items-center justify-between">

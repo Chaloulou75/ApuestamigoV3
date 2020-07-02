@@ -111,7 +111,7 @@ return [
          * The color theme of the widget.
          * Supported "light", "dark"
          */
-        'theme'            => 'light',
+        'theme'            => 'dark',
 
         /**
          * The size of the widget.

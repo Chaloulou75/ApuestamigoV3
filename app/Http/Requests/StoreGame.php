@@ -24,10 +24,9 @@ class StoreGame extends FormRequest
     public function rules()
     {
         return [
-            'journee' => 'required|min:1|max:2',
+            'journee' => 'required',
             'equipe1_id' => 'required',
             'equipe2_id' => 'required',
-            'year' => 'integer|required',
         ];
     }
 }

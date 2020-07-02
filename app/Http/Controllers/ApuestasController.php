@@ -28,15 +28,14 @@ class ApuestasController extends Controller
     {        
         $user = Auth::user(); // le user
 
-        $year = $this->DateRepository->year(); //l'annee
         $journee = $this->DateRepository->dateJournee(); //la journee
 
-        $gamesIds = Game::where('journee', $journee->numerojournee)->where('year', $year)->get('id'); //les matchs concernés
+        $gamesIds = Game::where('date_journees_id', $journee->id)->get('id'); //les matchs concernés
         
         if (Auth::user()) 
         {
-          $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                          $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
+          $games = Game::with(['homeTeam', 'awayTeam', 'journee', 'matchs' => function ($query) use($journee, $user, $ligue) {
+                          $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                 ->where('user_id', 'like', '%'. $user->id .'%')
                                 ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                       }])
@@ -46,7 +45,7 @@ class ApuestasController extends Controller
 
           //collection des resultats userAdmin pour la journee
           $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                  $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
+                                  $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                         ->orderBy('game_id');
                               }])
                                   ->where('admin', 1)
@@ -68,14 +67,13 @@ class ApuestasController extends Controller
     {
         $user = Auth::user(); 
         $now = Carbon::now();
-        $year = $this->DateRepository->year(); //l'annee
         $journee = $this->DateRepository->dateJournee(); 
     
-        $games = Game::where('journee', $journee->numerojournee)->where('year', $year)->get();
+        $games = Game::where('date_journees_id', $journee->id)->get();
 
         $tot= count($request->resultatEq1); 
 
-        $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'journee'=> $journee->numerojournee];
+        $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'date_journees_id'=> $journee->id];
         $matchs = Match::where($wherePossible)->get();
 
         if( $matchs->count() === 0)
@@ -95,7 +93,7 @@ class ApuestasController extends Controller
                             $game = $game->id; 
                                                                         
                             Match::create(
-                            ['journee' => $journee->numerojournee,
+                            ['date_journees_id' => $journee->id,
                              'game_id' => $game,                         
                              'user_id' => $user->id, 
                              'ligue_id' => $ligue->id,                     
@@ -127,7 +125,7 @@ class ApuestasController extends Controller
                         $game = $game->id;
 
                         Match::updateOrCreate(
-                        ['journee' => $journee->numerojournee,
+                        ['date_journees_id' => $journee->id,
                          'game_id' => $game,                         
                          'user_id' => $user->id, 
                          'ligue_id' => $ligue->id],                     
@@ -153,23 +151,23 @@ class ApuestasController extends Controller
     {
         $now = Carbon::now();
 
-        $journee = DateJournee::where('numerojournee', $fecha)->first(); 
-                                
+        $journee = DateJournee::where('id', $fecha)->first();
+                        
         if (Auth::user()) 
         {                     
             //score inséré par le user/journée/ dans cette ligue
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                                $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
+                                $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                       ->where('user_id', 'like', '%'. $user->id .'%')
                                       ->where('ligue_id', 'like', '%'. $ligue->id .'%');
                             }])
-                            ->where('journee', $journee->numerojournee)
+                            ->where('date_journees_id', $journee->id)
                             ->orderBy('id')
                             ->get();// les matchs
 
             //collection des resultats userAdmin pour la journee
             $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                    $query->where('journee', 'like', '%'. $journee->numerojournee .'%')
+                                    $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                           ->orderBy('game_id');
                                 }])
                                     ->where('admin', 1)

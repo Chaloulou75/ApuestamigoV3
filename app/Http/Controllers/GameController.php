@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ {User, Equipe, Game};
+use App\DateJournee;
 use App\Http\Requests\StoreGame;
 use Auth;
 use Carbon\Carbon;
@@ -44,10 +45,10 @@ class GameController extends Controller
     public function create()
     {
         $user = Auth::user();
-
+        $journees = DateJournee::orderBy('timejournee')->get();
         $equipes = Equipe::all();        
 
-        return view('/pages/games/create', compact('equipes', 'user'));
+        return view('/pages/games/create', compact('equipes', 'journees', 'user'));
     }
 
     /**
@@ -64,13 +65,11 @@ class GameController extends Controller
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
-        $year = $request->input('year');
 
         $game = Game::updateOrCreate(
-                    ['journee' => $journee, 'equipe1_id' => $equipe1],
+                    ['date_journees_id' => $journee, 'equipe1_id' => $equipe1],
                     ['equipe2_id' => $equipe2,
-                    'gamedate' => $dategame,
-                    'year' => $year]
+                    'gamedate' => $dategame]
                 );
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est inséré.');                      
@@ -98,11 +97,13 @@ class GameController extends Controller
     {
         $user = Auth::user();
 
-        $game = Game::with(['homeTeam', 'awayTeam'])->where('id', $id)->firstOrFail();
+        $journees = DateJournee::orderBy('timejournee')->get();
+
+        $game = Game::with(['homeTeam', 'awayTeam', 'journee'])->where('id', $id)->firstOrFail();
 
         $equipes = Equipe::all();        
 
-        return view('/pages/games/edit', compact('equipes', 'game', 'user'));
+        return view('/pages/games/edit', compact('equipes', 'journees', 'game', 'user'));
     }
 
     /**
@@ -122,14 +123,12 @@ class GameController extends Controller
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
-        $year = $request->input('year');
 
         $game->update([
-                    'journee' => $journee, 
+                    'date_journees_id' => $journee, 
                     'equipe1_id' => $equipe1,
                     'equipe2_id' => $equipe2,
-                    'gamedate' => $dategame,
-                    'year' => $year
+                    'gamedate' => $dategame
                 ]);
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est mis à jour.');

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\DateJournee;
 use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
@@ -12,7 +13,7 @@ class Match extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'ligue_id', 'journee', 'game_id', 'resultatEq1', 'resultatEq2', 'pointMatch',
+        'user_id', 'ligue_id', 'date_journees_id', 'game_id', 'resultatEq1', 'resultatEq2', 'pointMatch',
     ];
 
     public function users()
@@ -30,4 +31,8 @@ class Match extends Model
         return $this->belongsTo(Game::class);        
     }
 
+    public function journee()
+    {
+        return $this->belongsTo(DateJournee::class, 'date_journees_id');        
+    }
 }

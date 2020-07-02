@@ -74,6 +74,11 @@
 					   type="datetime-local" id="timejournee"
 				       name="timejournee" value="">
 		    </div>
+		    <div class="mb-4">
+		    	<label class="block text-white text-sm font-base mb-2" for="season">Season (year of the final):</label>
+
+				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" type="number" min="2019" max="2099" step="1" value="2020" id="season" name="season"/>
+		    </div>
  
 		    <div class="flex items-center justify-between">
 		      <button class="w-full bg-francagris text-white hover:text-francaverde text-sm py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">

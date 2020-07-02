@@ -27,9 +27,6 @@ class LigueController extends Controller
      */
     public function index()
     {
-        //montrer la page avec toutes les ligues de l'user
-        // + bouton pour creer une nouvelle ligue
-        // + bouton rejoindre une ligue
         if (Auth::user())
         {
             //user connecté

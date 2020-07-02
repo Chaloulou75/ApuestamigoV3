@@ -16,7 +16,7 @@
 
     	@foreach( $todasjornadas as $fecha)
 
-    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-xs py-2 px-4" href="{{ action('ApuestasController@show', [$ligue, $user, $fecha->numerojournee]) }}">
+    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-xs py-2 px-4" href="{{ action('ApuestasController@show', [$ligue, $user, $fecha]) }}">
             {{ $fecha->namejournee }}
         </a>
 
