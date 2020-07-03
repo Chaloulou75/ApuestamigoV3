@@ -20,7 +20,14 @@
 				<ul class="py-2 list-disc">
 					@foreach($orphans as $orphan)
 						<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">
-							{{ $orphan}} 					
+							{{ $orphan->id }} - journee: {{ $orphan->date_journees_id }} - user: {{ $orphan->user_id }} -
+						dans la ligue n°: {{ $orphan->ligue_id }} - Game id :{{ $orphan->game_id }} - resultat mis: {{ $orphan->resultatEq1 }} - {{ $orphan->resultatEq2 }}, point pour le match: {{ $orphan->pointmatch }} </br>
+							<form class="inline-block" method="POST" action="{{ route('orphansdestroy', ['orphan' => $orphan->id ]) }}">
+						  		@csrf 
+						  		@honeypot
+						  		@method('DELETE')
+						  		<button type="submit" class="px-2 text-julienred">Suprimir l'orphan</button>
+						  	</form>	 					
 						</li>
 					@endforeach
 				</ul>

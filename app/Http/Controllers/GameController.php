@@ -142,6 +142,8 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
+        $matchWithThisGame = Match::where('game_id', $game->id)->delete();
+        
         $game->delete();
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match a été supprimé');

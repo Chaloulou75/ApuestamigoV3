@@ -262,9 +262,18 @@ class AdminController extends Controller
       $game_ids = Game::select('id')->pluck('id')->all();
       $orphans = Match::whereNotIn('game_id', $game_ids)->orWhereNull('game_id')->get();
 
-      $orphans->delete();
-
       return view('/pages/apuestasorphelines', compact('orphans'));
 
     }
+
+    public function orphansdestroy($orphan)
+    {
+      $orphanmatch = Match::where('id', $orphan)->first();
+      //dd($orphanmatch);
+      $orphanmatch->delete();
+
+      return back()->with('message.level', 'success')->with('message.content', __('match supprimé'));
+
+    }
+
 } 

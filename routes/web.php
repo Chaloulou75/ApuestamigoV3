@@ -68,7 +68,8 @@ Route::group(
 	    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
 	    Route::get('/compare/{journee}', 'AdminController@compare')->name('apuestas.compare');
 	    Route::get('/count-points/{journee}', 'AdminController@countPoints')->name('apuestas.points');
-	    Route::get('/apuestasorphelines', 'AdminController@apuestasorphelines')->name('apuestas.apuestasorphelines');
+	    Route::get('/apuestasorphelines', 'AdminController@apuestasorphelines')->name('apuestasorphelines');
+	    Route::delete('/orphansdestroy/{orphan}', 'AdminController@orphansdestroy')->name('orphansdestroy');
 	});
 
 });
