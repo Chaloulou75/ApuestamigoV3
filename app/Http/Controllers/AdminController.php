@@ -42,9 +42,9 @@ class AdminController extends Controller
         {    
             $user = Auth::user();
             $now = Carbon::now();
-            $journee= DateJournee::where('id', $journee)->first();
+            $journee = DateJournee::where('id', $journee)->first();
 
-            $games = Game::where('date_journees_id', '=', $journee->id)->get('id');
+            $games = Game::where('date_journees_id', '=', $journee->id)->orderBy('id')->get();
 
             $tot= count($request->resultatEq1); 
 
@@ -55,15 +55,16 @@ class AdminController extends Controller
             {
                 for ($i=0; $i < $tot; $i++) { 
             
-                    if (isset($request->resultatEq1[$i])){
-
-                        foreach ($games as $i => $game) {
-
+                    if (isset($request->resultatEq1[$i]))
+                    {
+                        foreach ($games as $i => $game) 
+                        {
+                          $game = $game->id;
                           $dateMatch =  $game->gamedate;
             
                           $result1 = $request->resultatEq1[$i];
                           $result2 = $request->resultatEq2[$i];
-                          $game = $game->id;                                              
+                                                                        
 
                           Match::create(
                           ['date_journees_id' => $journee->id,
@@ -83,7 +84,8 @@ class AdminController extends Controller
             
                 if (isset($request->resultatEq1[$i])){
 
-                    foreach ($games as $i => $game) {
+                    foreach ($games as $i => $game) 
+                    {
 
                       $dateMatch =  $game->gamedate;
         

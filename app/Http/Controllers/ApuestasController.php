@@ -34,7 +34,7 @@ class ApuestasController extends Controller
         
         if (Auth::user()) 
         {
-          $games = Game::with(['homeTeam', 'awayTeam', 'journee', 'matchs' => function ($query) use($journee, $user, $ligue) {
+          $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
                           $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                 ->where('user_id', 'like', '%'. $user->id .'%')
                                 ->where('ligue_id', 'like', '%'. $ligue->id .'%');
@@ -68,7 +68,7 @@ class ApuestasController extends Controller
         $user = Auth::user(); 
         $now = Carbon::now();
         $journee = $this->DateRepository->dateJournee(); 
-    
+        
         $games = Game::where('date_journees_id', $journee->id)->get();
 
         $tot= count($request->resultatEq1); 
@@ -164,7 +164,7 @@ class ApuestasController extends Controller
                             ->where('date_journees_id', $journee->id)
                             ->orderBy('id')
                             ->get();// les matchs
-                            
+
             //collection des resultats userAdmin pour la journee
             $resultAdmin = User::with(['matchs' => function ($query) use($journee){
                                     $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
