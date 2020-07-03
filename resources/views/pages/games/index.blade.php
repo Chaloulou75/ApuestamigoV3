@@ -21,6 +21,7 @@
 				@foreach($games as $game)
 					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">
 						Journée <span class="text-blue-500 italic">
+							{{ $game->id }}:
 							@isset($game->journee->namejournee)
 							{{ $game->journee->namejournee }} {{ $game->journee->season }}
 							@endisset

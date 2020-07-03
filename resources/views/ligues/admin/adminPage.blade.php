@@ -34,6 +34,12 @@
 		</a>
 		</div>
 		<div class="animate__animated animate__flipInX border-2 rounded-lg border-francaverde flex-auto text-white text-center bg-francagris hover:text-francaverde px-4 py-2 m-2">
+		<a href="{{ route('apuestas.apuestasorphelines') }}">
+			<svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+			Apuestas orphelines
+		</a>
+		</div>
+		<div class="animate__animated animate__flipInX border-2 rounded-lg border-francaverde flex-auto text-white text-center bg-francagris hover:text-francaverde px-4 py-2 m-2">
 		<a href="{{ route('ligues.index') }}">
 			<svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
 			 Montrer les matchs and mettre les scores définitifs </a>

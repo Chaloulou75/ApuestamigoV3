@@ -32,7 +32,7 @@ class GameController extends Controller
     {
         $user = Auth::user();
 
-        $games = Game::with(['homeTeam', 'awayTeam'])->orderByDesc('gamedate')->get();
+        $games = Game::with(['homeTeam', 'awayTeam'])->orderByDesc('id')->get();
 
         return view('/pages/games/index', compact('games', 'user'));
     }

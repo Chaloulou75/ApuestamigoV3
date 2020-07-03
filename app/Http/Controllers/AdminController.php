@@ -59,13 +59,13 @@ class AdminController extends Controller
                     {
                         foreach ($games as $i => $game) 
                         {
-                          $game = $game->id;
+                          
                           $dateMatch =  $game->gamedate;
             
                           $result1 = $request->resultatEq1[$i];
                           $result2 = $request->resultatEq2[$i];
                                                                         
-
+                          $game = $game->id;
                           Match::create(
                           ['date_journees_id' => $journee->id,
                            'game_id' => $game,                         
@@ -253,5 +253,22 @@ class AdminController extends Controller
             }
           }
         }
+    }
+
+    public function apuestasorphelines()
+    {
+
+      //je veux tous les matches dont le game_id n'as pas de correspondance avec un game id
+
+
+      $game_ids = Game::select('id')->pluck('id')->all();
+
+      //dd($game_ids);
+      $orphans = Match::whereNotIn('game_id', $game_ids)->orWhereNull('game_id')->get();
+
+      //dd($orphans);
+
+      return view('/pages/apuestasorphelines', compact('orphans'));
+
     }
 } 
