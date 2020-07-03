@@ -260,7 +260,10 @@ class AdminController extends Controller
 
       //je veux tous les matches dont le game_id n'as pas de correspondance avec un game id
       $game_ids = Game::select('id')->pluck('id')->all();
-      $orphans = Match::whereNotIn('game_id', $game_ids)->orWhereNull('game_id')->get();
+      $orphans = Match::whereNotIn('game_id', $game_ids)
+                      ->orWhereNull('game_id')
+                      ->orWhereNull('date_journees_id')
+                      ->get();
 
       return view('/pages/apuestasorphelines', compact('orphans'));
 
