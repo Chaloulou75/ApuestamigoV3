@@ -46,7 +46,6 @@ class ApuestasController extends Controller
           //collection des resultats userAdmin pour la journee
           $resultAdmin = User::with(['matchs' => function ($query) use($journee){
                                   $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
-                                        ->whereIn('game_id', $gamesIds)
                                         ->orderBy('game_id');
                               }])
                                   ->where('admin', 1)
