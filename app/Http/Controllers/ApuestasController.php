@@ -171,8 +171,8 @@ class ApuestasController extends Controller
                                           ->orderBy('game_id');
                                 }])
                                     ->where('admin', 1)
-                                    ->first(); 
-                              
+                                    ->first();
+            
             return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
         }
         return redirect()->guest('login');

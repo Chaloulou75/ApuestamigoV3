@@ -74,7 +74,10 @@
 		  	@if(isset($resultAdmin->matchs[$key]->resultatEq1) 
 		  	&& isset($resultAdmin->matchs[$key]->game_id) 
 		  	&& $game->id == $resultAdmin->matchs[$key]->game_id)
-		  	{{ $resultAdmin->matchs[$key]->resultatEq1 }} @endif
+		  	{{ $resultAdmin->matchs[$key]->resultatEq1 }}
+			@else
+			{{ $game->id }} . {{ $resultAdmin->matchs[$key]->game_id }}
+		  	@endif
 		  	<span class="text-gray-900 px-1">-</span>  
 		  	@if(isset($resultAdmin->matchs[$key]->resultatEq2)
 		  	&& isset($resultAdmin->matchs[$key]->game_id) 

@@ -18,15 +18,16 @@
 		<div class="text-white">
 			
 			<ul class="py-2 list-disc">
-				@foreach($games as $game)
+				@foreach($games as $key => $game)
 					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">
 						Journée <span class="text-blue-500 italic">
-							{{ $game->id }}:
+							{{ $game->id }}: 
 							@isset($game->journee->namejournee)
 							{{ $game->journee->namejournee }} {{ $game->journee->season }}
 							@endisset
 						</span>
-						: Match qui oppose <span class="text-francaverde">{{$game->homeTeam->name}}</span> vs <span class="text-francaverde">{{$game->awayTeam->name}}</span>, prévu le <span class="italic">{{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm')}}</span><a class="px-2 text-francaverde" href="{{route('games.edit', $game->id)}}"> Edit Game</a>
+						: Match qui oppose <span class="text-francaverde">{{$game->homeTeam->name}}</span> vs <span class="text-francaverde">{{$game->awayTeam->name}}</span>, prévu le <span class="italic">{{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm')}}</span>
+						<a class="px-2 text-francaverde" href="{{route('games.edit', $game->id)}}"> Edit Game</a>
 						<form class="inline-block" method="POST" action="{{route('games.destroy', $game)}}"> 
 					  		@csrf 
 					  		@honeypot
