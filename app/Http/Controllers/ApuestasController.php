@@ -30,7 +30,7 @@ class ApuestasController extends Controller
 
         $journee = $this->DateRepository->dateJournee(); //la journee
 
-        $gamesIds = Game::where('date_journees_id', $journee->id)->get('id'); //les matchs concernés
+        $gamesIds = Game::where('date_journees_id', $journee->id)->orderBy('id')->get('id'); //les matchs concernés
         
         if (Auth::user()) 
         {
@@ -69,7 +69,7 @@ class ApuestasController extends Controller
         $now = Carbon::now();
         $journee = $this->DateRepository->dateJournee(); 
         
-        $games = Game::where('date_journees_id', $journee->id)->get();
+        $games = Game::where('date_journees_id', $journee->id)->orderBy('id')->get();
 
         $tot= count($request->resultatEq1); 
 
