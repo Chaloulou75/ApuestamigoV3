@@ -58,17 +58,16 @@ class AdminController extends Controller
                     if (isset($request->resultatEq1[$i]))
                     {
                         foreach ($games as $i => $game) 
-                        {
-                          
+                        {                          
                           $dateMatch =  $game->gamedate;
             
                           $result1 = $request->resultatEq1[$i];
                           $result2 = $request->resultatEq2[$i];
                                                                         
-                          $game = $game->id;
+                          $gameid = $game->id;
                           Match::create(
                           ['date_journees_id' => $journee->id,
-                           'game_id' => $game,                         
+                           'game_id' => $gameid,                         
                            'user_id' => $user->id, 
                            'ligue_id' => $ligue->id,                     
                            'resultatEq1' => $result1, 
@@ -86,20 +85,18 @@ class AdminController extends Controller
 
                     foreach ($games as $i => $game) 
                     {
-
                       $dateMatch =  $game->gamedate;
         
                       $result1 = $request->resultatEq1[$i];
                       $result2 = $request->resultatEq2[$i];
-                      $game = $game->id;                                              
+                      $gameid = $game->id;                                              
 
                       Match::updateOrCreate(
                       ['date_journees_id' => $journee->id,
+                       'game_id' => $gameid,
                        'user_id' => $user->id, 
                        'ligue_id' => $ligue->id],                     
-                       ['date_journees_id' => $journee->id,
-                        'game_id' => $game,
-                        'resultatEq1' => $result1, 
+                       ['resultatEq1' => $result1, 
                        'resultatEq2' => $result2]
                       );
                     }    

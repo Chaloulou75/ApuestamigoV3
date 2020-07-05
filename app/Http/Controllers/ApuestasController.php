@@ -89,12 +89,11 @@ class ApuestasController extends Controller
                         if( $now->lessThanOrEqualTo($dateMatch))
                         {
                             $result1 = $request->resultatEq1[$i];
-                            $result2 = $request->resultatEq2[$i];
-                            $game = $game->id; 
+                            $result2 = $request->resultatEq2[$i]; 
                                                                         
                             Match::create(
                             ['date_journees_id' => $journee->id,
-                             'game_id' => $game,                         
+                             'game_id' => $game->id,                         
                              'user_id' => $user->id, 
                              'ligue_id' => $ligue->id,                     
                              'resultatEq1' => $result1, 
@@ -122,11 +121,10 @@ class ApuestasController extends Controller
                     {
                         $resultup1 = $request->resultatEq1[$i];
                         $resultup2 = $request->resultatEq2[$i];
-                        $game = $game->id;
 
                         Match::updateOrCreate(
                         ['date_journees_id' => $journee->id,
-                         'game_id' => $game,                        
+                         'game_id' => $game->id,                        
                          'user_id' => $user->id, 
                          'ligue_id' => $ligue->id],                     
                          ['resultatEq1' => $resultup1, 
