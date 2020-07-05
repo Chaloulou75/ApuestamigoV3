@@ -126,7 +126,7 @@ class ApuestasController extends Controller
 
                         Match::updateOrCreate(
                         ['date_journees_id' => $journee->id,
-                         'game_id' => $game,                         
+                         'game_id' => $game,                        
                          'user_id' => $user->id, 
                          'ligue_id' => $ligue->id],                     
                          ['resultatEq1' => $resultup1, 

@@ -27,7 +27,7 @@ class AdminController extends Controller
     {
         $datejournees = DateJournee::orderBy('timejournee')->get();
         
-        return view('ligues.admin.adminPage', compact('datejournees')); 
+        return view('pages.admin.adminPage', compact('datejournees')); 
     }
 
     /**
@@ -95,10 +95,10 @@ class AdminController extends Controller
 
                       Match::updateOrCreate(
                       ['date_journees_id' => $journee->id,
-                       'game_id' => $game,                         
                        'user_id' => $user->id, 
                        'ligue_id' => $ligue->id],                     
-                       ['resultatEq1' => $result1, 
+                       ['game_id' => $game,
+                        'resultatEq1' => $result1, 
                        'resultatEq2' => $result2]
                       );
                     }    
@@ -114,6 +114,110 @@ class AdminController extends Controller
     {
         $this->getUsersApuestas($journee);        
     }
+
+    public function getUsersApuestas($journee)
+    {    
+        $resultsUser = $this->compareApuestas($journee);        
+        return $resultsUser;
+    }
+
+    public function compareApuestas($journee)
+    {
+        
+      $journee = DateJournee::where('id', $journee)->first();
+      
+      // les resultats de l'admin qui est l'user en cours
+      $resultsAdmin = Auth::user()->matchs()->where('date_journees_id', $journee->id)->whereNotNull(['resultatEq1', 'resultatEq2'])->get();
+
+      foreach ($resultsAdmin as $key => $resultAdmin) 
+      {
+        $gameId = $resultAdmin->game_id;
+        $scoreOff1 = $resultAdmin->resultatEq1;
+        $scoreOff2 = $resultAdmin->resultatEq2;
+
+        $users = User::with(['ligues', 'matchs' => function ($query) use($journee, $gameId){
+                   $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
+                         ->where('game_id', 'like', '%'. $gameId .'%');
+                }])->get();
+
+        foreach ($users as $user) 
+        {
+          foreach ($user->ligues as $k => $ligue) 
+          {
+            // on récupere les matchs ds chaque ligue/journee pour chaque user
+            $apuestas = $user->matchs()->where('date_journees_id', $journee->id)
+                                       ->where('ligue_id', $ligue->id)
+                                       ->where('game_id', $gameId)
+                                       ->whereNotNull(['resultatEq1', 'resultatEq2'])
+                                       ->get();
+
+            foreach ($apuestas as $key => $apuesta) 
+            {              
+              $apuestaGameId = $apuesta->game_id;
+              $scoreapuesta1 = $apuesta->resultatEq1;
+              $scoreapuesta2 = $apuesta->resultatEq2;
+
+              if ($apuestaGameId !== $gameId) 
+              {
+                echo "il y a surement un bug pour ". $user->name .' - ' . $gameId . " - " . $apuestaGameId . "<br>";
+              }                                   
+                
+              elseif($scoreOff1 === $scoreapuesta1 && $scoreOff2 === $scoreapuesta2)
+              {
+                echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 3 point!"."<br>";
+                Match::where('date_journees_id','=', $journee->id)
+                      ->where('user_id','=', $user->id)
+                      ->where('ligue_id','=', $ligue->id)
+                      ->where('game_id','=', $apuestaGameId)
+                      ->update(['pointMatch' => 3]);
+              } 
+
+              elseif($scoreOff1 > $scoreOff2 && $scoreapuesta1 > $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) 
+              {
+                echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                Match::where('date_journees_id','=', $journee->id)
+                      ->where('user_id','=', $user->id)
+                      ->where('ligue_id','=', $ligue->id)
+                      ->where('game_id','=', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
+              }
+
+              elseif($scoreOff1 < $scoreOff2 && $scoreapuesta1 < $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) 
+              {
+                echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                Match::where('date_journees_id','=', $journee->id)
+                      ->where('user_id','=', $user->id)
+                      ->where('ligue_id','=', $ligue->id)
+                      ->where('game_id','=', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
+              }
+
+              elseif($scoreOff1 === $scoreOff2 && $scoreapuesta1 === $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) 
+              {
+                echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                Match::where('date_journees_id','=', $journee->id)
+                      ->where('user_id','=', $user->id)
+                      ->where('ligue_id','=', $ligue->id)
+                      ->where('game_id','=', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
+              }
+
+              else 
+              {
+                echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." Désolé mais 0 point!"."<br>";
+
+                Match::where('date_journees_id','=', $journee->id)
+                      ->where('user_id','=', $user->id)
+                      ->where('ligue_id','=', $ligue->id)
+                      ->where('game_id','=', $apuestaGameId) 
+                      ->update(['pointMatch' => 0]);
+              }
+            }
+          }
+        }
+      }
+    }
+
     public function countPoints($journee)
     {
         // comptage des points.
@@ -122,142 +226,40 @@ class AdminController extends Controller
         return $countPoints;         
     }
 
-    public function getUsersApuestas($journee)
-    {    
-        $resultsUser = $this->compareApuestas($journee);        
-        return $resultsUser;
-    }
-
     public function countPointsByDay($journee)
     {
-        $journee = DateJournee::where('id', $journee)->first();
+      $journee = DateJournee::where('id', $journee)->first();
 
-        $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
-                     $query->where('date_journees_id', 'like', '%'. $journee->id .'%');
-             }])->get(); // on récupère tous les joueurs
+      $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
+                   $query->where('date_journees_id', 'like', '%'. $journee->id .'%');
+           }])->get(); // on récupère tous les joueurs
 
-        foreach ($users as $user) 
+      foreach ($users as $user) 
+      {
+        foreach ($user->ligues as $key => $ligue) 
         {
-            foreach ($user->ligues as $key => $ligue) 
-            {
-                // points par journee
-                $pointMatch = $user->matchs()->where('date_journees_id', $journee->id)->where('ligue_id', $ligue->id)->get();
-                $totJournee = $pointMatch->sum('pointMatch');
+          // points par journee
+          $pointMatch = $user->matchs()->where('date_journees_id', $journee->id)->where('ligue_id', $ligue->id)->get();
+          $totJournee = $pointMatch->sum('pointMatch');
 
-                echo "Pour la journée n° ". $journee->namejournee.'- '. $journee->season .', '. $user->name .' a eu '. $totJournee .' points dans la ligue '. $ligue->name . "<br>";
-                // points totaux du joueur
-                $pointTot = $user->matchs()->where('ligue_id', $ligue->id)->get();
-                $totalPoints = $pointTot->sum('pointMatch');
+          echo "Pour la journée n° ". $journee->namejournee.'- '. $journee->season .', '. $user->name .' a eu '. $totJournee .' points dans la ligue '. $ligue->name . "<br>";
+          // points totaux du joueur
+          $pointTot = $user->matchs()->where('ligue_id', $ligue->id)->get();
+          $totalPoints = $pointTot->sum('pointMatch');
 
-                echo $user->name .' a au total '. $totalPoints .' points dans la ligue '. $ligue->name . "<br>";
-                // update pivot table.
-                DB::table('ligue_user')->where('user_id', $user->id)
-                                        ->where('ligue_id', $ligue->id)
-                                        ->update(['totalPoints' => $totalPoints]);
-            }
+          echo $user->name .' a au total '. $totalPoints .' points dans la ligue '. $ligue->name . "<br>";
+          // update pivot table.
+          DB::table('ligue_user')->where('user_id', $user->id)
+                                  ->where('ligue_id', $ligue->id)
+                                  ->update(['totalPoints' => $totalPoints]);
         }
+      }
     }
 
-    public function compareApuestas($journee)
-    {
-        
-        $journee = DateJournee::where('id', $journee)->first();
-        
-        // les resultats de l'admin qui est l'user en cours
-        $resultsAdmin = Auth::user()->matchs()->where('date_journees_id', $journee->id)->whereNotNull(['resultatEq1', 'resultatEq2'])->get();
-
-        foreach ($resultsAdmin as $key => $resultAdmin) 
-        {
-          $gameId = $resultAdmin->game_id;
-          $scoreOff1 = $resultAdmin->resultatEq1;
-          $scoreOff2 = $resultAdmin->resultatEq2;
-
-          $users = User::with(['ligues', 'matchs' => function ($query) use($journee, $gameId){
-                     $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
-                           ->where('game_id', 'like', '%'. $gameId .'%');
-                  }])->get();
-
-          foreach ($users as $user) 
-          {
-            foreach ($user->ligues as $k => $ligue) 
-            {
-              // on récupere les matchs ds chaque ligue/journee pour chaque user
-              $apuestas = $user->matchs()->where('date_journees_id', $journee->id)
-                                         ->where('ligue_id', $ligue->id)
-                                         ->where('game_id', $gameId)
-                                         ->whereNotNull(['resultatEq1', 'resultatEq2'])
-                                         ->get();
-
-              foreach ($apuestas as $key => $apuesta) 
-              {              
-                $apuestaGameId = $apuesta->game_id;
-                $scoreapuesta1 = $apuesta->resultatEq1;
-                $scoreapuesta2 = $apuesta->resultatEq2;
-
-                if ($apuestaGameId !== $gameId) 
-                {
-                  echo "il y a surement un bug pour ". $user->name .' - ' . $gameId . " - " . $apuestaGameId . "<br>";
-                }                                   
-                  
-                elseif($scoreOff1 === $scoreapuesta1 && $scoreOff2 === $scoreapuesta2)
-                {
-                  echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 3 point!"."<br>";
-                  Match::where('date_journees_id','=', $journee->id)
-                        ->where('user_id','=', $user->id)
-                        ->where('ligue_id','=', $ligue->id)
-                        ->where('game_id','=', $apuestaGameId)
-                        ->update(['pointMatch' => 3]);
-                } 
-
-                elseif($scoreOff1 > $scoreOff2 && $scoreapuesta1 > $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) 
-                {
-                  echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
-                  Match::where('date_journees_id','=', $journee->id)
-                        ->where('user_id','=', $user->id)
-                        ->where('ligue_id','=', $ligue->id)
-                        ->where('game_id','=', $apuestaGameId)
-                        ->update(['pointMatch' => 1]);
-                }
-
-                elseif($scoreOff1 < $scoreOff2 && $scoreapuesta1 < $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) 
-                {
-                  echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
-                  Match::where('date_journees_id','=', $journee->id)
-                        ->where('user_id','=', $user->id)
-                        ->where('ligue_id','=', $ligue->id)
-                        ->where('game_id','=', $apuestaGameId)
-                        ->update(['pointMatch' => 1]);
-                }
-
-                elseif($scoreOff1 === $scoreOff2 && $scoreapuesta1 === $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) 
-                {
-                  echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
-                  Match::where('date_journees_id','=', $journee->id)
-                        ->where('user_id','=', $user->id)
-                        ->where('ligue_id','=', $ligue->id)
-                        ->where('game_id','=', $apuestaGameId)
-                        ->update(['pointMatch' => 1]);
-                }
-
-                else 
-                {
-                  echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." Désolé mais 0 point!"."<br>";
-
-                  Match::where('date_journees_id','=', $journee->id)
-                        ->where('user_id','=', $user->id)
-                        ->where('ligue_id','=', $ligue->id)
-                        ->where('game_id','=', $apuestaGameId) 
-                        ->update(['pointMatch' => 0]);
-                }
-              }
-            }
-          }
-        }
-    }
+    
 
     public function apuestasorphelines()
     {
-
       //je veux tous les matches dont le game_id n'as pas de correspondance avec un game id
       $game_ids = Game::select('id')->pluck('id')->all();
       // et ceux qui n'ont pas ou plus de ligues
@@ -273,10 +275,8 @@ class AdminController extends Controller
                       ->orWhereNull('user_id')
                       ->orWhereNull('date_journees_id')
                       ->get();
-      
 
-      return view('/pages/apuestasorphelines', compact('orphans'));
-
+      return view('/pages/admin/apuestasorphelines', compact('orphans'));
     }
 
     public function orphansdestroy($orphan)
