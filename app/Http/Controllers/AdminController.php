@@ -97,7 +97,8 @@ class AdminController extends Controller
                       ['date_journees_id' => $journee->id,
                        'user_id' => $user->id, 
                        'ligue_id' => $ligue->id],                     
-                       ['game_id' => $game,
+                       ['date_journees_id' => $journee->id,
+                        'game_id' => $game,
                         'resultatEq1' => $result1, 
                        'resultatEq2' => $result2]
                       );
