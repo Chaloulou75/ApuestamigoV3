@@ -134,9 +134,10 @@ class AdminController extends Controller
         $scoreOff2 = $resultAdmin->resultatEq2;
 
         $users = User::with(['ligues', 'matchs' => function ($query) use($journee, $gameId){
-                   $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
+                   $query->where('date_journees_id', $journee->id)
                          ->where('game_id', 'like', '%'. $gameId .'%');
                 }])->get();
+        //->where('date_journees_id', 'like', '%'. $journee->id .'%')
 
         foreach ($users as $user) 
         {
@@ -229,8 +230,8 @@ class AdminController extends Controller
       $journee = DateJournee::where('id', $journee)->first();
 
       $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
-                   $query->where('date_journees_id', 'like', '%'. $journee->id .'%');
-           }])->get(); // on récupère tous les joueurs
+                   $query->where('date_journees_id', $journee->id);
+           }])->get(); // on récupère tous les joueurs ->where('date_journees_id', 'like', '%'. $journee->id .'%')
 
       foreach ($users as $user) 
       {

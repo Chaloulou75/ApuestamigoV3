@@ -45,11 +45,12 @@ class ApuestasController extends Controller
 
           //collection des resultats userAdmin pour la journee
           $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                  $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
+                                  $query->where('date_journees_id', $journee->id)
                                         ->orderBy('game_id');
                               }])->where('admin', 1)
                                   ->first();
-          
+
+          //where('date_journees_id', 'like', '%'. $journee->id .'%')
           return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
             
         }
@@ -164,11 +165,12 @@ class ApuestasController extends Controller
 
             //collection des resultats userAdmin pour la journee
             $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                    $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
+                                    $query->where('date_journees_id', $journee->id)
                                           ->orderBy('game_id');
                                 }])->where('admin', 1)
-                                    ->first();
-            
+                                   ->first();
+                                   
+            //->where('date_journees_id', 'like', '%'. $journee->id .'%')
             return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
         }
         return redirect()->guest('login');
