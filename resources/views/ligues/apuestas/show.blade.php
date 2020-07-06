@@ -13,12 +13,11 @@
 
 	@livewire('links-journees', ['user' => $user, 'ligue' => $ligue])
 
-	@auth
+	@if($user == Auth::user())
 		<h3 class="text-base text-left text-white tracking-wide px-2 py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, {{__('all.your bets')}} :</h3>
-	@endauth	
-	@guest
+	@else
 		<h3 class="text-base text-left text-white px-2 py-2">{{__('all.Bets of')}} <span class="text-francaverde">{{$user->name}}</span>:</h3>
-	@endguest
+	@endif
 	@admin
 		<h3 class="text-base text-left text-white tracking-wide px-2 py-2">{{__('all.Hey')}} <span class="text-francaverde">{{$user->name}}</span>, set all scores!</h3>
 		<form method="POST" action="{{ action('AdminController@store', [$ligue, $journee]) }}"> 

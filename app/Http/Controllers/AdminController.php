@@ -135,9 +135,8 @@ class AdminController extends Controller
 
         $users = User::with(['ligues', 'matchs' => function ($query) use($journee, $gameId){
                    $query->where('date_journees_id', $journee->id)
-                         ->where('game_id', 'like', '%'. $gameId .'%');
+                         ->where('game_id', $gameId);
                 }])->get();
-        //->where('date_journees_id', 'like', '%'. $journee->id .'%')
 
         foreach ($users as $user) 
         {
@@ -281,7 +280,6 @@ class AdminController extends Controller
     public function orphansdestroy($orphan)
     {
       $orphanmatch = Match::where('id', $orphan)->first();
-      //dd($orphanmatch);
       $orphanmatch->delete();
 
       return back()->with('message.level', 'success')->with('message.content', __('match supprimé'));

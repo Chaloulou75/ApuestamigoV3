@@ -35,9 +35,9 @@ class ApuestasController extends Controller
         if (Auth::user()) 
         {
           $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                          $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
-                                ->where('user_id', 'like', '%'. $user->id .'%')
-                                ->where('ligue_id', 'like', '%'. $ligue->id .'%');
+                          $query->where('date_journees_id', $journee->id)
+                                ->where('user_id', $user->id)
+                                ->where('ligue_id', $ligue->id);
                       }])
                       ->whereIn('id', $gamesIds)
                       ->orderBy('id')
@@ -50,7 +50,6 @@ class ApuestasController extends Controller
                               }])->where('admin', 1)
                                   ->first();
 
-          //where('date_journees_id', 'like', '%'. $journee->id .'%')
           return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
             
         }
@@ -155,9 +154,9 @@ class ApuestasController extends Controller
         {                     
             //score inséré par le user/journée/ dans cette ligue
             $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                                $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
-                                      ->where('user_id', 'like', '%'. $user->id .'%')
-                                      ->where('ligue_id', 'like', '%'. $ligue->id .'%');
+                                $query->where('date_journees_id', $journee->id)
+                                      ->where('user_id', $user->id)
+                                      ->where('ligue_id', $ligue->id);
                             }])
                             ->where('date_journees_id', $journee->id)
                             ->orderBy('id')
@@ -169,8 +168,7 @@ class ApuestasController extends Controller
                                           ->orderBy('game_id');
                                 }])->where('admin', 1)
                                    ->first();
-                                   
-            //->where('date_journees_id', 'like', '%'. $journee->id .'%')
+
             return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
         }
         return redirect()->guest('login');
