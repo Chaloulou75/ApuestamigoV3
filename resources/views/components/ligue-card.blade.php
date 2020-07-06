@@ -1,4 +1,4 @@
-<div class="animate__animated animate__flipInY animate__slow flex-grow lg:w-1/3 justify-around m-4 shadow-lg focus:shadow-outline">
+<div class="animate__animated animate__fadeIn animate__slower flex-grow lg:w-1/3 justify-around m-4 shadow-lg focus:shadow-outline">
 	<div class="border-4 border-francaverde rounded bg-francagris p-4 flex flex-col justify-between">
 	    <div class="mb-8">
 		    <p class="text-sm flex items-center pb-4">

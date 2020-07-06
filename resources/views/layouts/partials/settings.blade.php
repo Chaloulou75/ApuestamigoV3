@@ -22,7 +22,7 @@
 
   <div class="flex flex-col md:flex-row items-stretch justify-between my-4"> 
 
-    <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
+    <div class="animate__animated animate__fadeIn animate__slow flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@quitLigue', $ligue) }}">
         @csrf
         @honeypot
@@ -40,7 +40,7 @@
       </form>
     </div>
 
-    <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
+    <div class="animate__animated animate__fadeIn animate__slow flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@update', $ligue) }}">
         @csrf
         @honeypot
@@ -63,7 +63,7 @@
       </form>
     </div>
 
-    <div class="animate__animated animate__flipInX flex items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4">
+    <div class="animate__animated animate__fadeIn animate__slow flex items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@destroy', $ligue) }}">
         @csrf
         @honeypot

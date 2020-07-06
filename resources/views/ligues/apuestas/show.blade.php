@@ -24,7 +24,7 @@
 			@csrf
 	@endadmin
 
-	<table class="animate__animated animate__fadeInUp table-auto w-full bg-white border-t-4 md:border-4 border-francaverde rounded-lg text-sm text-francagris"> 
+	<table class="animate__animated animate__fadeIn animate__slow table-auto w-full bg-white border-t-4 md:border-4 border-francaverde rounded-lg text-sm text-francagris"> 
 	    <thead class="table-header-group bg-francagris text-white text-xs">
 	    <tr>
 	      <th class="px-1 py-4 hidden md:table-cell"></th>

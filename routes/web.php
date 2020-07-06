@@ -31,8 +31,6 @@ Route::group(
 
 	Route::resource('profile', 'ProfileController');
 
-	Route::resource('ranking', 'RankingController');
-
 	Route::get('/contact', 'ContactController@create')->name('contact.create');
 	Route::post('/contact', 'ContactController@store')->name('contact.store');
 
