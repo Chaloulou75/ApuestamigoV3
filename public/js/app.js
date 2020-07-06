@@ -3718,7 +3718,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     user: {
@@ -3825,11 +3824,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AccountDropdown__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AccountDropdown */ "./resources/js/components/AccountDropdown.vue");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -59443,6 +59437,16 @@ var Ziggy = {
     "apuestas.points": {
       "uri": "admin\/count-points\/{journee}",
       "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "apuestasorphelines": {
+      "uri": "admin\/apuestasorphelines",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "orphansdestroy": {
+      "uri": "admin\/orphansdestroy\/{orphan}",
+      "methods": ["DELETE"],
       "domain": null
     }
   },

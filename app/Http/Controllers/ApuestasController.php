@@ -30,7 +30,7 @@ class ApuestasController extends Controller
 
         $journee = $this->DateRepository->dateJournee(); //la journee
 
-        $gamesIds = Game::where('date_journees_id', $journee->id)->orderBy('id')->get('id'); //les matchs concernés
+        $gamesIds = Game::where('date_journees_id', $journee->id)->orderBy('id')->get('id'); //id des matchs concernés
         
         if (Auth::user()) 
         {
@@ -47,8 +47,7 @@ class ApuestasController extends Controller
           $resultAdmin = User::with(['matchs' => function ($query) use($journee){
                                   $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                         ->orderBy('game_id');
-                              }])
-                                  ->where('admin', 1)
+                              }])->where('admin', 1)
                                   ->first();
           
           return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
@@ -167,8 +166,7 @@ class ApuestasController extends Controller
             $resultAdmin = User::with(['matchs' => function ($query) use($journee){
                                     $query->where('date_journees_id', 'like', '%'. $journee->id .'%')
                                           ->orderBy('game_id');
-                                }])
-                                    ->where('admin', 1)
+                                }])->where('admin', 1)
                                     ->first();
             
             return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
