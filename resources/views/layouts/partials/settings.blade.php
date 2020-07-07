@@ -22,13 +22,13 @@
 
   <div class="flex flex-col md:flex-row items-stretch justify-between my-4"> 
 
-    <div class="animate__animated animate__fadeIn animate__slow flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
+    <div class="animate__animated animate__fadeIn animate__slow flex-1 items-center w-full md:w-1/3 mx-auto md:m-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@quitLigue', $ligue) }}">
         @csrf
         @honeypot
         <div class="mb-4">
-            <div class="w-full text-gray-900 text-base font-medium mb-2">
-                {{ __('all.Leave this league?') }} </hr>{{ $ligue->name }}
+            <div class="w-full text-gray-900 text-sm font-medium mb-2">
+                {{ __('all.Leave this league?') }} </hr> <span class="text-base font-medium"> {{ $ligue->name }}</span>
             </div>
         </div>
         <div class="flex items-center justify-between">
@@ -40,13 +40,15 @@
       </form>
     </div>
 
-    <div class="animate__animated animate__fadeIn animate__slow flex items-center w-full md:w-1/3 mx-auto md:mr-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
+    @if( $ligue->creator_id === Auth::user()->id) {{--  si le creator est le user en cours --}}
+
+    <div class="animate__animated animate__fadeIn animate__slow flex-1 items-center w-full md:w-1/3 mx-auto md:m-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@update', $ligue) }}">
         @csrf
         @honeypot
         @method('PUT')
         <div class="mb-4">
-            <label for="name" class="block text-gray-900 text-base font-medium mb-2">
+            <label for="name" class="block text-gray-900 text-sm font-medium mb-2">
                 {{ __('all.Change the name of the league?') }} </hr>
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('name') bg-red-dark @enderror" id="name" type="text" placeholder="{{ $ligue->name }}" name="name" value="{{ old('name') }}" required autocomplete="name">
@@ -62,15 +64,15 @@
         </div>
       </form>
     </div>
-
-    <div class="animate__animated animate__fadeIn animate__slow flex items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4">
+    
+    <div class="animate__animated animate__fadeIn animate__slow flex-1 items-center w-full md:w-1/3 mx-auto bg-white shadow-md rounded border-t-4 border-francaverde px-8 py-8 my-4 md:m-2">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@destroy', $ligue) }}">
         @csrf
         @honeypot
         @method('DELETE')
         <div class="mb-4">
-            <div class="block text-gray-900 text-base font-medium mb-2">
-                {{ __('all.Delete this league?') }} </hr>{{ $ligue->name }}
+            <div class="block text-gray-900 text-sm font-medium mb-2">
+                {{ __('all.Delete this league?') }} </hr> <span class="text-base font-medium">{{ $ligue->name }} </span>
             </div>
             <p class="block text-red-500 text-sm font-medium mb-2">{{ __('all.Please note, this action is irreversible.') }} </p>
         </div>
@@ -82,6 +84,8 @@
         </div>
       </form>
     </div>
+
+    @endif
     
   </div>
 

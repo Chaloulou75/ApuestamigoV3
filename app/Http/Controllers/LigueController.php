@@ -139,21 +139,31 @@ class LigueController extends Controller
         //changer le nom d'une ligue / ou un joueur
         $ligue = ligue::findOrFail($ligue->id);
 
-        $validator = Validator::make($request->all(), [
+        if( $ligue->creator_id === Auth::user()->id)
+        {
+            $validator = Validator::make($request->all(), [
                 'name' => 'required|max:255',
             ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+            
+            $name = $request->input('name');
+
+            $ligue->update([
+                'name' => $name,           
+                ]);
+
+            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your league has been modified'));
         }
+        else
+        {
+            return back()->with('message.level', 'success')->with('message.content', __('all.Sorry you have to be the owner to change the league'));
+
+        }
+
         
-        $name = $request->input('name');
-
-        $ligue->update([
-            'name' => $name,           
-            ]);
-
-        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your league has been modified'));
     }
 
     /**

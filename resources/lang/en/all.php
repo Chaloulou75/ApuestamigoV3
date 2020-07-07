@@ -78,6 +78,7 @@ return [
   'Home' => 'Home',
   'Away' => 'Away',
   'Points' => 'Points',
+  'There is no game yet.' => 'There is no game yet.',
   'What\'s the name of your league?'=> 'What\'s the name of your league?',
   'Insert the token of the league' => 'Insert the token of the league',
   'Hey' => 'Hey',
@@ -105,6 +106,7 @@ return [
   'Delete my account' => 'Delete my account',
   'your profile has been deleted' => 'your profile has been deleted',
   'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
+  'Sorry you have to be the owner to change the league' => 'Sorry you have to be the owner to change the league',
 
   'Wanna`\' buy me a beer?' => 'Wanna`\' buy me a beer?',
   'Full Name on card' => 'First name and last name on credit card',

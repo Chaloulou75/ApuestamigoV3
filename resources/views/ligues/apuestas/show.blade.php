@@ -41,7 +41,7 @@
 	    </thead>		    			  
 
 	    <tbody>
-		@foreach ($games as $key => $game)		
+		@forelse ($games as $key => $game)		
 	    <tr> 
 	      <td class="px-4 py-4 hidden md:table-cell">{{ $loop->iteration }} </td>
 	      <td class="px-1 py-1 hidden md:table-cell w-24 text-xs break-words font-hairline">  {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }} </td>
@@ -125,7 +125,13 @@
 		  	@endif
 		  </td>
 	    </tr>
-	   	@endforeach 
+	    @empty
+	    <tr>
+	    	<td colspan="10" class="py-4 text-center">
+	    		{{__('all.There is no game yet.')}}
+	    	</td>	    	
+	    </tr>
+	   	@endforelse 
 		</tbody>
 	</table>
 

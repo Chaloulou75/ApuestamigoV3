@@ -59184,41 +59184,6 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
-    "ranking.index": {
-      "uri": "ranking",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "ranking.create": {
-      "uri": "ranking\/create",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "ranking.store": {
-      "uri": "ranking",
-      "methods": ["POST"],
-      "domain": null
-    },
-    "ranking.show": {
-      "uri": "ranking\/{ranking}",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "ranking.edit": {
-      "uri": "ranking\/{ranking}\/edit",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "ranking.update": {
-      "uri": "ranking\/{ranking}",
-      "methods": ["PUT", "PATCH"],
-      "domain": null
-    },
-    "ranking.destroy": {
-      "uri": "ranking\/{ranking}",
-      "methods": ["DELETE"],
-      "domain": null
-    },
     "contact.create": {
       "uri": "contact",
       "methods": ["GET", "HEAD"],

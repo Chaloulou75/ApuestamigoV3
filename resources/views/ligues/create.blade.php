@@ -12,7 +12,7 @@
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline @error('name') bg-red-dark @enderror" id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name">
               @error('name')
-                  <p class="text-julienred text-xs italic"><strong>{{ $message }}</strong></p>    
+                  <p class="text-julienred text-xs italic mt-1"><strong>{{ $message }}</strong></p>    
               @enderror
           
       </div>

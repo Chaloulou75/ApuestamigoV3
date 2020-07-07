@@ -79,6 +79,7 @@ return [
   'Home' => 'Local',
   'Away' => 'Visitante',
   'Points' => 'Puntos',
+  'There is no game yet.' => 'No hay partido todavía.',
   'What\'s the name of your league?'=> 'Que es el nombre de tu liga?',
   'Insert the token of the league' => 'Insertar el token de la liga',
   'Hey' => 'Hola',
@@ -105,7 +106,8 @@ return [
   'Delete my account' => 'Suprimir mi cuenta',
   'your profile has been deleted' => 'su perfil ha sido eliminado',
   'Sorry you have to be the owner to delete the league' => 'Lo sentimos, debes ser el propietario para eliminar la liga',
-
+  'Sorry you have to be the owner to change the league' => 'Lo sentimos, debes ser el propietario para cambiar la liga',
+  
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Tus apuestas estan registradas, suerte!',
   'Yeah! your bets are registered and updated! Good luck!' => 'Tus apuestas estan registradas y actualizadas, suerte!',
