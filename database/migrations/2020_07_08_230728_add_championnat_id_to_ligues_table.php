@@ -14,7 +14,7 @@ class AddChampionnatIdToLiguesTable extends Migration
     public function up()
     {
         Schema::table('ligues', function (Blueprint $table) {
-            $table->unsignedBigInteger('championnat_id')->default('1')->onDelete('cascade')->after('id');
+            $table->unsignedBigInteger('championnat_id')->default('1')->after('id');
             $table->foreign('championnat_id')->references('id')->on('championnats');
         });
 
