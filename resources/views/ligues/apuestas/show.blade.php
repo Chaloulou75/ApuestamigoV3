@@ -6,7 +6,7 @@
 
   	@include('layouts/partials/navLigue')  
 
-  	@livewire('next-game')
+  	@livewire('next-game', ['ligue' => $ligue])
 </div>
   
 <div class="w-full text-francagris md:px-4">
