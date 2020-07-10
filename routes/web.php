@@ -55,6 +55,8 @@ Route::group(
 
 	Route::resource('equipes', 'EquipeController')->middleware('admin');
 
+	Route::resource('championnats', 'ChampionnatController')->middleware('admin');
+
 	Route::resource('datejournees', 'DateJourneeController')->middleware('admin');
 
 	Route::get('/donate', 'StripeController@index')->name('donate.index');
@@ -68,6 +70,7 @@ Route::group(
 	    Route::get('/count-points/{journee}', 'AdminController@countPoints')->name('apuestas.points');
 	    Route::get('/apuestasorphelines', 'AdminController@apuestasorphelines')->name('apuestasorphelines');
 	    Route::delete('/orphansdestroy/{orphan}', 'AdminController@orphansdestroy')->name('orphansdestroy');
+	    Route::get('/seasonfinished/{championnat}', 'AdminController@seasonfinished')->name('seasonfinished');
 	});
 
 });

@@ -130,6 +130,8 @@ class ProfileController extends Controller
             $user= Auth::user();
         } 
 
+        $userMatch = Match::where('user_id', $user->id)->delete();
+
         $user->delete();
 
         return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __( 'all.your profile has been deleted'));

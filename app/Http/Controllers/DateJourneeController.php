@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Championnat;
 use App\DateJournee;
 use Auth;
 use Carbon\Carbon;
@@ -30,7 +31,7 @@ class DateJourneeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $datejournees = DateJournee::orderByDesc('timejournee')->get();
+        $datejournees = DateJournee::orderByDesc('championnat_id', 'timejournee')->get();
 
         return view('/pages/datejournees/index', compact('datejournees', 'user'));
     }
@@ -42,9 +43,10 @@ class DateJourneeController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();        
+        $user = Auth::user();
+        $championnats = Championnat::where('finished', false)->get();        
 
-        return view('/pages/datejournees/create', compact('user'));
+        return view('/pages/datejournees/create', compact('user', 'championnats'));
     }
 
     /**
@@ -57,6 +59,7 @@ class DateJourneeController extends Controller
     {
         //dd($request);
         $validator = Validator::make($request->all(),[
+                'championnat_id' => 'required',
                 'numerojournee' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
@@ -72,6 +75,7 @@ class DateJourneeController extends Controller
         $timejournee = Carbon::parse($request->input('timejournee'), 'Europe/Paris');
 
         $data = array(
+            'championnat_id'=> $request->championnat_id,
             'numerojournee'=> $request->numerojournee,
             'namejournee' => $request->namejournee,
             'timejournee' => $timejournee, 
@@ -102,9 +106,10 @@ class DateJourneeController extends Controller
      */
     public function edit(DateJournee $datejournee)
     {
-        $user = Auth::user();        
-
-        return view('/pages/datejournees/edit', $datejournee, compact('datejournee', 'user'));
+        $user = Auth::user(); 
+        $championnats = Championnat::where('finished', false)->get();        
+        
+        return view('/pages/datejournees/edit', $datejournee, compact('datejournee', 'user', 'championnats'));
     }
 
     /**
@@ -119,6 +124,7 @@ class DateJourneeController extends Controller
         $datejournee = DateJournee::where('id', $datejournee->id)->firstOrFail();
 
         $validator = Validator::make($request->all(),[
+                'championnat_id' => 'required',
                 'numerojournee' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
@@ -131,6 +137,7 @@ class DateJourneeController extends Controller
                         ->withInput();
         }
 
+        $datejournee->championnat_id= $request->input('championnat_id');
         $datejournee->numerojournee= $request->input('numerojournee');
         $datejournee->namejournee = $request->input('namejournee');
         $datejournee->timejournee = Carbon::parse($request->input('timejournee'), 'Europe/Paris');
@@ -138,7 +145,7 @@ class DateJourneeController extends Controller
 
         $datejournee->save();
 
-        return redirect()->back()->with('message.level', 'success')->with('message.content', __( ' journée mise à jour'));
+        return redirect()->back()->with('message.level', 'success')->with('message.content', __( 'Journée mise à jour'));
     }
 
     /**
@@ -150,6 +157,6 @@ class DateJourneeController extends Controller
     public function destroy(DateJournee $datejournee)
     {
         $datejournee->delete();
-        return redirect()->back()->with('message.level', 'success')->with('message.content', __( ' journée supprimée'));
+        return redirect()->back()->with('message.level', 'success')->with('message.content', __( 'Journée supprimée'));
     }
 }

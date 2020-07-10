@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ {User, Equipe, Game};
+use App\Championnat;
 use App\DateJournee;
 use App\Http\Requests\StoreGame;
 use Auth;
@@ -46,9 +47,10 @@ class GameController extends Controller
     {
         $user = Auth::user();
         $journees = DateJournee::orderBy('timejournee')->get();
-        $equipes = Equipe::all();        
+        $equipes = Equipe::all();
+        $championnats = Championnat::where('finished', false)->get();          
 
-        return view('/pages/games/create', compact('equipes', 'journees', 'user'));
+        return view('/pages/games/create', compact('championnats', 'equipes', 'journees', 'user'));
     }
 
     /**
@@ -61,13 +63,16 @@ class GameController extends Controller
     {
         $validatedData = $request->validated();
 
+        $championnat = $request->input('championnat_id');
         $journee = $request->input('journee');
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
 
         $game = Game::updateOrCreate(
-                    ['date_journees_id' => $journee, 'equipe1_id' => $equipe1],
+                    ['championnat_id'=> $championnat, 
+                    'date_journees_id' => $journee,
+                    'equipe1_id' => $equipe1],
                     ['equipe2_id' => $equipe2,
                     'gamedate' => $dategame]
                 );
@@ -101,9 +106,10 @@ class GameController extends Controller
 
         $game = Game::with(['homeTeam', 'awayTeam', 'journee'])->where('id', $id)->firstOrFail();
 
-        $equipes = Equipe::all();        
+        $equipes = Equipe::all();
+        $championnats = Championnat::where('finished', false)->get();        
 
-        return view('/pages/games/edit', compact('equipes', 'journees', 'game', 'user'));
+        return view('/pages/games/edit', compact('championnats', 'equipes', 'journees', 'game', 'user'));
     }
 
     /**
@@ -119,12 +125,14 @@ class GameController extends Controller
 
         $game = Game::with(['homeTeam', 'awayTeam'])->where('id', $game->id)->firstOrFail();
 
+        $championnat = $request->input('championnat_id');
         $journee = $request->input('journee');
         $equipe1 = $request->input('equipe1_id');
         $equipe2 = $request->input('equipe2_id');
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
 
         $game->update([
+                    'championnat_id'=> $championnat,
                     'date_journees_id' => $journee, 
                     'equipe1_id' => $equipe1,
                     'equipe2_id' => $equipe2,

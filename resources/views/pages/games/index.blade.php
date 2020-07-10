@@ -20,6 +20,7 @@
 			<ul class="py-2 list-disc">
 				@foreach($games as $key => $game)
 					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">
+						{{ $game->championnat->name }},
 						Journée <span class="text-blue-500 italic">
 							{{ $game->id }}: 
 							@isset($game->journee->namejournee)

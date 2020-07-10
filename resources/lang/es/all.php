@@ -107,6 +107,7 @@ return [
   'your profile has been deleted' => 'su perfil ha sido eliminado',
   'Sorry you have to be the owner to delete the league' => 'Lo sentimos, debes ser el propietario para eliminar la liga',
   'Sorry you have to be the owner to change the league' => 'Lo sentimos, debes ser el propietario para cambiar la liga',
+  'choose a championship'=> 'Elegir un campeonato',
   
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Tus apuestas estan registradas, suerte!',

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Championnat;
 use App\Ligue;
+use App\Repositories\DateRepository;
 use App\User;
 use Auth;
-use App\Repositories\DateRepository;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -33,7 +34,7 @@ class LigueController extends Controller
             $user= Auth::user();
 
             //les ligues du user connecté
-            $ligues = $user->ligues()->latest()->get();
+            $ligues = $user->ligues()->where('finished', false)->latest()->get();
 
             return view('/ligues', compact('ligues', 'user'));
         }
@@ -52,7 +53,8 @@ class LigueController extends Controller
         // formulaire de creation d'une ligue, doit générer un token aléatoire pour inviter ses potes
         if (Auth::user())
         {
-            return view('/ligues/create');
+            $championnats = Championnat::where('finished', false)->get();
+            return view('/ligues/create', compact('championnats'));
         }
 
         return redirect()->guest('login');
@@ -71,10 +73,12 @@ class LigueController extends Controller
             $name = $request->input('name');
             $token = Str::uuid('name')->toString();
             $creator_id = Auth::user()->id;
+            $championnat = $request->input('championnat_id');
 
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:2|max:100',
                 'token' => 'unique',
+                'championnat_id' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -82,11 +86,12 @@ class LigueController extends Controller
                             ->withErrors($validator)
                             ->withInput();
             }
-
+            
             $ligue = Ligue::create([
                 'name' => $name,
                 'token' => $token,
-                'creator_id' => $creator_id,        
+                'creator_id' => $creator_id,
+                'championnat_id' => $championnat,       
             ]); 
 
             //lié le user avec la ligue créé
@@ -249,7 +254,7 @@ class LigueController extends Controller
 
     public function classement(Ligue $ligue)
     {  
-        $journee = $this->DateRepository->dateJournee(); 
+        $journee = $this->DateRepository->dateJournee($ligue); 
   
         return view('/ligues/classement', $ligue, compact('ligue', 'journee'));        
     }

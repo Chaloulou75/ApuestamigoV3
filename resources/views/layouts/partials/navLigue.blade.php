@@ -1,5 +1,6 @@
-<div class="bg-white border-t-4 border-francaverde rounded-b text-francagris px-4 py-3 mb-4 {{-- transition-none --}}">
+<div class="bg-white border-t-4 border-francaverde rounded-b text-francagris px-4 py-3 mb-4">
   <h1 class="text-center text-3xl font-medium">{{ $ligue->name }}</h1>
+  <p class="text-center text-sm mt-1">{{$ligue->championnat->name}}</p>
 
   <div class="sm:flex block justify-between text-sm lg:text-base p-2">
 

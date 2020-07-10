@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipe extends Model
 {
     protected $fillable = [
-        'name', 'logo', 'groupe', 'logourl'
+        'name', 'logo', 'groupe', 'logourl', 'championnat_id',
     ];
 
     public function games()
@@ -18,5 +18,10 @@ class Equipe extends Model
     public function users()
     {
         return $this->hasMany(User::class);        
+    }
+
+    public function championnat()
+    {
+        return $this->belongsTo(Championnat::class, 'championnat_id');        
     }
 }

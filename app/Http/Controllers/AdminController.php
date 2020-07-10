@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ {User, Equipe, Game, Ligue, Match};
+use App\ {User, Equipe, Game, Ligue, Match, Championnat};
 use App\DateJournee;
 use App\Repositories\DateRepository;
 use Auth;
@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $datejournees = DateJournee::orderBy('timejournee')->get();
+        $datejournees = DateJournee::orderBy('timejournee', 'asc')->get();
         
         return view('pages.admin.adminPage', compact('datejournees')); 
     }
@@ -44,11 +44,11 @@ class AdminController extends Controller
 
             $journee = DateJournee::where('id', $journee)->first();
 
-            $games = Game::where('date_journees_id', '=', $journee->id)->orderBy('id')->get();
+            $games = Game::where('championnat_id', $journee->championnat->id)->where('date_journees_id', $journee->id)->orderBy('id')->get();
 
             $tot= count($request->resultatEq1); 
 
-            $wherePossible = ['ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'date_journees_id'=> $journee->id];
+            $wherePossible = ['championnat_id' => $journee->championnat->id, 'ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'date_journees_id'=> $journee->id];
             $matchs = Match::where($wherePossible)->get();
 
             if( $matchs->count() === 0)
@@ -66,7 +66,8 @@ class AdminController extends Controller
                                                                         
                           $gameid = $game->id;
                           Match::create(
-                          ['date_journees_id' => $journee->id,
+                          ['championnat_id' => $journee->championnat->id,
+                           'date_journees_id' => $journee->id,
                            'game_id' => $gameid,                         
                            'user_id' => $user->id, 
                            'ligue_id' => $ligue->id,                     
@@ -92,7 +93,8 @@ class AdminController extends Controller
                       $gameid = $game->id;                                              
 
                       Match::updateOrCreate(
-                      ['date_journees_id' => $journee->id,
+                      ['championnat_id' => $journee->championnat->id,
+                       'date_journees_id' => $journee->id,
                        'game_id' => $gameid,
                        'user_id' => $user->id, 
                        'ligue_id' => $ligue->id],                     
@@ -110,13 +112,7 @@ class AdminController extends Controller
 
     public function compare($journee)
     {
-        $this->getUsersApuestas($journee);        
-    }
-
-    public function getUsersApuestas($journee)
-    {    
-        $resultsUser = $this->compareApuestas($journee);        
-        return $resultsUser;
+        return $this->compareApuestas($journee);        
     }
 
     public function compareApuestas($journee)
@@ -125,7 +121,11 @@ class AdminController extends Controller
       $journee = DateJournee::where('id', $journee)->first();
       
       // les resultats de l'admin qui est l'user en cours
-      $resultsAdmin = Auth::user()->matchs()->where('date_journees_id', $journee->id)->whereNotNull(['resultatEq1', 'resultatEq2'])->get();
+      $resultsAdmin = Auth::user()->matchs()
+                                ->where('championnat_id', $journee->championnat->id)
+                                ->where('date_journees_id', $journee->id)
+                                ->whereNotNull(['resultatEq1', 'resultatEq2'])
+                                ->get();
 
       foreach ($resultsAdmin as $key => $resultAdmin) 
       {
@@ -134,7 +134,8 @@ class AdminController extends Controller
         $scoreOff2 = $resultAdmin->resultatEq2;
 
         $users = User::with(['ligues', 'matchs' => function ($query) use($journee, $gameId){
-                   $query->where('date_journees_id', $journee->id)
+                   $query->where('championnat_id', $journee->championnat->id)
+                         ->where('date_journees_id', $journee->id)
                          ->where('game_id', $gameId);
                 }])->get();
 
@@ -143,7 +144,8 @@ class AdminController extends Controller
           foreach ($user->ligues as $k => $ligue) 
           {
             // on récupere les matchs ds chaque ligue/journee pour chaque user
-            $apuestas = $user->matchs()->where('date_journees_id', $journee->id)
+            $apuestas = $user->matchs()->where('championnat_id', $journee->championnat->id)
+                                       ->where('date_journees_id', $journee->id)
                                        ->where('ligue_id', $ligue->id)
                                        ->where('game_id', $gameId)
                                        ->whereNotNull(['resultatEq1', 'resultatEq2'])
@@ -164,6 +166,7 @@ class AdminController extends Controller
               {
                 echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 3 point!"."<br>";
                 Match::where('date_journees_id','=', $journee->id)
+                      ->where('championnat_id', $journee->championnat->id)
                       ->where('user_id','=', $user->id)
                       ->where('ligue_id','=', $ligue->id)
                       ->where('game_id','=', $apuestaGameId)
@@ -174,6 +177,7 @@ class AdminController extends Controller
               {
                 echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
                 Match::where('date_journees_id','=', $journee->id)
+                      ->where('championnat_id', $journee->championnat->id)
                       ->where('user_id','=', $user->id)
                       ->where('ligue_id','=', $ligue->id)
                       ->where('game_id','=', $apuestaGameId)
@@ -184,6 +188,7 @@ class AdminController extends Controller
               {
                 echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
                 Match::where('date_journees_id','=', $journee->id)
+                      ->where('championnat_id', $journee->championnat->id)
                       ->where('user_id','=', $user->id)
                       ->where('ligue_id','=', $ligue->id)
                       ->where('game_id','=', $apuestaGameId)
@@ -194,6 +199,7 @@ class AdminController extends Controller
               {
                 echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
                 Match::where('date_journees_id','=', $journee->id)
+                      ->where('championnat_id', $journee->championnat->id)
                       ->where('user_id','=', $user->id)
                       ->where('ligue_id','=', $ligue->id)
                       ->where('game_id','=', $apuestaGameId)
@@ -205,6 +211,7 @@ class AdminController extends Controller
                 echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." Désolé mais 0 point!"."<br>";
 
                 Match::where('date_journees_id','=', $journee->id)
+                      ->where('championnat_id', $journee->championnat->id)
                       ->where('user_id','=', $user->id)
                       ->where('ligue_id','=', $ligue->id)
                       ->where('game_id','=', $apuestaGameId) 
@@ -216,12 +223,9 @@ class AdminController extends Controller
       }
     }
 
-    public function countPoints($journee)
-    {
-        // comptage des points.
-        $countPoints = $this->countPointsByDay($journee);
-
-        return $countPoints;         
+    public function countPoints($journee)// comptage des points.
+    {                
+        return $this->countPointsByDay($journee);        
     }
 
     public function countPointsByDay($journee)
@@ -229,7 +233,8 @@ class AdminController extends Controller
       $journee = DateJournee::where('id', $journee)->first();
 
       $users = User::with(['ligues', 'matchs' => function ($query) use($journee) {
-                   $query->where('date_journees_id', $journee->id);
+                   $query->where('championnat_id', $journee->championnat->id)
+                         ->where('date_journees_id', $journee->id);
            }])->get(); // on récupère tous les joueurs ->where('date_journees_id', 'like', '%'. $journee->id .'%')
 
       foreach ($users as $user) 
@@ -237,10 +242,16 @@ class AdminController extends Controller
         foreach ($user->ligues as $key => $ligue) 
         {
           // points par journee
-          $pointMatch = $user->matchs()->where('date_journees_id', $journee->id)->where('ligue_id', $ligue->id)->get();
+          $pointMatch = $user->matchs()
+                              ->where('championnat_id', $journee->championnat->id)
+                              ->where('date_journees_id', $journee->id)
+                              ->where('ligue_id', $ligue->id)
+                              ->get();
+
           $totJournee = $pointMatch->sum('pointMatch');
 
           echo "Pour la journée n° ". $journee->namejournee.'- '. $journee->season .', '. $user->name .' a eu '. $totJournee .' points dans la ligue '. $ligue->name . "<br>";
+
           // points totaux du joueur
           $pointTot = $user->matchs()->where('ligue_id', $ligue->id)->get();
           $totalPoints = $pointTot->sum('pointMatch');
@@ -253,8 +264,6 @@ class AdminController extends Controller
         }
       }
     }
-
-    
 
     public function apuestasorphelines()
     {
@@ -272,6 +281,7 @@ class AdminController extends Controller
                       ->orWhereNotIn('user_id', $users_ids)
                       ->orWhereNull('user_id')
                       ->orWhereNull('date_journees_id')
+                      ->orWhereNull('championnat_id')
                       ->get();
 
       return view('/pages/admin/apuestasorphelines', compact('orphans'));
@@ -282,8 +292,26 @@ class AdminController extends Controller
       $orphanmatch = Match::where('id', $orphan)->first();
       $orphanmatch->delete();
 
-      return back()->with('message.level', 'success')->with('message.content', __('match supprimé'));
+      return back()->with('message.level', 'success')->with('message.content', __('Match supprimé'));
 
     }
+
+    public function seasonfinished(Championnat $championnat)
+    {
+      if($championnat->finished == '0')
+      {
+        $championnat = Championnat::find($championnat->id);
+        $championnat->finished = '1';
+        $championnat->save();
+
+        //uptade all leagues where $championnat_id = $championnat to finished = true
+        $liguesterminees = Ligue::where('championnat_id', $championnat->id)
+                                  ->update(['finished' => '1']);
+        
+        return back()->with('message.level', 'success')->with('message.content', __('Saison ' . $championnat->name . ' et Ligues terminées'));
+      }
+
+      return back()->with('message.level', 'success')->with('message.content', __('Saison ' . $championnat->name . ' déjà terminée'));
+    } 
 
 } 

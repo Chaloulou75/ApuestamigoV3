@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => __('nav.creer')])
 
 @section('content')
 
@@ -15,6 +15,25 @@
                   <p class="text-julienred text-xs italic mt-1"><strong>{{ $message }}</strong></p>    
               @enderror
           
+      </div>
+      <div class="mb-4">
+        <label for="championnat_id" class="block text-white text-base font-medium mb-2">
+            {{ __('all.choose a championship') }}
+        </label>            
+        <select id="championnat_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('championnat_id') ? ' bg-red-dark' : '' }}" name="championnat_id" value="{{ old('championnat_id') }}" required> 
+
+          @foreach($championnats as $championnat)
+
+          <option class="py-4" value="{{ $championnat->id }}">{{ $championnat->name}} </option>
+
+          @endforeach     
+        </select>
+
+        @if ($errors->has('championnat_id'))
+            <span class="mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
+                <strong>{{ $errors->first('championnat_id') }}</strong>
+            </span>
+        @endif            
       </div>
       <div class="flex items-center justify-between">
         <button class="w-full bg-francagris border-2 border-francaverde text-white hover:text-francaverde font-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" type="submit">

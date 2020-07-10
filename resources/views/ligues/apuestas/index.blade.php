@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app' , ['title' => __('all.Bets') ])
 
 @section('content')
 
@@ -6,7 +6,7 @@
 
   	@include('layouts/partials/navLigue')  
 
-	@livewire('next-game')
+	@livewire('next-game', ['ligue' => $ligue])
 
 </div>
   

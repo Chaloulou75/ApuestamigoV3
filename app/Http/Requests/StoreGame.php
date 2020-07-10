@@ -24,6 +24,7 @@ class StoreGame extends FormRequest
     public function rules()
     {
         return [
+            'championnat_id' => 'required',
             'journee' => 'required',
             'equipe1_id' => 'required',
             'equipe2_id' => 'required',

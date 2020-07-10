@@ -13,7 +13,7 @@ class Match extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'ligue_id', 'date_journees_id', 'game_id', 'resultatEq1', 'resultatEq2', 'pointMatch',
+        'championnat_id', 'user_id', 'ligue_id', 'date_journees_id', 'game_id', 'resultatEq1', 'resultatEq2', 'pointMatch',
     ];
 
     public function users()
@@ -34,5 +34,10 @@ class Match extends Model
     public function journee()
     {
         return $this->belongsTo(DateJournee::class, 'date_journees_id');        
+    }
+
+    public function championnat()
+    {
+        return $this->belongsTo(Championnat::class, 'championnat_id');        
     }
 }

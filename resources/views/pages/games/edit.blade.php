@@ -5,8 +5,7 @@
 <div class="w-full md:w-4/5 mx-auto p-1">
 
 	<h3 class="text-base text-center text-white py-2">
-		Hey <span class="text-francaverde">{{ $user->name }}</span>, Mets à jour le match:</br>
-		Journée <span class="text-blue-500">@isset($game->journee->namejournee){{ $game->journee->namejournee }} {{ $game->journee->season }}@endisset</span> Match qui oppose:
+		Hey <span class="text-francaverde">{{ $user->name }}</span>, Mets à jour le match:</br> {{$game->championnat->name }}, Journée <span class="text-blue-500">@isset($game->journee->namejournee){{ $game->journee->namejournee }} {{ $game->journee->season }}@endisset</span> Match qui oppose:
 		<span class="text-francaverde">{{ $game->homeTeam->name }}</span> et <span class="text-francaverde">{{ $game->awayTeam->name }}</span>, prévu le <span class="italic">{{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }}</span>
 	</h3>
 	<p class="text-base text-center text-francaverde py-2"><a href="{{route('games.index')}}">Retourner à la liste des matchs</a></p>
@@ -26,11 +25,31 @@
 	  		@method('PUT')
 	  		@csrf
 	  		@honeypot
+	  		
+	  	<div class="mb-4">
+	        <label for="championnat_id" class="block text-white text-base font-medium mb-2">
+	            {{ __('all.choose a championship') }}
+	        </label>            
+	        <select id="championnat_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('championnat_id') ? ' bg-red-dark' : '' }}" name="championnat_id" value="{{ old('championnat_id') }}" placeholder="{{$game->championnat_id}}" required> 
+
+	          @foreach($championnats as $championnat)
+
+	          <option class="py-4" value="{{ $championnat->id }}">{{ $championnat->name}} </option>
+
+	          @endforeach     
+	        </select>
+
+	        @if ($errors->has('championnat_id'))
+	            <span class="mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
+	                <strong>{{ $errors->first('championnat_id') }}</strong>
+	            </span>
+	        @endif            
+	    </div>	
 	  	<div class="mb-4">
 	      <label class="block text-white text-sm font-base mb-2" for="journee">
 	        Journée
 	      </label>
-	      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="journee" name="journee" placeholder="">
+	      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="journee" name="journee" placeholder="{{ $game->journee->namejournee }}">
 		    @foreach($journees as $journee)
 			    <option value="{{ $journee->id }}" > {{ $journee->namejournee }}</option>
 			@endforeach
@@ -42,7 +61,7 @@
 	      <label class="block text-white text-sm font-base mb-2" for="equipe1_id">
 	        Home Team
 	      </label>
-	      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="equipe1_id" name="equipe1_id"  placeholder="{{old('equipe1_id')}}">
+	      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="equipe1_id" name="equipe1_id"  placeholder="{{ $game->homeTeam->name }}">
 	      	@foreach ($equipes as $equipe)
 
 				<option value="{{ $equipe->id }}">{{ $equipe->name }}</option>
@@ -52,7 +71,7 @@
 	    </div>
 	    <div class="mb-4">
 	      <label class="block text-white text-sm font-base mb-2" for="equipe2_id"> Away Team</label>
-	      <select class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="equipe2_id" name="equipe2_id" placeholder="{{old('equipe2_id')}}">
+	      <select class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="equipe2_id" name="equipe2_id" placeholder="{{ $game->awayTeam->name }}">
 	      @foreach ($equipes as $equipe)
 
 				<option value="{{ $equipe->id }}">{{ $equipe->name }}</option>

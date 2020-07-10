@@ -20,7 +20,7 @@
 		<div class="text-white">			
 			<ul class="py-2 list-disc">
 				@foreach($datejournees as $datejournee)
-					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2"> {{$datejournee->numerojournee}} - {{$datejournee->namejournee }} le <span class="italic text-gray-400">{{ \Carbon\Carbon::parse($datejournee->timejournee)->isoFormat('dddd Do MMMM YYYY H:mm') }}</span> 
+					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">{{ $datejournee->championnat->name }}, {{$datejournee->numerojournee}} - {{$datejournee->namejournee }} le <span class="italic text-gray-400">{{ \Carbon\Carbon::parse($datejournee->timejournee)->isoFormat('dddd Do MMMM YYYY H:mm') }}</span> 
 					 <a class="px-2 text-francaverde" href="{{ route('datejournees.edit', ['datejournee' => $datejournee]) }}"> Edit {{$datejournee->namejournee}} </a>
 						<form class="inline-block" method="POST" action="{{route('datejournees.destroy', $datejournee)}}"> 
 					  		@csrf 

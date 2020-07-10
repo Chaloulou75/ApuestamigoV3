@@ -107,6 +107,7 @@ return [
   'your profile has been deleted' => 'your profile has been deleted',
   'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
   'Sorry you have to be the owner to change the league' => 'Sorry you have to be the owner to change the league',
+  'choose a championship' => 'Choose a championship', 
 
   'Wanna`\' buy me a beer?' => 'Wanna`\' buy me a beer?',
   'Full Name on card' => 'First name and last name on credit card',

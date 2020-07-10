@@ -12,7 +12,7 @@ class Ligue extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'token', 'creator_id',
+        'name', 'token', 'creator_id', 'finished', 'championnat_id',
     ];
 
 
@@ -30,6 +30,11 @@ class Ligue extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id'); 
+    }
+
+    public function championnat()
+    {
+        return $this->belongsTo(Championnat::class, 'championnat_id'); 
     }
     
 }

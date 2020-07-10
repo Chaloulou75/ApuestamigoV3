@@ -8,13 +8,22 @@ use Carbon\Carbon;
 
 class NextGame extends Component
 {
+    public $ligue;
     public $nextGameDate;
+
+    public function mount($ligue)
+    {
+        $this->ligue = $ligue;
+    }
 
     public function diffWithNextGame()
     {
     	$now = Carbon::now();
 
-    	$nextGame = Game::where('gamedate', '>', $now)->orderBy('gamedate', 'asc')->first();
+    	$nextGame = Game::where('championnat_id', $this->ligue->championnat->id)
+                        ->where('gamedate', '>', $now)
+                        ->orderBy('gamedate', 'asc')
+                        ->first();
         
         if($nextGame)
         {    

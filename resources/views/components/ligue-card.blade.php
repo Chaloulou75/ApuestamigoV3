@@ -6,12 +6,13 @@
 		    </p>
 		    <div class="text-white hover:text-francaverde font-medium tracking-wide text-lg text-center truncate py-2 px-4">
 		      	<a href="{{ route('ligues.show', $ligue) }}" >
-					{{ $ligue->name }}
+					<p>{{ $ligue->name }}</p>
+					<p class="text-xs mt-1 text-francaverde">{{$ligue->championnat->name}}</p>
 				</a>
 			</div>		      				      		
 	    </div>
 	    <div class="flex items-center justify-between">
-	      <img class="w-10 h-10 rounded-full mr-4" src="/img/logo.png" alt="logoChampions">
+	      <img class="w-10 h-10 mr-4"  loading="lazy" src="{{ $ligue->championnat->logourl ? url($ligue->championnat->logourl) : URL::to('/img/' .$ligue->championnat->logo) }}" loading="lazy" alt="championnat">
 	      <div class="text-xs tracking-wide">
 	        <p class="text-gray-300 truncate">{{ __('all.created by:') }} 
 	        	<span class="font-medium text-francaverde"> {{ $ligue->creator->name }} </span>

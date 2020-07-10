@@ -12,7 +12,7 @@ class Game extends Model
      * @var array
      */
     protected $fillable = [
-        'equipe1_id','equipe2_id', 'date_journees_id', 'gamedate' 
+        'equipe1_id','equipe2_id', 'date_journees_id', 'gamedate', 'championnat_id', 
     ];
 
     public function homeTeam()
@@ -33,6 +33,11 @@ class Game extends Model
     public function journee()
     {
         return $this->belongsTo(DateJournee::class, 'date_journees_id');        
+    }
+
+    public function championnat()
+    {
+        return $this->belongsTo(Championnat::class, 'championnat_id');        
     }
 
 }

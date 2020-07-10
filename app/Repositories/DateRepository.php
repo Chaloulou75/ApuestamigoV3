@@ -2,32 +2,18 @@
 
 namespace App\Repositories;
 
-use Carbon\Carbon;
+use App\Championnat;
 use App\DateJournee;
+use Carbon\Carbon;
 
 class DateRepository
 {
-	public function dateJournee()
+    public function dateJournee($ligue)
     {
         $now = Carbon::now();
 
-        $journee = DateJournee::whereDate('timejournee', '>=', $now)->orderBy('timejournee', 'asc')->first();
-        return $journee;     
-    }
-
-    public function year()
-    {
-        $now = Carbon::now();
-        $limite = Carbon::create(2020, 8, 31, 23, 59, 00, 'Europe/Paris');
-
-        if($now->lessThan($limite))
-        {
-          $year = '2020'; 
-        }
-        else
-        {
-            $year = '2021';
-        }
-        return $year;        
-    }   
+        $journee = DateJournee::where('championnat_id', $ligue->championnat->id)->whereDate('timejournee', '>=', $now)->orderBy('timejournee', 'asc')->first();
+        //dd($journee);
+        return $journee;    
+    }  
 }

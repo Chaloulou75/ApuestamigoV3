@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\ {User, Equipe, Game};
+use App\Championnat;
 use Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class EquipeController extends Controller
@@ -27,8 +28,9 @@ class EquipeController extends Controller
     {
         $user = Auth::user();
         $equipes = Equipe::all();
+        $championnats = Championnat::where('finished', false)->get(); 
 
-        return view('/pages/equipes/index', compact('equipes', 'user'));
+        return view('/pages/equipes/index', compact('championnats', 'equipes', 'user'));
     }
 
     /**
@@ -38,7 +40,8 @@ class EquipeController extends Controller
      */
     public function create()
     {
-        return view('/pages/equipes/create');
+        $championnats = Championnat::where('finished', false)->get(); 
+        return view('/pages/equipes/create', compact('championnats'));
     }
 
     /**
@@ -51,7 +54,8 @@ class EquipeController extends Controller
     {
         //dd($request);
         $validator = Validator::make($request->all(),[
-                'name' => 'required|min:3',
+                'championnat_id' => 'required',
+                'name' => 'required|min:2',
                 'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 'groupe' => 'max:1',
             ]);
@@ -74,9 +78,11 @@ class EquipeController extends Controller
         }
 
         $data = array(
+            'championnat_id'=> $request->championnat_id,
             'name'=> $request->name,
             'logo' => basename($path),
-            'logourl' => $url,             
+            'logourl' => $url, 
+            'groupe'=> $request->groupe,            
         );
         
         Equipe::create($data);
@@ -104,7 +110,8 @@ class EquipeController extends Controller
     public function edit(Equipe $equipe)
     {
         //$equipe = Equipe::where('id', $id)->get();
-        return view('/pages/equipes/edit', compact('equipe'));
+        $championnats = Championnat::where('finished', false)->get(); 
+        return view('/pages/equipes/edit', compact('equipe', 'championnats'));
     }
 
     /**
@@ -119,7 +126,8 @@ class EquipeController extends Controller
         //dd($request);
 
         $validator = Validator::make($request->all(),[
-                'name' => 'required|min:3',
+                'championnat_id' => 'required',
+                'name' => 'required|min:2',
                 'logo' => 'image|mimes:jpeg,png,jpg,gif,svg',
                 'groupe' => 'max:1',
             ]);
@@ -149,6 +157,7 @@ class EquipeController extends Controller
 
         }
         $equipe->update([
+            'championnat_id'=> $request->championnat_id,
             'name'=> $request->name,
             'groupe' => $request->groupe,             
         ]);

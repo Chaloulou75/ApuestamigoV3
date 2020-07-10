@@ -24,6 +24,25 @@
 		  		@csrf
 		  		@honeypot
 		  	<div class="mb-4">
+		        <label for="championnat_id" class="block text-white text-base font-medium mb-2">
+		            {{ __('all.choose a championship') }}
+		        </label>            
+		        <select id="championnat_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('championnat_id') ? ' bg-red-dark' : '' }}" name="championnat_id" value="{{ old('championnat_id') }}" required> 
+
+		          @foreach($championnats as $championnat)
+
+		          <option class="py-4" value="{{ $championnat->id }}">{{ $championnat->name}} </option>
+
+		          @endforeach     
+		        </select>
+
+		        @if ($errors->has('championnat_id'))
+		            <span class="mt-1 text-sm text-julienred" role="relative px-3 py-3 mb-4 border rounded">
+		                <strong>{{ $errors->first('championnat_id') }}</strong>
+		            </span>
+		        @endif            
+		    </div>	
+		  	<div class="mb-4">
 		      <label class="block text-white text-sm font-base mb-2" for="numerojournee">
 		        Numero journée
 		      </label>
@@ -41,7 +60,31 @@
 		            <option value="11">11</option>
 		            <option value="12">12</option>
 		            <option value="13">13</option>
-
+		            <option value="14">14</option>
+		            <option value="15">15</option>
+		            <option value="16">16</option>
+		            <option value="17">17</option>
+		            <option value="18">18</option>
+		            <option value="19">19</option>
+		            <option value="20">20</option>
+		            <option value="21">21</option>
+		            <option value="22">22</option>
+		            <option value="23">23</option>
+		            <option value="24">24</option>
+		            <option value="25">25</option>
+		            <option value="26">26</option>
+		            <option value="27">27</option>
+		            <option value="28">28</option>
+		            <option value="29">29</option>
+		            <option value="30">30</option>
+		            <option value="31">31</option>
+		            <option value="32">32</option>
+		            <option value="33">33</option>
+		            <option value="34">34</option>
+		            <option value="35">35</option>
+		            <option value="36">36</option>
+		            <option value="37">37</option>
+		            <option value="38">38</option>
 	            </select>
 		    </div>
 
@@ -50,25 +93,57 @@
 		        Nom Journée
 		      </label>
 		      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="namejournee" name="namejournee" placeholder="{{old('namejournee')}}">
-			      	<option value="journee 1" > journée 1</option>
-		            <option value="journee 2" > journée 2</option>
-		            <option value="journee 3" > journée 3</option>
-		            <option value="journee 4" > journée 4</option>
-		            <option value="journee 5" > journée 5</option>
-		            <option value="journee 6" > journée 6</option>
-		            <option value="Huitièmes de finale allers" > Huitièmes de finale allers</option>
-		            <option value="Huitièmes de finale retours" > Huitièmes de finale retours</option>
-		            <option value="Quarts de finale allers" > Quarts de finale allers</option>
-		            <option value="Quarts de finale retours" > Quarts de finale retours</option>
-		            <option value="Demies finale allers" > Demies finale allers</option>
-		            <option value="Demies finale retours" > Demies finale retours</option>
-		            <option value="Finale" > Finale</option>
+			      	<option value="Journee 1" > Journée 1</option>
+		            <option value="Journee 2" > Journée 2</option>
+		            <option value="Journee 3" > Journée 3</option>
+		            <option value="Journee 4" > Journée 4</option>
+		            <option value="Journee 5" > Journée 5</option>
+		            <option value="Journee 6" > Journée 6</option>
+		            <option value="Journee 7" > Journée 7</option>
+		            <option value="Journee 8" > Journée 8</option>
+		            <option value="Journee 9" > Journée 9</option>
+		            <option value="Journee 10" > Journée 10</option>
+		            <option value="Journee 11" > Journée 11</option>
+		            <option value="Journee 12" > Journée 12</option>
+		            <option value="Journee 13" > Journée 13</option>
+		            <option value="Journee 14" > Journée 14</option>
+		            <option value="Journee 15" > Journée 15</option>
+		            <option value="Journee 16" > Journée 16</option>
+		            <option value="Journee 17" > Journée 17</option>
+		            <option value="Journee 18" > Journée 18</option>
+		            <option value="Journee 19" > Journée 19</option>
+		            <option value="Journee 20" > Journée 20</option>
+		            <option value="Journee 21" > Journée 21</option>
+		            <option value="Journee 22" > Journée 22</option>
+		            <option value="Journee 23" > Journée 23</option>
+		            <option value="Journee 24" > Journée 24</option>
+		            <option value="Journee 25" > Journée 25</option>
+		            <option value="Journee 26" > Journée 26</option>
+		            <option value="Journee 27" > Journée 27</option>
+		            <option value="Journee 28" > Journée 28</option>
+		            <option value="Journee 29" > Journée 29</option>
+		            <option value="Journee 30" > Journée 30</option>
+		            <option value="Journee 31" > Journée 31</option>
+		            <option value="Journee 32" > Journée 32</option>
+		            <option value="Journee 33" > Journée 33</option>
+		            <option value="Journee 34" > Journée 34</option>
+		            <option value="Journee 35" > Journée 35</option>
+		            <option value="Journee 36" > Journée 36</option>
+		            <option value="Journee 37" > Journée 37</option>
+		            <option value="Journee 38" > Journée 38</option>
+		            <option value="Huitièmes de finale allers"> Huitièmes de finale allers</option>
+		            <option value="Huitièmes de finale retours">Huitièmes de finale retours</option>
+		            <option value="Quarts de finale allers"> Quarts de finale allers</option>
+		            <option value="Quarts de finale retours"> Quarts de finale retours</option>
+		            <option value="Demies finale allers"> Demies finale allers</option>
+		            <option value="Demies finale retours"> Demies finale retours</option>
+		            <option value="Finale"> Finale</option>
 
 	            </select>
 		    </div>
 
 		    <div class="mb-4">
-		    	<label class="block text-white text-sm font-base mb-2" for="timejournee">Date de la journée:</label>
+		    	<label class="block text-white text-sm font-base mb-2" for="timejournee">Date de la journée: (après le dernier match de la journée)</label>
 
 				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
 					   type="datetime-local" id="timejournee"
