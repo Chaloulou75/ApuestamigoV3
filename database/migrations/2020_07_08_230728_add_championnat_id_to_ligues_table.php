@@ -15,27 +15,27 @@ class AddChampionnatIdToLiguesTable extends Migration
     {
         Schema::table('ligues', function (Blueprint $table) {
             $table->unsignedBigInteger('championnat_id')->default('1')->onDelete('cascade')->after('id');
-            $table->foreign('championnat_id')->references('id')->on('championnats')->onUpdate('cascade')->onDelete('cascade')->onDelete('cascade');
+            $table->foreign('championnat_id')->references('id')->on('championnats');
         });
 
         Schema::table('matches', function (Blueprint $table) {
             $table->unsignedBigInteger('championnat_id')->default('1')->after('id');
-            $table->foreign('championnat_id')->references('id')->on('championnats')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('championnat_id')->references('id')->on('championnats');
         });
 
         Schema::table('date_journees', function (Blueprint $table) {
             $table->unsignedBigInteger('championnat_id')->default('1')->after('id');
-            $table->foreign('championnat_id')->references('id')->on('championnats')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('championnat_id')->references('id')->on('championnats');
         });
 
         Schema::table('games', function (Blueprint $table) {
             $table->unsignedBigInteger('championnat_id')->default('1')->after('id');
-            $table->foreign('championnat_id')->references('id')->on('championnats')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('championnat_id')->references('id')->on('championnats');
         });
 
         Schema::table('equipes', function (Blueprint $table) {
             $table->unsignedBigInteger('championnat_id')->default('1')->after('id');
-            $table->foreign('championnat_id')->references('id')->on('championnats')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('championnat_id')->references('id')->on('championnats');
         });
     }
 
