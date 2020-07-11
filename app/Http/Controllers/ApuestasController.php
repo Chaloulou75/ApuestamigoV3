@@ -32,7 +32,10 @@ class ApuestasController extends Controller
 
         //dd($journee);
 
-        $gamesIds = Game::where('championnat_id', $journee->championnat->id)->where('date_journees_id', $journee->id)->orderBy('id')->get('id'); //id des matchs concernés
+        $gamesIds = Game::where('championnat_id', $journee->championnat->id)
+                        ->where('date_journees_id', $journee->id)
+                        ->orderBy('id')
+                        ->get('id'); //id des matchs concernés
         
         if (Auth::user()) 
         {

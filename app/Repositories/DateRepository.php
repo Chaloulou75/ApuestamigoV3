@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Championnat;
 use App\DateJournee;
 use Carbon\Carbon;
 
