@@ -15,30 +15,10 @@
 			</a>
 		</div>
 
-		<div class="text-white">
-			
-			<ul class="py-2 list-disc">
-				@foreach($games as $key => $game)
-					<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">
-						{{ $game->championnat->name }},
-						Journée <span class="text-blue-500 italic">
-							{{ $game->id }}: 
-							@isset($game->journee->namejournee)
-							{{ $game->journee->namejournee }} {{ $game->journee->season }}
-							@endisset
-						</span>
-						: Match qui oppose <span class="text-francaverde">{{$game->homeTeam->name}}</span> vs <span class="text-francaverde">{{$game->awayTeam->name}}</span>, prévu le <span class="italic">{{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm')}}</span>
-						<a class="px-2 text-francaverde" href="{{route('games.edit', $game->id)}}"> Edit Game</a>
-						<form class="inline-block" method="POST" action="{{route('games.destroy', $game)}}"> 
-					  		@csrf 
-					  		@honeypot
-					  		@method('DELETE')
-					  		<button type="submit" class="px-2 text-julienred">Suprimir el partido</button>
-					  	</form>						
-					</li>
-				@endforeach
-			</ul>	
-		</div>	
+		<div class="py-4 flex flex-wrap justify-between">
+			@livewire('admin.list-games', ['championnats' => $championnats])		
+		</div>
+
 </div>
 
 @endsection

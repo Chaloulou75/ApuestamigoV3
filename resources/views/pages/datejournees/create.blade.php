@@ -131,12 +131,12 @@
 		            <option value="Journee 36" > Journée 36</option>
 		            <option value="Journee 37" > Journée 37</option>
 		            <option value="Journee 38" > Journée 38</option>
-		            <option value="Huitièmes de finale allers"> Huitièmes de finale allers</option>
-		            <option value="Huitièmes de finale retours">Huitièmes de finale retours</option>
-		            <option value="Quarts de finale allers"> Quarts de finale allers</option>
-		            <option value="Quarts de finale retours"> Quarts de finale retours</option>
-		            <option value="Demies finale allers"> Demies finale allers</option>
-		            <option value="Demies finale retours"> Demies finale retours</option>
+		            <option value="Huitième de finale aller"> Huitième de finale aller</option>
+		            <option value="Huitième de finale retours">Huitième de finale retour</option>
+		            <option value="Quart de finale allers"> Quart de finale aller</option>
+		            <option value="Quart de finale retours"> Quart de finale retour</option>
+		            <option value="Demie finale allers"> Demie finale aller</option>
+		            <option value="Demie finale retours"> Demie finale retour</option>
 		            <option value="Finale"> Finale</option>
 
 	            </select>

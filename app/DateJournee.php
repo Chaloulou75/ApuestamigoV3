@@ -14,4 +14,9 @@ class DateJournee extends Model
     {
         return $this->belongsTo(Championnat::class, 'championnat_id');        
     }
+
+    public function games()
+    {
+        return $this->hasMany(Game::class, 'date_journees_id');        
+    }
 }

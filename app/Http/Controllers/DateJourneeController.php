@@ -31,9 +31,10 @@ class DateJourneeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $datejournees = DateJournee::orderByDesc('championnat_id', 'timejournee')->get();
+        $championnats = Championnat::orderByDesc('id')->get();
+        //$datejournees = DateJournee::orderByDesc('championnat_id')->orderByDesc('timejournee')->get();
 
-        return view('/pages/datejournees/index', compact('datejournees', 'user'));
+        return view('/pages/datejournees/index', compact('championnats', 'user'));
     }
 
     /**

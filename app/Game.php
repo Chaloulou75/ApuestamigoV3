@@ -32,7 +32,7 @@ class Game extends Model
 
     public function journee()
     {
-        return $this->belongsTo(DateJournee::class, 'date_journees_id');        
+        return $this->belongsTo(DateJournee::class,'date_journees_id');  //      
     }
 
     public function championnat()
