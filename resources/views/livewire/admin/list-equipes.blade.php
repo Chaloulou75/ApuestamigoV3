@@ -17,23 +17,24 @@
             x-transition:leave="transition duration-100 transform ease-in"
             x-transition:leave-end="opacity-0 scale-90">
 
-		<ul class="list-disc ">	
+		<ul class="list-none">	
     	@forelse($championnat->equipes as $equipe)		
-			<div class="border-b border-francaverde">
-				<li class="text-sm py-2 px-4">
+			<div class="border-b border-francaverde py-2 px-2">
+				<li class="text-sm py-2 px-2">
 					<img class="inline w-10 h-10" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}">
-					id <span class="text-gray-300">{{$equipe->id}}</span>:
-					<span class="text-francaverde">En {{$equipe->championnat->name}}</span>
-					<span class="text-gray-300">{{$equipe->name}}</span>													
+					<span class="text-xs text-gray-300">id: {{$equipe->id}}</span>-
+					<span class="text-francaverde">{{$equipe->name}}</span>													
 				</li>
-		    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{route('equipes.edit', $equipe)}}"> Edit {{$equipe->name}}
-		        </a>
-		        <form class="inline-block" method="POST" action="{{route('equipes.destroy', $equipe)}}">
-		         	@csrf 
-			  		@honeypot
-			  		@method('DELETE')
-			  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"> Suprimir {{$equipe->name}}</button>
-			  	</form>	
+				<div class="flex justify-between">
+					<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-xs py-2 px-4" href="{{route('equipes.edit', $equipe)}}"> Edit
+			        </a>
+			        <form class="inline-block" method="POST" action="{{route('equipes.destroy', $equipe)}}">
+			         	@csrf 
+				  		@honeypot
+				  		@method('DELETE')
+				  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-xs py-2 px-4"> Suprimir</button>
+				  	</form>	
+				</div>		    	
 		  	</div>   		
 	    @empty
 	    	<li class="py-4 px-2"> Pas d\'équipe pour l'instant</li>		

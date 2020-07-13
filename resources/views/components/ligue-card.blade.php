@@ -12,11 +12,11 @@
 			</div>		      				      		
 	    </div>
 	    <div class="flex items-center justify-between">
-	      <img class="w-10 h-10 mr-4"  loading="lazy" src="{{ $ligue->championnat->logourl ? url($ligue->championnat->logourl) : URL::to('/img/' .$ligue->championnat->logo) }}" loading="lazy" alt="championnat">
+	      <img class="w-10 h-10 mr-4" loading="lazy" src="{{ $ligue->championnat->logourl ? url($ligue->championnat->logourl) : URL::to('/img/' .$ligue->championnat->logo) }}" alt="championnat">
 	      <div class="text-xs tracking-wide">
 	        <p class="text-gray-300 truncate">{{ __('all.created by:') }} 
 	        	<span class="font-medium text-francaverde"> {{ $ligue->creator->name }} </span>
-	        	 	<img class="inline w-10 h-8 mx-2" loading="lazy" src="{{ $ligue->creator->equipe->logourl ? url($ligue->creator->equipe->logourl) : URL::to('/img/' .$ligue->creator->equipe->logo) }}" loading="lazy" alt="club">
+	        	<img class="inline w-10 h-8 mx-2" loading="lazy" src="{{ $ligue->creator->equipe->logourl ? url($ligue->creator->equipe->logourl) : URL::to('/img/' .$ligue->creator->equipe->logo) }}" alt="club">
 	        </p>	        
 	      </div>
 	    </div>

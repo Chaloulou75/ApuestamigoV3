@@ -16,25 +16,28 @@
             x-transition:leave="transition duration-100 transform ease-in"
             x-transition:leave-end="opacity-0 scale-90">
 
-		<ul class="list-disc">
+		<ul class="list-none">
     	@forelse($championnats as $championnat)
-			
-			<li class="text-sm py-2 px-4">
-				<img class="inline w-10 h-10" loading="lazy" src="{{ $championnat->logourl ? url($championnat->logourl) : URL::to('/img/' .$championnat->logo) }}">
-				id <span class="text-gray-300">{{$championnat->id}}</span>:
-				<span class="text-francaverde">{{$championnat->name}}</span>
-				
-				<span class="text-xs text-gray-300">Championnat terminé? (0 = en cours): {{$championnat->finished }} </span>													
-			</li>
-	    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{route('championnats.edit', $championnat)}}"> Edit {{$championnat->name}}
-	        </a>
-	        <form class="inline-block" method="POST" action="{{route('championnats.destroy', $championnat)}}"> 	  @csrf 
-		  		@honeypot
-		  		@method('DELETE')
-		  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"> Suprimir {{$championnat->name}}</button>
-		  	</form>	   		
+			<div class="border-b border-francaverde py-2">
+    			<li class="text-sm py-2 px-4">
+    				<img class="inline w-10 h-10" loading="lazy" src="{{ $championnat->logourl ? url($championnat->logourl) : URL::to('/img/' .$championnat->logo) }}">
+    				id <span class="text-gray-300">{{$championnat->id}}</span>:
+    				<span class="text-francaverde">{{$championnat->name}}</span>
+    				
+    				<span class="text-xs text-gray-300">Championnat terminé? (0 = en cours): {{$championnat->finished }} </span>													
+    			</li>
+                <div class="flex justify-between">
+                    <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{route('championnats.edit', $championnat)}}"> Edit {{$championnat->name}}
+                    </a>
+                    <form class="inline-block" method="POST" action="{{route('championnats.destroy', $championnat)}}">    @csrf 
+                        @honeypot
+                        @method('DELETE')
+                        <button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"> Suprimir {{$championnat->name}}</button>
+                    </form>
+                </div>
+	    	</div>	   		
 	    @empty
-	    		<li class="py-4 px-2"> Pas de championnat pour l'instant</li>
+	    	<li class="py-4 px-2"> Pas de championnat pour l'instant</li>
 
     	@endforelse
     	</ul>

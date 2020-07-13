@@ -19,25 +19,30 @@
             x-transition:leave="transition duration-100 transform ease-in"
             x-transition:leave-end="opacity-0 scale-90">
 
+		<ul class="list-none">
     	@forelse($journee->games as $game)		
-			<div class="border-b border-francaverde">
+			<div class="border-b border-francaverde py-2 px-2">
 				<li class="text-sm py-2 px-4">
-					<span class="text-gray-300">id: {{$game->id}}</span>-
+					<span class="text-xs text-gray-300">id: {{$game->id}}</span>-
 					Match qui oppose <span class="text-francaverde">{{$game->homeTeam->name}}</span> vs <span class="text-francaverde">{{$game->awayTeam->name}}</span>
 				</li>
-				<li class="text-sm py-2 px-4 text-gray-300"> le {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm')}}</li>
-		    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{route('games.edit', $game->id)}}"> Edit Game
-		        </a>
-		        <form class="inline-block" method="POST"action="{{route('games.destroy', $game)}}">
-		         	@csrf 
-			  		@honeypot
-			  		@method('DELETE')
-			  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4">Suprimir el partido</button>
-			  	</form>	
+				<li class="text-sm py-2 px-4 text-gray-300 italic"> le {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm')}}</li>
+
+				<div class="flex justify-between">
+					<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{route('games.edit', $game->id)}}"> Edit
+			        </a>
+			        <form class="inline-block" method="POST"action="{{route('games.destroy', $game)}}">
+			         	@csrf 
+				  		@honeypot
+				  		@method('DELETE')
+				  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4">Delete</button>
+				  	</form>	
+				</div>		    	
 		  	</div>   		
 	    @empty
 	    	<li class="text-sm py-4 px-2"> Pas de game pour l'instant</li>		
-    	@endforelse   	    		
+    	@endforelse
+    	</ul>   	    		
     </div>    
 </div>
 @endforeach	

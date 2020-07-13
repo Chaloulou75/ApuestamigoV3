@@ -33,9 +33,11 @@ class GameController extends Controller
     {
         $user = Auth::user();
         $championnats = Championnat::with(['journees'=> function ($query) {
-                            $query->with('games');
+                         $query->with(['games'=> function ($query) {
+                            $query->with(['homeTeam', 'awayTeam']);
+                            }]);
                         }])->where('finished', false)->orderByDesc('id')->get();
-
+        //
         return view('/pages/games/index', compact('championnats', 'user'));
     }
 

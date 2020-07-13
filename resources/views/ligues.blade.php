@@ -13,7 +13,7 @@
 
 	<div class="flex flex-wrap items-stretch content-start justify-around my-4">
 
-		@foreach ($ligues as $ligue)	
+		@foreach ($user->ligues as $ligue)	
 
 			<x-ligue-card  :ligue="$ligue" />
 					

@@ -17,24 +17,25 @@
             x-transition:leave="transition duration-100 transform ease-in"
             x-transition:leave-end="opacity-0 scale-90">
 
-		<ul class="list-disc ">	
+		<ul class="list-none">	
     	@forelse($championnat->journees as $datejournee)		
-			<div class="border-b border-francaverde">
+			<div class="border-b border-francaverde py-2 px-2">
 				<li class="text-sm py-2 px-4">
-					<span class="text-gray-300">id: {{$datejournee->id}}</span>-
-					<span class="text-francaverde">En {{ $datejournee->championnat->name }}</span>
-					<span class="text-gray-300">{{$datejournee->namejournee }} </span>
+					<span class="text-xs text-gray-300">id: {{$datejournee->id}}</span>-
+					<span class="text-francaverde">{{$datejournee->namejournee }} </span>
 
 				</li>
 				<li class="text-sm py-2 px-4 italic text-gray-400"> le {{ \Carbon\Carbon::parse($datejournee->timejournee)->isoFormat('dddd Do MMMM YYYY H:mm') }}</li>
-		    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{ route('datejournees.edit', ['datejournee' => $datejournee]) }}"> Edit {{$datejournee->namejournee}}
-		        </a>
-		        <form class="inline-block" method="POST" action="{{route('datejournees.destroy', $datejournee)}}">
-		         	@csrf 
-			  		@honeypot
-			  		@method('DELETE')
-			  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4">Suprimir {{$datejournee->namejournee}}</button>
-			  	</form>	
+				<div class="flex justify-between">
+			    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{ route('datejournees.edit', ['datejournee' => $datejournee]) }}"> Edit
+			        </a>
+			        <form class="inline-block" method="POST" action="{{route('datejournees.destroy', $datejournee)}}">
+			         	@csrf 
+				  		@honeypot
+				  		@method('DELETE')
+				  		<button type="submit" class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4">Suprimir</button>
+				  	</form>
+			  	</div>	
 		  	</div>   		
 	    @empty
 	    	<li class="py-4 px-2"> Pas de journée pour l'instant</li>		

@@ -16,12 +16,14 @@
             x-transition:leave="transition duration-100 transform ease-in"
             x-transition:leave-end="opacity-0 scale-90">
 
-    	@foreach( $datejournees as $journee)
+    	@foreach( $championnats as $championnat)
+            @foreach($championnat->journees as $journee)
 
-    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{ route('apuestas.compare', $journee) }}">
-	 		Points par Match pour {{ $journee->championnat->name }}, {{ $journee->namejournee }}
-        </a>
+        	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{ route('apuestas.compare', $journee) }}">
+    	 		Points par Match pour {{ $championnat->name }}, {{ $journee->namejournee }}
+            </a>
 
+            @endforeach
     	@endforeach
     </div>
 </div>

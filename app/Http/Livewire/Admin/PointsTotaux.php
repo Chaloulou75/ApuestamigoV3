@@ -6,11 +6,11 @@ use Livewire\Component;
 
 class PointsTotaux extends Component
 {
-    public $datejournees;
+    public $championnats;
 
-    public function mount($datejournees)
+    public function mount($championnats)
     {
-        $this->datejournees = $datejournees;
+        $this->championnats = $championnats;
     }
 
     public function render()

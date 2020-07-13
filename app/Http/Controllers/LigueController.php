@@ -31,12 +31,13 @@ class LigueController extends Controller
         if (Auth::user())
         {
             //user connecté
-            $user= Auth::user();
+            $user= Auth::user()->load(['equipe', 'ligues' => function ($query) {
+                                $query->with(['championnat', 'creator'])
+                                      ->where('finished', false)
+                                      ->latest();
+                            }]);
 
-            //les ligues du user connecté
-            $ligues = $user->ligues()->where('finished', false)->latest()->get();
-
-            return view('/ligues', compact('ligues', 'user'));
+            return view('/ligues', compact('user'));
         }
 
         return view('/index');

@@ -27,10 +27,9 @@ class EquipeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $equipes = Equipe::orderBy('championnat_id', 'desc')->get();
-        $championnats = Championnat::where('finished', false)->orderByDesc('id')->get(); 
+        $championnats = Championnat::with('equipes')->where('finished', false)->orderByDesc('id')->get(); 
 
-        return view('/pages/equipes/index', compact('championnats', 'equipes', 'user'));
+        return view('/pages/equipes/index', compact('championnats', 'user'));
     }
 
     /**

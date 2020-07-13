@@ -25,9 +25,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        $datejournees = DateJournee::orderBy('championnat_id', 'asc')->orderBy('timejournee', 'asc')->get();
+        $championnats = Championnat::with('journees')->orderByDesc('id')->get();
         
-        return view('pages.admin.adminPage', compact('datejournees')); 
+        return view('pages.admin.adminPage', compact('championnats')); 
     }
 
     /**
