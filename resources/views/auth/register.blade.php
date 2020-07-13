@@ -54,7 +54,7 @@
                                 {{ __('all.Favorite Club') }}
                             </label>            
                               <select id="equipe_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-francagris leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('equipe_id') ? ' bg-red-dark' : '' }}" name="equipe_id" value="{{ old('equipe_id') }}" required>  
-
+                                <option value=""></option>
                                 @foreach($equipes as $equipe)
 
                                 <option value="{{ $equipe->id}}"  @if(old('equipe_id') == $equipe->name)selected @endif>{{ $equipe->name}} </option>
