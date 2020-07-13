@@ -130,7 +130,7 @@ class ProfileController extends Controller
             $user= Auth::user();
         } 
 
-        $userMatch = Match::where('user_id', $user->id)->delete();
+        //$userMatch = Match::where('user_id', $user->id)->delete();
 
         $user->delete();
 
