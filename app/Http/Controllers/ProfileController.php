@@ -58,12 +58,17 @@ class ProfileController extends Controller
     {
         if( Auth::user()->admin === 1) //si admin, on peut voir n'importe quel profil
         {
-            $user = User::findOrFail($id);
+            $user = User::with(['ligues' => function ($query) {
+                                $query->with('championnat')
+                                      ->latest();
+                            }])->findOrFail($id);
         }
         else //sinon seulement l'user connecté
         {
-            //user connecté
-            $user= Auth::user();
+            $user= Auth::user()->load(['ligues' => function ($query) {
+                                $query->with('championnat')
+                                      ->latest();
+                            }]);
         }   
         $equipes = Equipe::all();
 

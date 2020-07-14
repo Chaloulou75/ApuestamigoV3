@@ -21,9 +21,9 @@
     	@forelse($championnat->equipes as $equipe)		
 			<div class="border-b border-francaverde py-2 px-2">
 				<li class="text-sm py-2 px-2">
-					<img class="inline w-10 h-10" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}">
-					<span class="text-xs text-gray-300">id: {{$equipe->id}}</span>-
-					<span class="text-francaverde">{{$equipe->name}}</span>													
+					<img class="inline w-10 h-10" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}">					
+					<span class="text-francaverde">{{$equipe->name}}</span>	
+					<span class="text-xs text-gray-300">({{$equipe->id}})</span>												
 				</li>
 				<div class="flex justify-between">
 					<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-xs py-2 px-4" href="{{route('equipes.edit', $equipe)}}"> Edit

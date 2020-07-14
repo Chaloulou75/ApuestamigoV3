@@ -66,18 +66,19 @@
   </div>
 	</form>
 
-  <div class="border-t border-francaverde rounded bg-francagris px-6 py-4 mb-4 mx-6 flex flex-col justify-between">
-
-    <label for="" class="text-left text-white text-base font-medium"> {{ __('nav.ligues')}} : </label>
-      @forelse($user->ligues as $ligue)        
-        <div class="text-white hover:text-francaverde font-medium tracking-wide text-sm truncate py-px">
-            <a href="{{ route('ligues.show', $ligue) }}" >
-              {{ $ligue->name }}
-            </a>
-        </div>  
-        @empty
-        <p class="text-white font-medium tracking-wide text-sm truncate py-px"> Tu n'as pas de ligues pour le moment...</p>      
-      @endforelse                               
+  <div class="border-t border-francaverde rounded bg-francagris px-6 py-4 mb-4 mx-6 flex flex-col justify-between ">
+    <div class="divide-y divide-gray-300">
+      @foreach($user->ligues as $ligue)   
+          @if($loop->first)
+            <h3 class="text-left text-white text-base font-medium py-2">{{$loop->count}} {{ __('all.leagues') }}</h3>
+          @endif
+            <div class="text-white hover:text-francaverde font-medium tracking-wide text-sm truncate py-2 transition duration-500 ease-in-out transform hover:translate-x-1 px-4">
+                <a href="{{ route('ligues.show', $ligue) }}" >
+                  {{ $ligue->name }} <span class="text-xs font-thin italic text-gray-300">({{ $ligue->championnat->name}})</span>
+                </a>
+            </div>
+      @endforeach
+    </div>               
   </div>
 
 	<form class="bg-francagris px-6 py-4 mb-4" method="POST" action="{{ route('profile.destroy', $user) }}">
