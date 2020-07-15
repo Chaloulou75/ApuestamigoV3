@@ -40,7 +40,7 @@
       </form>
     </div>
 
-    @if( $ligue->creator_id === Auth::user()->id) {{--  si le creator est le user en cours --}}
+    @if( $ligue->creator_id === Auth::user()->id || Auth::user()->admin === 1) {{--  si le creator est le user en cours --}}
 
     <div class="animate__animated animate__fadeIn animate__slow flex-1 items-center w-full md:w-1/3 mx-auto md:m-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
       <form class="mx-auto" method="POST" action="{{ action('LigueController@update', $ligue) }}">

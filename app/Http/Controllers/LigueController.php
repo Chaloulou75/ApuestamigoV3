@@ -145,7 +145,7 @@ class LigueController extends Controller
         //changer le nom d'une ligue / ou un joueur
         $ligue = ligue::findOrFail($ligue->id);
 
-        if( $ligue->creator_id === Auth::user()->id)
+        if( $ligue->creator_id === Auth::user()->id || Auth::user()->admin === 1)
         {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|max:255',
@@ -183,7 +183,7 @@ class LigueController extends Controller
         //delete une ligue
         $ligue = ligue::findOrFail($ligue->id);
 
-        if( $ligue->creator_id === Auth::user()->id)
+        if( $ligue->creator_id === Auth::user()->id || Auth::user()->admin === 1)
         {
             $ligue->delete();
         

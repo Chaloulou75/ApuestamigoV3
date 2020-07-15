@@ -45002,7 +45002,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "block px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2",
+                      "block px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 flex items-center",
                     attrs: { href: _vm.route("profile.show", _vm.user) }
                   },
                   [
@@ -45028,9 +45028,10 @@ var render = function() {
                         })
                       ]
                     ),
-                    _vm._v(
-                      "\n          " + _vm._s(_vm.user.name) + "\n        "
-                    )
+                    _vm._v(" "),
+                    _c("p", { staticClass: "truncate" }, [
+                      _vm._v(_vm._s(_vm.user.name))
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -58211,6 +58212,8 @@ module.exports = {
     "Insert the token of the league": "Insert the token of the league",
     "Invalid signature.": "Invalid signature.",
     "Join a league": "Join a league",
+    "League finished": "League finished",
+    "League in progress": "League in progress",
     "Learn_More": "Learn More",
     "Leave": "Leave",
     "Leave this league?": "Leave this league?",
@@ -58246,9 +58249,11 @@ module.exports = {
     "Service Unavailable": "Service Unavailable",
     "Share this league:": "Share this league:",
     "So how does Apuestamigo work?": "So how does Apuestamigo work?",
+    "Sorry you have to be the owner to change the league": "Sorry you have to be the owner to change the league",
     "Sorry you have to be the owner to delete the league": "You have to be the owner to delete the league",
     "Start of the next match": "Start of the next match",
     "Start of the next round": "Start of the next round",
+    "There is no game yet.": "There is no game yet.",
     "This action is unauthorized.": "This action is unauthorized.",
     "This password reset link will expire in =>count minutes.": "This password reset link will expire in =>count minutes.",
     "Toggle navigation": "Toggle navigation",
@@ -58274,6 +58279,7 @@ module.exports = {
     "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)",
     "Your message has been sent.": "Your message has been sent",
     "address": "Address",
+    "choose a championship": "Choose a championship",
     "city": "City",
     "click here to request another": "click here to request another",
     "cookie_consentment": "By continuing to browse this site, you consent to our use of cookies to improve your online experience.",
@@ -58465,6 +58471,8 @@ module.exports = {
     "Insert the token of the league": "Insertar el token de la liga",
     "Invalid signature.": "Firma no v\xE1lida.",
     "Join a league": "\xDAnete a una liga",
+    "League finished": "Liga terminada",
+    "League in progress": "Liga en curso",
     "Learn_More": "Leer mas",
     "Leave": "Dejar",
     "Leave this league?": "Dejar esta  liga?",
@@ -58501,9 +58509,11 @@ module.exports = {
     "Service Unavailable": "Servicio no disponible",
     "Share this league:": "Comparte esta liga:",
     "So how does Apuestamigo work?": "Entonces, \xBFc\xF3mo funciona Apuestamigo?",
+    "Sorry you have to be the owner to change the league": "Lo sentimos, debes ser el propietario para cambiar la liga",
     "Sorry you have to be the owner to delete the league": "Lo sentimos, debes ser el propietario para eliminar la liga",
     "Start of the next match": "Proximo partido",
     "Start of the next round": "Comienzo de la siguiente ronda",
+    "There is no game yet.": "No hay partido todav\xEDa.",
     "This action is unauthorized.": "Esta acci\xF3n no est\xE1 autorizada.",
     "This password reset link will expire in :count minutes.": "Este enlace de restablecimiento de contrase\xF1a caducar\xE1 en :count minutos.",
     "Toggle navigation": "Activar navegaci\xF3n",
@@ -58529,6 +58539,7 @@ module.exports = {
     "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Tu liga puede comenzar: cada ronda de la Champions Liga corresponde a un d\xEDa de Apuestamigo en el que compites. \xA1No olvides hacer tus predicciones antes de cada ronda de la Champions liga, despu\xE9s del comienzo del partido, ser\xE1 DEMASIADO TARDE! (y no es necesario sobornar al administrador, \xE9l no puede hacer nada por usted ...)",
     "Your message has been sent.": "Su mensaje ha sido enviado correctamente",
     "address": "Direcci\xF3n",
+    "choose a championship": "Elegir un campeonato",
     "city": "Ciudad",
     "click here to request another": "haga clic aqu\xED para solicitar otro",
     "cookie_consentment": "Al continuar navegando por este sitio, acepta nuestro uso de cookies para mejorar su experiencia en l\xEDnea.",
@@ -58759,6 +58770,8 @@ module.exports = {
     "Insert the token of the league": "Ins\xE9rer le token de la ligue",
     "Invalid signature.": "Signature invalide",
     "Join a league": "Rejoindre une ligue",
+    "League finished": "Ligue termin\xE9e",
+    "League in progress": "Ligue en cours",
     "Learn_More": "Lire plus",
     "Leave": "Quitter",
     "Leave this league?": "Quitter cette ligue?",
@@ -58795,6 +58808,7 @@ module.exports = {
     "Service Unavailable": "Service indisponible",
     "Share this league:": "Partage cette ligue:",
     "So how does Apuestamigo work?": "Bon, alors, comment \xE7a marche Apuestamigo?",
+    "Sorry you have to be the owner to change the league": "Vous devez \xEAtre le propri\xE9taire pour changer la ligue",
     "Sorry you have to be the owner to delete the league": "Vous devez \xEAtre le propri\xE9taire pour supprimer la ligue",
     "Sorry, the page you are looking for could not be found.": "D\xE9sol\xE9, la page que vous recherchez est introuvable.",
     "Sorry, we are doing some maintenance. Please check back soon.": "D\xE9sol\xE9, nous sommes en maintenance. Veuillez revenir plus tard.",
@@ -58804,6 +58818,7 @@ module.exports = {
     "Sorry, your session has expired. Please refresh and try again.": "D\xE9sol\xE9, votre session a expir\xE9. Veuillez actualiser la page et r\xE9essayer.",
     "Start of the next match": "Prochain match",
     "Start of the next round": "D\xE9but du prochain tour",
+    "There is no game yet.": "Pas de match pour l'instant.",
     "This action is unauthorized.": "Cette action n'est pas autoris\xE9e.",
     "This password reset link will expire in =>count minutes.": "Ce lien de r\xE9initialisation du mot de passe expirera dans =>count minutes.",
     "Toggle navigation": "Basculer la navigation",
@@ -58830,6 +58845,7 @@ module.exports = {
     "Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can't do anything for you ...)": "Votre ligue peut alors commencer : chaque tour de ligue des Champions correspond \xE0 une journ\xE9e Apuestamigo dans laquelle vous vous affrontez. N'oubliez donc pas de faire vos pronostics avant chaque tour de ligue des Champions, apr\xE8s le d\xE9but des matchs, il sera TROP TARD! (et pas la peine de soudoyer l'administrateur, il ne pourra rien pour vous...)",
     "Your message has been sent.": "Votre message a \xE9t\xE9 envoy\xE9",
     "address": "Adresse",
+    "choose a championship": "Choisis un championnat",
     "city": "Ville",
     "click here to request another": "cliquer ici pour faire une autre demande",
     "cookie_consentment": "En poursuivant votre navigation sur ce site, vous consentez \xE0 notre utilisation des cookies pour am\xE9liorer votre exp\xE9rience en ligne.",
@@ -59339,6 +59355,41 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
+    "championnats.index": {
+      "uri": "championnats",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "championnats.create": {
+      "uri": "championnats\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "championnats.store": {
+      "uri": "championnats",
+      "methods": ["POST"],
+      "domain": null
+    },
+    "championnats.show": {
+      "uri": "championnats\/{championnat}",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "championnats.edit": {
+      "uri": "championnats\/{championnat}\/edit",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "championnats.update": {
+      "uri": "championnats\/{championnat}",
+      "methods": ["PUT", "PATCH"],
+      "domain": null
+    },
+    "championnats.destroy": {
+      "uri": "championnats\/{championnat}",
+      "methods": ["DELETE"],
+      "domain": null
+    },
     "datejournees.index": {
       "uri": "datejournees",
       "methods": ["GET", "HEAD"],
@@ -59412,6 +59463,11 @@ var Ziggy = {
     "orphansdestroy": {
       "uri": "admin\/orphansdestroy\/{orphan}",
       "methods": ["DELETE"],
+      "domain": null
+    },
+    "seasonfinished": {
+      "uri": "admin\/seasonfinished\/{championnat}",
+      "methods": ["GET", "HEAD"],
       "domain": null
     }
   },

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Equipe;
+use App\Ligue;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -139,6 +140,9 @@ class ProfileController extends Controller
 
         //$userMatch = Match::where('user_id', $user->id)->delete();
 
+        $liguecreatedbyUser = Ligue::where('creator_id', $user->id)->update(['creator_id' => NULL]);
+
+        $user->ligues()->detach();
         $user->delete();
 
         return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __( 'all.your profile has been deleted'));

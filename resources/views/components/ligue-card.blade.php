@@ -20,8 +20,13 @@
 	      <img class="w-10 h-10 mr-4" loading="lazy" src="{{ $ligue->championnat->logourl ? url($ligue->championnat->logourl) : URL::to('/img/' .$ligue->championnat->logo) }}" alt="championnat">
 	      <div class="text-xs tracking-wide">
 	        <p class="text-gray-300 truncate">{{ __('all.created by:') }} 
-	        	<span class="font-medium text-francaverde"> {{ $ligue->creator->name }} </span>
+	        	<span class="font-medium text-francaverde">@isset($ligue->creator) {{ $ligue->creator->name }}  @endisset @empty($ligue->creator) John Doe @endempty</span>
+	        	@isset($ligue->creator)
 	        	<img class="inline w-10 h-8 mx-2" loading="lazy" src="{{ $ligue->creator->equipe->logourl ? url($ligue->creator->equipe->logourl) : URL::to('/img/' .$ligue->creator->equipe->logo) }}" alt="club">
+	        	@endisset
+	        	@empty($ligue->creator)
+				    <img class="inline w-10 h-8 mx-2" loading="lazy" src="{{ URL::to('/img/cup.png') }}" alt="cup">
+				@endempty
 	        </p>	        
 	      </div>
 	    </div>
