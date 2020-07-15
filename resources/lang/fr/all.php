@@ -81,6 +81,8 @@ return [
     'Dashboard' => 'Tableau de bord',
     'supporter' => 'supporter de:',
     'created by:' => 'cree par:',
+    'League finished' => 'Ligue terminée',
+    'League in progress' => 'Ligue en cours',
     'leagues' => 'Ligues',
     'Name' => 'Nom',
     'Club' => 'Club',

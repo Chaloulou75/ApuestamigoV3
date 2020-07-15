@@ -60,6 +60,7 @@ class ProfileController extends Controller
         {
             $user = User::with(['ligues' => function ($query) {
                                 $query->with('championnat')
+                                      ->orderBy('finished', 'asc')
                                       ->latest();
                             }])->findOrFail($id);
         }
@@ -67,6 +68,7 @@ class ProfileController extends Controller
         {
             $user= Auth::user()->load(['ligues' => function ($query) {
                                 $query->with('championnat')
+                                      ->orderBy('finished', 'asc')
                                       ->latest();
                             }]);
         }   

@@ -33,7 +33,7 @@ class LigueController extends Controller
             //user connecté
             $user= Auth::user()->load(['equipe', 'ligues' => function ($query) {
                                 $query->with(['championnat', 'creator'])
-                                      ->where('finished', false)
+                                      ->orderBy('finished', 'asc')
                                       ->latest();
                             }]);
 

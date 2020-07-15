@@ -66,15 +66,18 @@
   </div>
 	</form>
 
-  <div class="border-t border-francaverde rounded bg-francagris px-6 py-4 mb-4 mx-6 flex flex-col justify-between ">
-    <div class="divide-y divide-gray-300">
+  <div class="px-6 py-4 mb-4 mx-6 flex flex-col justify-between ">
+    <div class="divide-y divide-francaverde">
       @foreach($user->ligues as $ligue)   
           @if($loop->first)
-            <h3 class="text-left text-white text-base font-medium py-2">{{$loop->count}} {{ __('all.leagues') }}</h3>
+            <h3 class="text-left text-white text-base font-medium uppercase py-2 px-4">{{$loop->count}} {{ __('all.leagues') }}:</h3>
           @endif
             <div class="text-white hover:text-francaverde font-medium tracking-wide text-sm truncate py-2 transition duration-500 ease-in-out transform hover:translate-x-1 px-4">
-                <a href="{{ route('ligues.show', $ligue) }}" >
+                <a href="{{ route('ligues.show', $ligue) }}">
                   {{ $ligue->name }} <span class="text-xs font-thin italic text-gray-300">({{ $ligue->championnat->name}})</span>
+                  @if($ligue->finished == true)
+                    <span class="text-xs font-thin uppercase px-4">{{ __('all.League finished')}}</span>
+                  @endif
                 </a>
             </div>
       @endforeach

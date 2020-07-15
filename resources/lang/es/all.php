@@ -72,6 +72,8 @@ return [
   'Dashboard' => 'Tablero',
   'supporter' => 'oficionado de:',
   'created by:' => 'creado por:',
+  'League finished' => 'Liga terminada',
+  'League in progress' => 'Liga en curso',
   'leagues' => 'Ligas',
   'Name' => 'Nombre',
   'Club' => 'Club',

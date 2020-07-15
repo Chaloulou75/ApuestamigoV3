@@ -70,6 +70,8 @@ return [
   'Dashboard' => 'Dashboard',
   'supporter' => 'supporter of:',
   'created by:' => 'created by:',
+  'League finished' => 'League finished',
+  'League in progress' => 'League in progress',
   'leagues' => 'Leagues',
   'league' => 'League',
   'Name' => 'Name',

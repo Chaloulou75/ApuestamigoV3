@@ -21,7 +21,7 @@
 			  <tbody>
 			  	@foreach ($ligue->users as $user)
 			    <tr>
-			      <td scope="row" class="py-2 px-4 text-center"> {{ $loop->iteration }} </td>
+			      <td scope="row" class="py-2 px-4 text-center @if($loop->first) border-l-4 border-francaverde @endif"> {{ $loop->iteration }} </td>
 				  <td class="py-2 px-4 hover:underline hover:text-francaverde text-sm">
 				  	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee ]) }}">
 				  		 {{ $user->name }} 
