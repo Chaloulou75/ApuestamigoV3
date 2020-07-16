@@ -15,10 +15,9 @@ class Extended extends Policy
         	->addDirectivesForGoogleFonts()
             ->addDirectivesForGoogleAnalytics()
             ->addDirectivesForGoogleTagManager()
-            ->addDirectivesForStripe()
             ->addDirective(Directive::IMG, ['*'])
             ->addNonceForDirective(Directive::SCRIPT)
-        	->addNonceForDirective(Directive::STYLE)
+        	->addNonceForDirective(Directive::STYLE);
     }
 
     protected function addDirectivesForGoogleFonts(): self
@@ -32,11 +31,6 @@ class Extended extends Policy
     protected function addDirectivesForGoogleAnalytics(): self
     {
         return $this->addDirective(Directive::SCRIPT, '*.google-analytics.com');
-    }
-
-    protected function addDirectivesForStripe(): self
-    {
-        return $this->addDirective(Directive::SCRIPT, '*.js.stripe.com');
     }
 
     protected function addDirectivesForGoogleTagManager(): self
