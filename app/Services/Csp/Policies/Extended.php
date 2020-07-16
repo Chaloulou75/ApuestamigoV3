@@ -16,7 +16,11 @@ class Extended extends Basic
         	->addDirectivesForStripe()
             ->addDirectivesForGoogleAnalytics()
             ->addDirectivesForGoogleTagManager()
-            ->addDirective(Directive::IMG, ['*']);
+            ->addDirective(Directive::IMG, ['*'])
+            ->addDirective(Directive::SCRIPT, 'self')
+	        ->addDirective(Directive::STYLE, 'self')
+	        ->addNonceForDirective(Directive::SCRIPT)
+	        ->addNonceForDirective(Directive::STYLE);
     }
 
     protected function addDirectivesForGoogleFonts(): self
@@ -34,7 +38,8 @@ class Extended extends Basic
 
     protected function addDirectivesForStripe(): self
     {
-        return $this->addDirective(Directive::SCRIPT, '*.stripe.com');
+        return $this->addDirective(Directive::SCRIPT, '*.stripe.com')
+        			->addDirective(Directive::FRAME, '*.stripe.com');
     }
 
     protected function addDirectivesForGoogleTagManager(): self
