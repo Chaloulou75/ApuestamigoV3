@@ -13,8 +13,10 @@ class Extended extends Basic
         
         $this
         	->addDirectivesForGoogleFonts()
+        	->addDirectivesForStripe()
             ->addDirectivesForGoogleAnalytics()
-            ->addDirectivesForGoogleTagManager();
+            ->addDirectivesForGoogleTagManager()
+            ->addDirective(Directive::IMG, ['*']);
     }
 
     protected function addDirectivesForGoogleFonts(): self
@@ -28,6 +30,11 @@ class Extended extends Basic
     protected function addDirectivesForGoogleAnalytics(): self
     {
         return $this->addDirective(Directive::SCRIPT, '*.google-analytics.com');
+    }
+
+    protected function addDirectivesForStripe(): self
+    {
+        return $this->addDirective(Directive::SCRIPT, '*.stripe.com');
     }
 
     protected function addDirectivesForGoogleTagManager(): self
