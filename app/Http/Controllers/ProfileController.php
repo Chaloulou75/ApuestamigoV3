@@ -138,7 +138,11 @@ class ProfileController extends Controller
             $user= Auth::user();
         } 
 
-        //$userMatch = Match::where('user_id', $user->id)->delete();
+        $matchDuUser = Match::where('user_id', $user->id)->get();
+        if(isset($matchDuUser))
+        {
+            Match::where('user_id', $user->id)->delete();
+        }
 
         $liguecreatedbyUser = Ligue::where('creator_id', $user->id)->update(['creator_id' => NULL]);
 
