@@ -3,9 +3,9 @@
 namespace App\Services\Csp\Policies;
 
 use Spatie\Csp\Directive;
-use Spatie\Csp\Policies\Policy;
+use Spatie\Csp\Policies\Basic;
 
-class Extended extends Policy
+class Extended extends Basic
 {
     public function configure()
     {
@@ -14,10 +14,7 @@ class Extended extends Policy
         $this
         	->addDirectivesForGoogleFonts()
             ->addDirectivesForGoogleAnalytics()
-            ->addDirectivesForGoogleTagManager()
-            ->addDirective(Directive::IMG, ['*'])
-            ->addNonceForDirective(Directive::SCRIPT)
-        	->addNonceForDirective(Directive::STYLE);
+            ->addDirectivesForGoogleTagManager();
     }
 
     protected function addDirectivesForGoogleFonts(): self
