@@ -37,10 +37,11 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
+            \App\Http\Middleware\HttpsProtocolMiddleware::class,
             \App\Http\Middleware\FrameHeadersMiddleware::class,
             \App\Http\Middleware\XssProtectionMiddleware::class,
             \App\Http\Middleware\XContentTypeMiddleware::class,
+            //\App\Http\Middleware\StrictTransportSecurityMiddleware::class,
             //\Spatie\Csp\AddCspHeaders::class,
 
         ],
