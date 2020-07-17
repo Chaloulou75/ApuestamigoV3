@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\FrameHeadersMiddleware::class,
             \App\Http\Middleware\XssProtectionMiddleware::class,
             \App\Http\Middleware\XContentTypeMiddleware::class,
-            //\App\Http\Middleware\StrictTransportSecurityMiddleware::class,
+            \App\Http\Middleware\StrictTransportSecurityMiddleware::class,
             //\Spatie\Csp\AddCspHeaders::class,
 
         ],
