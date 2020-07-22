@@ -11,7 +11,7 @@ class ContactController extends Controller
 {
     public function create()
     {
-    	return view('pages.contact');
+    	return view('pages.contact.create');
     }
 
     public function store(Request $request)
@@ -26,18 +26,5 @@ class ContactController extends Controller
     	Mail::to('apuestamigo@gmail.com')->send($mailable);
 
     	return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
-    }
-
-    public function langues()
-
-    {
-
-        return view('layouts/partials/langues');
-    }
-
-    public function about()
-
-    {
-        return view('pages/about');
     }
 }

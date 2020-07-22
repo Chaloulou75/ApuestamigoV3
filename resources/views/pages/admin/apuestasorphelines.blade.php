@@ -22,7 +22,7 @@
 						<li class="animate__animated animate__lightSpeedInLeft py-4 px-2">
 							{{ $orphan->id }} - journee: {{ $orphan->date_journees_id }} - user: {{ $orphan->user_id }} -
 						dans la ligue n°: {{ $orphan->ligue_id }} - Game id :{{ $orphan->game_id }} - resultat mis: {{ $orphan->resultatEq1 }} - {{ $orphan->resultatEq2 }}, point pour le match: {{ $orphan->pointmatch }} </br>
-							<form class="inline-block" method="POST" action="{{ route('orphansdestroy', ['orphan' => $orphan->id ]) }}">
+							<form class="inline-block" method="POST" action="{{ route('orphans.destroy', ['orphan' => $orphan->id ]) }}">
 						  		@csrf 
 						  		@honeypot
 						  		@method('DELETE')

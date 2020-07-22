@@ -19,9 +19,9 @@
 					
 	    @endforeach
 
-	    @include('layouts.partials.cards.ligueCreate')
+	    @include('ligues.partials.cards.index')
 
-		@include('layouts.partials.cards.ligueJoin')
+		@include('ligues.joinLigues.index')
 
 	</div>	  	
 </div>

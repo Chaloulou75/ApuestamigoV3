@@ -4,7 +4,7 @@
 
 <div class="w-full lg:w-3/4 mx-auto p-1">
 
-  @include('layouts/partials/navLigue')
+  @include('ligues/partials/nav/navLigue')
 
   <div class="animate__animated animate__flipInX bg-white border-t-4 border-francaverde rounded-b text-gray-900 px-4 py-3 shadow-md my-4" role="alert">
     <div class="flex">
@@ -23,7 +23,7 @@
   <div class="flex flex-col md:flex-row items-stretch justify-between my-4"> 
 
     <div class="animate__animated animate__fadeIn animate__slow flex-1 items-center w-full md:w-1/3 mx-auto md:m-2 bg-white shadow-md border-t-4 border-francaverde rounded px-8 py-8 my-4">
-      <form class="mx-auto" method="POST" action="{{ action('LigueController@quitLigue', $ligue) }}">
+      <form class="mx-auto" method="POST" action="{{ action('LigueUserController@destroy', $ligue) }}">
         @csrf
         @honeypot
         <div class="mb-4">

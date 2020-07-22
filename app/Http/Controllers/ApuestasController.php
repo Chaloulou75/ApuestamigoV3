@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ {User, Equipe, Game, Ligue, Match, DateJournee};
 use Auth;
 use App\Repositories\DateRepository;
+use App\Repositories\ResultAdminRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Redirect;
 class ApuestasController extends Controller
 {
     private $DateRepository;
+    private $ResultAdminRepository;
 
-    public function __construct(DateRepository $DateRepository)
+    public function __construct(DateRepository $DateRepository, ResultAdminRepository $ResultAdminRepository)
     {        
         $this->DateRepository = $DateRepository;
+        $this->ResultAdminRepository = $ResultAdminRepository;
     }
 
     /**
@@ -29,8 +32,6 @@ class ApuestasController extends Controller
         $user = Auth::user(); // le user
 
         $journee = $this->DateRepository->dateJournee($ligue); //la journee
-
-        //dd($journee);
 
         $gamesIds = Game::where('championnat_id', $journee->championnat_id)
                         ->where('date_journees_id', $journee->id)
@@ -50,12 +51,7 @@ class ApuestasController extends Controller
                       ->get();// les matchs 
 
           //collection des resultats userAdmin pour la journee
-          $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                  $query->where('championnat_id', $journee->championnat_id)
-                                        ->where('date_journees_id', $journee->id)
-                                        ->orderBy('game_id');
-                              }])->where('admin', 1)
-                                  ->first();
+          $resultAdmin = $this->ResultAdminRepository->resultAdmin($journee);
 
           return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
             
@@ -173,12 +169,7 @@ class ApuestasController extends Controller
                             ->get();// les matchs
 
             //collection des resultats userAdmin pour la journee
-            $resultAdmin = User::with(['matchs' => function ($query) use($journee){
-                                    $query->where('championnat_id', $journee->championnat_id)
-                                          ->where('date_journees_id', $journee->id)
-                                          ->orderBy('game_id');
-                                }])->where('admin', 1)
-                                   ->first();
+            $resultAdmin = $this->ResultAdminRepository->resultAdmin($journee);
 
             return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
         }

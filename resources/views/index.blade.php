@@ -12,9 +12,9 @@
 
 		<div class="flex flex-wrap items-stretch content-start justify-around my-4">
 
-			@include('layouts.partials.cards.ligueCreate')
+			@include('ligues.partials.cards.index')
 
-			@include('layouts.partials.cards.ligueJoin')
+			@include('ligues.joinLigues.index')
 
 	    </div>	   	
 	</div>

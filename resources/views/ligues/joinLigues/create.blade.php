@@ -3,7 +3,7 @@
 @section('content')
 	
 <div class="animate__animated animate__fadeInUp w-full lg:w-1/3 mx-auto bg-francagris shadow-md rounded-lg border-2 border-francaverde px-8 py-6 my-4">
-    <form class="mx-auto" method="POST" action="{{ route('joinLigues') }}">
+    <form class="mx-auto" method="POST" action="{{ route('ligueuser.store') }}">
       @csrf
       @honeypot
       <div class="mb-4">

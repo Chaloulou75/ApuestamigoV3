@@ -8,7 +8,7 @@
   <div class="sm:flex block justify-between text-sm lg:text-base p-2">
 
     <div class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
-      <a href="{{ route('ligueClassement', $ligue) }}">
+      <a href="{{ route('classementligue.show', $ligue) }}">
           <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
            {{ __('all.Ranking')}}
       </a>
@@ -22,7 +22,7 @@
     </div>
     
     <div class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
-        <a href="{{ route('ligueSettings', $ligue) }}">
+        <a href="{{ route('ligueSettings.show', $ligue) }}">
           <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
           {{ __('all.Parameters')}}
         </a>

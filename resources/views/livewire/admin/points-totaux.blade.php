@@ -19,7 +19,7 @@
     	@foreach( $championnats as $championnat)
             @foreach($championnat->journees as $journee)
 
-    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{ route('apuestas.points', $journee) }}">
+    	<a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4" href="{{ route('countpoints.update', $journee) }}">
 		 	Points totaux {{ $championnat->name }}, {{ $journee->namejournee }}
         </a>
             @endforeach

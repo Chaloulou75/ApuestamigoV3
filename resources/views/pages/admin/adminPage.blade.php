@@ -39,7 +39,7 @@
 		</a>
 		</div>
 		<div class="animate__animated animate__flipInX border rounded-lg border-francaverde flex-auto text-white text-center text-xs bg-francagris hover:text-francaverde px-4 py-2 m-2">
-		<a href="{{ route('apuestasorphelines') }}">
+		<a href="{{ route('orphans.index') }}">
 			<svg class="inline w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6"></path></svg>
 			Apuestas orphelines
 		</a>

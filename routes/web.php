@@ -22,39 +22,32 @@ Route::group([
 	Auth::routes(['verify' => true]);
 	
 	Route::get('/home', 'HomeController@index')->name('home');
-
-	Route::get('/langues', 'ContactController@langues')->name('langues');
-
-	Route::get('/about', 'ContactController@about')->name('about');
+	Route::get('/langues', 'LanguesController@index')->name('langues');
+	Route::get('/about', 'AboutController@index')->name('about');
 
 	Route::resource('profile', 'ProfileController');
 
 	Route::get('/contact', 'ContactController@create')->name('contact.create');
 	Route::post('/contact', 'ContactController@store')->name('contact.store');
 
-	Route::get('/ligues/joinLigues', 'LigueController@joinLiguesIndex')->name('joinLiguesIndex');
-	Route::post('/ligues/joinLigues', 'LigueController@joinLigues')->name('joinLigues');
-
-	Route::post('/ligues/{ligue}/quitLigue', 'LigueController@quitLigue')->name('quitLigue');
+	Route::get('/ligues/joinLigues', 'LigueUserController@create')->name('ligueuser.create');
+	Route::post('/ligues/joinLigues', 'LigueUserController@store')->name('ligueuser.store');
+	Route::post('/ligues/{ligue}/quitLigue', 'LigueUserController@destroy')->name('ligueuser.destroy');
 
 	Route::resource('ligues', 'LigueController');
 
 	Route::get('/ligues/{ligue}/{user}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
-
 	Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
 	    'index', 'store'
 	]);
 
-	Route::get('/ligues/{ligue}/classement', 'LigueController@classement')->name('ligueClassement');
+	Route::get('/ligues/{ligue}/classement', 'ClassementLigueController@show')->name('classementligue.show');
 
-	Route::get('/ligues/{ligue}/settings', 'LigueController@settings')->name('ligueSettings');
+	Route::get('/ligues/{ligue}/settings', 'LigueSettingsController@show')->name('ligueSettings.show');
 
 	Route::resource('games', 'GameController')->middleware('admin');
-
 	Route::resource('equipes', 'EquipeController')->middleware('admin');
-
 	Route::resource('championnats', 'ChampionnatController')->middleware('admin');
-
 	Route::resource('datejournees', 'DateJourneeController')->middleware('admin');
 
 	Route::get('/donate', 'StripeController@index')->name('donate.index');
@@ -64,11 +57,11 @@ Route::group([
 
 	    Route::get('/', 'AdminController@index')->name('admin.index');
 	    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
-	    Route::get('/compare/{journee}', 'AdminController@compare')->name('apuestas.compare');
-	    Route::get('/count-points/{journee}', 'AdminController@countPoints')->name('apuestas.points');
-	    Route::get('/apuestasorphelines', 'AdminController@apuestasorphelines')->name('apuestasorphelines');
-	    Route::delete('/orphansdestroy/{orphan}', 'AdminController@orphansdestroy')->name('orphansdestroy');
-	    Route::get('/seasonfinished/{championnat}', 'AdminController@seasonfinished')->name('seasonfinished');
+	    Route::get('/compare/{journee}', 'CompareApuestasController@update')->name('compareapuestas.update');
+	    Route::get('/count-points/{journee}', 'CountPointsController@update')->name('countpoints.update');
+	    Route::get('/apuestasorphelines', 'ApuestasOrphansController@index')->name('orphans.index');
+	    Route::delete('/orphansdestroy/{orphan}', 'ApuestasOrphansController@destroy')->name('orphans.destroy');
+	    Route::get('/seasonfinished/{championnat}', 'SeasonController@update')->name('seasonfinished.update');
 	});
 
 });

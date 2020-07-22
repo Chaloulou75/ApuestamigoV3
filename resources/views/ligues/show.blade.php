@@ -4,7 +4,7 @@
 
 <div class="w-full lg:w-3/4 m-auto p-1">
 
-  @include('layouts/partials/navLigue')  
+  @include('ligues/partials/nav/navLigue')  
   
 
 </div>

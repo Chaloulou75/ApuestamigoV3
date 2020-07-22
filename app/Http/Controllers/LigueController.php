@@ -37,7 +37,7 @@ class LigueController extends Controller
                                       ->latest();
                             }]);
 
-            return view('/ligues', compact('user'));
+            return view('/ligues/index', compact('user'));
         }
 
         return view('/index');
@@ -168,7 +168,6 @@ class LigueController extends Controller
             return back()->with('message.level', 'success')->with('message.content', __('all.Sorry you have to be the owner to change the league'));
 
         }
-
         
     }
 
@@ -196,73 +195,5 @@ class LigueController extends Controller
 
         }   
              
-    }
-
-    public function joinLiguesIndex()
-    {
-        if (Auth::user())
-        {
-            $baseligue = Ligue::firstWhere('name', 'The Champions League');
-
-            if(isset($baseligue))
-            {
-              return view('/ligues/joinLigues', compact('baseligue'));  
-            }
-            else{
-               return view('/ligues/joinLigues'); 
-            }
-        	
-        }
-        return redirect('login');
-    }
-
-    public function joinLigues(Request $request, Ligue $ligue)
-    {
-        if (Auth::user())
-        {
-            $token = $request->input('token');
-            $ligue = ligue::where('token', '=',  $token)->firstOrFail();            
-            
-            //lié le user avec la ligue créé
-            $user = Auth::user();
-
-            $userLigueExist = $user->ligues()->wherePivot('ligue_id', $ligue->id)->exists();
-            //dd($userLigueExist);
-
-            if($userLigueExist === true)
-            {
-                return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', __('all.You already have joined this league!'));
-            }
-
-            $user->ligues()->attach($ligue);
-          
-            return redirect()->route('ligues.show', $ligue)->with('message.level', 'success')->with('message.content', __('all.You have joined this league!'));
-        }
-
-        return redirect('login');
-    }
-
-    public function quitLigue(Ligue $ligue)
-    {                  
-        //le user 
-        $user = Auth::user();
-
-        $user->ligues()->detach($ligue);
-
-        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.Ok, you are not anymore in this league!'));
-
-    }
-
-    public function classement(Ligue $ligue)
-    {  
-        $journee = $this->DateRepository->dateJournee($ligue); 
-  
-        return view('/ligues/classement', $ligue, compact('ligue', 'journee'));        
-    }
-
-    public function settings(Ligue $ligue)
-    {
-        return view('/layouts/partials/settings', $ligue, compact('ligue'));
-    }
-
+    } 
 }
