@@ -72,18 +72,6 @@
 	                </span>
 	            @enderror
 		    </div>
-		    <div class="mb-4">
-		      <label for="groupe" class="block text-white text-sm font-medium tracking-wide mb-2">{{ __('Groupe') }}</label>
-
-	            <input id="groupe" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-julien-gris leading-loose focus:outline-none focus:shadow-outline
-	             @error('groupe') bg-red-dark @enderror" name="groupe" value="{{ $equipe->groupe }}" autocomplete="groupe">
-
-	            @error('groupe')
-	                <span class=" mt-1 text-sm text-red-500" role="relative px-3 py-3 mb-4 border rounded">
-	                    <strong>{{ $message }}</strong>
-	                </span>
-	            @enderror
-		    </div>
 		    
 		    <div class="flex items-center justify-between">
 		      <button class="w-full bg-francagris text-white hover:text-francaverde text-sm py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">

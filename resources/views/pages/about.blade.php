@@ -6,7 +6,7 @@
 <div class="w-full lg:w-1/2 mx-auto">
 
 	<div class="border-t-4 border-double border-francaverde bg-francagris mb-4">
-  		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('nav.about') }}</h1>
+  		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-medium pt-4">{{ __('nav.about') }}</h1>
   	</div>
 
   	<div class="animate__animated animate__fadeInUp border-2 border-solid border-francaverde rounded py-4 px-4 bg-francagris shadow-2xl">

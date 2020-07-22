@@ -4,7 +4,7 @@
 
 <div class="w-full md:w-1/2 mx-auto">
 	<div class="border-t-4 border-double rounded border-francaverde bg-francagris">
-		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('all.Profil') }}</h1>
+		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-medium pt-4">{{ __('all.Profil') }}</h1>
 	</div>
 
 	<form class="animate__animated animate__fadeInUp bg-francagris px-6 py-6 mb-1" method="POST" action="{{ route('profile.update', $user) }}">

@@ -5,7 +5,7 @@
 <div class="w-full lg:w-1/2 mx-auto">
 
     <div class="border-t-4 border-double border-francaverde bg-francagris mb-4">
-        <h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('nav.contact') }}</h1>
+        <h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-medium pt-4">{{ __('nav.contact') }}</h1>
     </div>
 
     <form class="animate__animated animate__fadeInUp bg-francagris border-2 border-francaverde shadow-md rounded px-8 py-6 " method="POST" action="{{ route('contact.store') }}">

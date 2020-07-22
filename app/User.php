@@ -13,7 +13,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use Billable;
 
-
     /**
      * The attributes that are mass assignable.
      *

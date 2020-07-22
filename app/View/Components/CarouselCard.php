@@ -17,7 +17,7 @@ class CarouselCard extends Component
      */
     public function __construct($equipes)
     {
-        $this->equipes = Equipe::all();
+        $this->equipes = Equipe::inRandomOrder()->select(['logo', 'logourl'])->get();
     }
 
     /**

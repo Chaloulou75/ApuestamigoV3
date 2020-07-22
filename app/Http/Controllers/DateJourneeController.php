@@ -61,10 +61,8 @@ class DateJourneeController extends Controller
         //dd($request);
         $validator = Validator::make($request->all(),[
                 'championnat_id' => 'required',
-                'numerojournee' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
-                'season' => 'required',
             ]);
 
         if ($validator->fails()) {
@@ -77,10 +75,8 @@ class DateJourneeController extends Controller
 
         $data = array(
             'championnat_id'=> $request->championnat_id,
-            'numerojournee'=> $request->numerojournee,
             'namejournee' => $request->namejournee,
-            'timejournee' => $timejournee, 
-            'season' => $request->season,            
+            'timejournee' => $timejournee,          
         );
         
         DateJournee::create($data);
@@ -126,10 +122,8 @@ class DateJourneeController extends Controller
 
         $validator = Validator::make($request->all(),[
                 'championnat_id' => 'required',
-                'numerojournee' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
-                'season' => 'required',
             ]);
 
         if ($validator->fails()) {
@@ -139,10 +133,8 @@ class DateJourneeController extends Controller
         }
 
         $datejournee->championnat_id= $request->input('championnat_id');
-        $datejournee->numerojournee= $request->input('numerojournee');
         $datejournee->namejournee = $request->input('namejournee');
         $datejournee->timejournee = Carbon::parse($request->input('timejournee'), 'Europe/Paris');
-        $datejournee->season = $request->input('season');
 
         $datejournee->save();
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ligue extends Model
 {
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,5 +37,10 @@ class Ligue extends Model
     {
         return $this->belongsTo(Championnat::class, 'championnat_id'); 
     }
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'name';
+    // }
     
 }

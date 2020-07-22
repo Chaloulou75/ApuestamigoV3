@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipe extends Model
 {
     protected $fillable = [
-        'name', 'logo', 'groupe', 'logourl', 'championnat_id',
+        'name', 'logo', 'logourl', 'championnat_id',
     ];
 
     public function games()

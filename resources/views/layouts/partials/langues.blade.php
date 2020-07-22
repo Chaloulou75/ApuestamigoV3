@@ -5,7 +5,7 @@
 <div class="w-full md:w-1/3 mx-auto">
 
 	<div class="border-t-4 border-double rounded border-francaverde bg-francagris mb-4">
-		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-semibold pt-4">{{ __('all.Translations') }}</h1>
+		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-medium pt-4">{{ __('all.Translations') }}</h1>
 	</div>
 
 	<div class="animate__animated animate__fadeInUp items-center border-2 border-solid border-francaverde rounded py-6 px-4 bg-francagris">

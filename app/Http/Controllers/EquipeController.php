@@ -56,7 +56,6 @@ class EquipeController extends Controller
                 'championnat_id' => 'required',
                 'name' => 'required|min:2',
                 'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-                'groupe' => 'max:1',
             ]);
 
         if ($validator->fails()) {
@@ -80,8 +79,7 @@ class EquipeController extends Controller
             'championnat_id'=> $request->championnat_id,
             'name'=> $request->name,
             'logo' => basename($path),
-            'logourl' => $url, 
-            'groupe'=> $request->groupe,            
+            'logourl' => $url,           
         );
         
         Equipe::create($data);
@@ -128,7 +126,6 @@ class EquipeController extends Controller
                 'championnat_id' => 'required',
                 'name' => 'required|min:2',
                 'logo' => 'image|mimes:jpeg,png,jpg,gif,svg',
-                'groupe' => 'max:1',
             ]);
 
         if ($validator->fails()) {
@@ -157,8 +154,7 @@ class EquipeController extends Controller
         }
         $equipe->update([
             'championnat_id'=> $request->championnat_id,
-            'name'=> $request->name,
-            'groupe' => $request->groupe,             
+            'name'=> $request->name,           
         ]);
 
         return redirect()->back()->with('message.level', 'success')->with('message.content', __('Equipe '.$equipe->name.' mise à jour.'));
