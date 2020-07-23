@@ -17,13 +17,17 @@
           gtag('config', 'G-5RMT6BBR84');
         </script>
         <!--  stripe -->
-        <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://js.stripe.com/v3/" async></script>
         <!--  recaptcha -->
         @yield('recaptcha')
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        @livewireStyles        
+        @livewireStyles
+        <!-- Scripts -->
+        <script defer src="/js/app.js"></script>
+        @stack('scripts')
+        @livewireScripts       
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
         <div id="app">
@@ -64,9 +68,5 @@
             @endadmin
             
         </div>
-
-        <script src="/js/app.js"></script>
-        @stack('scripts')
-        @livewireScripts
     </body>
 </html>

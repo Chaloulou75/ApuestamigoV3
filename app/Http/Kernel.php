@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\XContentTypeMiddleware::class,
             \App\Http\Middleware\StrictTransportSecurityMiddleware::class,
             \App\Http\Middleware\ReferrerPolicyMiddleware::class,
+            \App\Http\Middleware\SetCookieMiddleware::class,
             //\App\Http\Middleware\CspMiddleware::class,
             //\Spatie\Csp\AddCspHeaders::class,
 

@@ -57,10 +57,14 @@ Route::group([
 
 	    Route::get('/', 'AdminController@index')->name('admin.index');
 	    Route::post('/ligues/{ligue}/apuestas/{fecha}', 'AdminController@store')->name('admin.store');
+
 	    Route::get('/compare/{journee}', 'CompareApuestasController@update')->name('compareapuestas.update');
+
 	    Route::get('/count-points/{journee}', 'CountPointsController@update')->name('countpoints.update');
+
 	    Route::get('/apuestasorphelines', 'ApuestasOrphansController@index')->name('orphans.index');
 	    Route::delete('/orphansdestroy/{orphan}', 'ApuestasOrphansController@destroy')->name('orphans.destroy');
+	    
 	    Route::get('/seasonfinished/{championnat}', 'SeasonController@update')->name('seasonfinished.update');
 	});
 

@@ -6,6 +6,9 @@
 
 require('./bootstrap');
 
+var Turbolinks = require("turbolinks");
+Turbolinks.start();
+
 import messages from './messages';
 import Lang from 'lang.js';
 import route from 'ziggy';
@@ -34,6 +37,8 @@ Vue.mixin({
     }
 })
 
+import { turbolinksAdapterMixin } from 'vue-turbolinks';
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -59,22 +64,14 @@ Vue.component('account-dropdown', require('./components/AccountDropdown.vue').de
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+document.addEventListener('turbolinks:load', () => {
+
+  let app = new Vue({
+      el: '#app',
+      mixins: [turbolinksAdapterMixin],
+  });
+
 });
+  
 
-//copie du token
-document.getElementById('copyToken').onclick = function copyTok() {
-  var copyText = document.getElementById("copyToken");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copié: " + copyText.value;
-}
-
-function outFunc() {
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copié le token";
-}
 

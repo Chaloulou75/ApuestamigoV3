@@ -91,3 +91,28 @@
 
 </div>
 @endsection
+
+@push('scripts')
+
+<script>
+  //copie du token
+document.addEventListener("turbolinks:load", function() {
+
+    document.getElementById("copyToken").onclick = function copyTok() {
+    var copyText = document.getElementById("copyToken");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copié: " + copyText.value;
+    }
+});
+document.addEventListener("turbolinks:load", function() {
+    function outFunc() {
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copy token";
+    }
+});
+
+</script>  
+@endpush

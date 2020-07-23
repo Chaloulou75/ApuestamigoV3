@@ -117,8 +117,8 @@
 @push('scripts')
 
 <script>
-
-	(function(){
+	document.addEventListener("turbolinks:load", function() {
+	
 	// Create a Stripe client.
 	var stripe = Stripe('pk_test_Es5qKBFBNCHUEswJ4egdQPXJ00mEYUCQtr');
 
