@@ -4,7 +4,7 @@
 
         @foreach($equipes as $equipe)
 
-        <img class="inline w-12 h-10 pr-2 carousel-cell" loading="lazy" src="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}" loading="lazy" alt="club">
+        <img class="inline w-12 h-10 pr-2 carousel-cell" data-flickity-lazyload="{{ $equipe->logourl ? url($equipe->logourl) : URL::to('/img/' .$equipe->logo) }}" alt=".">
 
         @endforeach 
         

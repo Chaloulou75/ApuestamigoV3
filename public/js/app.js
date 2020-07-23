@@ -3804,7 +3804,9 @@ __webpack_require__.r(__webpack_exports__);
       wrapAround: this.wrapAround,
       autoPlay: this.autoPlay,
       fade: this.fade,
+      lazyLoad: true,
       contain: true,
+      pauseAutoPlayOnHover: false,
       prevNextButtons: false,
       pageDots: false,
       groupCells: 5
