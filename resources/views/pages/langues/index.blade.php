@@ -8,7 +8,7 @@
 		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-medium pt-4">{{ __('all.Translations') }}</h1>
 	</div>
 
-	<div class="animate__animated animate__fadeInUp items-center border-2 border-solid border-francaverde rounded py-6 px-4 bg-francagris">
+	<div class="animate__animated animate__fadeIn animate__slow items-center border-2 border-solid border-francaverde rounded py-6 px-4 bg-francagris">
 		@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 		  <div class="flex items-start ">    
 		    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="overflow-hidden flex items-center justify-between focus:outline-none mx-auto my-3">	        

@@ -3806,7 +3806,6 @@ __webpack_require__.r(__webpack_exports__);
       fade: this.fade,
       lazyLoad: true,
       contain: true,
-      pauseAutoPlayOnHover: false,
       prevNextButtons: false,
       pageDots: false,
       groupCells: 5

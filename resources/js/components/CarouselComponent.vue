@@ -30,7 +30,6 @@ import 'flickity/dist/flickity.min.css';
             fade: this.fade,
             lazyLoad: true,
             contain: true,
-            pauseAutoPlayOnHover: false,
             prevNextButtons: false,
             pageDots: false,
             groupCells: 5
