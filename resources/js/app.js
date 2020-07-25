@@ -64,14 +64,39 @@ Vue.component('account-dropdown', require('./components/AccountDropdown.vue').de
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-document.addEventListener('turbolinks:load', () => {
+//Pour faire marcher Turbolinks avec Vuejs
 
-  let app = new Vue({
-      el: '#app',
-      mixins: [turbolinksAdapterMixin],
+// document.addEventListener('turbolinks:load', () => {
+
+//   let app = new Vue({
+//       el: '#app',
+//       mixins: [turbolinksAdapterMixin],
+//   });
+// });
+ 
+ //Pour faire marcher Turbolinks avec Vuejs et Livewire 
+ 
+function initiateVue() {
+  const app = new Vue({
+         el: '#app'
   });
+}
 
+document.addEventListener("turbolinks:load", function(event) {
+    document.querySelectorAll('[wire\\:id]').forEach(function(el) {
+        const component = el.__livewire;
+        const dataObject = {
+            data: component.data,
+            events: component.events,
+            children: component.children,
+            checksum: component.checksum,
+            name: component.name,
+            errorBag: component.errorBag,
+            redirectTo: component.redirectTo,
+        };
+        el.setAttribute('wire:initial-data', JSON.stringify(dataObject));
+    });
+    initiateVue();
+    window.livewire.start();
 });
-  
-
 

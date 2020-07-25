@@ -38,7 +38,7 @@ Route::group([
 
 	Route::get('/ligues/{ligue}/{user}/apuestas/{fecha}', 'ApuestasController@show')->name('apuestas.show');
 	Route::resource('/ligues/{ligue}/apuestas', 'ApuestasController')->only([
-	    'index', 'store'
+	    'create', 'store'
 	]);
 
 	Route::get('/ligues/{ligue}/classement', 'ClassementLigueController@show')->name('classementligue.show');

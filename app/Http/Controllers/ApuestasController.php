@@ -27,7 +27,7 @@ class ApuestasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Ligue $ligue)
+    public function create(Ligue $ligue)
     {        
         $user = Auth::user(); // le user
 
@@ -53,7 +53,7 @@ class ApuestasController extends Controller
           //collection des resultats userAdmin pour la journee
           $resultAdmin = $this->ResultAdminRepository->resultAdmin($journee);
 
-          return view('/ligues/apuestas/index', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
+          return view('/ligues/apuestas/create', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
             
         }
         return redirect()->guest('login');           

@@ -7,17 +7,15 @@
 
   <div class="sm:flex block justify-between text-sm lg:text-base p-2">
 
-    <div class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
-      <a href="{{ route('classementligue.show', $ligue) }}">
+    <div class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">    <a href="{{ route('classementligue.show', $ligue) }}">
           <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-           {{ __('all.Ranking')}}
-      </a>
+            {{ __('all.Ranking')}}
+        </a>
     </div>
 
-    <div class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
-      <a href="{{ action('ApuestasController@index', $ligue) }}">
+    <div class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">  <a href="{{ action('ApuestasController@create', $ligue) }}">
         <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-         {{ __('all.Bets')}}
+          {{ __('all.Bets')}}
       </a>
     </div>
     
