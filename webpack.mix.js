@@ -36,5 +36,7 @@ mix.js('resources/js/app.js', 'public/js')
 	            ziggy: path.resolve('vendor/tightenco/ziggy/dist/js/route.js'),
 	        },
 	    },
-	}).purgeCss();
+	})
+    .sourceMaps()
+    .purgeCss();
 	//
