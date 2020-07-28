@@ -21,16 +21,10 @@
         <!--  stripe -->
         {{-- <script src="https://js.stripe.com/v3/" ></script> --}}
         <!--  recaptcha -->
-        @yield('recaptcha')   
-        
-        <!-- Scripts -->               
-        <script src="{{ mix('js/app.js') }}" data-turbolinks-track="reload"></script> 
-        <!-- Livewire --> 
-        @livewireScripts
-        @stack('scripts')        
+        @yield('recaptcha')                          
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet" defer data-turbolinks-track="reload">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" >
         <!-- Livewire -->  
         @livewireStyles 
                         
@@ -74,5 +68,11 @@
             @endadmin --}}
             
         </div>
+
+        <!-- Scripts -->               
+        <script src="{{ mix('js/app.js') }}"></script> 
+        <!-- Livewire --> 
+        @livewireScripts
+        @stack('scripts') 
     </body>
 </html>

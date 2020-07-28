@@ -94,7 +94,7 @@
 
 <script>
   //copie du token
-document.addEventListener("turbolinks:load", function() {
+// document.addEventListener("turbolinks:load", function() {
 
     document.getElementById("copyToken").onclick = function copyTok() {
     var copyText = document.getElementById("copyToken");
@@ -104,13 +104,13 @@ document.addEventListener("turbolinks:load", function() {
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copié: " + copyText.value;
     }
-});
-document.addEventListener("turbolinks:load", function() {
+// });
+// document.addEventListener("turbolinks:load", function() {
     function outFunc() {
       var tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copy token";
     }
-});
+// });
 
 </script>  
 @endpush

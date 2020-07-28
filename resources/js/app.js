@@ -6,11 +6,6 @@
 
 require('./bootstrap');
 
-var Turbolinks = require("turbolinks");
-document.addEventListener("livewire:load", function(event) {
-    Turbolinks.start();
-});
-
 import messages from './messages';
 import Lang from 'lang.js';
 import route from 'ziggy';
@@ -39,9 +34,6 @@ Vue.mixin({
     }
 })
 
-import { turbolinksAdapterMixin } from 'vue-turbolinks';
-
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -67,12 +59,10 @@ Vue.component('account-dropdown', require('./components/AccountDropdown.vue').de
  */
 
 //Pour faire marcher Turbolinks avec Vuejs
- document.addEventListener('turbolinks:load', () => {
 
-  let app = new Vue({
-      el: '#app',
-      mixins: [turbolinksAdapterMixin],
+  const app = new Vue({
+      el: '#app'
   });
- });
+
 
  
