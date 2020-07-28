@@ -7,7 +7,9 @@
 require('./bootstrap');
 
 var Turbolinks = require("turbolinks");
-Turbolinks.start();
+document.addEventListener("livewire:load", function(event) {
+    Turbolinks.start();
+});
 
 import messages from './messages';
 import Lang from 'lang.js';
@@ -65,39 +67,12 @@ Vue.component('account-dropdown', require('./components/AccountDropdown.vue').de
  */
 
 //Pour faire marcher Turbolinks avec Vuejs
-
-document.addEventListener('turbolinks:load', () => {
+ document.addEventListener('turbolinks:load', () => {
 
   let app = new Vue({
       el: '#app',
       mixins: [turbolinksAdapterMixin],
   });
-});
+ });
+
  
- //Pour faire marcher Turbolinks avec Vuejs et Livewire 
-
-// function initiateVue() {
-//   let app = new Vue({
-//         el: '#app',
-//         mixins: [turbolinksAdapterMixin],
-//   });
-// }
-
-// document.addEventListener("turbolinks:load", function(event) {
-//     document.querySelectorAll('[wire\\:id]').forEach(function(el) {
-//         const component = el.__livewire;
-//         const dataObject = {
-//             data: component.data,
-//             events: component.events,
-//             children: component.children,
-//             checksum: component.checksum,
-//             name: component.name,
-//             errorBag: component.errorBag,
-//             redirectTo: component.redirectTo,
-//         };
-//         el.setAttribute('wire:initial-data', JSON.stringify(dataObject));
-//     });
-//     initiateVue();
-//     window.livewire.start();
-// });
-

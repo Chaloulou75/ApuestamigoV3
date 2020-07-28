@@ -53,7 +53,7 @@
 		  </td>
 		  <td class="px-1 py-4 text-center">
 			<label for="resultatEq1"></label>
-			<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
+			<select {{-- id="resultatEq1" --}} class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
 				<option> 
 					@isset($game->matchs->first()['resultatEq1']) 
 						{{ $game->matchs->first()['resultatEq1'] }} 
@@ -84,7 +84,7 @@
 		  </td>
 		  <td class="px-1 py-4 text-center">
 			<label for="resultatEq2"></label>
-			<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
+			<select {{-- id="resultatEq2" --}} class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
 				<option> 
 					@isset($game->matchs->first()['resultatEq2']) 
 						{{ $game->matchs->first()['resultatEq2'] }} 

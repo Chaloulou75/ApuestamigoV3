@@ -49,7 +49,7 @@
 		  <td class="px-1 py-4 text-center"> <img class="inline w-10 h-10" loading="lazy" src="{{ $game->homeTeam->logourl ? url($game->homeTeam->logourl) : URL::to('/img/' .$game->homeTeam->logo) }}"></td>
 		  <td class="px-1 py-4 text-center">
 			<label for="resultatEq1"></label>
-			<select id="resultatEq1" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
+			<select {{-- id="resultatEq1" --}} class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq1[]" value="">
 				<option>
 				 	@if(isset($game->matchs->first()['resultatEq1']))
 				 		@if(Auth::user() == $user || $now > $game->gamedate)
@@ -82,7 +82,7 @@
 		  </td>
 		  <td class="px-1 py-4 text-center">
 			<label for="resultatEq2"></label>
-			<select id="resultatEq2" class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
+			<select {{-- id="resultatEq2" --}} class="border-2 border-solid border-gray-800 text-gray-900 font-bold rounded" name="resultatEq2[]" value="">
 				<option> 
 					@if(isset($game->matchs->first()['resultatEq2']))
 						@if(Auth::user() == $user || $now > $game->gamedate) 

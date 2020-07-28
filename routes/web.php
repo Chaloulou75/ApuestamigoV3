@@ -50,8 +50,8 @@ Route::group([
 	Route::resource('championnats', 'ChampionnatController')->middleware('admin');
 	Route::resource('datejournees', 'DateJourneeController')->middleware('admin');
 
-	Route::get('/donate', 'StripeController@index')->name('donate.index');
-	Route::post('/donate', 'StripeController@store')->name('donate.store');
+	// Route::get('/donate', 'StripeController@index')->name('donate.index');
+	// Route::post('/donate', 'StripeController@store')->name('donate.store');
 
 	Route::group(['prefix' => 'admin' , 'middleware' => 'admin'], function () {
 

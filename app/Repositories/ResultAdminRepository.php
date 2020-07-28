@@ -13,7 +13,6 @@ class ResultAdminRepository
                                         ->where('date_journees_id', $journee->id)
                                         ->orderBy('game_id');
                               }])->where('admin', 1)
-                                  ->first();
+                                 ->first();
 	}
-
 }

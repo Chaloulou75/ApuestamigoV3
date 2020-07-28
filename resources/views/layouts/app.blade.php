@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -11,26 +12,27 @@
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RMT6BBR84"></script>
-        <script defer data-turbolinks-track="reload">
+        <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-5RMT6BBR84');
         </script>
         <!--  stripe -->
-        <script src="https://js.stripe.com/v3/" async></script>
+        {{-- <script src="https://js.stripe.com/v3/" ></script> --}}
         <!--  recaptcha -->
-        @yield('recaptcha') 
-        <!-- Livewire -->  
-        @livewireStyles   
-        @livewireScripts
-        <!-- Scripts -->               
-        <script defer src="{{ mix('js/app.js') }}" defer data-turbolinks-track="reload"></script> 
-        @stack('scripts')
+        @yield('recaptcha')   
         
+        <!-- Scripts -->               
+        <script src="{{ mix('js/app.js') }}" data-turbolinks-track="reload"></script> 
+        <!-- Livewire --> 
+        @livewireScripts
+        @stack('scripts')        
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet" data-turbolinks-track="reload">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" defer data-turbolinks-track="reload">
+        <!-- Livewire -->  
+        @livewireStyles 
                         
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
@@ -63,13 +65,13 @@
                 @yield('content')
             </main>
 
-            @admin
+            {{-- @admin
 
             <footer class='w-full text-center text-lg text-white hover:text-francaverde tracking-wider border-t border-gray-700 p-4 mt-4 bottom-0'>
                 <a href="{{ route('donate.index') }}"><svg class="h-6 w-6 inline" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg> {{ __('all.Wanna`\' buy me a beer?')}}</a>
             </footer>
 
-            @endadmin
+            @endadmin --}}
             
         </div>
     </body>
