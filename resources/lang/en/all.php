@@ -22,6 +22,7 @@ return [
   'Login'=> 'Login',
   'Logout'=> 'Sign Out',
   'Name'=> 'Name',
+  'Close' => 'Close',
   'Not Found'=> 'Not Found',
   'Oh no'=> 'Oh no',
   'Page Expired'=> 'Page Expired',
@@ -50,7 +51,7 @@ return [
   'Whoops!'=> 'Whoops!',
 
   //head
-  'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Create Betting leagues between friends on the Champions League and find who is the best tipster.',
+  'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Create Betting leagues between friends on the Champions League and Ligue 1 and find out who is the best tipster.',
 
   'Profil' => 'Profile',
   'Favorite Club' => 'Favorite Club',
@@ -93,6 +94,7 @@ return [
   'Send' => 'Send your message',
   'Message' => 'Message',
   'Translations' => 'Translations',
+  'What\'s all about?' => 'What\'s all about?',
   'So how does Apuestamigo work?' => 'So how does Apuestamigo work?',
   'No, Apuestamigo is not yet another online betting site ...' => 'No, Apuestamigo is not yet another online betting site ...',
   'Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.' => 'Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.',

@@ -51,7 +51,7 @@ return [
   'Whoops!'=> '¡Vaya!',
   
   //head
-  'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Ligas de apuestas entre amigos sobre la Champions Liga y descubre quién es el mejor tipster.',
+  'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Ligas de apuestas entre amigos sobre la Champions Liga y la Ligue 1 y descubre quién es el mejor tipster.',
 
   'Profil' => 'Perfil',
   'your profile has been updated' => 'su perfil ha sido actualizado',
@@ -94,6 +94,7 @@ return [
   'Send' => 'Enviar mensaje',
   'Message' => 'Mensaje',
   'Translations' => 'Idioma',
+  'What\'s all about?' => 'De que trata?',
   'So how does Apuestamigo work?'=> 'Entonces, ¿cómo funciona Apuestamigo?',
   'No, Apuestamigo is not yet another online betting site ...' => 'No, Apuestamigo no es otro sitio de apuestas en línea ...',
   'Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.' => 'Bueno, sí, necesariamente un poco, pero de manera diferente. Esto es solo para guiarte los primeros días, el resto vendrá solo.',
@@ -102,6 +103,7 @@ return [
   'Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can\'t do anything for you ...)'=> 'Tu liga puede comenzar: cada ronda de la Champions Liga corresponde a un día de Apuestamigo en el que compites. ¡No olvides hacer tus predicciones antes de cada ronda de la Champions liga, después del comienzo del partido, será DEMASIADO TARDE! (y no es necesario sobornar al administrador, él no puede hacer nada por usted ...)',
   'Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points / good result but not exact 1 point / the rest 0). The champion is of course the one with the most points at the end of the season.' => 'En el transcurso de los partidos, su clasificación evoluciona frente a sus amigos (un puntaje exacto encontrado da 3 puntos / buen resultado pero no 1 punto exacto / el resto 0). El campeón es, por supuesto, el que tiene más puntos al final de la temporada.',
   'Go! It\'s your turn!'=> '¡Vamos! ¡Es tu turno!',
+  'Close' => 'Cerrar',
   'Leave this league?' => 'Dejar esta  liga?',
   'Leave' => 'Dejar',
   'Edit' => 'Editar',

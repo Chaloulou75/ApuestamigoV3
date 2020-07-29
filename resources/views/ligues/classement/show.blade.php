@@ -20,9 +20,9 @@
 			  </thead>
 			  <tbody>
 			  	@foreach ($ligue->users as $user)
-			    <tr>
+			    <tr class="@if( $user->id == Auth::user()->id ) bg-blue-200 @endif">
 			      <td scope="row" class="py-2 px-4 text-center @if($loop->first) border-l-4 border-francaverde @endif"> {{ $loop->iteration }} </td>
-				  <td class="py-2 px-4 hover:underline hover:text-francaverde text-sm">
+				  <td class="py-2 px-4 hover:underline hover:text-francaverde text-sm @if( $user->id == Auth::user()->id ) font-semibold @endif">
 				  	<a href="{{ action('ApuestasController@show', [$ligue, $user, $fecha = $journee ]) }}">
 				  		 {{ $user->name }} 
 				  	</a>

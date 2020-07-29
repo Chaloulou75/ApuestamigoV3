@@ -43,10 +43,11 @@
 
 @push('scripts')
 
-<script>
+<script >
 //copie du token
  document.addEventListener("turbolinks:load", function() {
 
+    // your code 
     document.getElementById("copyToken").onclick = function copyTok() {
     var copyText = document.getElementById("copyToken");
     copyText.select();
@@ -55,13 +56,16 @@
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copié: " + copyText.value;
     }
+  
  });
 
  document.addEventListener("turbolinks:load", function() {
+
     function outFunc() {
       var tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copy token";
     }
+ 
  });
 
 </script>  
