@@ -9,33 +9,9 @@ require('./bootstrap');
 var Turbolinks = require("turbolinks");
 Turbolinks.start();
 
-// import messages from './messages';
-// import Lang from 'lang.js';
-// import route from 'ziggy';
-// import { Ziggy } from './ziggy';
-
-// const lang = new Lang({
-
-//   messages: messages
-
-// });
-
 // window.Vue = require('vue');
 
-// Vue.mixin({
 
-// 	methods: { 
-//       //methode traduction
-// 		  __(...args){
-
-//         	return lang.get(...args);
-
-//       	},
-//       //methode de route (ziggy)
-//       // route: (name, params, absolute) => route(name, params, absolute, Ziggy),
-        
-//     }
-// })
 
 /**
  * The following block of code may be used to automatically register your
@@ -58,8 +34,6 @@ Turbolinks.start();
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-//Pour faire marcher Turbolinks avec Vuejs
 
   // const app = new Vue({
   //     el: '#app'

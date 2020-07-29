@@ -4,7 +4,7 @@
 	
 <div class="w-full lg:w-3/4 m-auto">
 
-	<div class="border-t-4 border-double border-francaverde bg-transparent">
+	<div class="border-t-2 border-double border-francaverde bg-transparent">
 		
 		<h1 class="animate__animated animate__flipInX text-center text-white text-3xl tracking-wider font-medium my-4">
 			{{ __('nav.ligues')}} Apuestamigo
