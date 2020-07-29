@@ -6,33 +6,36 @@
 
 require('./bootstrap');
 
-import messages from './messages';
-import Lang from 'lang.js';
-import route from 'ziggy';
-import { Ziggy } from './ziggy';
+var Turbolinks = require("turbolinks");
+Turbolinks.start();
 
-const lang = new Lang({
+// import messages from './messages';
+// import Lang from 'lang.js';
+// import route from 'ziggy';
+// import { Ziggy } from './ziggy';
 
-  messages: messages
+// const lang = new Lang({
 
-});
+//   messages: messages
 
-window.Vue = require('vue');
+// });
 
-Vue.mixin({
+// window.Vue = require('vue');
 
-	methods: { 
-      //methode traduction
-		  __(...args){
+// Vue.mixin({
 
-        	return lang.get(...args);
+// 	methods: { 
+//       //methode traduction
+// 		  __(...args){
 
-      	},
-      //methode de route (ziggy)
-      route: (name, params, absolute) => route(name, params, absolute, Ziggy),
+//         	return lang.get(...args);
+
+//       	},
+//       //methode de route (ziggy)
+//       // route: (name, params, absolute) => route(name, params, absolute, Ziggy),
         
-    }
-})
+//     }
+// })
 
 /**
  * The following block of code may be used to automatically register your
@@ -46,11 +49,9 @@ Vue.mixin({
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
-//Vue.component('date-component', require('./components/DateComponent.vue').default);
-//Vue.component('cookie-banner-component', require('./components/CookieBannerConsentmentComponent.vue').default);
-Vue.component('navbar-component', require('./components/Navbar.vue').default);
-Vue.component('account-dropdown', require('./components/AccountDropdown.vue').default);
+// Vue.component('carousel-component', require('./components/CarouselComponent.vue').default);
+// Vue.component('navbar-component', require('./components/Navbar.vue').default);
+// Vue.component('account-dropdown', require('./components/AccountDropdown.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -60,9 +61,9 @@ Vue.component('account-dropdown', require('./components/AccountDropdown.vue').de
 
 //Pour faire marcher Turbolinks avec Vuejs
 
-  const app = new Vue({
-      el: '#app'
-  });
+  // const app = new Vue({
+  //     el: '#app'
+  // });
 
 
  

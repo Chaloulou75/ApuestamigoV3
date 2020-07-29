@@ -26,13 +26,20 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" >
         <!-- Livewire -->  
-        @livewireStyles 
+        @livewireStyles
+        <!-- Scripts -->               
+        <script src="{{ mix('js/app.js') }}"></script> 
+        <!-- Livewire --> 
+        @livewireScripts
+        @stack('scripts') 
                         
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
         <div id="app">
 
-            <navbar-component :user='@json(Auth::user())'></navbar-component>
+            {{-- <navbar-component :user='@json(Auth::user())'></navbar-component> --}}
+
+            @include('layouts/partials/navbar')
 
             <x-carousel-card equipes= {{$equipes}}/>
 
@@ -59,6 +66,7 @@
                 @yield('content')
             </main>
 
+            <x-carousel-card equipes= {{$equipes}}/>
             {{-- @admin
 
             <footer class='w-full text-center text-lg text-white hover:text-francaverde tracking-wider border-t border-gray-700 p-4 mt-4 bottom-0'>
@@ -69,10 +77,6 @@
             
         </div>
 
-        <!-- Scripts -->               
-        <script src="{{ mix('js/app.js') }}"></script> 
-        <!-- Livewire --> 
-        @livewireScripts
-        @stack('scripts') 
+         
     </body>
 </html>

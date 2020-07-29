@@ -1,9 +1,6 @@
 let mix = require('laravel-mix');
 require('laravel-mix-tailwind');
 
-const WebpackShellPlugin = require('webpack-shell-plugin');
-const path = require('path')
-
 require('laravel-mix-purgecss');
 
 /*
@@ -20,23 +17,6 @@ require('laravel-mix-purgecss');
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .tailwind()
-   .webpackConfig({
-	    plugins:
-	    [
-	        new WebpackShellPlugin({
-	        	onBuildStart:[
-	        		'php artisan lang:js resources/js/messages.js --no-lib --quiet',
-	        		'php artisan ziggy:generate resources/js/ziggy.js --quiet'
-	        		],
-	        	onBuildEnd:[]
-	        })
-	    ],
-	    resolve: {
-	        alias: {
-	            ziggy: path.resolve('vendor/tightenco/ziggy/dist/js/route.js'),
-	        },
-	    },
-	})
-    .sourceMaps()
-    .purgeCss();
-	//
+   .sourceMaps()
+   .purgeCss();
+

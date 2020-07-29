@@ -70,4 +70,4 @@ Route::group([
 
 });
 
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+//Route::post('logout', 'Auth\LoginController@logout')->name('logout');

@@ -23635,30 +23635,9 @@ html, body {
   font-family: "Gelasio", "Montserrat", sans-serif;
 }
 
-.carousel-cell {
-  margin-right: 10px;
-}
-
-.spinner {
-  position: absolute;
-}
-
 /* Enter and leave animations can use different */
 
 /* durations and timing functions.              */
-
-.slide-fade-enter-active {
-  transition: all 0.3s ease;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
-  opacity: 0;
-}
 
 .tooltip {
   position: relative;
