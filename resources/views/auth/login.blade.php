@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto pt-8">
+<div class="container mx-auto pt-4">
   <div class="flex flex-wrap justify-center">
     <div class="w-full max-w-sm">
       <div class="animate__animated animate__headShake flex flex-col break-words bg-francagris text-white border-2 border-francaverde rounded shadow-md">
@@ -47,26 +47,25 @@
             </label>
           </div>
 
-          <div class="flex flex-wrap items-center">
-            <div class="flex items-center justify-between">
-              <button class="bg-francagris text-white hover:text-francaverde font-normal py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline" type="submit">
+          <div class="flex flex-wrap">
+            <button type="submit" class="inline-block align-middle text-center select-none whitespace-no-wrap text-base leading-normal no-underline w-full bg-francagris text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline">
                 {{ __('all.Login') }}
-              </button>
-              @if (Route::has('password.request'))  
-                  <a class="inline-block align-baseline hover:text-francaverde text-xs pl-5" href="{{ route('password.request') }}">
-                    {{ __('all.Forgot Your Password?') }}
-                  </a>
-              @endif
-            </div>
+            </button>
 
-            @if (Route::has('register'))
-                <p class="w-full text-xs text-center my-4">
-                    {{ __("all.Don't have an account?") }}
-                    <a class="hover:text-francaverde tracking-wide uppercase underline" href="{{ route('register') }}">
-                        {{ __('all.Register') }}
-                    </a>
-                </p>
+            @if (Route::has('password.request'))  
+            <p class="w-full text-xs text-center my-4">
+              <a class="inline-block align-baseline hover:text-francaverde text-xs py-2" href="{{ route('password.request') }}">
+                {{ __('all.Forgot Your Password?') }}
+              </a>
+            </p>
             @endif
+
+            <p class="w-full text-xs text-center my-4">
+                {{ __("all.Don't have an account?") }}
+                <a class="hover:text-francaverde uppercase tracking-wide underline" href="{{ route('register') }}">
+                    {{ __('all.Register') }}
+                </a>
+            </p>
           </div>
         </form>
       </div>

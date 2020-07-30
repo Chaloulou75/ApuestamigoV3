@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="inline-block align-middle text-center select-none whitespace-no-wrap text-base leading-normal no-underline w-full bg-francagris hover:bg-white text-white hover:text-francagris font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline">
+                            <button type="submit" class="inline-block align-middle text-center select-none whitespace-no-wrap text-base leading-normal no-underline w-full bg-francagris  text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline">
                                 {{ __('all.Register') }}
                             </button>
 
