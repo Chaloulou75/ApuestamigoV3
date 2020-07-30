@@ -48,13 +48,16 @@
 
 			  	<p class="text-white text-sm tracking-wide mb-2">
 
-					1/ {{ __('all.After you have registered and / or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it\'s still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.') }}</p>
-				<p class="text-white text-sm tracking-wide mb-2">
-
-					2/ {{ __('all.Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.') }}</p>
+					{{ __('all.After you have registered and / or identified, create a league with your friends or colleagues (or more, there is no limit of players per league, but it\'s still much more fun with your friends and acquaintances). You will challenge your friends during a Champions League season until the evening of the final to find out who is the best tipster in the band.') }}</p>
 
 				<p class="text-white text-sm tracking-wide mb-2">
-					3/ {{ __('all.Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can\'t do anything for you ...)') }}</p>
+
+					{{ __('all.Once your league has been created, you share it with your friends by sending them the token found in the league settings. They can join you in a league once registered by inserting the token. Nothing too complicated.') }}</p>
+
+				<p class="text-white text-sm tracking-wide mb-2">
+
+					{{ __('all.Your league can then begin: each round of the Champions League corresponds to an Apuestamigo day in which you compete. Do not forget to make your predictions before each round of the Champions League, after the start of the first match, it will be TOO LATE! (and no need to bribe the administrator, he can\'t do anything for you ...)') }}
+					</p>
 
 			  	<!--Footer-->
 				<div class="flex justify-between pt-2">
