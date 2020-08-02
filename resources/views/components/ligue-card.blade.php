@@ -1,4 +1,4 @@
-<div class="animate__animated animate__fadeIn animate__slower flex-grow lg:w-1/3 justify-around my-4 md:m-4 focus:shadow-outline">
+<div class="animate__animated animate__fadeIn animate__slower flex-grow w-full lg:w-1/3 my-4 md:m-4 focus:shadow-outline">
 	<div class="border-4 border-francaverde rounded p-4 flex flex-col justify-between bg-francagris 
 	@if($ligue->finished == true) opacity-50 @endif">
 	    <div class="mb-8">
