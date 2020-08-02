@@ -1,5 +1,5 @@
-<div class="m-2" x-data="{ show: false }" x-on:click.away="show = false">
-    <button class="relative transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm" 
+<div class="m-2 relative" x-data="{ show: false }" x-on:click.away="show = false">
+    <button class=" transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm" 
     x-bind:class="{'font-medium': show, 'shadow-none': show}" 
     x-on:click="show = ! show" 
     >
