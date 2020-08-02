@@ -35,7 +35,7 @@
                         
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
-        <div id="app">
+        <div id="app" class="h-screen flex flex-col space-between">
 
             {{-- <navbar-component :user='@json(Auth::user())'></navbar-component> --}}
 
@@ -62,7 +62,7 @@
             </div>
             @endif
 
-            <main class="py-4">
+            <main class="py-4 mb-auto">
                 @yield('content')
             </main>
 

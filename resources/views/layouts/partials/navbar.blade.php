@@ -1,7 +1,7 @@
-<header class="bg-francagris text-white border-b-4 border-francaverde sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3" x-data="{ isOpen: false }"
+<header class="bg-francagris text-white border-b-4 border-francaverde md:flex md:justify-between md:items-center md:px-4 sm:py-3" x-data="{ isOpen: false }"
       x-on:keydown.escape="isOpen = false">
 
-  <div class="flex items-center justify-between px-4 py-3 sm:p-0" >
+  <div class="flex items-center justify-between px-4 py-3 md:p-0" >
 
     <div class="flex items-center">
       <a href="{{ route('welcome') }}" class=" block px-2 py-1 text-2xl rounded font-medium hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
@@ -10,7 +10,7 @@
      </a>
     </div>
 
-    <div class="sm:hidden">
+    <div class="md:hidden">
       <button x-on:click="isOpen = !isOpen" type="button" class="block hover:text-francaverde focus:text-francaverde focus:outline-none">
         <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
           <path x-show="isOpen" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
@@ -21,10 +21,10 @@
 
   </div>
 
-<nav class="sm:block" x-bind:class="{ 'block': isOpen, 'hidden': !isOpen }"
+<nav class="md:block" x-bind:class="{ 'block': isOpen, 'hidden': !isOpen }"
         x-on:click.away="isOpen = false">
 
-  <div class="px-2 pt-2 pb-1 sm:flex sm:p-0">
+  <div class="px-2 pt-2 pb-1 md:flex md:p-0">
             
     <a href="{{ route('ligues.index') }}"
         class="block px-2 py-1 text-sm hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2"> 
@@ -33,26 +33,26 @@
     </a>
 
     <a href="{{route('ligues.create')}}"
-        class="mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2"> 
+        class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2"> 
       <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
        {{ __('nav.creer') }}
     </a>
 
     <a href="{{route('about')}}" 
-        class="mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2"> 
+        class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2"> 
       <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 
        {{ __('nav.about') }}
     </a>
 
     <a href="{{route('langues')}}"
-        class="mt-1 block px-2 lg:mr-1 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
+        class="mt-1 block px-2 lg:mr-1 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
         <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
           {{ __('all.Translations') }}
     </a>
 
     @guest
     <a href="{{route('login')}}" 
-        class="mt-1 block px-2 py-1 text-sm hover:text-francaverde sm:mt-0 sm:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
+        class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
         <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
         {{ __('all.Login') }}
     </a>
@@ -60,7 +60,7 @@
      
     {{-- dropdown --}}
     @auth
-    <div x-data="{ open: false }" class="hidden sm:block sm:ml-6"> 
+    <div x-data="{ open: false }" class="hidden md:block md:ml-6"> 
           <button x-on:click="open = true" class="relative z-10 block h-8 w-8 rounded-full overflow-hidden border-2 border-francaverde focus:outline-none focus:border-francaverde">
             <img class="h-full w-full object-contain bg-white overflow-hidden" src="/img/cup.png" loading="auto" alt="cup">
           </button>
@@ -101,7 +101,7 @@
   </div>
 
    
-  <div class="px-2 py-1 sm:hidden">
+  <div class="px-2 py-1 md:hidden">
     @auth
     <div class="flex items-center mt-1 block px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:translate-x-2">
       <img class="h-8 w-8 border border-francaverde rounded-full object-contain overflow-hidden bg-white" src="/img/cup.png" loading="auto" alt="cup">

@@ -1,6 +1,8 @@
-<div class="relative bg-white border-t-4 border-francaverde rounded-b text-francagris px-4 py-3 mb-4">
+<div class="lg:relative  bg-white border-t-4 border-francaverde rounded-b text-francagris px-4 py-3 mb-4">
   @if($ligue->finished == true) 
-  <div class="absolute top-0 right-0 text-xs font-thin uppercase pt-2 px-4">{{ __('all.League finished')}}</div>
+    <div class="lg:absolute lg:top-0 lg:right-0 text-center text-red-600 text-xs font-thin uppercase pt-2 px-4">
+      {{ __('all.League finished')}}
+    </div>
   @endif
   <h1 class="text-center text-3xl font-medium">{{ $ligue->name }}</h1>
   <p class="text-center text-sm mt-1">{{$ligue->championnat->name}}</p>
