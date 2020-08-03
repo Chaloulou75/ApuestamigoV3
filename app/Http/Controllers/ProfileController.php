@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Equipe;
 use App\Ligue;
+use App\Match;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
