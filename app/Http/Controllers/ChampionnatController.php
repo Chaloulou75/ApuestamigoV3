@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Championnat;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
-use Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ChampionnatController extends Controller
 {

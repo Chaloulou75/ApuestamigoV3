@@ -180,7 +180,7 @@ class LigueController extends Controller
     public function destroy(Ligue $ligue)
     {
         //delete une ligue
-        $ligue = ligue::findOrFail($ligue->id);
+        $ligue = Ligue::findOrFail($ligue->id);
 
         if( $ligue->creator_id === Auth::user()->id || Auth::user()->admin === 1)
         {
