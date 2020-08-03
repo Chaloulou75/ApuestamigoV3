@@ -16,7 +16,7 @@ class SeasonController extends Controller
         $championnat->finished = '1';
         $championnat->save();
 
-        //uptade all leagues where $championnat_id = $championnat to finished = true
+        //update all leagues where $championnat_id = $championnat to finished = true
         $liguesterminees = Ligue::where('championnat_id', $championnat->id)
                                   ->update(['finished' => '1']);
         

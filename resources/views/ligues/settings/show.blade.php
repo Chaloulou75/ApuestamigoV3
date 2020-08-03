@@ -8,15 +8,19 @@
 
     <div class="animate__animated animate__flipInX bg-white border-t-4 border-francaverde rounded-b text-gray-900 px-4 py-3 shadow-md my-4" role="alert">
       <div class="flex">
-        <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
+        <div class="py-1"><svg class="fill-current h-6 w-6 text-francaverde mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
         </div>
-        <div class="tooltip">
-          <p class="font-medium"><svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <div>
+          <p class="font-medium">
             {{ __('all.Share this league:') }}
           </p>
-          <input id="copyToken" class="text-base shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-transparent" value="{{ $ligue->token }}" onclick="copyTok()" onmouseout="outFunc()">
-          <span class="tooltiptext bg-francaverde" id="myTooltip">{{ __('all.Copy to clipboard') }}</span>
-        </div>
+          <div class="flex">
+            <input id="ligueToken" class="text-base shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-transparent" value="{{ $ligue->token }}">
+            <button class="clipme" data-clipboard-target="#ligueToken">
+              <svg class="hover:text-francaverde h-8 w-8 inline-block pl-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+            </button>
+          </div>  
+        </div>  
       </div>
     </div>
 
@@ -92,28 +96,14 @@
 
 @push('scripts')
 
-<script>
-  //copie du token
-  document.addEventListener(data-turbolinks-eval="false", function() {
+  <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+  <script>
+    document.addEventListener("turbolinks:load", function() {
 
-    document.getElementById("copyToken").onclick = function copyTok() {
-    var copyText = document.getElementById("copyToken");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-    var tooltip = document.getElementById("myTooltip");
-    tooltip.innerHTML = "Copié: " + copyText.value;
-    }
+      new ClipboardJS('.clipme');
 
-  });
-  document.addEventListener("turbolinks:load", function() {
-
-    function outFunc() {
-      var tooltip = document.getElementById("myTooltip");
-      tooltip.innerHTML = "Copy token";
-    }
-
-  });
-
-</script>  
+    });
+  </script>  
 @endpush
+
+
