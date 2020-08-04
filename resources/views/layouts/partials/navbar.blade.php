@@ -1,4 +1,4 @@
-<header class="bg-francagris text-white border-b-4 border-francaverde md:flex md:justify-between md:items-center md:px-4 sm:py-3" x-data="{ isOpen: false }"
+<header class="bg-francagris text-white border-b-2 border-francaverde md:flex md:justify-between md:items-center md:px-4 sm:py-3" x-data="{ isOpen: false }"
       x-on:keydown.escape="isOpen = false">
 
   <div class="flex items-center justify-between px-4 py-3 md:p-0" >

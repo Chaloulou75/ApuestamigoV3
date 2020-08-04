@@ -1,5 +1,5 @@
-<div class="animate__animated animate__fadeIn animate__slower flex-grow w-full lg:w-1/3 my-4 md:m-4 focus:shadow-outline">
-	<div class="border-4 border-francaverde rounded p-4 flex flex-col justify-between bg-francagris 
+<div class=" animate__animated animate__fadeIn animate__slower flex-grow w-full lg:w-1/3 my-4 md:m-4 focus:shadow-outline">
+	<div class="ligueCard border-2 border-francaverde rounded p-4 flex flex-col justify-between 
 	@if($ligue->finished == true) opacity-50 @endif">
 	    <div class="mb-8">
 	    	<div class="flex items-center justify-between">
@@ -21,7 +21,14 @@
 	      <img class="w-10 h-10 mr-4" loading="lazy" src="{{ $ligue->championnat->logourl ? url($ligue->championnat->logourl) : URL::to('/img/' .$ligue->championnat->logo) }}" alt="championnat">
 	      <div class="text-xs tracking-wide">
 	        <p class="text-gray-300 truncate">{{ __('all.created by:') }} 
-	        	<span class="font-medium text-francaverde">@isset($ligue->creator) {{ $ligue->creator->name }}  @endisset @empty($ligue->creator) John Doe @endempty</span>
+	        	<span class="font-medium text-francaverde">
+	        		@isset($ligue->creator) 
+	        		{{ $ligue->creator->name }}  
+	        		@endisset 
+	        		@empty($ligue->creator) 
+	        			John Doe 
+	        		@endempty
+	        	</span>
 	        	@isset($ligue->creator)
 	        	<img class="inline w-10 h-8 mx-2" loading="lazy" src="{{ $ligue->creator->equipe->logourl ? url($ligue->creator->equipe->logourl) : URL::to('/img/' .$ligue->creator->equipe->logo) }}" alt="club">
 	        	@endisset
