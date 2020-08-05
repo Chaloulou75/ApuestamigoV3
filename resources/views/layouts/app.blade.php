@@ -18,10 +18,16 @@
           gtag('js', new Date());
           gtag('config', 'G-5RMT6BBR84');
         </script>
-        <!--  stripe -->
-        {{-- <script src="https://js.stripe.com/v3/" ></script> --}}
         <!--  recaptcha -->
-        @yield('recaptcha')                          
+        {{-- <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+        <script>
+           function onSubmit(token) {
+             document.getElementById("registerrecaptcha").submit();
+           } 
+        </script> --}}
+        
+        <!--  stripe -->
+        {{-- <script src="https://js.stripe.com/v3/" ></script> --}}                
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" >
@@ -29,9 +35,10 @@
         @livewireStyles
         <!-- Scripts -->               
         <script src="{{ mix('js/app.js') }}"></script> 
+        @stack('scripts') 
         <!-- Livewire --> 
         @livewireScripts
-        @stack('scripts') 
+        
                         
     </head>
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}

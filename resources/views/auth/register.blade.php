@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('recaptcha')
-
-    {!! htmlScriptTagJsApi(['action' => 'homepage']) !!}
-
-@endsection
-
 @section('content')
 
 <div class="container mx-auto">
@@ -17,7 +11,7 @@
                         {{ __('all.Register') }}
                     </div>
 
-                    <form class="w-full py-2 px-6" method="POST" action="{{ route('register') }}">
+                    <form id='registerrecaptcha' class="w-full py-2 px-6" method="POST" action="{{ route('register') }}">
                         @csrf
                         @honeypot
 
@@ -94,7 +88,8 @@
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="inline-block align-middle text-center select-none whitespace-no-wrap text-base leading-normal no-underline w-full bg-francagris  text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline">
+                            <button type="submit" class="g-recaptcha inline-block align-middle text-center select-none whitespace-no-wrap text-base leading-normal no-underline w-full bg-francagris  text-white hover:text-francaverde font-medium py-2 px-4 border-2 border-francaverde rounded focus:outline-none focus:shadow-outline">
+
                                 {{ __('all.Register') }}
                             </button>
 
@@ -114,3 +109,5 @@
         </div>
     </div>
 @endsection
+
+

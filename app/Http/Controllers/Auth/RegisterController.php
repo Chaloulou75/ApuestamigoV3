@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\User;
 use App\Equipe;
+use App\Http\Controllers\Controller;
+use App\Rules\Recaptcha;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,6 +56,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'equipe_id' => ['required','string', 'min:1'],
+            // 'g-recaptcha-response' => ['required', new Recaptcha]
         ]);
     }
 
