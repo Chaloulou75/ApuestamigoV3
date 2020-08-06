@@ -9,7 +9,7 @@ class DateRepository
 {
     public function dateJournee($ligue)
     {
-        $now = Carbon::now();
+        $now = Carbon::now('Europe/Paris');
 
         $journee = DateJournee::where('championnat_id', $ligue->championnat->id)->whereDate('timejournee', '>=', $now)->orderBy('timejournee', 'asc')->first();
         //dd($journee);

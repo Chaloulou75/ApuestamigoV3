@@ -68,7 +68,7 @@ class ApuestasController extends Controller
     public function store(Request $request, Ligue $ligue)
     {
         $user = Auth::user(); 
-        $now = Carbon::now();
+        $now = Carbon::now('Europe/Paris');
         $journee = $this->DateRepository->dateJournee($ligue); 
         
         $games = Game::where('championnat_id', $journee->championnat_id)->where('date_journees_id', $journee->id)->orderBy('id')->get();
@@ -151,7 +151,7 @@ class ApuestasController extends Controller
      */
     public function show(Ligue $ligue, User $user, $fecha)
     {
-        $now = Carbon::now();
+        $now = Carbon::now('Europe/Paris');
 
         $journee = DateJournee::where('id', $fecha)->first();
                         

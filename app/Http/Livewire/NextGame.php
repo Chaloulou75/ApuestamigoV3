@@ -18,8 +18,8 @@ class NextGame extends Component
 
     public function diffWithNextGame()
     {
-    	$now = Carbon::now();
-
+    	$now = Carbon::now('Europe/Paris');
+        
     	$nextGame = Game::where('championnat_id', $this->ligue->championnat->id)
                         ->where('gamedate', '>', $now)
                         ->orderBy('gamedate', 'asc')
