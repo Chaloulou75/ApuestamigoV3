@@ -27,14 +27,14 @@ class NextGame extends Component
         
         if($nextGame)
         {    
-            $nextGameDateValue = $nextGame->gamedate;        
-            $nextGameDate = $now->diff($nextGameDateValue)->format('%m Months %d days %h h %i min %s sec');
+            $nextGameDateValue = $nextGame->gamedate;       
+            $nextGameDate = $now->diff($nextGameDateValue)->format('%d days %h h %i min %s sec');
             $this->nextGameDate = $nextGameDate; 
         }
         else
         {
             $nextGameDateValue = Carbon::create(2020, 9, 15, 21, 0, 0, 'Europe/Paris');
-            $nextGameDate = $now->diff($nextGameDateValue)->format('%m Months %d days %h h %i min %s sec');
+            $nextGameDate = $now->diff($nextGameDateValue)->format('%d days %h h %i min %s sec');
             $this->nextGameDate = $nextGameDate;   
         } 	
     }
