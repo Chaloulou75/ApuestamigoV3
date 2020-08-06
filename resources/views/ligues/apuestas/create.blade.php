@@ -45,7 +45,7 @@
 	    <tr> 
 	      <td class="px-4 py-4 hidden md:table-cell">{{ $loop->iteration }} </td>
 	      <td class="px-1 py-1 hidden md:table-cell w-24 text-xs break-words font-hairline">
-	      	  {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }} 
+	      	  {{ \Carbon\Carbon::parse($game->gamedate)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm') }} 
 	      </td>
 	      <td class="px-1 py-4 text-right hidden md:table-cell"> {{ $game->homeTeam->name }} </td>
 		  <td class="px-1 py-4 table-cell text-center"> 

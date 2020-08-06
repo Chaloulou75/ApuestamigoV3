@@ -44,7 +44,7 @@
 		@forelse ($games as $key => $game)		
 	    <tr> 
 	      <td class="px-4 py-4 hidden md:table-cell">{{ $loop->iteration }} </td>
-	      <td class="px-1 py-1 hidden md:table-cell w-24 text-xs break-words font-hairline">  {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }} </td>
+	      <td class="px-1 py-1 hidden md:table-cell w-24 text-xs break-words font-hairline">  {{ \Carbon\Carbon::parse($game->gamedate)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm') }} </td>
 		  <td class="px-1 py-4 text-right hidden md:table-cell"> {{ $game->homeTeam->name }} </td>
 		  <td class="px-1 py-4 text-center"> <img class="inline w-10 h-10" loading="lazy" src="{{ $game->homeTeam->logourl ? url($game->homeTeam->logourl) : URL::to('/img/' .$game->homeTeam->logo) }}"></td>
 		  <td class="px-1 py-4 text-center">
