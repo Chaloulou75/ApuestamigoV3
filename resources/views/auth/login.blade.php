@@ -10,8 +10,9 @@
         </div>
 
         <form class="w-full py-2 px-6" method="POST" action="{{ route('login') }}">
-          @honeypot
           @csrf
+          @honeypot
+          
           <div class="flex flex-wrap mb-6">
             <label for="email" class="block text-sm font-normal mb-2">
                 {{ __('all.E-Mail Address') }}:
@@ -31,7 +32,7 @@
                 {{ __('all.Password') }}:
             </label>
 
-            <input id="password" type="password" class="w-full shadow appearance-none border rounded w-full py-2 px-3 text-francagris mb-3 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror" name="password" required>
+            <input id="password" type="password" class="w-full shadow appearance-none border rounded w-full py-2 px-3 text-francagris mb-3 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror" name="password" required autocomplete="current-password">
 
             @error('password')
                 <p class="text-red-500 text-xs italic mt-1">

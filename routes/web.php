@@ -12,7 +12,6 @@
 */
 
 Route::group([
-
 	'prefix' => LaravelLocalization::setLocale(),
 	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 
 					'no-cache']], function(){
@@ -69,5 +68,3 @@ Route::group([
 	});
 
 });
-
-//Route::post('logout', 'Auth\LoginController@logout')->name('logout');
