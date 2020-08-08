@@ -27,7 +27,7 @@ class NextGame extends Component
         
         if($nextGame)
         {    
-            $nextGameDateValue = $nextGame->gamedate;   
+            $nextGameDateValue = $nextGame->gamedate; 
             $nextGameDate = $now->diff($nextGameDateValue)->format('%d days %h h %i min %s sec');
             $this->nextGameDate = $nextGameDate; 
         }
