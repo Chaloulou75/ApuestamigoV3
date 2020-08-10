@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ {User, Equipe, Game};
+use App\User;
+use App\Equipe;
+use App\Game;
 use App\Championnat;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -12,8 +14,6 @@ use Illuminate\Support\Facades\Validator;
 
 class EquipeController extends Controller
 {
-    
-
     public function __construct()
     {
         $this->middleware('admin'); // if user is admin
@@ -27,7 +27,7 @@ class EquipeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $championnats = Championnat::with('equipes')->where('finished', false)->orderByDesc('id')->get(); 
+        $championnats = Championnat::with('equipes')->where('finished', false)->orderByDesc('id')->get();
 
         return view('/pages/equipes/index', compact('championnats', 'user'));
     }
@@ -39,7 +39,7 @@ class EquipeController extends Controller
      */
     public function create()
     {
-        $championnats = Championnat::where('finished', false)->get(); 
+        $championnats = Championnat::where('finished', false)->get();
         return view('/pages/equipes/create', compact('championnats'));
     }
 
@@ -52,7 +52,7 @@ class EquipeController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
                 'championnat_id' => 'required',
                 'name' => 'required|min:2',
                 'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
@@ -64,24 +64,22 @@ class EquipeController extends Controller
                         ->withInput();
         }
 
-        if($request->hasfile('logo'))
-        {
+        if ($request->hasfile('logo')) {
             //$filename = $request->avatar->getClientOriginalName();
             $path = $request->file('logo')->store('img/equipes/logo', 's3');
 
             Storage::disk('s3')->setVisibility($path, 'public');
 
             $url = Storage::disk('s3')->url($path);
-
         }
 
         $data = array(
             'championnat_id'=> $request->championnat_id,
             'name'=> $request->name,
             'logo' => basename($path),
-            'logourl' => $url,           
+            'logourl' => $url,
         );
-        
+
         Equipe::create($data);
 
         return redirect()->back()->with('message.level', 'success')->with('message.content', __('Nouvelle équipe créée.'));
@@ -107,7 +105,7 @@ class EquipeController extends Controller
     public function edit(Equipe $equipe)
     {
         //$equipe = Equipe::where('id', $id)->get();
-        $championnats = Championnat::where('finished', false)->get(); 
+        $championnats = Championnat::where('finished', false)->get();
         return view('/pages/equipes/edit', compact('equipe', 'championnats'));
     }
 
@@ -122,7 +120,7 @@ class EquipeController extends Controller
     {
         //dd($request);
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
                 'championnat_id' => 'required',
                 'name' => 'required|min:2',
                 'logo' => 'image|mimes:jpeg,png,jpg,gif,svg',
@@ -134,10 +132,8 @@ class EquipeController extends Controller
                         ->withInput();
         }
 
-        if($request->hasfile('logo'))
-        {
-            if($equipe->logo){
-
+        if ($request->hasfile('logo')) {
+            if ($equipe->logo) {
                 Storage::disk('s3')->delete('/img/equipes/logo'.$equipe->logo);
             }
             //$filename = $request->avatar->getClientOriginalName();
@@ -148,13 +144,12 @@ class EquipeController extends Controller
             $url = Storage::disk('s3')->url($path);
 
             $equipe->update([ 'logo' => basename($path),
-                              'logourl' => $url 
+                              'logourl' => $url
             ]);
-
         }
         $equipe->update([
             'championnat_id'=> $request->championnat_id,
-            'name'=> $request->name,           
+            'name'=> $request->name,
         ]);
 
         return redirect()->back()->with('message.level', 'success')->with('message.content', __('Equipe '.$equipe->name.' mise à jour.'));

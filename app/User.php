@@ -42,17 +42,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function ligues()
     {
-        return $this->belongsToMany(Ligue::class)->withTimestamps();        
+        return $this->belongsToMany(Ligue::class)->withTimestamps();
     }
 
     public function matchs()
     {
-        return $this->hasMany(Match::class);        
+        return $this->hasMany(Match::class);
     }
 
     public function equipe()
     {
-        return $this->belongsTo(Equipe::class);        
+        return $this->belongsTo(Equipe::class);
     }
-    
 }

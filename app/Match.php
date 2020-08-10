@@ -18,26 +18,26 @@ class Match extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);        
+        return $this->belongsTo(User::class);
     }
 
     public function ligues()
     {
-        return $this->belongsTo(Ligue::class);        
+        return $this->belongsTo(Ligue::class);
     }
 
     public function games()
     {
-        return $this->belongsTo(Game::class);        
+        return $this->belongsTo(Game::class);
     }
 
     public function journee()
     {
-        return $this->belongsTo(DateJournee::class, 'date_journees_id');        
+        return $this->belongsTo(DateJournee::class, 'date_journees_id');
     }
 
     public function championnat()
     {
-        return $this->belongsTo(Championnat::class, 'championnat_id');        
+        return $this->belongsTo(Championnat::class, 'championnat_id');
     }
 }

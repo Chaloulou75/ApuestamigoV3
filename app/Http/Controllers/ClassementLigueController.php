@@ -10,15 +10,15 @@ class ClassementLigueController extends Controller
 {
     private $DateRepository;
 
-    public function __construct( DateRepository $DateRepository)
+    public function __construct(DateRepository $DateRepository)
     {
         $this->DateRepository = $DateRepository;
     }
 
     public function show(Ligue $ligue)
-    {  
-        $journee = $this->DateRepository->dateJournee($ligue); 
-  
-        return view('/ligues/classement/show', $ligue, compact('ligue', 'journee'));        
+    {
+        $journee = $this->DateRepository->dateJournee($ligue);
+
+        return view('/ligues/classement/show', $ligue, compact('ligue', 'journee'));
     }
 }

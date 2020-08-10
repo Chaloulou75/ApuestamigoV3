@@ -15,7 +15,7 @@ class LigueCard extends Component
      */
     public function __construct($ligue)
     {
-        $this->ligue = $ligue;      
+        $this->ligue = $ligue;
     }
 
     /**

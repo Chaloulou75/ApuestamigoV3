@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\ {User, Equipe, Game};
+use App\Match;
+use App\Equipe;
+use App\Game;
 use App\Championnat;
 use App\DateJournee;
 use App\Http\Requests\StoreGame;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    
+
     /**
      * Instantiate a new controller instance.
      *
@@ -21,7 +23,6 @@ class GameController extends Controller
     public function __construct()
     {
         $this->middleware('admin'); // if user is admin
-
     }
 
     /**
@@ -33,10 +34,10 @@ class GameController extends Controller
     {
         $user = Auth::user();
         $championnats = Championnat::with(['journees'=> function ($query) {
-                         $query->with(['games'=> function ($query) {
-                            $query->with(['homeTeam', 'awayTeam']);
-                            }]);
-                        }])->where('finished', false)->orderByDesc('id')->get();
+            $query->with(['games'=> function ($query) {
+                $query->with(['homeTeam', 'awayTeam']);
+            }]);
+        }])->where('finished', false)->orderByDesc('id')->get();
         //
         return view('/pages/games/index', compact('championnats', 'user'));
     }
@@ -51,7 +52,7 @@ class GameController extends Controller
         $user = Auth::user();
         $journees = DateJournee::orderBy('timejournee')->get();
         $equipes = Equipe::all();
-        $championnats = Championnat::where('finished', false)->get();          
+        $championnats = Championnat::where('finished', false)->get();
 
         return view('/pages/games/create', compact('championnats', 'equipes', 'journees', 'user'));
     }
@@ -73,15 +74,14 @@ class GameController extends Controller
         $dategame = Carbon::parse($request->input('gamedate'), 'Europe/Paris');
 
         $game = Game::create([
-                    'championnat_id'=> $championnat, 
+                    'championnat_id'=> $championnat,
                     'date_journees_id' => $journee,
                     'equipe1_id' => $equipe1,
                     'equipe2_id' => $equipe2,
                     'gamedate' => $dategame
                 ]);
 
-        return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est inséré.');                      
-        
+        return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match est inséré.');
     }
 
     /**
@@ -110,7 +110,7 @@ class GameController extends Controller
         $game = Game::with(['homeTeam', 'awayTeam', 'journee'])->where('id', $id)->firstOrFail();
 
         $equipes = Equipe::all();
-        $championnats = Championnat::where('finished', false)->get();        
+        $championnats = Championnat::where('finished', false)->get();
 
         return view('/pages/games/edit', compact('championnats', 'equipes', 'journees', 'game', 'user'));
     }
@@ -136,7 +136,7 @@ class GameController extends Controller
 
         $game->update([
                     'championnat_id'=> $championnat,
-                    'date_journees_id' => $journee, 
+                    'date_journees_id' => $journee,
                     'equipe1_id' => $equipe1,
                     'equipe2_id' => $equipe2,
                     'gamedate' => $dategame
@@ -154,7 +154,7 @@ class GameController extends Controller
     public function destroy(Game $game)
     {
         $matchWithThisGame = Match::where('game_id', $game->id)->delete();
-        
+
         $game->delete();
 
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'le match a été supprimé');

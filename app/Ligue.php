@@ -20,27 +20,20 @@ class Ligue extends Model
     public function users()
     {
         return $this->belongsToMany(User::class)->withPivot('totalPoints')->orderBy('ligue_user.totalPoints', 'Desc')->withTimestamps();
-        
     }
 
     public function matchs()
     {
-        return $this->hasMany(Match::class);        
+        return $this->hasMany(Match::class);
     }
 
     public function creator()
     {
-        return $this->belongsTo(User::class, 'creator_id'); 
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     public function championnat()
     {
-        return $this->belongsTo(Championnat::class, 'championnat_id'); 
+        return $this->belongsTo(Championnat::class, 'championnat_id');
     }
-
-    // public function getRouteKeyName()
-    // {
-    //     return 'name';
-    // }
-    
 }

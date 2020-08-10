@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\ {User, Equipe, Game, Ligue, Match, DateJournee};
-use Auth;
+use App\User;
+use App\Equipe;
+use App\Game;
+use App\Ligue;
+use App\Match;
+use App\DateJournee;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\DateRepository;
 use App\Repositories\ResultAdminRepository;
 use Carbon\Carbon;
@@ -17,7 +22,7 @@ class ApuestasController extends Controller
     private $ResultAdminRepository;
 
     public function __construct(DateRepository $DateRepository, ResultAdminRepository $ResultAdminRepository)
-    {        
+    {
         $this->DateRepository = $DateRepository;
         $this->ResultAdminRepository = $ResultAdminRepository;
     }
@@ -28,7 +33,7 @@ class ApuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Ligue $ligue)
-    {        
+    {
         $user = Auth::user(); // le user
 
         $journee = $this->DateRepository->dateJournee($ligue); //la journee
@@ -37,26 +42,24 @@ class ApuestasController extends Controller
                         ->where('date_journees_id', $journee->id)
                         ->orderBy('id')
                         ->get('id'); //id des matchs concernés
-        
-        if (Auth::user()) 
-        {
-          $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                          $query->where('championnat_id', $journee->championnat_id)
+
+        if (Auth::user()) {
+            $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use ($journee, $user, $ligue) {
+                $query->where('championnat_id', $journee->championnat_id)
                                 ->where('date_journees_id', $journee->id)
                                 ->where('user_id', $user->id)
                                 ->where('ligue_id', $ligue->id);
-                      }])
+            }])
                       ->whereIn('id', $gamesIds)
                       ->orderBy('id')
-                      ->get();// les matchs 
+                      ->get();// les matchs
 
-          //collection des resultats userAdmin pour la journee
-          $resultAdmin = $this->ResultAdminRepository->resultAdmin($journee);
+            //collection des resultats userAdmin pour la journee
+            $resultAdmin = $this->ResultAdminRepository->resultAdmin($journee);
 
-          return view('/ligues/apuestas/create', $ligue, compact('ligue', 'user', 'games', 'journee','resultAdmin'));  
-            
+            return view('/ligues/apuestas/create', $ligue, compact('ligue', 'user', 'games', 'journee', 'resultAdmin'));
         }
-        return redirect()->guest('login');           
+        return redirect()->guest('login');
     }
 
     /**
@@ -67,80 +70,66 @@ class ApuestasController extends Controller
      */
     public function store(Request $request, Ligue $ligue)
     {
-        $user = Auth::user(); 
-        $now = Carbon::now(); 
-        $journee = $this->DateRepository->dateJournee($ligue); 
-        
+        $user = Auth::user();
+        $now = Carbon::now();
+        $journee = $this->DateRepository->dateJournee($ligue);
+
         $games = Game::where('championnat_id', $journee->championnat_id)->where('date_journees_id', $journee->id)->orderBy('id')->get();
 
-        $tot= count($request->resultatEq1); 
+        $tot= count($request->resultatEq1);
 
         $wherePossible = ['championnat_id' => $journee->championnat_id, 'ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'date_journees_id'=> $journee->id];
         $matchs = Match::where($wherePossible)->get();
 
-        if( $matchs->count() === 0)
-        {
-            for ($i=0; $i < $tot; $i++) { 
-        
-                if (isset($request->resultatEq1[$i])){
-
+        if ($matchs->count() === 0) {
+            for ($i=0; $i < $tot; $i++) {
+                if (isset($request->resultatEq1[$i])) {
                     foreach ($games as $i => $game) {
-
                         $dateMatch =  $game->gamedate;
 
-                        if( $now->lessThanOrEqualTo($dateMatch))
-                        {
+                        if ($now->lessThanOrEqualTo($dateMatch)) {
                             $result1 = $request->resultatEq1[$i];
-                            $result2 = $request->resultatEq2[$i]; 
-                                                                        
+                            $result2 = $request->resultatEq2[$i];
+
                             Match::create(
-                            ['championnat_id' => $journee->championnat_id,
+                                ['championnat_id' => $journee->championnat_id,
                              'date_journees_id' => $journee->id,
-                             'game_id' => $game->id,                         
-                             'user_id' => $user->id, 
-                             'ligue_id' => $ligue->id,                     
-                             'resultatEq1' => $result1, 
+                             'game_id' => $game->id,
+                             'user_id' => $user->id,
+                             'ligue_id' => $ligue->id,
+                             'resultatEq1' => $result1,
                              'resultatEq2' => $result2]
                             );
                         }
-                    } 
-
+                    }
                 }
-               
             }
-            return back()->withInput()->with('message.level', 'success')->with('message.content',  __('all.Yeah! your bets are registered! Good luck!') );
-
+            return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.Yeah! your bets are registered! Good luck!'));
         }
 
-        for ($i=0; $i < $tot; $i++) { 
-        
-            if (isset($request->resultatEq1[$i])){
-
+        for ($i=0; $i < $tot; $i++) {
+            if (isset($request->resultatEq1[$i])) {
                 foreach ($games as $i => $game) {
-
                     $dateMatch =  $game->gamedate;
 
-                    if($now->lessThanOrEqualTo($dateMatch))
-                    {
+                    if ($now->lessThanOrEqualTo($dateMatch)) {
                         $resultup1 = $request->resultatEq1[$i];
                         $resultup2 = $request->resultatEq2[$i];
 
                         Match::updateOrCreate(
-                        ['championnat_id' => $journee->championnat_id,
+                            ['championnat_id' => $journee->championnat_id,
                          'date_journees_id' => $journee->id,
-                         'game_id' => $game->id,                        
-                         'user_id' => $user->id, 
-                         'ligue_id' => $ligue->id],                     
-                         ['resultatEq1' => $resultup1, 
+                         'game_id' => $game->id,
+                         'user_id' => $user->id,
+                         'ligue_id' => $ligue->id],
+                            ['resultatEq1' => $resultup1,
                          'resultatEq2' => $resultup2]
-                        ); 
-                    }                        
-                    
-                }    
+                        );
+                    }
+                }
             }
         }
-        return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.Yeah! your bets are registered and updated! Good luck!') );                      
-                        
+        return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.Yeah! your bets are registered and updated! Good luck!'));
     }
 
     /**
@@ -154,16 +143,15 @@ class ApuestasController extends Controller
         $now = Carbon::now();
 
         $journee = DateJournee::where('id', $fecha)->first();
-                        
-        if (Auth::user()) 
-        {                     
+
+        if (Auth::user()) {
             //score inséré par le user/journée/ dans cette ligue
-            $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use($journee, $user, $ligue) {
-                                $query->where('championnat_id', $journee->championnat_id)
+            $games = Game::with(['homeTeam', 'awayTeam', 'matchs' => function ($query) use ($journee, $user, $ligue) {
+                $query->where('championnat_id', $journee->championnat_id)
                                       ->where('date_journees_id', $journee->id)
                                       ->where('user_id', $user->id)
                                       ->where('ligue_id', $ligue->id);
-                            }])
+            }])
                             ->where('date_journees_id', $journee->id)
                             ->orderBy('id')
                             ->get();// les matchs
@@ -171,9 +159,8 @@ class ApuestasController extends Controller
             //collection des resultats userAdmin pour la journee
             $resultAdmin = $this->ResultAdminRepository->resultAdmin($journee);
 
-            return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee','resultAdmin', 'now'));           
+            return view('/ligues/apuestas/show', [$ligue, $user], compact('ligue', 'user', 'games', 'journee', 'resultAdmin', 'now'));
         }
         return redirect()->guest('login');
     }
-    
 }

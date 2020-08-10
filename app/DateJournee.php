@@ -12,11 +12,11 @@ class DateJournee extends Model
 
     public function championnat()
     {
-        return $this->belongsTo(Championnat::class, 'championnat_id');        
+        return $this->belongsTo(Championnat::class, 'championnat_id');
     }
 
     public function games()
     {
-        return $this->hasMany(Game::class, 'date_journees_id');        
+        return $this->hasMany(Game::class, 'date_journees_id');
     }
 }

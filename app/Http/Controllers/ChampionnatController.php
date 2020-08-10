@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Championnat;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ChampionnatController extends Controller
 {
-    
+
     /**
      * Instantiate a new controller instance.
      *
@@ -52,7 +52,7 @@ class ChampionnatController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
                 'name' => 'required|min:3',
                 'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
@@ -63,23 +63,21 @@ class ChampionnatController extends Controller
                         ->withInput();
         }
 
-        if($request->hasfile('logo'))
-        {
+        if ($request->hasfile('logo')) {
             //$filename = $request->avatar->getClientOriginalName();
             $path = $request->file('logo')->store('img/championnats/logo', 's3');
 
             Storage::disk('s3')->setVisibility($path, 'public');
 
             $url = Storage::disk('s3')->url($path);
-
         }
 
         $data = array(
             'name'=> $request->name,
             'logo' => basename($path),
-            'logourl' => $url,             
+            'logourl' => $url,
         );
-        
+
         Championnat::create($data);
 
         return redirect()->back()->with('message.level', 'success')->with('message.content', __('Nouveau championnat créé.'));
@@ -118,7 +116,7 @@ class ChampionnatController extends Controller
     {
         //dd($request);
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
                 'name' => 'required|min:3',
                 'logo' => 'image|mimes:jpeg,png,jpg,gif,svg',
             ]);
@@ -129,10 +127,8 @@ class ChampionnatController extends Controller
                         ->withInput();
         }
 
-        if($request->hasfile('logo'))
-        {
-            if($championnat->logo){
-
+        if ($request->hasfile('logo')) {
+            if ($championnat->logo) {
                 Storage::disk('s3')->delete('/img/championnats/logo'.$championnat->logo);
             }
             //$filename = $request->avatar->getClientOriginalName();
@@ -143,12 +139,11 @@ class ChampionnatController extends Controller
             $url = Storage::disk('s3')->url($path);
 
             $championnat->update(['logo' => basename($path),
-                                  'logourl' => $url 
+                                  'logourl' => $url
             ]);
-
         }
         $championnat->update([
-            'name'=> $request->name,            
+            'name'=> $request->name,
         ]);
 
         return redirect()->back()->with('message.level', 'success')->with('message.content', __('Championnat '.$championnat->name.' mise à jour.'));

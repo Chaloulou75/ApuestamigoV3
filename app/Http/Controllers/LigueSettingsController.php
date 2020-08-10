@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Ligue;
-use Illuminate\Http\Request;
 
 class LigueSettingsController extends Controller
 {

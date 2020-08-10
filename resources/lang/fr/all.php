@@ -60,8 +60,8 @@ return [
     'Your email address is not verified.'=> 'Votre adresse email n\'a pas été vérifiée.',
 
     //head
-    'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Ligues de paris entre amis sur la Champions League et la Ligue 1 et trouvez qui est le meilleur pronostiqueur.', 
-    
+    'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Ligues de paris entre amis sur la Champions League et la Ligue 1 et trouvez qui est le meilleur pronostiqueur.',
+
     'Profil' => 'Profil',
     'your profile has been updated' => 'ton profil a été mis à jour',
     'Favorite Club' => 'Club Favoris',
@@ -104,7 +104,7 @@ return [
     'Message' => 'Message',
     'Translations'=> 'Langues',
 
-    'What\'s all about?' => 'Un rapide tour d\'horizon',
+    'What\'s all about?' => 'Un rapide tour d\' horizon',
     'So how does Apuestamigo work?'=> 'Bon, alors, comment ça marche Apuestamigo?',
     'No, Apuestamigo is not yet another online betting site ...' => 'Non, Apuestamigo n\'est pas un énième site de pari en ligne...',
     'Well, yes, necessarily a little, but differently. This is just to guide you the first few days, the rest will come by itself.' => 'Bon, si, nécessairement un peu, mais différemment. C\'est juste pour vous guider les premiers jours, le reste viendra tout seul.',
@@ -114,7 +114,7 @@ return [
     'Over the course of the matches, your ranking evolves in front of your friends (an exact score found gives 3 points / good result but not exact 1 point / the rest 0). The champion is of course the one with the most points at the end of the season.' => 'Votre classement évolue comme en championnat ( score exact: 3 points / bon résultat mais pas exact: 1 point / le reste: 0). Le champion est bien sûr celui qui a le plus de points à la fin de la saison.',
     'Go! It\'s your turn!'=>'C\'est parti!',
     'Close' => 'Fermer',
-    
+
     'Leave this league?' => 'Quitter cette ligue?',
     'Leave' => 'Quitter',
     'Edit' => 'Modifier',
@@ -122,8 +122,8 @@ return [
     'your profile has been deleted' => 'ton profil a été supprimé',
     'Sorry you have to be the owner to delete the league' => 'Vous devez être le propriétaire pour supprimer la ligue',
     'Sorry you have to be the owner to change the league' => 'Vous devez être le propriétaire pour changer la ligue',
-    'choose a championship'=> 'Choisis un championnat', 
-    
+    'choose a championship'=> 'Choisis un championnat',
+
     //messages
     'Yeah! your bets are registered! Good luck!' => 'Yeah! Tes pronos sont enregistrés! Bonne chance!',
     'Yeah! your bets are registered and updated! Good luck!' => 'Yeah! Tes pronos sont enregistrés et mis à jour! Bonne chance!',

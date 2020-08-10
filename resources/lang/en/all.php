@@ -111,7 +111,7 @@ return [
   'your profile has been deleted' => 'your profile has been deleted',
   'Sorry you have to be the owner to delete the league' => 'You have to be the owner to delete the league',
   'Sorry you have to be the owner to change the league' => 'Sorry you have to be the owner to change the league',
-  'choose a championship' => 'Choose a championship', 
+  'choose a championship' => 'Choose a championship',
 
   'Wanna`\' buy me a beer?' => 'Wanna`\' buy me a beer?',
   'Full Name on card' => 'First name and last name on credit card',
@@ -136,7 +136,7 @@ return [
   'You already have joined this league!' => 'You already have joined this league!',
   'Your message has been sent.' => 'Your message has been sent',
   'Ok, you are not anymore in this league!' => 'Ok, you are not anymore in this league!',
-  
+
 
   //cookie
   'Learn_More'=>'Learn More',

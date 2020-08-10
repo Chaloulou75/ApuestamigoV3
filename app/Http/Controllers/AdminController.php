@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\ {DateJournee, Game, Ligue, Match, Championnat};
-use Auth;
+use App\DateJournee;
+use App\Game;
+use App\Ligue;
+use App\Match;
+use App\Championnat;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -21,8 +25,8 @@ class AdminController extends Controller
     public function index()
     {
         $championnats = Championnat::with('journees')->orderByDesc('id')->get();
-        
-        return view('pages.admin.adminPage', compact('championnats')); 
+
+        return view('pages.admin.adminPage', compact('championnats'));
     }
 
     /**
@@ -33,74 +37,66 @@ class AdminController extends Controller
      */
     public function store(Request $request, Ligue $ligue, $journee)
     {
-        if(Auth::user()->admin == 1)
-        {    
+        if (Auth::user()->admin == 1) {
             $user = Auth::user();
 
             $journee = DateJournee::where('id', $journee)->first();
 
             $games = Game::where('championnat_id', $journee->championnat_id)->where('date_journees_id', $journee->id)->orderBy('id')->get();
 
-            $tot= count($request->resultatEq1); 
+            $tot= count($request->resultatEq1);
 
             $wherePossible = ['championnat_id' => $journee->championnat_id, 'ligue_id'=> $ligue->id, 'user_id'=> $user->id, 'date_journees_id'=> $journee->id];
             $matchs = Match::where($wherePossible)->get();
 
-            if( $matchs->count() === 0)
-            {
-                for ($i=0; $i < $tot; $i++) { 
-            
-                    if (isset($request->resultatEq1[$i]))
-                    {
-                        foreach ($games as $i => $game) 
-                        {                          
-                          $dateMatch =  $game->gamedate;
-            
-                          $result1 = $request->resultatEq1[$i];
-                          $result2 = $request->resultatEq2[$i];
-                                                                        
-                          $gameid = $game->id;
-                          Match::create(
-                          ['championnat_id' => $journee->championnat_id,
+            if ($matchs->count() === 0) {
+                for ($i=0; $i < $tot; $i++) {
+                    if (isset($request->resultatEq1[$i])) {
+                        foreach ($games as $i => $game) {
+                            $dateMatch =  $game->gamedate;
+
+                            $result1 = $request->resultatEq1[$i];
+                            $result2 = $request->resultatEq2[$i];
+
+                            $gameid = $game->id;
+                            Match::create(
+                                ['championnat_id' => $journee->championnat_id,
                            'date_journees_id' => $journee->id,
-                           'game_id' => $gameid,                         
-                           'user_id' => $user->id, 
-                           'ligue_id' => $ligue->id,                     
-                           'resultatEq1' => $result1, 
+                           'game_id' => $gameid,
+                           'user_id' => $user->id,
+                           'ligue_id' => $ligue->id,
+                           'resultatEq1' => $result1,
                            'resultatEq2' => $result2]
-                          );
-                        } 
-                    }                   
+                            );
+                        }
+                    }
                 }
                 return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.scores updated'));
             }
 
-            for ($i=0; $i < $tot; $i++) { 
-            
-                if (isset($request->resultatEq1[$i])){
+            for ($i=0; $i < $tot; $i++) {
+                if (isset($request->resultatEq1[$i])) {
+                    foreach ($games as $i => $game) {
+                        $dateMatch =  $game->gamedate;
 
-                    foreach ($games as $i => $game) 
-                    {
-                      $dateMatch =  $game->gamedate;
-        
-                      $result1 = $request->resultatEq1[$i];
-                      $result2 = $request->resultatEq2[$i];
-                      $gameid = $game->id;                                              
+                        $result1 = $request->resultatEq1[$i];
+                        $result2 = $request->resultatEq2[$i];
+                        $gameid = $game->id;
 
-                      Match::updateOrCreate(
-                      ['championnat_id' => $journee->championnat_id,
+                        Match::updateOrCreate(
+                            ['championnat_id' => $journee->championnat_id,
                        'date_journees_id' => $journee->id,
                        'game_id' => $gameid,
-                       'user_id' => $user->id, 
-                       'ligue_id' => $ligue->id],                     
-                       ['resultatEq1' => $result1, 
+                       'user_id' => $user->id,
+                       'ligue_id' => $ligue->id],
+                            ['resultatEq1' => $result1,
                        'resultatEq2' => $result2]
-                      );
-                    }    
+                        );
+                    }
                 }
             }
-            return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.scores updated'));                      
+            return back()->withInput()->with('message.level', 'success')->with('message.content', __('all.scores updated'));
         }
         return back()->withInput()->with('message.level', 'success')->with('message.content', 'Désolé mais tu n\'es pas un admin ou tu n\'es pas connecté...');
     }
-} 
+}

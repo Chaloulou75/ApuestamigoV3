@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Stripe;
 use Illuminate\Http\Request;
-use Laravel\Cashier\Cashier;
 
 class StripeController extends Controller
 {
-    
+
 
     /**
      * Instantiate a new controller instance.
@@ -21,7 +20,6 @@ class StripeController extends Controller
     public function __construct()
     {
         $this->middleware('admin'); // if user is admin
-
     }
 
     /**
@@ -70,7 +68,7 @@ class StripeController extends Controller
                     'line1' => $request->address,
                     'city' => $request->city,
                     'postal_code' => $request->postalcode,
-                    'country' => $request->country,     
+                    'country' => $request->country,
                 ]
             ]);
 
@@ -86,12 +84,10 @@ class StripeController extends Controller
             // save this info to your database
 
             // SUCCESSFUL
-            return back()->with('message.level', 'success')->with('message.content', 'Merci pour la rebié!');        
-
+            return back()->with('message.level', 'success')->with('message.content', 'Merci pour la rebié!');
         } catch (CardErrorException $e) {
             // save info to database for failed
             return back()->withErrors('Error! ' . $e->getMessage());
         }
-
     }
 }

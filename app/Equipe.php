@@ -12,16 +12,16 @@ class Equipe extends Model
 
     public function games()
     {
-        return $this->hasMany(Game::class);        
+        return $this->hasMany(Game::class);
     }
 
     public function users()
     {
-        return $this->hasMany(User::class);        
+        return $this->hasMany(User::class);
     }
 
     public function championnat()
     {
-        return $this->belongsTo(Championnat::class, 'championnat_id');        
+        return $this->belongsTo(Championnat::class, 'championnat_id');
     }
 }

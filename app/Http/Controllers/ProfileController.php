@@ -6,10 +6,8 @@ use App\Equipe;
 use App\Ligue;
 use App\Match;
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -20,13 +18,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        if( Auth::user()->admin === 1)
-        {
+        if (Auth::user()->admin === 1) {
             $users = User::with('ligues')->latest()->get();
             return view('pages/profile/index', compact('users'));
         }
         return view('index');
-
     }
 
     /**
@@ -58,22 +54,19 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        if( Auth::user()->admin === 1) //si admin, on peut voir n'importe quel profil
-        {
+        if (Auth::user()->admin === 1) { //si admin, on peut voir n'importe quel profil
             $user = User::with(['ligues' => function ($query) {
-                                $query->with('championnat')
+                $query->with('championnat')
                                       ->orderBy('finished', 'asc')
                                       ->latest();
-                            }])->findOrFail($id);
-        }
-        else //sinon seulement l'user connecté
-        {
+            }])->findOrFail($id);
+        } else { //sinon seulement l'user connecté
             $user= Auth::user()->load(['ligues' => function ($query) {
-                                $query->with('championnat')
+                $query->with('championnat')
                                       ->orderBy('finished', 'asc')
                                       ->latest();
-                            }]);
-        }   
+            }]);
+        }
         $equipes = Equipe::all();
 
         return view('pages/profile/show', compact('user', 'equipes'));
@@ -100,8 +93,7 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (Auth::user() || Auth::user()->admin === 1) 
-        {
+        if (Auth::user() || Auth::user()->admin === 1) {
             $user = User::find($id);
 
             $data = array_filter($request->all());
@@ -114,11 +106,10 @@ class ProfileController extends Controller
             $user->fill($data);
             $user->save();
 
-            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __( 'all.your profile has been updated'));
+            return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your profile has been updated'));
         }
 
         return redirect()->route('login');
- 
     }
 
     /**
@@ -129,27 +120,23 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        if( Auth::user()->admin === 1) //si admin, on peut delete n'importe quel profil
-        {
+        if (Auth::user()->admin === 1) { //si admin, on peut delete n'importe quel profil
             $user = User::findOrFail($id);
-        }
-        else //sinon seulement l'user connecté
-        {
+        } else { //sinon seulement l'user connecté
             //user connecté
             $user= Auth::user();
-        } 
+        }
 
         $matchDuUser = Match::where('user_id', $user->id)->get();
-        if(isset($matchDuUser))
-        {
+        if (isset($matchDuUser)) {
             Match::where('user_id', $user->id)->delete();
         }
 
-        $liguecreatedbyUser = Ligue::where('creator_id', $user->id)->update(['creator_id' => NULL]);
+        $liguecreatedbyUser = Ligue::where('creator_id', $user->id)->update(['creator_id' => null]);
 
         $user->ligues()->detach();
         $user->delete();
 
-        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __( 'all.your profile has been deleted'));
+        return redirect()->route('ligues.index')->with('message.level', 'success')->with('message.content', __('all.your profile has been deleted'));
     }
 }

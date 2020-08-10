@@ -11,7 +11,7 @@ class ContactController extends Controller
 {
     public function create()
     {
-    	return view('pages.contact.create');
+        return view('pages.contact.create');
     }
 
     public function store(Request $request)
@@ -22,9 +22,9 @@ class ContactController extends Controller
             'msg'=>'required|min:10',
         ]);
 
-    	$mailable = new ContactMessagesCreated($request->name, $request->email, $request->msg);
-    	Mail::to('apuestamigo@gmail.com')->send($mailable);
+        $mailable = new ContactMessagesCreated($request->name, $request->email, $request->msg);
+        Mail::to('apuestamigo@gmail.com')->send($mailable);
 
-    	return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
+        return back()->with('message.level', 'success')->with('message.content', __('all.Your message has been sent.'));
     }
 }

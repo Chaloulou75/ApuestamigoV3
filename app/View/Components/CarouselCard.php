@@ -7,7 +7,6 @@ use App\Equipe;
 
 class CarouselCard extends Component
 {
-    
     public $equipes;
 
     /**

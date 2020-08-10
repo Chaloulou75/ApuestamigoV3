@@ -12,26 +12,26 @@ class Championnat extends Model
 
     public function matchs()
     {
-        return $this->hasMany(Match::class);        
+        return $this->hasMany(Match::class);
     }
 
     public function games()
     {
-        return $this->hasMany(Game::class);        
+        return $this->hasMany(Game::class);
     }
 
     public function equipes()
     {
-        return $this->hasMany(Equipe::class);        
+        return $this->hasMany(Equipe::class);
     }
 
     public function journees()
     {
-        return $this->hasMany(DateJournee::class);        
+        return $this->hasMany(DateJournee::class);
     }
 
     public function ligues()
     {
-        return $this->hasMany(Ligue::class);        
+        return $this->hasMany(Ligue::class);
     }
 }

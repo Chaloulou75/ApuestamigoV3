@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Championnat;
 use App\DateJournee;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,9 +19,7 @@ class DateJourneeController extends Controller
     public function __construct()
     {
         $this->middleware('admin'); // if user is admin
-
     }
-
 
     /**
      * Display a listing of the resource.
@@ -45,7 +43,7 @@ class DateJourneeController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $championnats = Championnat::where('finished', false)->get();        
+        $championnats = Championnat::where('finished', false)->get();
 
         return view('/pages/datejournees/create', compact('user', 'championnats'));
     }
@@ -59,7 +57,7 @@ class DateJourneeController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
                 'championnat_id' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
@@ -76,9 +74,9 @@ class DateJourneeController extends Controller
         $data = array(
             'championnat_id'=> $request->championnat_id,
             'namejournee' => $request->namejournee,
-            'timejournee' => $timejournee,          
+            'timejournee' => $timejournee,
         );
-        
+
         DateJournee::create($data);
 
         return redirect()->back()->with('message.level', 'success')->with('message.content', __('Nouvelle journée créée.'));
@@ -103,9 +101,9 @@ class DateJourneeController extends Controller
      */
     public function edit(DateJournee $datejournee)
     {
-        $user = Auth::user(); 
-        $championnats = Championnat::where('finished', false)->get();        
-        
+        $user = Auth::user();
+        $championnats = Championnat::where('finished', false)->get();
+
         return view('/pages/datejournees/edit', $datejournee, compact('datejournee', 'user', 'championnats'));
     }
 
@@ -120,7 +118,7 @@ class DateJourneeController extends Controller
     {
         $datejournee = DateJournee::where('id', $datejournee->id)->firstOrFail();
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
                 'championnat_id' => 'required',
                 'namejournee' => 'required',
                 'timejournee' => 'required',
@@ -138,7 +136,7 @@ class DateJourneeController extends Controller
 
         $datejournee->save();
 
-        return redirect()->back()->with('message.level', 'success')->with('message.content', __( 'Journée mise à jour'));
+        return redirect()->back()->with('message.level', 'success')->with('message.content', __('Journée mise à jour'));
     }
 
     /**
@@ -150,6 +148,6 @@ class DateJourneeController extends Controller
     public function destroy(DateJournee $datejournee)
     {
         $datejournee->delete();
-        return redirect()->back()->with('message.level', 'success')->with('message.content', __( 'Journée supprimée'));
+        return redirect()->back()->with('message.level', 'success')->with('message.content', __('Journée supprimée'));
     }
 }

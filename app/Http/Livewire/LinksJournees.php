@@ -7,8 +7,8 @@ use Livewire\Component;
 
 class LinksJournees extends Component
 {
-	public $ligue;
-	public $user;
+    public $ligue;
+    public $user;
 
     public function mount($ligue, $user)
     {
@@ -19,7 +19,7 @@ class LinksJournees extends Component
     public function render()
     {
         return view('livewire.links-journees', [
-        	'todasjornadas' => DateJournee::where('championnat_id', $this->ligue->championnat->id)->orderBy('timejournee', 'asc')->get(),
+            'todasjornadas' => DateJournee::where('championnat_id', $this->ligue->championnat->id)->orderBy('timejournee', 'asc')->get(),
         ]);
     }
 }

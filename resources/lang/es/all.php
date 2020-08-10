@@ -49,7 +49,7 @@ return [
   'You are receiving this email because we received a password reset request for your account.'=> 'Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.',
   'Your email address is not verified.'=> 'Tu dirección de correo electrónico no está verificada.',
   'Whoops!'=> '¡Vaya!',
-  
+
   //head
   'Betting leagues between friends on the champions league and find who is the best tipster.' => 'Ligas de apuestas entre amigos sobre la Champions Liga y la Ligue 1 y descubre quién es el mejor tipster.',
 
@@ -112,7 +112,7 @@ return [
   'Sorry you have to be the owner to delete the league' => 'Lo sentimos, debes ser el propietario para eliminar la liga',
   'Sorry you have to be the owner to change the league' => 'Lo sentimos, debes ser el propietario para cambiar la liga',
   'choose a championship'=> 'Elegir un campeonato',
-  
+
   //messages
   'Yeah! your bets are registered! Good luck!' => 'Tus apuestas estan registradas, suerte!',
   'Yeah! your bets are registered and updated! Good luck!' => 'Tus apuestas estan registradas y actualizadas, suerte!',

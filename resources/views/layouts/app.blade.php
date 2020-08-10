@@ -9,7 +9,6 @@
         <meta name="description" content="{{  __('all.Betting leagues between friends on the champions league and find who is the best tipster.')}}">
         <meta name="google-site-verification" content="6W4yift1Bmm_Vc73-PUZ4DcHn3VS7OIYfIXjXRcGDD0" />
         <title> @isset($title) {{ $title }} | @endisset {{ config('app.name', 'Apuestamigo') }}</title>
-
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RMT6BBR84"></script>
         <script>
@@ -17,21 +16,21 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-5RMT6BBR84');
-        </script>        
+        </script>
         <!--  stripe -->
-        {{-- <script src="https://js.stripe.com/v3/" ></script> --}}                
+        {{-- <script src="https://js.stripe.com/v3/" ></script> --}}
         <!-- Styles -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" >
-        <!-- Livewire -->  
+        <!-- Livewire -->
         @livewireStyles
-        <!-- Scripts -->               
-        <script src="{{ mix('js/app.js') }}"></script> 
-        @stack('scripts') 
-        <!-- Livewire --> 
-        @livewireScripts                 
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}"></script>
+        @stack('scripts')
+        <!-- Livewire -->
+        @livewireScripts
     </head>
-    
+
     <body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
         <div id="app" class="h-screen flex flex-col space-between">
 
@@ -51,7 +50,7 @@
                 </div>
             </div>
             @endif
-            
+
             @if (session('error'))
             <div class="container mx-auto">
                 <div class="relative px-3 py-3 mb-4 border rounded text-red-700 border-red-500 bg-red-400">
@@ -64,7 +63,7 @@
                 @yield('content')
             </main>
 
-            <x-carousel-card equipes= {{$equipes}}/>            
-        </div>         
+            <x-carousel-card equipes= {{$equipes}}/>
+        </div>
     </body>
 </html>
