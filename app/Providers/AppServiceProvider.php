@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
@@ -28,13 +27,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //https for asset
-        if($this->app->environment('production')) {
+        if ($this->app->environment('production')) {
             \URL::forceScheme('https');
         }
 
         //@admin as blade directive name
         Blade::if('admin', function () {
-            return auth()->check() && auth()->user()->admin == 1;          
+            return auth()->check() && auth()->user()->admin == 1;
         });
 
         //tailwind for pagination default template

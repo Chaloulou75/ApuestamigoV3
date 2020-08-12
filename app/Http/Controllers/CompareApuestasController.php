@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\DateJournee;
 use App\Match;
 use App\User;
-use Illuminate\Http\Request;
 
 class CompareApuestasController extends Controller
 {
@@ -58,6 +57,38 @@ class CompareApuestasController extends Controller
                       ->where('ligue_id', $ligue->id)
                       ->where('game_id', $apuestaGameId)
                       ->update(['pointMatch' => 3]);
+                        } elseif ($scoreOff1 === $scoreapuesta1 && $scoreOff2 !== $scoreapuesta2 && $scoreOff2 > $scoreOff1 && $scoreapuesta2 > $scoreapuesta1) {
+                            echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                            Match::where('date_journees_id', '=', $journee->id)
+                      ->where('championnat_id', $journee->championnat_id)
+                      ->where('user_id', $user->id)
+                      ->where('ligue_id', $ligue->id)
+                      ->where('game_id', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
+                        } elseif ($scoreOff1 === $scoreapuesta1 && $scoreOff2 !== $scoreapuesta2 && $scoreOff2 < $scoreOff1 && $scoreapuesta2 < $scoreapuesta1) {
+                            echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                            Match::where('date_journees_id', '=', $journee->id)
+                      ->where('championnat_id', $journee->championnat_id)
+                      ->where('user_id', $user->id)
+                      ->where('ligue_id', $ligue->id)
+                      ->where('game_id', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
+                        } elseif ($scoreOff2 === $scoreapuesta2 && $scoreOff1 !== $scoreapuesta1 && $scoreOff2 > $scoreOff1 && $scoreapuesta2 > $scoreapuesta1) {
+                            echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                            Match::where('date_journees_id', '=', $journee->id)
+                      ->where('championnat_id', $journee->championnat_id)
+                      ->where('user_id', $user->id)
+                      ->where('ligue_id', $ligue->id)
+                      ->where('game_id', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
+                        } elseif ($scoreOff2 === $scoreapuesta2 && $scoreOff1 !== $scoreapuesta1 && $scoreOff2 < $scoreOff1 && $scoreapuesta2 < $scoreapuesta1) {
+                            echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
+                            Match::where('date_journees_id', '=', $journee->id)
+                      ->where('championnat_id', $journee->championnat_id)
+                      ->where('user_id', $user->id)
+                      ->where('ligue_id', $ligue->id)
+                      ->where('game_id', $apuestaGameId)
+                      ->update(['pointMatch' => 1]);
                         } elseif ($scoreOff1 > $scoreOff2 && $scoreapuesta1 > $scoreapuesta2 && $scoreapuesta1 !== $scoreOff1) {
                             echo "le score pour le match n° ".$gameId ." est : " . $scoreOff1 .'-'. $scoreOff2 .' et '. $user->name .' dans la ligue '. $ligue->id .'  a mis '. $scoreapuesta1 .'-'. $scoreapuesta2 .  " pour le match n° ".$apuestaGameId ." ça fait 1 point!"."<br>";
                             Match::where('date_journees_id', '=', $journee->id)
