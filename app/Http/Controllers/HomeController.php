@@ -27,7 +27,6 @@ class HomeController extends Controller
         if (Auth::user()) {
             return redirect()->route('ligues.index');
         }
-
-        return redirect()->route('welcome');
+        return view('index');
     }
 }
