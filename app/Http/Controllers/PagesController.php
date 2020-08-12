@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Equipe;
+
 class PagesController extends Controller
 {
     public function welcome()
     {
-        return view('/index');
+        $equipes = Equipe::all();
+        return view('/index', compact('equipes'));
     }
 }

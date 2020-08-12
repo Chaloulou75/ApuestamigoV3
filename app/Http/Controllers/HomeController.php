@@ -28,6 +28,6 @@ class HomeController extends Controller
             return redirect()->route('ligues.index');
         }
 
-        return view('index');
+        return redirect()->route('welcome');
     }
 }
