@@ -33,14 +33,12 @@
     @livewireScripts
 </head>
 
-<body class="body bg-francagris">{{-- bg-scrollstyle="background-image: url(/img/champions.png)" --}}
+<body class="body bg-francagris">
     <div id="app" class="h-screen flex flex-col space-between">
-
-        {{-- <navbar-component :user='@json(Auth::user())'></navbar-component> --}}
 
         @include('layouts/partials/navbar')
 
-         {{-- <x-carousel-card :equipes="$equipes"/>   --}}   {{-- --}}
+        <livewire:carousel />
 
         @include('layouts/partials/message')
 
@@ -65,7 +63,7 @@
             @yield('content')
         </main>
 
-        {{--   <x-carousel-card :equipes="$equipes" /> --}} {{----}}
+        <livewire:carousel />
     </div>
 </body>
 
