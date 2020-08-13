@@ -40,7 +40,7 @@
 
         @include('layouts/partials/navbar')
 
-        <x-carousel-card equipes={{$equipes}} />
+         {{-- <x-carousel-card :equipes="$equipes"/>   --}}   {{-- --}}
 
         @include('layouts/partials/message')
 
@@ -65,7 +65,7 @@
             @yield('content')
         </main>
 
-        <x-carousel-card equipes={{$equipes}} />
+        {{--   <x-carousel-card :equipes="$equipes" /> --}} {{----}}
     </div>
 </body>
 

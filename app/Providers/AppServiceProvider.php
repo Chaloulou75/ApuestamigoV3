@@ -35,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('admin', function () {
             return auth()->check() && auth()->user()->admin == 1;
         });
+        //Components
+        // Blade::aliasComponent('carousel-card', CarouselCard::class);
+        // Blade::aliasComponent('ligue-card', LigueCard::class);
 
         //tailwind for pagination default template
         Paginator::useTailwind();
