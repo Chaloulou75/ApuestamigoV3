@@ -37,9 +37,7 @@
                     name="championnat_id" value="{{ old('championnat_id') }}" required>
 
                     @foreach($championnats as $championnat)
-
                     <option class="py-4" value="{{ $championnat->id }}">{{ $championnat->name}} </option>
-
                     @endforeach
                 </select>
 

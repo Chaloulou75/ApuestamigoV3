@@ -39,6 +39,8 @@
             <div class="mb-4">
                 <label for="championnat_id" class="block text-white text-base font-medium mb-2">
                     {{ __('all.choose a championship') }}
+                    <span class="text-xs text-gray-300 italic">
+                    {{ $game->championnat->name }} </span>
                 </label>
                 <select id="championnat_id"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline {{ $errors->has('championnat_id') ? ' bg-red-dark' : '' }}"
@@ -60,13 +62,13 @@
             </div>
             <div class="mb-4">
                 <label class="block text-white text-sm font-base mb-2" for="journee">
-                    Journée
+                    Journée: <span class="text-xs text-gray-300 italic">{{ $game->journee->namejournee }} ({{ $game->journee->championnat->name }})</span>
                 </label>
                 <select
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="journee" name="journee" placeholder="{{ $game->journee->namejournee }}">
                     @foreach($journees as $journee)
-                    <option value="{{ $journee->id }}"> {{ $journee->namejournee }}</option>
+                    <option value="{{ $journee->id }}"> {{ $journee->namejournee }} ({{ $journee->championnat->name }})</option>
                     @endforeach
 
                 </select>
@@ -74,7 +76,7 @@
 
             <div class="mb-4">
                 <label class="block text-white text-sm font-base mb-2" for="equipe1_id">
-                    Home Team
+                    Home Team <span class="text-xs text-gray-300 italic">({{ $game->homeTeam->name }})</span>
                 </label>
                 <select
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
@@ -87,7 +89,8 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label class="block text-white text-sm font-base mb-2" for="equipe2_id"> Away Team</label>
+                <label class="block text-white text-sm font-base mb-2" for="equipe2_id"> Away Team <span class="text-xs text-gray-300 italic">({{ $game->awayTeam->name }})</span>
+                </label>
                 <select
                     class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                     id="equipe2_id" name="equipe2_id" placeholder="{{ $game->awayTeam->name }}">
@@ -99,7 +102,7 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date(UTC):</label>
+                <label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date (UTC):</label>
 
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
