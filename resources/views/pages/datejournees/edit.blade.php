@@ -7,7 +7,7 @@
     <h3 class="text-base text-center text-white py-2">
         Hey <span class="text-francaverde">{{ $user->name }}
         </span>,{{ $datejournee->championnat->name }} mets à jour la journée {{$datejournee->namejournee }} le <span
-            class="italic text-gray-400">{{ \Carbon\Carbon::parse($datejournee->timejournee)->isoFormat('dddd Do MMMM YYYY H:mm') }}
+            class="italic text-gray-400">{{ \Carbon\Carbon::parse($datejournee->timejournee)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm') }} (FR)
         </span>
     </h3>
     <p class="text-base text-center text-francaverde py-2">
@@ -110,7 +110,7 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-white text-sm font-base mb-2" for="timejournee">Date de la journée:</label>
+                <label class="block text-white text-sm font-base mb-2" for="timejournee">Date de la journée (UTC):</label>
 
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"

@@ -105,8 +105,9 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-white text-sm font-base mb-2" for="timejournee">Date de la journée: (après le
-                    dernier match de la journée)</label>
+                <label class="block text-white text-sm font-base mb-2" for="timejournee">
+                    Date de la journée: (après le dernier match de la journée UTC)
+                </label>
 
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"

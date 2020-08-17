@@ -21,7 +21,7 @@
         @foreach($championnats as $championnat)
         <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"
             href="{{ route('seasonfinished.update', $championnat) }}">
-            Terminer la saison pour {{ $championnat->name }}
+            {{ $championnat->name }}
         </a>
         @endforeach
     </div>

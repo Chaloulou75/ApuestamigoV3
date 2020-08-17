@@ -31,7 +31,7 @@
                         class="text-francaverde">{{$game->awayTeam->name}}</span>
                 </li>
                 <li class="text-sm py-2 px-4 text-gray-300 italic"> le
-                    {{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm')}}</li>
+                    {{ \Carbon\Carbon::parse($game->gamedate)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm')}} (FR)</li>
 
                 <div class="flex justify-between">
                     <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"

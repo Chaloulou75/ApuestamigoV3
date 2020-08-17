@@ -92,7 +92,7 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date:</label>
+                <label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date (UTC):</label>
 
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"

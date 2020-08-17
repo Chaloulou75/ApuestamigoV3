@@ -11,7 +11,7 @@
             {{ $game->journee->season }}@endisset</span> Match qui oppose:
         <span class="text-francaverde">{{ $game->homeTeam->name }}</span> et <span
             class="text-francaverde">{{ $game->awayTeam->name }}</span>, prévu le <span
-            class="italic">{{ \Carbon\Carbon::parse($game->gamedate)->isoFormat('dddd Do MMMM YYYY H:mm') }}
+            class="italic">{{ \Carbon\Carbon::parse($game->gamedate)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm') }} (FR)
         </span>
     </h3>
     <p class="text-base text-center text-francaverde py-2">
@@ -99,7 +99,7 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date:</label>
+                <label class="block text-white text-sm font-base mb-2" for="gamedate">Choose a date(UTC):</label>
 
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"

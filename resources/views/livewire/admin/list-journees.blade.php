@@ -28,7 +28,7 @@
 
                 </li>
                 <li class="text-sm py-2 px-4 italic text-gray-400"> le
-                    {{ \Carbon\Carbon::parse($datejournee->timejournee)->isoFormat('dddd Do MMMM YYYY H:mm') }}</li>
+                    {{ \Carbon\Carbon::parse($datejournee->timejournee)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm') }} (FR)</li>
                 <div class="flex justify-between">
                     <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"
                         href="{{ route('datejournees.edit', ['datejournee' => $datejournee]) }}"> Edit

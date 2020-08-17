@@ -25,7 +25,7 @@
 
         <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"
             href="{{ route('compareapuestas.update', $journee) }}">
-            Points par Match pour {{ $championnat->name }}, {{ $journee->namejournee }}
+            {{ $championnat->name }}, {{ $journee->namejournee }}
         </a>
 
         @endforeach
