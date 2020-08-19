@@ -1,7 +1,7 @@
 @foreach ($championnats as $championnat)
-<div class="m-2" x-data="{ show: false }" x-on:click.away="show = false">
+<div class="m-2 relative" x-data="{ show: false }" x-on:click.away="show = false">
     <button
-        class="relative transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
+        class=" transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
         x-bind:class="{'font-medium': show, 'shadow-none': show}" x-on:click="show = ! show">
         <svg class="inline w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             viewBox="0 0 24 24" stroke="currentColor">

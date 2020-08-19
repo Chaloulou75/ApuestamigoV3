@@ -1,6 +1,6 @@
-<div class="m-2" x-data="{ show: false }" x-on:click.away="show = false">
+<div class="m-2 relative" x-data="{ show: false }" x-on:click.away="show = false">
     <button
-        class="relative transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
+        class=" transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
         x-bind:class="{'font-medium': show, 'shadow-none': show}" x-on:click="show = ! show">
         <svg class="inline w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             viewBox="0 0 24 24" stroke="currentColor">
@@ -27,12 +27,12 @@
                     id <span class="text-gray-300">{{$championnat->id}}</span>:
                     <span class="text-francaverde">{{$championnat->name}}</span>
 
-                    <span class="text-xs text-gray-300">Championnat terminé? (0 = en cours): {{$championnat->finished }}
+                    <span class="text-xs text-gray-300">Championnat terminé? (0 = en cours): {{ $championnat->finished }}
                     </span>
                 </li>
                 <div class="flex justify-between">
                     <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"
-                        href="{{route('championnats.edit', $championnat)}}"> Edit {{$championnat->name}}
+                        href="{{route('championnats.edit', $championnat)}}"> Edit
                     </a>
                     <form class="inline-block" method="POST" action="{{route('championnats.destroy', $championnat)}}">
                         @csrf
@@ -40,7 +40,7 @@
                         @method('DELETE')
                         <button type="submit"
                             class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4">
-                            Suprimir {{$championnat->name}}</button>
+                            Suprimir</button>
                     </form>
                 </div>
             </div>

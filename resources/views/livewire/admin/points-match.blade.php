@@ -1,6 +1,6 @@
-<div class="m-2" x-data="{ show: false }" x-on:click.away="show = false">
+<div class="m-2 relative" x-data="{ show: false }" x-on:click.away="show = false">
     <button
-        class="relative transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
+        class=" transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
         x-bind:class="{'font-medium': show, 'shadow-none': show}" x-on:click="show = ! show">
         <svg class="inline w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             viewBox="0 0 24 24" stroke="currentColor">
@@ -13,7 +13,8 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
             class="ml-1 transform inline-block fill-current w-6 h-6" x-bind:class="{'rotate-180': show }">
             <path fill-rule="evenodd"
-                d="M15.3 10.3a1 1 0 011.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4l3.3 3.29 3.3-3.3z" /></svg>
+                d="M15.3 10.3a1 1 0 011.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4l3.3 3.29 3.3-3.3z" />
+        </svg>
     </button>
 
     <div class="absolute z-30 bg-francagris text-white py-2 rounded mt-1" x-show="show"

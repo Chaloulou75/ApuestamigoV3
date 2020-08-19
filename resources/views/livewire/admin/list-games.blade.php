@@ -1,15 +1,15 @@
 @foreach ($championnats as $championnat)
 @foreach($championnat->journees as $journee)
-<div class="m-2" x-data="{ show: false }" x-on:click.away="show = false">
+<div class="m-2 relative" x-data="{ show: false }" x-on:click.away="show = false">
     <button
-        class="relative transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
+        class=" transition duration-500 ease-in-out transform hover:translate-x-1 focus:outline-none text-white hover:text-francaverde text-sm"
         x-bind:class="{'font-medium': show, 'shadow-none': show}" x-on:click="show = ! show">
         <svg class="inline w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             viewBox="0 0 24 24" stroke="currentColor">
             <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
 
-        {{ __('Matchs ')}} <span class="text-francaverde">{{ $journee->namejournee}}</span> en <span class="italic">
+        <span class="text-francaverde">{{ $journee->namejournee}}</span> en <span class="italic">
             {{ $championnat->name }}</span>
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -31,7 +31,8 @@
                         class="text-francaverde">{{$game->awayTeam->name}}</span>
                 </li>
                 <li class="text-sm py-2 px-4 text-gray-300 italic"> le
-                    {{ \Carbon\Carbon::parse($game->gamedate)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm')}} (FR)</li>
+                    {{ \Carbon\Carbon::parse($game->gamedate)->timezone('Europe/Paris')->isoFormat('dddd Do MMMM YYYY H:mm')}}
+                    (FR)</li>
 
                 <div class="flex justify-between">
                     <a class="transition duration-500 ease-in-out transform hover:translate-x-1 block hover:text-francaverde text-sm py-2 px-4"

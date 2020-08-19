@@ -68,7 +68,9 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="journee" name="journee" placeholder="{{ $game->journee->namejournee }}">
                     @foreach($journees as $journee)
-                    <option value="{{ $journee->id }}"> {{ $journee->namejournee }} ({{ $journee->championnat->name }})</option>
+                    <option value="{{ $journee->id }}">
+                        {{ $journee->namejournee }} ({{ $journee->championnat->name }})
+                    </option>
                     @endforeach
 
                 </select>
