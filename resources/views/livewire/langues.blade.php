@@ -1,6 +1,6 @@
 <div x-data="{ open: false }" class="relative">
     <button x-on:click="open = true"
-        class="mt-1 block px-2 py-1 text-sm focus:outline-none hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
+        class="mt-1 block px-2 py-1 text-sm focus:outline-none hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('langues') ? 'active' : '' }}">
         <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             viewBox="0 0 24 24" stroke="currentColor">
             <path

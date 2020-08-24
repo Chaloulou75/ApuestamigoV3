@@ -19,13 +19,18 @@
 
 /* purgecss start ignore */
 
-html, body {
-  overflow-x: hidden;
+html,
+body {
+    overflow-x: hidden;
 }
 
 .body {
 
-	font-family: 'Gelasio', 'Montserrat', sans-serif ;
+    font-family: 'Gelasio', 'Montserrat', sans-serif;
+}
+
+.active {
+    color: #99cc66;
 }
 
 // .ligueCard{
@@ -72,31 +77,31 @@ html, body {
  * how you can use CSS to style your Element's container.
  */
 .StripeElement {
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  height: 40px;
+    height: 40px;
 
-  padding: 10px 12px;
+    padding: 10px 12px;
 
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: white;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
 
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--invalid {
-  border-color: #fa755a;
+    border-color: #fa755a;
 }
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+    background-color: #fefde5 !important;
 }
 
 /* purgecss end ignore */

@@ -57,7 +57,7 @@
                     id="journee" name="journee" placeholder="{{old('journee')}}">
 
                     @foreach($journees as $journee)
-                    <option value="{{$journee->id }}"> {{ $journee->namejournee }}</option>
+                    <option value="{{$journee->id }}"> {{ $journee->namejournee }} ({{ $journee->championnat->name }})</option>
                     @endforeach
 
                 </select>

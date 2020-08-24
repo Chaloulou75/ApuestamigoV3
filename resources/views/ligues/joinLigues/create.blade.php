@@ -33,8 +33,7 @@
 @isset($baseligue)
 <div
     class="animate__animated animate__fadeInUp w-full lg:w-1/3 mx-auto bg-francagris shadow-md rounded-lg border-2 border-francaverde px-8 py-6 my-4 text-white">
-    <h3 class="text-francaverde"> Or join the <span class="text-white">{{ $baseligue->name }}</span> available for
-        everybody</h3>
+    <h3 class="text-francaverde"> Or join the <span class="text-white">{{ $baseligue->name }}</span> available for everybody</h3>
     <p class="py-2">Copy this token and join us: </p>
     <div class="flex">
         <input id="ligueToken"

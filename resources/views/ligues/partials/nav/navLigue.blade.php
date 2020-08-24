@@ -10,7 +10,7 @@
     <div class="sm:flex block justify-between text-sm lg:text-base p-2">
 
         <div
-            class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
+            class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1 {{ Request::is('*classement*') ? 'active' : '' }}">
             <a href="{{ route('classementligue.show', $ligue) }}">
                 <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,7 +21,7 @@
         </div>
 
         <div
-            class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
+            class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1 {{ Request::is('*apuestas*') ? 'active' : '' }}">
             <a href="{{ action('ApuestasController@create', $ligue) }}">
                 <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,7 +35,7 @@
         </div>
 
         <div
-            class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1">
+            class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1 {{ Request::is('*settings') ? 'active' : '' }}">
             <a href="{{ route('ligueSettings.show', $ligue) }}">
                 <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

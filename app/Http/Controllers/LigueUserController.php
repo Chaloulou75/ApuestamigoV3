@@ -11,7 +11,7 @@ class LigueUserController extends Controller
     public function create()
     {
         if (Auth::user()) {
-            $baseligue = Ligue::firstWhere('name', 'The Champions League');
+            $baseligue = Ligue::firstWhere('name', 'La liguainn c\'est pas mal!');
 
             if (isset($baseligue)) {
                 return view('/ligues/joinLigues/create', compact('baseligue'));

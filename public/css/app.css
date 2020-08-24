@@ -23791,6 +23791,10 @@ html, body {
   font-family: "Gelasio", "Montserrat", sans-serif;
 }
 
+.active {
+  color: #99cc66;
+}
+
 /* Enter and leave animations can use different */
 
 /* durations and timing functions.              */

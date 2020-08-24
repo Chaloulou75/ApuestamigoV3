@@ -6,7 +6,7 @@
 
         <div class="flex items-center">
             <a href="{{ route('welcome') }}"
-                class="block px-2 py-1 text-2xl rounded font-medium hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
+                class="block px-2 py-1 text-2xl rounded font-medium hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2" {{ Request::is('') ? 'active' : '' }}>
 
                 Apuestamigo
             </a>
@@ -31,7 +31,7 @@
         <div class="px-2 pt-2 pb-1 md:flex md:p-0">
 
             <a href="{{ route('ligues.index') }}"
-                class="block px-2 py-1 text-sm hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
+                class="block px-2 py-1 text-sm hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('*ligues') ? 'active' : '' }}">
                 <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path
@@ -42,7 +42,7 @@
             </a>
 
             <a href="{{route('ligues.create')}}"
-                class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
+                class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('*ligues/create') ? 'active' : '' }}">
                 <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path
@@ -53,7 +53,7 @@
             </a>
 
             <a href="{{route('about')}}"
-                class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
+                class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('*about') ? 'active' : '' }}">
                 <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path
@@ -67,7 +67,7 @@
 
             @guest
             <a href="{{route('login')}}"
-                class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2">
+                class="mt-1 block px-2 py-1 text-sm hover:text-francaverde md:mt-0 md:ml-2 transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('*login') ? 'active' : '' }}">
                 <svg class="inline-block h-4 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -93,7 +93,7 @@
                         class="absolute z-50 right-0 mt-2 py-2 w-48 bg-francagris border-2 border-francaverde rounded-lg text-sm shadow-xl">
 
                         <a href="{{ route('profile.show', auth()->user()->id) }}"
-                            class="px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 flex items-center">
+                            class="px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 flex items-center {{ Request::is('*profile*') ? 'active' : '' }}">
                             <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -103,7 +103,7 @@
 
                         @admin
                         <a href="{{route('admin.index')}}"
-                            class="block px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
+                            class="block px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('admin*') ? 'active' : '' }}">
                             <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path
@@ -115,7 +115,7 @@
                         @endadmin
 
                         <a href="{{route('contact.create')}}"
-                            class="block px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
+                            class="block px-4 py-2 text-white hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('contact*') ? 'active' : '' }}">
                             <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path
@@ -136,7 +136,7 @@
         <div class="px-2 py-1 md:hidden">
             @auth
             <div
-                class="flex items-center mt-1 px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:translate-x-2">
+                class="flex items-center mt-1 px-2 py-2 text-sm leading-none rounded transition duration-500 ease-in-out transform hover:translate-x-2{{ Request::is('profile*') ? 'active' : '' }} ">
                 <img class="h-8 w-8 border border-francaverde rounded-full object-contain overflow-hidden bg-white"
                     src="/img/cup.png" loading="auto" alt="cup">
                 <span class="ml-3 hover:text-francaverde"><a href="{{route('profile.show', auth()->user()->id) }}">
@@ -147,7 +147,7 @@
             <div class="mt-1">
                 @admin
                 <a href="{{ route('admin.index') }}"
-                    class="mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
+                    class="mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('admin*') ? 'active' : '' }}">
                     <svg class="h-5 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path
@@ -160,7 +160,7 @@
 
                 @auth
                 <a href="{{route('contact.create')}}"
-                    class="mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2">
+                    class="mt-1 block px-2 py-2 text-sm leading-none rounded hover:text-francaverde transition duration-500 ease-in-out transform hover:translate-x-2 {{ Request::is('contact') ? 'active' : '' }}">
                     <svg class="h-5 w-5 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path
