@@ -28,11 +28,19 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+<<<<<<< HEAD
         "alpinejs": "^2.7.3",
         "date-fns": "^2.16.1",
         "date-fns-tz": "^1.0.12",
         "minimist": "^1.2.5",
         "tailwindcss": "^1.9.6",
+=======
+        "alpinejs": "^2.6.0",
+        "date-fns": "^2.15.0",
+        "date-fns-tz": "^1.0.10",
+        "minimist": "^1.2.5",
+        "tailwindcss": "^1.7.0",
+>>>>>>> 9736fccec56fdb9a025cf192e2d0c65f5f9887f0
         "turbolinks": "^5.2.0"
     }
 }
