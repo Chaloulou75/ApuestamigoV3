@@ -1,5 +1,5 @@
 <div
-    class=" animate__animated animate__fadeIn animate__slower flex-grow w-full lg:w-1/3 my-4 md:m-4 focus:shadow-outline">
+    class=" animate__animated animate__fadeIn animate__slower flex-grow w-full lg:w-1/3 my-4 md:m-4 focus:shadow-outline hover:bg-gray-900 transition transform hover:translate-x-2 duration-200">
     <div class="ligueCard border-2 border-francaverde rounded p-4 flex flex-col justify-between
 	@if($ligue->finished == true) opacity-50 @endif">
         <div class="mb-8">

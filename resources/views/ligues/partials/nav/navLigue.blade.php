@@ -12,8 +12,7 @@
         <div
             class="w-full border-2 border-solid rounded-lg border-francaverde flex-grow text-center hover:text-francaverde text-white bg-francagris font-medium px-4 py-2 m-1 transition duration-500 ease-in-out transform hover:translate-x-1 {{ Request::is('*classement*') ? 'active' : '' }}">
             <a href="{{ route('classementligue.show', $ligue) }}">
-                <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                    stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="h-6 w-6 inline-block pr-1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                 </svg>
                 {{ __('all.Ranking')}}

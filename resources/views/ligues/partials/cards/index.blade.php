@@ -1,5 +1,5 @@
 <div
-    class="createLigueCard animate__animated animate__fadeIn animate__slow flex-grow w-full lg:w-1/3 my-4 md:m-4 border-2 border-francaverde rounded focus:shadow-outline">
+    class="createLigueCard animate__animated animate__fadeIn animate__slow flex-grow w-full lg:w-1/3 my-4 md:m-4 border-2 border-francaverde rounded focus:shadow-outline hover:bg-black transition transform hover:-translate-x-2 duration-200">
     <a href="{{ route('ligues.create') }}"
         class="block mx-auto text-white hover:text-francaverde text-base text-center py-16 px-4">
         <svg class="inline-block w-6 h-6 mr-3" fill="none" stroke-linecap="round" stroke-linejoin="round"

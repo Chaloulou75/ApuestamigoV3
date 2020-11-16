@@ -33,7 +33,7 @@
     @livewireScripts
 </head>
 
-<body class="body bg-francagris">
+<body class="body bg-francagris overflow-x-hidden">
     <div id="app" class="h-screen flex flex-col space-between">
 
         @include('layouts/partials/navbar')
