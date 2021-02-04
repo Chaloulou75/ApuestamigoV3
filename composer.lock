@@ -64,16 +64,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.173.0",
+            "version": "3.173.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ab3ee1cba4219d5262ecac8f011f267e9b7f3af9"
+                "reference": "1ab4f565744aea8e9560ee8aaffb19b87238c7d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ab3ee1cba4219d5262ecac8f011f267e9b7f3af9",
-                "reference": "ab3ee1cba4219d5262ecac8f011f267e9b7f3af9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1ab4f565744aea8e9560ee8aaffb19b87238c7d5",
+                "reference": "1ab4f565744aea8e9560ee8aaffb19b87238c7d5",
                 "shasum": ""
             },
             "require": {
@@ -148,9 +148,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.2"
             },
-            "time": "2021-02-02T20:01:31+00:00"
+            "time": "2021-02-03T21:12:51+00:00"
         },
         {
             "name": "brick/math",
@@ -1446,16 +1446,16 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v12.7.0",
+            "version": "v12.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "8f8bdad56f7e7a521c55e47d05b83043bca6db8d"
+                "reference": "21fde50bb734ab0aa63daef9f3a7ce8389127fac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/8f8bdad56f7e7a521c55e47d05b83043bca6db8d",
-                "reference": "8f8bdad56f7e7a521c55e47d05b83043bca6db8d",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/21fde50bb734ab0aa63daef9f3a7ce8389127fac",
+                "reference": "21fde50bb734ab0aa63daef9f3a7ce8389127fac",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1520,7 @@
                 "issues": "https://github.com/laravel/cashier/issues",
                 "source": "https://github.com/laravel/cashier"
             },
-            "time": "2021-02-02T15:45:45+00:00"
+            "time": "2021-02-04T16:01:33+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4316,16 +4316,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.69.0",
+            "version": "v7.70.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "6716cbc4ebf8cba7d45374a059c7c6e5bf53277d"
+                "reference": "5624b020d4541b8228ba47307811d880ed6bf4df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/6716cbc4ebf8cba7d45374a059c7c6e5bf53277d",
-                "reference": "6716cbc4ebf8cba7d45374a059c7c6e5bf53277d",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/5624b020d4541b8228ba47307811d880ed6bf4df",
+                "reference": "5624b020d4541b8228ba47307811d880ed6bf4df",
                 "shasum": ""
             },
             "require": {
@@ -4371,9 +4371,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.69.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.70.0"
             },
-            "time": "2021-01-22T03:21:13+00:00"
+            "time": "2021-02-03T20:48:18+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
