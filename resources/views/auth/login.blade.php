@@ -40,7 +40,7 @@
                             name="password" required autocomplete="current-password">
 
                         @error('password')
-                        <p class="text-red-500 text-xs italic mt-1">
+                        <p class="text-red-500 text-xs italic mt-1 py-1">
                             {{ $message }}
                         </p>
                         @enderror
